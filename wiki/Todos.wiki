@@ -1,0 +1,14 @@
+#summary Test page for todos
+= Introduction =
+
+I have to force myself to update this quickly.
+I am learning this way how to write wiki.
+
+
+= Details =
+
+My goals are:
+  * Rewrite "_How to install e-Puck_" in *czech*  and in *english*
+  * Figure out how to write this wiki
+  * Start e-puck on my ntb again
+  * Begin to use svn plugin intensively
