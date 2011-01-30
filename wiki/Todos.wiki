@@ -1,7 +1,8 @@
 #summary Test page for todos
+#labels Phase-Requirements,Deprecated
 = Introduction =
 
-I have to force myself to update this quickly.
+I have to force myself to update this wiki quickly.
 I am learning this way how to write wiki.
 
 
