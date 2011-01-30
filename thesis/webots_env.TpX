@@ -1,0 +1,21 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXCenterFigure="1" TeXFigurePlacement="!hbp">
+%  <caption label="pic:webots_env">
+%Debuggin in Webots environment  </caption>
+%  <bitmap x="30" y="124.125" w="75" h="70.875" link="webots_env.jpg"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(223.94, 212.24)(0,0)
+  \put(0,0){\includegraphics{webots_env.pdf}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(223.94, 212.24)(0,0)
+  \put(0,0){\includegraphics{webots_env}}
+  \end{picture}%
+\fi
+\caption{\label{pic:webots_env}%
+ Debuggin in Webots environment}
+\end{figure}

@@ -1,0 +1,44 @@
+E-Puck is a small educational robot, which is equipped with plenty of sensors. It can be controlled either
+by a program running on its dsPic processor or by a program running on PC, which use a Bluetooth wireless communication and 
+a special program on e-Puck.
+The present thesis is devoted to an Elib library, which controls e-Puck remotely. The contribution of the thesis is 
+an Elib library together with sets of examples and tools, which makes development of programs to e-Puck easier.
+
+We have described and implemented an Elib library, which is aimed on students of mobile robotics or other courses.
+The e-Puck robot is usually not the main subject of student's interest, therefor
+Elib library offers a simple interface, which is described in detail on lot of examples and it allows the students control e-Puck
+without useless effort.
+
+We have prepared an TestElib project, which is available for Microsoft Visual Studio 2008 ~\ref{msvs} and also
+for MonoDevelop~\ref{monodev}. The examples of TestElib project introduce features of Elib.
+The functions of the project use all of sensors and actuators of e-Puck.
+TestElib also introduce simple behaviours such as "Go to light" and "Bull" behaviour. "Go to light" behaviour
+mades the e-Puck robot follow the source of light. If "Bull" behaviour is running, then the e-Puck
+bumps into red obstacles.
+Among other examples a sample of image processig is included to TestElib project.
+
+Furthermore with Elib is deployed Elib Joystick, which is a graphical application. It allows to play with every e-Puck's sensor and actuator.
+
+Elib Tools is another application implemented in Elib library. It is a command line application, which can parse the log from command sended to e-Puck via and collect infromation from it.
+The source code of the application is also densely commented and the Elib Tools program is  ready to be extended or modified according the needs
+of programmers, who use Elib.
+
+The Elib access sensors and actuators of e-Puck with a minimum delay. 
+For most sensors and actuators the sensor values respectivly the confirmation of action
+are delivered under 0.1 s.
+It is sufficient for comfortable control of e-Puck robot and implementing different behaviours.
+
+As a whole, the work fullfilled its assignments. It provides a functional library for
+a remote control of e-Puck, which is introduced on well documented examples.
+The Elib library can be used for future works.
+
+\subsection*{Future works}
+	Most of imperfections of Elib results from implementation of $BTCom$ program,
+	which is the program deployed defaultly with e-Puck and which allows Elib to control the robot.
+	Simple modification of this program will allow Elib acquire a frequency of sound from microphones.
+	Also a modification of $BTCom$ would allow to use e-Puck's camera more intensively.
+
+	Althoug there are two simulators for e-Puck available, there is a space for a third simulator for e-Puck.
+	The first simulator is Webots. It is a commercial software, which requires paying annual fees.
+	?Enki? is the second simulator. It s a free software, but the programming of the robot is limited to a new very simple scripting language.
+	Possible solution could be incorporation Elib into some existing simulator.

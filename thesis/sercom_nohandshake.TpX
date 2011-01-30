@@ -1,0 +1,125 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXFigurePlacement="!hbp">
+%  <caption label="pic:sercom_nohandshake">
+%Old structure  </caption>
+%  <rect x="0.669375" y="15.761" w="108.661" h="79.4779" lw="4.00"/>
+%  <text x="13.3983" y="50.8431" t="These methods work with Serial Port." tex="These methods work with Serial Port." h="1.86276" li="dot" fill="gray"/>
+%  <rect x="11.225" y="22.5912" w="31.0461" h="55.8829" li="dash"/>
+%  <line x1="77.6636" y1="80.3369" x2="77.6636" y2="95.239" li="dot"/>
+%  <line x1="77.6636" y1="80.3369" x2="109.331" y2="80.3369" li="dot"/>
+%  <line x1="27.6795" y1="85.9252" x2="27.6795" y2="72.8858" arr2="h44" arrs="2"/>
+%  <line x1="38.5" y1="69" x2="48" y2="69" arr2="h44" arrs="2"/>
+%  <rect x="81.6996" y="84.6833" w="21.7323" h="6.20922"/>
+%  <text x="82.631" y="86.8565" t="public Write(..)" h="3.10461"/>
+%  <line x1="81.3892" y1="87.7879" x2="70.2126" y2="87.7879" arr2="h44" arrs="2"/>
+%  <ellipse x="59.3465" y="68.8498" dx="0" dy="0" li="dash"/>
+%  <ellipse x="59.3465" y="68.8498" dx="0" dy="0" li="dash"/>
+%  <ellipse x="59.3465" y="68.8498" dx="21.7323" dy="9.31383" li="dot"/>
+%  <text x="52.7926" y="67.9681" t="checker" tex="notSended" h="3.10461" li="dash"/>
+%  <ellipse x="59.3465" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="59.3465" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="59.3465" y="87.7879" dx="21.7323" dy="9.31383" li="dot"/>
+%  <text x="52.7926" y="86.9062" t="checker" tex="notSended" h="3.10461"/>
+%  <ellipse x="27.6795" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="27.6795" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="27.6795" y="87.7879" dx="21.7323" dy="9.31383"/>
+%  <text x="21.1256" y="86.9062" t="notSent" tex="notSended" h="3.1046"/>
+%  <line x1="48.4803" y1="87.7879" x2="38.5456" y2="87.7879" arr2="h44" arrs="2"/>
+%  <group>
+%    <line x1="27.6794" y1="39.6305" x2="27.6794" y2="39.6305" arr2="h44" arrs="2"/>
+%    <rect x="16.8133" y="33.4213" w="21.7322" h="6.20921"/>
+%    <text x="20.0933" y="35.5945" t="  Receive(..)" h="3.10461"/>
+%    <line x1="27.6794" y1="39.0096" x2="27.6794" y2="39.0096" arr2="h44" arrs="2"/>
+%    <line x1="27.6794" y1="39.6305" x2="27.6794" y2="39.6305" arr2="h44" arrs="2"/>
+%    <line x1="27.6794" y1="39.0096" x2="27.6794" y2="39.0096" arr2="h44" arrs="2"/>
+%    <text x="20.0933" y="27.2841" t="hReceive(..)" h="3.10461" lc="red"/>
+%    <rect x="16.8133" y="25.1108" w="21.7323" h="6.20921" lc="red"/>
+%  </group>
+%  <line x1="27.6795" y1="85.9252" x2="27.6795" y2="72.8858" arr2="h44" arrs="2"/>
+%  <line x1="27.6794" y1="72.2649" x2="27.6794" y2="72.2649" arr2="h44" arrs="2"/>
+%  <rect x="16.8133" y="66.0557" w="21.7322" h="6.20921"/>
+%  <text x="21.9887" y="68.2289" t="  Send(..)" h="3.10461"/>
+%  <line x1="27.6794" y1="71.644" x2="27.6794" y2="71.644" arr2="h44" arrs="2"/>
+%  <line x1="27.6794" y1="72.2649" x2="27.6794" y2="72.2649" arr2="h44" arrs="2"/>
+%  <rect x="16.8133" y="66.0557" w="21.7322" h="6.20921"/>
+%  <line x1="27.6794" y1="71.644" x2="27.6794" y2="71.644" arr2="h44" arrs="2"/>
+%  <text x="21.9887" y="60.9184" t="hSend(..)" h="3.1046" lc="red"/>
+%  <rect x="16.8133" y="58.7452" w="21.7323" h="6.20923" lc="red"/>
+%  <rect x="81.6996" y="84.6833" w="21.7323" h="6.20922"/>
+%  <text x="82.631" y="86.8565" t="public Write(..)" h="3.10461"/>
+%  <line x1="81.3892" y1="87.7879" x2="70.2126" y2="87.7879" arr2="h44" arrs="2"/>
+%  <ellipse x="59.3465" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="59.3465" y="87.7879" dx="0" dy="0"/>
+%  <text x="52.7926" y="86.9062" t="checker" tex="notSended" h="3.10461"/>
+%  <ellipse x="27.6795" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="27.6795" y="87.7879" dx="0" dy="0"/>
+%  <ellipse x="27.6795" y="87.7879" dx="21.7323" dy="9.31383"/>
+%  <text x="21.1256" y="86.9062" t="notSent" tex="notSended" h="3.1046"/>
+%  <line x1="48.4803" y1="87.7879" x2="38.5456" y2="87.7879" arr2="h44" arrs="2"/>
+%  <line x1="100.327" y1="49.2908" x2="100.327" y2="49.2908" arr2="h44" arrs="2"/>
+%  <rect x="78.595" y="43.0816" w="21.7322" h="6.20921"/>
+%  <text x="79.5264" y="45.2548" t="Checker.Okf(..)" h="3.10461"/>
+%  <line x1="100.948" y1="48.6699" x2="100.948" y2="48.6699" arr2="h44" arrs="2"/>
+%  <line x1="100.327" y1="56.7418" x2="100.327" y2="56.7418" arr2="h44" arrs="2"/>
+%  <rect x="78.595" y="50.5326" w="21.7322" h="6.20922"/>
+%  <text x="79.5264" y="52.7059" t="Checker.Kof(..)" h="3.10461"/>
+%  <line x1="100.948" y1="56.1209" x2="100.948" y2="56.1209" arr2="h44" arrs="2"/>
+%  <group>
+%    <ellipse x="59.0981" y="50.0359" dx="21.7322" dy="9.31382"/>
+%    <text x="53.4508" y="49.1542" t="  Sent [c]" h="3.1046"/>
+%  </group>
+%  <text x="55.8104" y="39.9058" t="hSent" h="3.1046" lc="red"/>
+%  <ellipse x="59.3465" y="40.7875" dx="21.7323" dy="9.31382" lc="red"/>
+%  <line x1="59" y1="64" x2="59.036" y2="54.8791" arr2="h44" arrs="2"/>
+%  <line x1="70" y1="50.5" x2="78" y2="53.5" arr2="h44" arrs="2"/>
+%  <line x1="70" y1="50.5" x2="78" y2="46.5" arr2="h44" arrs="2"/>
+%  <line x1="38.5" y1="69" x2="48" y2="50" arr2="h44" arrs="2"/>
+%  <line x1="38.5" y1="36" x2="48" y2="49.5" arr2="h44" arrs="2"/>
+%</TpX>
+\begin{figure}[!hbp]
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(319.36, 236.63)(0,0)
+  \put(0,0){\includegraphics{sercom_nohandshake.pdf}}
+  \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+  \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+  \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+  \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+  \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+  \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+  \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+  \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+  \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+  \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+  \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(319.36, 236.63)(0,0)
+  \put(0,0){\includegraphics{sercom_nohandshake}}
+  \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+  \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+  \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+  \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+  \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+  \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+  \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+  \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+  \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+  \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+  \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+  \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+  \end{picture}%
+\fi
+\caption{\label{pic:sercom_nohandshake}%
+ Old structure}
+\end{figure}

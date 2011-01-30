@@ -1,0 +1,36 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{Introduction to mobile robotics}{}
+\BOOKMARK [0][-]{chapter.3}{E-Puck}{}
+\BOOKMARK [1][-]{section.3.1}{Origin of e-Puck}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Mechanical Design}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Sensors, actuators and heart of a robot}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Available software}{}
+\BOOKMARK [1][-]{section.4.1}{Why simulators, why remote control?}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Microsoft Robotics Developer Studiomsrs}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Player/Stage \(Gazebo\) player}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Pyrobot\(Pyro\)pyro}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Enki \046 Asebaenki}{chapter.4}
+\BOOKMARK [1][-]{section.4.6}{Webotswebots}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Elib design}{}
+\BOOKMARK [1][-]{section.5.1}{Approaches to e-Puck programming}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Advantages of remote control}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Design of BTCom program. What does it mean for Elib?}{chapter.5}
+\BOOKMARK [1][-]{section.5.4}{Asynchronous programming model \(APM\) for the Elib library}{chapter.5}
+\BOOKMARK [1][-]{section.5.5}{The Sercom class}{chapter.5}
+\BOOKMARK [1][-]{section.5.6}{The Epuck class}{chapter.5}
+\BOOKMARK [1][-]{section.5.7}{Summary of Elib interfaces}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Usage of Elib}{}
+\BOOKMARK [1][-]{section.6.1}{Advanced .Net techniques}{chapter.6}
+\BOOKMARK [1][-]{section.6.2}{Explore Elib through examples}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{Behaviours}{chapter.6}
+\BOOKMARK [1][-]{section.6.4}{Elib tools \(et\)}{chapter.6}
+\BOOKMARK [1][-]{section.6.5}{Purpose of Elib and its properties}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}
+\BOOKMARK [0][-]{appendix.A}{Installation guide of Elib library and its tools}{}
+\BOOKMARK [1][-]{section.A.1}{Requirements for running an e-Puck's first program}{appendix.A}
+\BOOKMARK [1][-]{section.A.2}{copy installation}{appendix.A}
+\BOOKMARK [0][-]{appendix.B}{Elib Joystick}{}
+\BOOKMARK [1][-]{section.B.1}{User Guide}{appendix.B}
+\BOOKMARK [1][-]{section.B.2}{Elib usage in Elib Joystick}{appendix.B}
+\BOOKMARK [0][-]{appendix.C}{Epuck class reference documentation}{}
+\BOOKMARK [1][-]{section.C.1}{Elib.Epuck Class Reference}{appendix.C}

@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                    %%%
+%%% ©ablona bakaláøské práce na MFF UK %%%
+%%%                                    %%%
+%%% (c) Franti¹ek ©trupl, 2005         %%%
+%%%                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% POZOR: Úprava bakaláøské práce je závislá rovnì¾ na volbì jednostranného resp. oboustranného tisku.
+%%%        Bli¾¹i informace naleznete v dokumentu Úprava bakaláøské práce, který se nalézá na adrese:
+%%%        http://www.mff.cuni.cz/studium/obecne/bplayout/pok12mo4.pdf
+
+\documentclass[12pt,notitlepage]{report}
+%\pagestyle{headings}
+\pagestyle{plain}
+
+\frenchspacing % aktivuje pou¾ití nìkterých èeských typografických pravidel
+
+\usepackage[latin2]{inputenc} % nastavuje pou¾ité kódování, u¾ivatelé Windows zamìní latin2 za cp1250
+%\usepackage{czech}
+\usepackage[czech]{babel}
+\usepackage{a4wide} % nastavuje standardní evropský formát stránek A4
+%\usepackage{index} % nutno pou¾ít v pøípadì tvorby rejstøíku balíèkem makeindex
+%\usepackage{fancybox} % umo¾òuje pokroèilé rámeèkování :-)
+\usepackage{graphicx} % nezbytné pro standardní vkládání obrázkù do dokumentu
+
+\usepackage[left=3cm]{geometry} % nastavení dané velikosti okrajù
+
+%\newindex{default}{idx}{ind}{Rejstøík} % zavádí rejstøík v pøípadì pou¾ití balíku index
+
+\title{Object Oriented Library for Controlling an e-Puck Robot}   % tyto dvì polo¾ky jsou zde v podstatì formálnì, ve skuteènosti nejsou nikde 
+\author{Ondøej Plátek} % dále v dokumentu pou¾ity
+
+%\date{}
+
+\begin{document}
+\chapter{Available software}
+	\section{Introduction}
+	In this chapter we shortly introduce software, which helps programmer
+	to debug and develop a program, which control robot. Only simulators will be introduced, because 
+	there is no available program or library for e-Puck like Elib,
+	which controls e-Puck remotely and asynchronously from PC.
+	All introduced simulators run at PC and allow user to control and program virtual copy of robot.
+	Most of the simulators simplify physics and construction, although they try to simulate sensors
+	and actuators as faithfully as possible. Some of the simulators support porting the program,
+	which has been created for the virtual robot, to real robot.
+	\\
+	Both, Elib and the simulators, benefit from moving the debugging environment from the robot to PC.
+	PC has enough resources at disposal and the code can be debugged much more comfortably. Debugging
+	tools depends on the structure of simulator and a programming language, which is used by the simulator.
+	Both attitudes allows to stop the program at any time.
+	\\
+	Elib uses $C\#$, which can be develop in Microsoft Visual Studio or MonoDevelop Studio.
+	Both studios support many features like setting breakpoints with conditions, call stack table,
+	manually switching between threads and many more.
+	\\
+	The simulators have several advantages over robot remote control.
+	Simulator provides for developer a consistent behaviour of virtual robot.
+	Programmer has for example under control battery level. The robot also measures in same situations
+	identical values from its sensors. 
+	\\
+	Real robot is strongly influenced by the state of battery
+	and measures a completely different values in the same situation.
+	 Great advantage of simulator is that it can not only stop 
+	 the program, but also freeze the simulated environment. 
+	\\
+	Simulators also do not need a real robot for testing a program, which is extremely
+	useful in class with many students, where is only a few robots available.
+	Some of the simulators are completely free, which is certainly nice quality.
+	\\
+	On the other hand a remote control of a robot has some benefits too. 
+	Lot of unpredictable situations are not simulated in simulators, although 
+	many simulators have the option to involve a randomness. The robot usually
+	needs to be tested in real environment too.
+	\\
+	Because simulators use a physical and graphical engines, they are demanding applications
+	for PC. Remote control can be simple fast application.
+	\\
+	Last but not least advantage of a remote control of robot is fact,
+	 that playing with real robot is more fun. 	
+	It motivates the students to solve the real problems including hardware set. Playing with robot brings
+	 questions how to cope with a changing environment or what to do with an inaccurate odometry.
+	\\
+	In these chapter following simulators will be discussed:
+	\begin{itemize}
+	\item Microsoft Robotics Developer Studio is complex tool based on message sending.
+	\item Player/Stage (Gazebo) is an open source project developed in C++, which is widely used.
+	\item Pyrobot(Pyro) is also an open source project written in Python. It supports abstract
+	interfaces for devices convenient for e-Puck.
+	\item Enki is a fast simulation tool for big population of robots.
+	\item Commercial simulator Webots is the only simulator, which almost fully support e-Puck.
+	\end{itemize}
+	%todo citation needed in all lists
+\section{Microsoft Robotics Developer Studio (MSRS)}
+	MSRS is set of tools including service-oriented runtime, simulator, Visual Programming Language (VPL),
+	tutorial and examples. MSRS is based on .Net and its runtime introduces following new technologies:
+	\begin{itemize}
+	\item Concurrency and Coordination Runtime(CCR), which makes asynchronous programming easier.
+	\item Decentralized Software Services(DSS) monitor services in real time for developers.
+	\item Common Language Runtime (CLR) 2.0 is underlying runtime, 
+		which interprets compiled code from any .Net language.
+	\end{itemize}	
+	MSRS offers VPL, which is convenient for beginners or for building a structure of a new application.
+	VPL can be later easily transformed to any .Net language.
+	\\
+	Visual Simulation Environment is based on AGEIA PhysX engine. It enables a 3D simulation.
+	\\
+	In general MSRS is rich set of tools, which introduce many nice features including
+	technologies for easy asynchronous and concurrent programming. Especially CCR really helps
+	a programmer with concurrent programming. 
+	\\
+	There are enough tutorial for beginners written
+	in $C\#$, Visual Basic or Python. (Iron Python is implementation of Python for .Net.)
+	On the other hand so many new features and a lot of tools is a big overhead for students.
+	MSRS tutorials and documentation has been rapidly improved in last year, but still some parts
+	of the documentation are not easy accessible.
+	\\
+	MSRS runs only under Microsoft Windows operation systems and for a non commercial development
+	it is for free. Neither e-Puck nor any similar robot is supported in latest version of MSRS.
+	\\
+	The studio would be good solution for e-Puck, because it meets the requirements for Elib.
+	On the other hand it is a huge, not portable, complicated environment.
+	Due to its complexity it discourages students from learning it.
+\section{Player/Stage (Gazebo)}
+	Player is a network server running on robot and sending sensors values from robot and
+	accepting commands from clients. Player has a codified interface. Player translates
+	commands from interface to implementation of actuators and translate values back from robot sensors 
+	to Player interface. Unfortunately Player is not implemented for e-Puck
+	and for its devices.
+	\\
+	Stage is a 2D simulator, which is reflecting the sensors and actuators using interface defined by Player.
+	It simulates a population of mobile robots and therefore it is possible to use Player 
+	in multi agent systems.
+	The sensors are very simplified, because all sensors of the same type 
+	have to implement the same interface. For example a sonar from Khephera and sonar from Aibo robot
+	has the same interface and Staqe treats them equally. 
+	Such simplification allows to Stage be much quicker.
+	\\
+	Gasebo is 3D simulator. Like Stage Gazebo simulates a big population of robots.
+	It uses a rigid-body physics like Stage too.
+	\\
+	A whole project is open source and it is designed for POSIX-compatible systems.
+	C/C++, Python, Java are main supported languages.
+	Player/Stage is one of the most frequently used simulators in research and is good for education purposes.
+	A Khephera robot, which is similar to e-Puck is supported.
+	It indicates, that it is worth to think about Player/Stage, if simulator for e-Puck is wanted.
+\section{Pyrobot(Pyro)}
+	Pyro is a shortcut from Python Robotics. It is an open source project written in Python. Pyrobot is simulator
+	from Pyro project and the name Pyrobot replaced the name of the project Pyro. 
+	Pyro abstracts interfaces of robot and
+	its devices, so each robot supported by Pyro can be treated equally.
+	Pyro let you choose from list of simulators including Player/Stage, Gazebo, Pyrobot, Khephera simulator
+	and Robocup Soccer.
+	After selecting simulator, there are available different worlds according selected simulator.
+	A simulated robot can be driven from command line or be controlled via loaded behaviour.
+	\\
+	The simulated robot can be easily replaced with real robot, if programs for controlling the real 
+	and virtual robot are implemented. 	
+	Controlling the real robot is done via communication with program running on the robot similar 
+	to BTCom program on e-Puck.
+	\\
+	Khephera robot is supported. There is an implementation for e-Puck, which can simulate the robot
+	and connect to real robot, but the implementation does not support asynchronous operations and does 
+	not implement all sensors and actuators.
+	\\
+	For using Pyro as simulator for Elib it is needed to be created a bridge, 
+	similar to which has already been implemented in e-Puck implementation.
+	See future works (todo) for more information.	
+	\\
+	Pyro project was abandoned in year 2007 and no further development is planned.
+	Advantage of project is its portability due to usage of Python and open source licence.
+\section{Enki & Aseba}
+	Enki is library, which can simulate several robots hundred times faster than real time.
+	It is written in C++ and still is in development. It supports e-Puck including e-Puck's camera. 
+	\\
+	The e-Puck can be control via Aseba. Aseba is a tool for robot control.
+	It introduce new scripting language. 
+	The robots can be control only by the scripting language, which is the main
+	drawback of Enki, because the scripting language is very simple.
+	In addition Enki does not support remote control of robots and also a compiling program
+	from the scripting language to e-Puck's microchip is impossible.
+\section{Webots}
+	Webots is simulation and prototyping tool for mobile robots. Only the simulation part will be described,
+	because virtual e-Puck robot already has been designed.
+	\\
+	Webots divides the development in four stages. The first, designing a virtual robot, can be skipped,
+	because the developers of Webots prepared for us finished virtual e-Puck.
+	Second phase consist of programming robot, which includes getting values from sensors, 
+	deciding what to do and	sending commands to robot. 
+	Third phase is the simulation and fourth stage consist of loading a compiled program to e-Puck.
+	\\
+	Webots also have the option of controlling e-Puck via Bluetooth.
+	Robot can be programmed with graphical programming language for beginners or with C/C++ or Java 
+	but only C/C++ can be compiled for real e-Puck.
+	\\
+	The simulated worlds are created and saved in VRML and can be ported from 3D Max, Cinema 4D.
+	\\
+	Webots is complex environment, in which is easy to program, compile and load program to e-Puck.
+	The simulation runs in 3D and Webots supports all sensors and actuators except microphones.
+	Big advantage is that the real robot can be controlled by Bluetooth or programmed by loading a compiled program.
+	Webots is also well documented and good tutorial are available.
+	The big problem of Webots is its price and its annual fees.
+	\\
+
+ %todo citation
+	
+\end{document}
+
