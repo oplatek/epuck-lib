@@ -1,0 +1,11 @@
+Pyro4_slash.png  http://pyrorobotics.org/?page=The_20Pyro_20Interface
+logo.eps  http://www.mff.cuni.cz/fakulta/symboly/logo.eps
+sercomPrvni_vlaknaNOhandshake.TpX  ondrej platek
+sercom_structure2505handshake.TpX  ondrej platek
+epuck.jpg  ondrej platek
+epuck_str.jpg  The e-puck, a Robot Designed for Education in Engineering,Francesco Mondada, Michael Bonani, Xavier Raemy, James Pugh, Christopher Cianci, Adam Klaptocz, St´ephane Magnenat, Jean-Christophe Zufferey, Dario Floreano, Alcherio Martinoli
+aibo.jpg http://en.wikipedia.org/wiki/AIBO
+webots_sim2.jpg  http://www.cyberbotics.com/products/webots/screenshots.html
+webots_env.jpg http://www.cyberbotics.com/products/webots/screenshots.html
+ishiguro_clone.jpg  http://www.is.sys.es.osaka-u.ac.jp/research/0011/index.en.html
+spirit_rover.jpg  http://en.wikipedia.org/wiki/Spirit_rover

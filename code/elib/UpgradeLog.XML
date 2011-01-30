@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="elib">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\elib.sln">
+</Property><Property Name="User Options File" Value="C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\elib.suo">
+</Property><Property Name="Date" Value="Monday, September 27, 2010">
+</Property><Property Name="Time" Value="11:13 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="elib.sln" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\elib.sln">
+</Event><Event ErrorLevel="0" Project="" Source="elib.suo" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\elib.suo">
+</Event><Event ErrorLevel="0" Project="elib" Source="elib.csproj" Description="Project file successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\elib.csproj">
+</Event><Event ErrorLevel="0" Project="elib" Source="AsyncResult.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\AsyncResult.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="epuckActuators.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\epuckActuators.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="epuckAsyncBeginXXX.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\epuckAsyncBeginXXX.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="epuckIni.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\epuckIni.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="commands.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\commands.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="Exception.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\Exception.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="epuckProperties.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\epuckProperties.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="epuckSensors.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\epuckSensors.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="priorQueue.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\priorQueue.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="sercomPrivateFce.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\sercomPrivateFce.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="sercomPublicFce.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\sercomPublicFce.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="sercomFieldMembers.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\sercomFieldMembers.cs">
+</Event><Event ErrorLevel="0" Project="elib" Source="stableanswers.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\stableanswers.cs">
+</Event><Event ErrorLevel="1" Project="elib" Source="elib.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="elib" Source="elib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="elib" Source="elib.csproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Warning: The project file is being backed up to a relative path that differs from the original solution relative path.  The difference in folder hierarchy may create problems in opening or building the backed up solution and project.">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Project file successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\TestElib.csproj">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\Behaviour.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\Behaviour.cs">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\TestEpuck.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\TestEpuck.cs">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\TipsAndTricks.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\TipsAndTricks.cs">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\Program.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\Program.cs">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\Backup\TestElib\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="1" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="elib.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="elib.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="elib" Source="elib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="TestElib" Source="..\TestElib\TestElib.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

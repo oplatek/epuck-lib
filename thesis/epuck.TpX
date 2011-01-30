@@ -1,0 +1,21 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXFigurePlacement="!hbp">
+%  <caption label="pic:epuck">
+%E-Puck avoiding a mouse  </caption>
+%  <bitmap x="35" y="57.5" w="76.6667" h="57.5" link="epuck.jpg"/>
+%</TpX>
+\begin{figure}[!hbp]
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(228.66, 174.33)(0,0)
+  \put(0,0){\includegraphics{epuck.pdf}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(228.66, 174.33)(0,0)
+  \put(0,0){\includegraphics{epuck}}
+  \end{picture}%
+\fi
+\caption{\label{pic:epuck}%
+ E-Puck avoiding a mouse}
+\end{figure}

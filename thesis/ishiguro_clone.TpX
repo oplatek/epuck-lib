@@ -1,0 +1,21 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3" TeXFigurePlacement="!hbp">
+%  <caption label="pic:ishigure_clone">
+%Ishiguro and his geminoid  </caption>
+%  <bitmap x="22.015" y="70.64" w="48.5" h="71.295" link="ishiguro_clone.jpg"/>
+%</TpX>
+\begin{figure}[!hbp]
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(148.82, 213.43)(0,0)
+  \put(0,0){\includegraphics{ishiguro_clone.pdf}}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(148.82, 213.43)(0,0)
+  \put(0,0){\includegraphics{ishiguro_clone}}
+  \end{picture}%
+\fi
+\caption{\label{pic:ishigure_clone}%
+ Ishiguro and his geminoid}
+\end{figure}

@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shfbBuild product="Sandcastle Help File Builder Utilities" version="1.8.0.3" projectFile="C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\elib_doc.shfbproj" started="8/9/2010 2:37:02 PM">
+<buildStep step="Initializing">
+</buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
+</buildStep>
+<buildStep step="FindingTools">
+Finding tools...
+Found Sandcastle tools in 'C:\Program Files\Sandcastle\'
+Searching for HTML Help 1 compiler...
+Found HTML Help 1 compiler in 'C:\Program Files\HTML Help Workshop\'
+</buildStep>
+<buildStep step="ValidatingDocumentationSources">
+Validating and copying documentation source information
+Source: C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\elib.sln
+    Found project 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\elib.csproj'
+    Found project 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\..\TestElib\TestElib.csproj'
+
+Parsing project files
+    Found assembly 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\bin\Debug\Elib.dll'
+    Found assembly 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\TestElib\bin\Debug\TestElib.exe'
+
+References to use:
+    System
+    System.Data
+    System.Drawing
+    System.Windows.Forms
+    System.Xml
+
+Copying XML comments files
+    C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\bin\Debug\Elib.XML -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Elib.XML
+    C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\TestElib\bin\Debug\TestElib.XML -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\TestElib.XML
+</buildStep>
+<buildStep step="GenerateSharedContent">
+Generating shared content files (en-US, English (United States))...
+    Last step completed in 00:00:00.0469
+</buildStep>
+<buildStep step="GenerateApiFilter">
+Generating API filter for MRefBuilder...
+    Last step completed in 00:00:00.0625
+</buildStep>
+<buildStep step="GenerateReflectionInfo">
+Generating reflection information...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+GenerateRefInfo:
+  MrefBuilder (v2.4.10520.1)
+  Copyright c Microsoft 2006
+  Info: Loaded 2 assemblies for reflection and 5 dependency assemblies.
+  Info: Wrote information on 1 namespaces, 20 types, and 128 members
+  XslTransform (v2.4.10520.1)
+  Copyright c Microsoft 2005-2006
+  Info: Applying XSL transformation 'C:\Program Files\Sandcastle\ProductionTransforms\MergeDuplicates.xsl'.
+    Last step completed in 00:00:03.2188
+</buildStep>
+<buildStep step="GenerateNamespaceSummaries">
+Generating namespace summary information...
+    Last step completed in 00:00:00.0469
+</buildStep>
+<buildStep step="ApplyVisibilityProperties">
+Applying visibility properties to reflection information file
+    0 attribute nodes removed
+    0 explicit interface implementations removed
+    0 local and base class EII elements removed
+    Last step completed in 00:00:00.0938
+</buildStep>
+<buildStep step="TransformReflectionInfo">
+Transforming reflection output...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+TransformManifest:
+  XslTransform (v2.4.10520.1)
+  Copyright c Microsoft 2005-2006
+  Info: Applying XSL transformation 'C:\Program Files\Sandcastle\ProductionTransforms\ApplyVSDocModel.xsl'.
+  Info: Applying XSL transformation 'C:\Program Files\Sandcastle\ProductionTransforms\AddGuidFilenames.xsl'.
+  XslTransform (v2.4.10520.1)
+  Copyright c Microsoft 2005-2006
+  Info: Applying XSL transformation 'C:\Program Files\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl'.
+    Last step completed in 00:00:06.5313
+</buildStep>
+<buildStep step="ModifyHelpTopicFilenames">
+Modifying help topic filenames in reflection information file
+    No changes required
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="CopyStandardContent">
+Copying standard help content...
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\adm.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\adm.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\adm_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\adm_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\adm_dev.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\adm_dev.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\adm_dev_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\adm_dev_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\alert_caution.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\alert_caution.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\alert_note.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\alert_note.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\alert_security.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\alert_security.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\big_adm.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\big_adm.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\big_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\big_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\big_dev.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\big_dev.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\big_kw.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\big_kw.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\box.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\box.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\Caution.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\Caution.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\CFW.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\CFW.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\collall.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\collall.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\collapse.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\collapse.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\collapse_all.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\collapse_all.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\copycode.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\copycode.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\copycodeHighlight.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\copycodeHighlight.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\dev.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\dev.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\dev_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\dev_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\dropdown.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\dropdown.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\dropdownHover.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\dropdownHover.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\drpdown.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\drpdown.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\drpdown_orange.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\drpdown_orange.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\drpdown_orange_up.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\drpdown_orange_up.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\drpup.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\drpup.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\exp.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\exp.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\expall.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\expall.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\expand_all.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\expand_all.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\filter1a.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\filter1a.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\filter1c.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\filter1c.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\footer.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\footer.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\gradient.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\gradient.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\greencheck.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\greencheck.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\greychck.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\greychck.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\header_prev_next.jpg -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\header_prev_next.jpg
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\header_sql_tutorial_blank.jpg -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\header_sql_tutorial_blank.jpg
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\header_sql_tutorial_logo.GIF -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\header_sql_tutorial_logo.GIF
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_adm.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_adm.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_adm_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_adm_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_adm_dev.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_adm_dev.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_adm_dev_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_adm_dev_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_dev.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_dev.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\kw_dev_arch.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\kw_dev_arch.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\LastChild.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\LastChild.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\load.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\load.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\load_hover.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\load_hover.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\note.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\note.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pencil.GIF -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pencil.GIF
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privclass.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privclass.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privdelegate.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privdelegate.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privenum.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privenum.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privenumeration.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privenumeration.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privevent.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privevent.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privextension.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privextension.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privfield.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privfield.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privinterface.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privinterface.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privmethod.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privmethod.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privproperty.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privproperty.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\privstructure.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\privstructure.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protclass.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protclass.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protdelegate.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protdelegate.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protenum.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protenum.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protenumeration.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protenumeration.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protevent.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protevent.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protextension.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protextension.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protfield.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protfield.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protinterface.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protinterface.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protmethod.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protmethod.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protoperator.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protoperator.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protproperty.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protproperty.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\protstructure.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\protstructure.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubclass.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubclass.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubdelegate.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubdelegate.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubenum.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubenum.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubenumeration.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubenumeration.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubevent.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubevent.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubextension.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubextension.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubfield.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubfield.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubinterface.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubinterface.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubmethod.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubmethod.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\puboperator.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\puboperator.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubproperty.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubproperty.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\pubstructure.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\pubstructure.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\requirements1a.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\requirements1a.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\requirements1c.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\requirements1c.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\save.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\save.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\save_hover.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\save_hover.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\security.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\security.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\seealso1a.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\seealso1a.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\seealso1c.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\seealso1c.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\static.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\static.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\icons\xna.gif -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\icons\xna.gif
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\CheckboxMenu.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\CheckboxMenu.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\CommonUtilities.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\CommonUtilities.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\Dropdown.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\Dropdown.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\EventUtilities.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\EventUtilities.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\script_feedBack.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\script_feedBack.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\script_manifold.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\script_manifold.js
+C:\Program Files\Sandcastle\Presentation\vs2005\scripts\SplitScreen.js -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\scripts\SplitScreen.js
+C:\Program Files\Sandcastle\Presentation\vs2005\styles\Presentation.css -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\styles\Presentation.css
+C:\Program Files\Sandcastle\Presentation\vs2005\styles\Whidbey\presentation.css -&gt; C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\styles\Whidbey\presentation.css
+    Last step completed in 00:00:01.6719
+</buildStep>
+<buildStep step="CopyAdditionalContent">
+Copying additional content files...
+No additional content to copy
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="MergeTablesOfContents">
+Merging conceptual and additional tables of contents...
+    Last step completed in 00:00:00.0469
+</buildStep>
+<buildStep step="CreateBuildAssemblerConfigs">
+Creating Sandcastle configuration files...
+    sandcastle.config
+    Last step completed in 00:00:00.0156
+</buildStep>
+<buildStep step="MergeCustomConfigs">
+Merging custom build component configurations
+C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\sandcastle.config
+    No additional help attributes defined.  The 'MS Help 2 Attributes' component was not added.
+    Last step completed in 00:00:00.0469
+</buildStep>
+<buildStep step="BuildReferenceTopics">
+Building reference help topics...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+BuildReferenceTopics:
+  BuildAssembler (v2.4.10520.1)
+  Copyright c Microsoft 2006
+  Info: CopyFromFileComponent: Instantiating component.
+  Info: CopyFromFileComponent: Loading data file 'C:\Program Files\Sandcastle\Presentation\vs2005\Transforms\skeleton.xml'.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Searching for files that match '*.xml'.
+  Info: CopyFromIndexComponent: Searching for files that match 'reflection.xml'.
+  Info: CopyFromIndexComponent: Indexed 170287 elements in 107 files.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 1 subcomponents.
+  Info: IfThenComponent: Instantiating component.
+  Info: SyntaxComponent: Instantiating component.
+  Info: SyntaxComponent: Loaded 3 syntax generators.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Searching for files that match 'C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\en\*.xml'.
+  Info: CopyFromIndexComponent: Searching for files that match 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Elib.XML'.
+  Info: CopyFromIndexComponent: Searching for files that match 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\TestElib.XML'.
+  Info: CopyFromIndexComponent: Indexed 80515 elements in 51 files.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Instantiating component.
+  Info: ForEachComponent: Loading subcomponents.
+  Info: IfThenComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ForEachComponent: Loaded 2 subcomponents.
+  Info: CopyFromIndexComponent: Instantiating component.
+  Info: CopyFromIndexComponent: Loaded 0 copy components.
+  Info: ShowMissingComponent: Instantiating component.
+  Info: ShowMissingComponent: 
+      [Sandcastle Help File Builder BuildAssembler Components, version 1.8.0.3]
+      Show Missing Documentation Component. Copyright c 2006-2010, Eric Woodruff, All Rights Reserved
+      http://SHFB.CodePlex.com
+  Info: VersionInfoComponent: Instantiating component.
+  Info: VersionInfoComponent: 
+      [Sandcastle Help File Builder BuildAssembler Components, version 1.8.0.3]
+      Version Information Component. Copyright c 2006-2010, Eric Woodruff, All Rights Reserved
+      http://SHFB.CodePlex.com
+  Info: CodeBlockComponent: Instantiating component.
+  Info: CodeBlockComponent: 
+      [Sandcastle Help File Builder BuildAssembler Components, version 1.8.0.3]
+      Code Block Component. Copyright c 2006-2010, Eric Woodruff, All Rights Reserved.
+      Portions copyright (c) 2003, Jonathan de Halleux, All rights reserved.
+      http://SHFB.CodePlex.com
+  Info: TransformComponent: Instantiating component.
+  Info: PostTransformComponent: Instantiating component.
+  Info: PostTransformComponent: 
+      [Sandcastle Help File Builder BuildAssembler Components, version 1.8.0.3]
+      Post-Transform Component. Copyright c 2006-2010, Eric Woodruff, All Rights Reserved
+      http://SHFB.CodePlex.com
+  Info: SharedContentComponent: Instantiating component.
+  Info: SharedContentComponent: Searching for files that match 'C:\Program Files\Sandcastle\Presentation\vs2005\content\shared_content.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Program Files\Sandcastle\Presentation\vs2005\content\shared_content.xml'.
+  Info: SharedContentComponent: Found 1 files in C:\Program Files\Sandcastle\Presentation\vs2005\content\shared_content.xml.
+  Info: SharedContentComponent: Searching for files that match 'C:\Program Files\Sandcastle\Presentation\vs2005\content\reference_content.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Program Files\Sandcastle\Presentation\vs2005\content\reference_content.xml'.
+  Info: SharedContentComponent: Found 1 files in C:\Program Files\Sandcastle\Presentation\vs2005\content\reference_content.xml.
+  Info: SharedContentComponent: Searching for files that match 'C:\Program Files\Sandcastle\Presentation\shared\content\syntax_content.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Program Files\Sandcastle\Presentation\shared\content\syntax_content.xml'.
+  Info: SharedContentComponent: Found 1 files in C:\Program Files\Sandcastle\Presentation\shared\content\syntax_content.xml.
+  Info: SharedContentComponent: Searching for files that match 'C:\Program Files\Sandcastle\Presentation\vs2005\content\feedback_content.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Program Files\Sandcastle\Presentation\vs2005\content\feedBack_content.xml'.
+  Info: SharedContentComponent: Found 1 files in C:\Program Files\Sandcastle\Presentation\vs2005\content\feedback_content.xml.
+  Info: SharedContentComponent: Searching for files that match 'SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'roottopictitle' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'rootlink' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'runningheadertext' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'locationinformation' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'assemblynameandmodule' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'copycode' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'locale' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\SharedBuilderContent.xml'.
+  Info: SharedContentComponent: Found 1 files in SharedBuilderContent.xml.
+  Info: SharedContentComponent: Searching for files that match 'PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Loading shared content file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'header' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'footer' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'fb_alias' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'fb_product' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'fb_body' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'fb_send' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'fb_headerfeedback' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'feedback_alias' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'feedback_product' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Overriding shared content item 'feedback_body' with value in file 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\PresentationStyleBuilderContent.xml'.
+  Info: SharedContentComponent: Found 1 files in PresentationStyleBuilderContent.xml.
+  Info: SharedContentComponent: Loaded 584 shared content items.
+  Info: ResolveReferenceLinksComponent2: Instantiating component.
+  Info: ResolveReferenceLinksComponent2: Creating MSDN URL resolver.
+  Info: ResolveReferenceLinksComponent2: Searching directory 'C:\Program Files\Sandcastle\Data\Reflection' for targets files of the form '*.xml'.
+  Info: ResolveReferenceLinksComponent2: Searching directory 'C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working' for targets files of the form 'reflection.xml'.
+  Info: ResolveReferenceLinksComponent2: Loaded 170287 reference targets.
+  Info: SaveComponent: Instantiating component.
+  Info: BuildAssembler: Building topic N:Elib
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.ArgsException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.ArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.ArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.ArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.ArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.ArgsException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ArgsException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ArgsException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.ArgsException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ArgsException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.ArgsException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.ArgsException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ArgsException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.ArgsException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.ArgsException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.AsyncResult`1
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.AsyncResult`1
+  Warn: ShowMissingComponent: Missing &lt;typeparam name=&quot;TResult&quot;/&gt; documentation for T:Elib.AsyncResult`1
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.AsyncResult`1
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.AsyncResult`1
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.AsyncResult`1
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.AsyncResult`1.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResult`1.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResult`1.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.AsyncResult`1.SetAsCompleted
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;asyncCallback&quot;/&gt; documentation for M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object,System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;asyncCallback&quot;/&gt; documentation for M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;name&quot;/&gt; documentation for M:Elib.AsyncResult`1.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResult`1.EndInvoke
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.AsyncResult`1.EndInvoke
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.AsyncResult`1.EndInvoke
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;result&quot;/&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;completedSynchronously&quot;/&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;result&quot;/&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;completedSynchronously&quot;/&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;exception&quot;/&gt; documentation for M:Elib.AsyncResult`1.SetAsCompleted(`0,System.Boolean,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.AsyncResultNoResult
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.AsyncResultNoResult
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.AsyncResultNoResult
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.AsyncResultNoResult
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.AsyncResultNoResult
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.AsyncResultNoResult.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResultNoResult.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResultNoResult.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;asyncCallback&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object,System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;asyncCallback&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;name_&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.#ctor(System.AsyncCallback,System.Object,System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.AsyncResultNoResult.AsyncState
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.AsyncResultNoResult.AsyncState
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.AsyncResultNoResult.AsyncWaitHandle
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.AsyncResultNoResult.AsyncWaitHandle
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.AsyncResultNoResult.CompletedSynchronously
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.AsyncResultNoResult.CompletedSynchronously
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResultNoResult.EndInvoke
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.AsyncResultNoResult.EndInvoke
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.AsyncResultNoResult.IsCompleted
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.AsyncResultNoResult.IsCompleted
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.AsyncResultNoResult.Name
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.AsyncResultNoResult.Name
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.AsyncResultNoResult.SetAsCompleted(System.Exception,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.AsyncResultNoResult.SetAsCompleted(System.Exception,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;exception&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.SetAsCompleted(System.Exception,System.Boolean)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;completedSynchronously&quot;/&gt; documentation for M:Elib.AsyncResultNoResult.SetAsCompleted(System.Exception,System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.CamMode
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.CamMode
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.CommandArgsException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.CommandArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.CommandArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.CommandArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.CommandArgsException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.CommandArgsException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.CommandArgsException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.CommandArgsException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.CommandArgsException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.CommandArgsException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.CommandArgsException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.CommandArgsException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.CommandArgsException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.CommandArgsException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.CommandArgsException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.ElibException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.ElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.ElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.ElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.ElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.ElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.ElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.ElibException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.ElibException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.ElibException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.ElibException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.ElibException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.ElibException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Epuck
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Epuck
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.Epuck
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Epuck.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.Epuck
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.Epuck
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Fields.T:Elib.Epuck
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.Epuck.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Epuck.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Epuck.Dispose(System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.#ctor(System.String,System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Epuck.#ctor(System.String,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;Port&quot;/&gt; documentation for M:Elib.Epuck.#ctor(System.String,System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;Name&quot;/&gt; documentation for M:Elib.Epuck.#ctor(System.String,System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginBodyLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginCalibrateIRSensors(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginFrontLight(Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetAccelerometer(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetCamParams(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetEncoders(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetImage(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoHelp(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetInfoVersion(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIR(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetIRData(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetLight(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetMikes(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSelector(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginGetSpeed(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;num&quot;/&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginLightX(System.Int32,Elib.Turn,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;leftMotor&quot;/&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;rightMotor&quot;/&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginMotors(System.Double,System.Double,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;SoundNum&quot;/&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginPlaySound(System.Int32,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginReset(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;width&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;height&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;zoom&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;mode&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginSetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;callback&quot;/&gt; documentation for M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BeginStop(System.Double,System.AsyncCallback,System.Object)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.BodyLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.BTComHelp
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.BTComHelp
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.BTComVersion
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.BTComVersion
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.CalibrateIRSensors(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Epuck.Dispose
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Dispose(System.Boolean)
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Epuck.Dispose(System.Boolean)
+  Info: ShowMissingComponent: Auto-documenting dispose method parameter for M:Elib.Epuck.Dispose(System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.EndFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.EndFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ar&quot;/&gt; documentation for M:Elib.Epuck.EndFtion(System.IAsyncResult)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.EndGetFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.EndGetFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.EndGetFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ar&quot;/&gt; documentation for M:Elib.Epuck.EndGetFtion(System.IAsyncResult)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.EndGetImage(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.EndGetImage(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.EndGetImage(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ar&quot;/&gt; documentation for M:Elib.Epuck.EndGetImage(System.IAsyncResult)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.EndInfoFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.EndInfoFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.EndInfoFtion(System.IAsyncResult)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ar&quot;/&gt; documentation for M:Elib.Epuck.EndInfoFtion(System.IAsyncResult)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Finalize
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.Finalize
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.FrontLight(Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetAccelerometer(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetCamParams(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetEncoders(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetHelpInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetImage(Elib.Epuck.OkfKofCamSensor,Elib.Epuck.OkfKofCamSensor,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetIR(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetIRData(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetLight(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetMikes(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetSelector(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetSpeed(Elib.Epuck.OkfIntsSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.GetVersionInfo(Elib.Epuck.OkfStringSensors,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Epuck.IRSensorsDegrees
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Epuck.IRSensorsDegrees
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;num&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;how&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.LightX(System.Int32,Elib.Turn,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.Log
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.Log
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.LogStream
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.LogStream
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Epuck.MaxSpeed
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Epuck.MaxSpeed
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;leftMotor&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;rightMotor&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.Motors(System.Double,System.Double,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.Name
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.Name
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.NotSended
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.NotSended
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Epuck.Perch
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Epuck.Perch
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;SoundNum&quot;/&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.PlaySound(System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.Port
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.Port
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.Reset(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;width&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;height&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;zoom&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;mode&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.SetCam(System.Int32,System.Int32,Elib.Zoom,Elib.CamMode,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;leftMotor&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;rightMotor&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.SetEncoders(System.Int32,System.Int32,Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.StartLogging
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.StartLogging
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Epuck.Stop(Elib.Epuck.OkfActuators,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.StopLogging
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.StopLogging
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.ToString
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.ToString
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Epuck.ToString
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Epuck.WheelDiameter
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Epuck.WheelDiameter
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Epuck.Working
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Epuck.Working
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Epuck.WriteToLogStream(System.String)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Epuck.WriteToLogStream(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;comment&quot;/&gt; documentation for M:Elib.Epuck.WriteToLogStream(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Epuck.OkfActuators
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Epuck.OkfActuators
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Epuck.OkfIntsSensors
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Epuck.OkfIntsSensors
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Epuck.OkfKofCamSensor
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Epuck.OkfKofCamSensor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Epuck.OkfStringSensors
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Epuck.OkfStringSensors
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.KofCallback
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.KofCallback
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.OkfCallback
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.OkfCallback
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Sercom
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Events.T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Fields.T:Elib.Sercom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.Sercom.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Sercom.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Sercom.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.Sercom.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Sercom.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Sercom.Dispose(System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Sercom.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;portName&quot;/&gt; documentation for M:Elib.Sercom.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.#ctor(System.String,System.Int32,System.Int32)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.Sercom.#ctor(System.String,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;portName&quot;/&gt; documentation for M:Elib.Sercom.#ctor(System.String,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;serialPortWriteTimeout&quot;/&gt; documentation for M:Elib.Sercom.#ctor(System.String,System.Int32,System.Int32)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;serialPortReadTimeout&quot;/&gt; documentation for M:Elib.Sercom.#ctor(System.String,System.Int32,System.Int32)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.defReadTimeout
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.defReadTimeout
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.defWriteTimeout
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.defWriteTimeout
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.Dispose
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Sercom.Dispose
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.Dispose(System.Boolean)
+  Info: ShowMissingComponent: Auto-documenting dispose method M:Elib.Sercom.Dispose(System.Boolean)
+  Info: ShowMissingComponent: Auto-documenting dispose method parameter for M:Elib.Sercom.Dispose(System.Boolean)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.Finalize
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.Finalize
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic E:Elib.Sercom.Free
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for E:Elib.Sercom.Free
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: ResolveReferenceLinksComponent2: Unknown reference link target 'T:Microsoft.FSharp.Control.IEvent'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.FullImgBytes
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.FullImgBytes
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.HeightImg
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.HeightImg
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.Help
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.Help
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.LastImgBytes
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.LastImgBytes
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.ModeImg
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.ModeImg
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.NotAnswered
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.NotAnswered
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.NotSended
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.NotSended
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.OnFree(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.OnFree(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;sender&quot;/&gt; documentation for M:Elib.Sercom.OnFree(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ev&quot;/&gt; documentation for M:Elib.Sercom.OnFree(System.Object,System.EventArgs)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.OnWorking(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.OnWorking(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;sender&quot;/&gt; documentation for M:Elib.Sercom.OnWorking(System.Object,System.EventArgs)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;ev&quot;/&gt; documentation for M:Elib.Sercom.OnWorking(System.Object,System.EventArgs)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.RestartMessage
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.RestartMessage
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.StableAnsCommandsChars
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.StableAnsCommandsChars
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.Start
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.Start
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.ToString
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.ToString
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Sercom.ToString
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic F:Elib.Sercom.Version
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for F:Elib.Sercom.Version
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic P:Elib.Sercom.WidthImg
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for P:Elib.Sercom.WidthImg
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic E:Elib.Sercom.Working
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for E:Elib.Sercom.Working
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: ResolveReferenceLinksComponent2: Unknown reference link target 'T:Microsoft.FSharp.Control.IEvent'.
+  Info: BuildAssembler: Building topic M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;command&quot;/&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;okf&quot;/&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;kof&quot;/&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;state&quot;/&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;timeout&quot;/&gt; documentation for M:Elib.Sercom.Write(System.String,Elib.OkfCallback,Elib.KofCallback,System.Object,System.Double)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.SerialPortException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.SerialPortException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.SerialPortException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.SerialPortException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.SerialPortException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.SerialPortException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.SerialPortException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.SerialPortException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.SerialPortException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.SerialPortException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.SerialPortException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.SerialPortException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.SerialPortException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.SerialPortException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.SerialPortException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Stamp
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Stamp
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: ResolveReferenceLinksComponent2: Unknown reference link target 'T:Microsoft.FSharp.Core.AbstractClassAttribute'.
+  Warn: ResolveReferenceLinksComponent2: Unknown reference link target 'T:Microsoft.FSharp.Core.SealedAttribute'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.Stamp
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.Stamp
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.Stamp.Get
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for M:Elib.Stamp.Get
+  Warn: ShowMissingComponent: Missing &lt;returns&gt; documentation for M:Elib.Stamp.Get
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.TimeoutElibException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.TimeoutElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.TimeoutElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.TimeoutElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.TimeoutElibException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.TimeoutElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.TimeoutElibException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.TimeoutElibException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.TimeoutElibException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.TimeoutElibException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.TimeoutElibException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.TimeoutElibException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.TimeoutElibException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.TimeoutElibException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.TimeoutElibException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Turn
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Turn
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.UnconnectedException
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.UnconnectedException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic AllMembers.T:Elib.UnconnectedException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Methods.T:Elib.UnconnectedException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Properties.T:Elib.UnconnectedException
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic Overload:Elib.UnconnectedException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.UnconnectedException.#ctor
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.UnconnectedException.#ctor
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.UnconnectedException.#ctor(System.String)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.UnconnectedException.#ctor(System.String)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.UnconnectedException.#ctor(System.String)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic M:Elib.UnconnectedException.#ctor(System.String,System.Exception)
+  Info: ShowMissingComponent: Auto-documenting constructor M:Elib.UnconnectedException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;message&quot;/&gt; documentation for M:Elib.UnconnectedException.#ctor(System.String,System.Exception)
+  Warn: ShowMissingComponent: Missing &lt;param name=&quot;innerException&quot;/&gt; documentation for M:Elib.UnconnectedException.#ctor(System.String,System.Exception)
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: BuildAssembler: Building topic T:Elib.Zoom
+  Warn: ShowMissingComponent: Missing &lt;summary&gt; documentation for T:Elib.Zoom
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Warn: SharedContentComponent: Missing shared content item. Tag:'include'; Id:'fsharp'.
+  Info: Processed 188 topics
+    Last step completed in 00:02:58.4219
+</buildStep>
+<buildStep step="GenerateIntermediateTableOfContents">
+Generating intermediate table of contents file...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+GenerateIntermediateTOC:
+  XslTransform (v2.4.10520.1)
+  Copyright c Microsoft 2005-2006
+  Info: Applying XSL transformation 'C:\Program Files\Sandcastle\ProductionTransforms\CreateVSToc.xsl'.
+    Last step completed in 00:00:05.5781
+</buildStep>
+<buildStep step="ExtractingHtmlInfo">
+Extracting HTML info for HTML Help 1 and/or website...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+Sandcastle Help File Builder HTML Extract, version 1.8.0.3
+Copyright c 2008-2010, Eric Woodruff, All Rights Reserved
+E-Mail: Eric@EWoodruff.us
+
+Using LCID '1033', code page '65001', encoding charset 'UTF-8'.
+Processed 188 HTML files
+Sorting keywords and generating See Also indices
+Saving HTML Help 1 keyword index to C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Elib library reference documentation.hhk
+Saving HTML Help 1 table of contents to C:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Elib library reference documentation.hhc
+    Last step completed in 00:00:08.2344
+</buildStep>
+<buildStep step="GenerateHelpFormatTableOfContents">
+Generating HTML Help 1 table of contents file...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="UpdateTableOfContents">
+Updating table of contents with additional content items and determining default topic...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="GenerateHelpFileIndex">
+Generating HTML Help 1 index file...
+    Last step completed in 00:00:00.0000
+</buildStep>
+<buildStep step="GenerateHelpProject">
+Generating HTML Help 1 project file...
+    Last step completed in 00:00:00.0469
+</buildStep>
+<buildStep step="CompilingHelpFile">
+Compiling HTML Help 1 file...
+[c:\WINDOWS\Microsoft.NET\Framework\v3.5\MSBuild.exe]
+Build1xHelpFile:
+  Microsoft HTML Help Compiler 4.74.8702
+  
+  
+  
+  Compiling c:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\Elib library reference documentation.chm
+  
+  
+  
+  
+  
+  Compile time: 0 minutes, 8 seconds
+  
+  190	Topics
+  
+  2,397	Local links
+  
+  1,604	Internet links
+  
+  0	Graphics
+  
+  
+  
+  
+  
+  Created c:\Documents and Settings\Ondra\My Documents\++matfyz++\6rocnikovyProjekt\trunck\elib\docs\sandcastle\Help\Working\Output\Elib library reference documentation.chm, 378,235 bytes
+  
+  Compression decreased file by 2,419,911 bytes.
+  
+    Last step completed in 00:00:10.8750
+</buildStep>
+<buildStep step="CleanIntermediates">
+Removing intermediate files...
+    Last step completed in 00:00:00.2344
+</buildStep>
+<buildStep step="Completed">
+
+Build completed successfully at 08/09/2010 02:40 PM.  Total time: 00:03:35.7500
+
+</buildStep>
+</shfbBuild>

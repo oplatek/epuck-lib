@@ -1,0 +1,108 @@
+\chapter{Elib Joystick} \label{app:joystick}
+	\label{app:joystick} 
+	Elib Joystick is a graphical application for controlling e-Puck via Bluetooth.
+	It accesses all sensors and actuators of e-Puck and allows user to control e-Puck interactively.
+	Is inspired by Epuck Monitor \cite{monitor}, but it is written in $C\#$ and uses asynchronous model
+	of Elib to be more responsive than Epuck Monitor.
+
+	\section{User Guide} \label{sec:joyguide}
+	Elib Joystick graphical user interface is very simple. It is divided into several areas.
+	See ~\ref{pic:joystick_start} figure.
+	\input{joystick_start.TpX}
+
+	In the middle is a connection panel. The connection panel is the only panel, which 
+	has active controls after start up. To activate the rest of controls it is necessary to
+	pair e-Puck and connected to an assigned port. See ~\ref{sec:connect} guide. 
+	\input{joystick_log.TpX}
+	The only function function available in non connected state is Logging Dialogue depicted in ~\ref{pic:joystick_log}.
+	In the Open Dialogue can be specified the file, where are logged all commands sent to e-Puck after the connection
+	to e-Puck is established.
+
+	In order to start using the application connect it to right serial port and press connect button.
+	Automatically the position of selector is retrieved and the session is established.
+
+	At the beginning all sensors has a uninitialised value, which is in represented as a question mark in most cases.
+	For retrieving the sensors value press the relevant button and then the values are displayed in the nearest label.
+	There are two exceptions. First exception is the visualization of IR sensors. Values of IR sensors
+	are represented as the blue levels under checkboxes on 
+	the perimeter of the virtual e-Puck.
+	Second  exception is a captured picture, which is displayed enlarged on the right side after its delivery.
+
+	If the connection is too slow or the the connection is lost, the application
+	is set to initial state. The e-Puck has to be reconnected in order to continue control the robot.
+
+	Let us remark that checking the Refresh check box can cause the application to be a little irresponsive.	
+	It is so, because we wait on all values of sensors including an image synchronously.
+	On contrary a usual capture and a usual transfer of an image is performed asynchronously, so 
+	we presents both attitudes.
+
+	
+	\input{joystick_ko.TpX} %lost connection se zachycenym obrazkem a ruznymi hodnotami.
+	In figure ~\ref{pic:joystick_ko} is shown the MessageBox, which tells the user to reconnect the application
+	in order to continue.
+
+	The actuators of e-Puck can be controlled either by clicking on the appropriate button or checkbox. Another
+	possibilities are choose a value from combobox or specified the  convenient values to textboxes and press
+	$set$ button.
+
+	If you want to change the session press the $Disconnect$ button, choose another port and connect again or
+	just quit the application and restart it.
+
+	\section{Elib usage in Elib Joystick}\label{sec:joystick_trick}
+	Elib Joystick is a graphical application and presents no interesting algorithms. It also uses Elib
+	really simply in most cases, but there is specific problem if the callbacks are used.
+	In Elib Joystick we use callbacks to retrieve an image, because it can last a long time.
+	Problems in graphical application arise if a graphical interface is accessed by thread different from
+	main thread, where a message loop of graphical application is running. The problem is solved,
+	if all functions use the same thread in so called Single Thread Appartment(STA).
+
+	Elib Joystick challanges this problem, because it presents a picture from e-Puck's camera, which is updated
+	in $Label$ of Elib Joystick's window. The callback, which updates the image, runs in different thread.
+	The problem is solved by using a $Dispatcher$ class. $Dispatcher$ acceppts functions, which updates
+	the GUI from different threads and calls them on the main thread in order to maintain STA character
+	of GUI. 
+
+\begin{figure}[!hbp]
+\begin{lstlisting}
+//Ep is instance of e-Puck,
+Ep.BeginGetImage(imgto,
+  //the callback(lambda function), which is called after an image capture
+  (ar) => {
+    try {
+      Bitmap bmp = Ep.EndGetImage(ar);
+      //delegate, which enwrap the lambda function, which updates the GUI
+      updateUIDelegate d = delegate {
+      	//body of the callback, which updates the GUI
+	pic.Source = Convert2BitmapSource(bmp,colorful);
+      };
+      //updating the GUI by passing the update GUI callback to guid Dispatcher
+      guid.Invoke(DispatcherPriority.Normal,d);
+    } catch (ElibException) {
+      notConfirmedCommand(this);
+    }
+  }, 
+  null);
+\end{lstlisting}
+\caption{Update of an image using $Dispatcher$}
+\label{updispatcher}
+\end{figure}
+
+
+	The code snippets ~\ref{updispatcher} and ~\ref{upsynchronous} present usage of the $Dispatcher$ class and 
+	synchronous implementation of GUI update. Synchronous update does not require the $Dispatcher$ class,
+	because it is performed from main thread.
+
+	The $guid$ $Dispatcher$ used in ~\ref{updispatcher} snippet is obtained from the main thread and
+	allows the passed functions to access objects like they will be called from the main thread.
+
+\begin{figure}[!hbp]
+\begin{lstlisting}
+IAsyncResult ar = Ep.BeginGetImage(imgto, null, null);
+Bitmap bmp = Ep.EndGetImage(ar);
+//pic is a Label
+pic.Source = Convert2BitmapSource(bmp,colorful);
+\end{lstlisting}
+\caption{Synchronous update of an image from main thread.}
+\label{upsynchronous}
+\end{figure}
+

@@ -1,0 +1,114 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                    %%%
+%%% Šablona bakaláøské práce na MFF UK %%%
+%%%                                    %%%
+%%% (c) František Štrupl, 2005         %%%
+%%%                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                    %%%
+%%% (c) Ondøej Plátek, 2010
+%%%                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[12pt,notitlepage]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ondrej Platek part begin%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{ifpdf}
+\ifpdf %if using pdfLaTeX in PDF mode
+  \usepackage[pdftex]{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.mps}
+  \usepackage{pgf}
+  \usepackage{tikz}
+\else %if using LaTeX or pdfLaTeX in DVI mode
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.eps,.bmp}
+  \DeclareGraphicsRule{.emf}{bmp}{}{}% declare EMF filename extension
+  \DeclareGraphicsRule{.png}{bmp}{}{}% declare PNG filename extension
+  \usepackage{pgf}
+  \usepackage{tikz}
+  \usepackage{pstricks}
+\fi
+\usepackage{epic,bez123}
+\usepackage{floatflt}% package for floatingfigure environment
+\usepackage{wrapfig}% package for wrapfigure environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ondrej Platek part end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\pagestyle{headings}
+\pagestyle{plain}
+
+\frenchspacing % aktivuje pou¾ití nìkterých èeských typografických pravidel
+
+\usepackage[cp1250]{inputenc} % nastavuje pou¾ité kódování, u¾ivatelé Windows zamìní latin2 za cp1250
+%\usepackage{czech}
+%\usepackage[czech]{babel}
+\usepackage{ucs}
+\usepackage{a4wide} % nastavuje standardní evropský formát stránek A4
+%\usepackage{index} % nutno pou¾ít v pøípadì tvorby rejstøíku balíèkem makeindex
+%\usepackage{fancybox} % umo¾òuje pokroèilé rámeèkování :-)
+\usepackage{graphicx} % nezbytné pro standardní vkládání obrázkù do dokumentu
+
+\usepackage[left=4cm,top=3cm,right=2.5cm,bottom=3cm]{geometry} % nastavení dané velikosti okrajù
+
+%\newindex{default}{idx}{ind}{Rejstøík} % zavádí rejstøík v pøípadì pou¾ití balíku index
+
+\title{Object Oriented Library for Controlling an e-Puck Robot}   % tyto dvì polo¾ky jsou zde v podstatì formálnì, ve skuteènosti nejsou nikde 
+\author{Ondøej Plátek} % dále v dokumentu pou¾ity
+
+%\date{}
+
+\begin{document}
+%%%%%%%% csharp c# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstdefinelanguage{cs}
+  {morekeywords={abstract,event,new,struct,as,explicit,null,switch
+		base,extern,object,this,bool,false,operator,throw,
+		break,finally,out,true,byte,fixed,override,try,
+		case,float,params,typeof,catch,for,private,uint,
+		char,foreach,protected,ulong,checked,goto,public,unchecked,
+		class,if,readonly,unsafe,const,implicit,ref,ushort,
+		continue,in,return,using,decimal,int,sbyte,virtual,
+		default,interface,sealed,volatile,delegate,internal,short,void,
+		do,is,sizeof,while,double,lock,stackalloc,
+		else,long,static,enum,namespace,string, },
+	  sensitive=false,
+	  morecomment=[l]{//},
+	  morecomment=[s]{/*}{*/},
+	  morestring=[b]",
+}
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+	language=cs,
+	keywordstyle=\bfseries\ttfamily\color[rgb]{0,0,1},
+	identifierstyle=\ttfamily,
+	commentstyle=\color[rgb]{0.133,0.545,0.133},
+	stringstyle=\ttfamily\color[rgb]{0.627,0.126,0.941},
+	showstringspaces=false,
+	basicstyle=\small,
+	numbers=left,
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=2,
+	breaklines=true,
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace=false,
+	aboveskip={1.5\baselineskip},
+	columns=fixed,
+  	keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+	extendedchars=true,
+	backgroundcolor=\color{lbcolor},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% end charp definition %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% input files %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{10Joystick.tex}
+
+\end{document}
