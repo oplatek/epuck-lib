@@ -1,0 +1,31 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="sercomPrivateFce.cs" ctype="Workbench">
+    <Files>
+      <File FileName="sercomPrivateFce.cs" Line="119" Column="6" />
+      <File FileName="..\testelib_monodev\Behaviour.cs" Line="1" Column="1" />
+      <File FileName="..\testelib_monodev\Program.cs" Line="46" Column="67" />
+      <File FileName="..\testelib_monodev\AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="..\testelib_monodev\TestEpuck.cs" Line="1" Column="1" />
+      <File FileName="..\testelib_monodev\TipsAndTricks.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Elib" expanded="True">
+            <Node name="sercomPrivateFce.cs" selected="True" />
+          </Node>
+          <Node name="TestElib" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" ctype="Workspace" />
+</Properties>
