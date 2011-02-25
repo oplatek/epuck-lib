@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= TestElib =
+
+TestElib is a set of short functions, which uses _*Elib*_ library.
+The main purpose is to motivate programmers to start playing with e-Puck
+and introduce them the Elib library.
+
+
+= Details =
+The Page is under reconstruction
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
