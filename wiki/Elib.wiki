@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= TestElib =
+
+The Elib is a library for remote control of e-Puck robot via serial port.
+The e-Puck robot can be controlled via bluetooth from you laptop or PC.
+The Elib library support programmers with comfort of object oriented programming
+of .Net languages and it allows programmers to access all e-Puck's sensors and actuators.
+
+
+= Details =
+The Page is under reconstruction
