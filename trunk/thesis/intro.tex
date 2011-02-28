@@ -1,0 +1,87 @@
+{Introduction}
+\label{chap:intro}
+	Mobile robotics is nowadays a prestigious research area ,and building a highly functional 
+	mobile robot is considered to be difficult. 
+	Not only is it considered difficult, but it is a fascinating process, which
+	involves a lot of engineering disciplines.
+	
+	The processing power of microchips has grown more than ten times in the last decade. 
+	A large variety of different sensors are available on the market.	
+	A lot of cheap and sufficient components result in a boom of simple robots used in daily life. 
+	Lawnmowers and vacuum cleaners are typical examples of mobile robots invasion into our households in these days.
+	We also get used to robot prototypes, which are highly specialised in the space exploration or in army services.
+	Despite the rapid hardware development and robots increasing popularity,
+	the research in the field of mobile robots is at its beginning. 
+	
+	A significant problem for students of mobile robotics is its complexness. Many of them are discouraged by
+	studying hardware  details during a building of their robot. 
+	Sometimes even before they write  their first algorithm.
+
+	Luckily, several educational robots were made to overcome the initial complexity of the building robot problem.	
+	This work describes and implements a library for one of the educational robots.
+	Its name is e-Puck and it is a typical example of an educational robot for students at the university level. 
+	
+	E-Puck has a clean, simple and robust mechanical design, which is easy to understand.
+	Bluetooth wireless communication enables sending data between e-Puck and PC.
+	A camera, eight infra red (IR) sensors,	an accelerometer, encoders and three microphones 
+	are enough for a robot to feel the real world.
+	E-puck robot can reply to any type of perception by performing several actions. 
+	The robot is able to emit light from light emitting diodes (LEDs) or to play a sound.
+	Two differential stepper motors facilitate a precise movement. 
+	
+	E-puck robot has eight red LEDs on its perimeter, four of green LEDs are placed in its translucent body and
+	one stronger front LED is located next to the camera. 
+	The front LED illuminates the terrain in front of the robot to
+	take better pictures. The rest of LEDs together with the speaker are usually used to
+	generate feedback. 
+	
+	E-puck allows to solve a large scale of problems from the field of mobile robotics thanks to 
+	large variety of sensors and actuators. On the other hand, the processing power of e-Puck does not allow to 
+	process all outputs from its sensors. For example, resolution from e-Puck's camera is 640 * 480 pixels,
+	but the pictures taken from the camera are trimmed under 50 * 50 pixels, because there is a lack of space in 
+	 e-Puck's microchip memory.
+	 
+	 E-puck robot and its sensors and actuators can be controlled only by a low level C code,
+	  which needs to be downloaded to e-Puck's memory, and has to be run by the robot's microchip.
+	 On the other hand, a program downloaded to e-Puck can communicate with
+	 a PC and it can let the PC to control the e-Puck robot. 
+	 The program has to define a protocol, in which it communicates between e-Puck and PC over Bluetooth.
+	On e-Puck such a program exists and is called {\it BTCom}. 
+	{\it BTCom} is distributed under an open source licence with e-Puck.
+
+	Programming e-Puck's microchip needs knowledge of sensors and actuators interfaces.
+	Furthermore debugging is limited to blinking with diodes or playing sounds.
+	Mentioned reasons and insufficient processing power hinder rapid development of even a simple program, 
+	which makes e-Puck programming inconvenient for students.
+	
+	At the time of writing this thesis there was only one well developed software for e-Puck called Webots,
+	which makes programming e-Puck easier.
+	Webots is an useful develop and simulation environment, but it is an expensive commercial software.
+	Other simulators, which can be free alternatives for Webots, are introduced in Chapter ~\ref{chap:software}.
+	
+	%todo uvest proc rikam o remote control
+	The drawbacks of low level programming are removed by the {\it Elib} library, which is the main 
+	contribution of this work.
+        {\it Elib} library uses {\it BTCom} program on e-Puck.
+	{\it Elib} library runs on PC and communicates with the robot via Bluetooth. 
+	A program, which uses {\it Elib} library,	makes an e-Puck a carrier of sensors. It only gives e-Puck 	
+	commands to change state of its actuators, whereas the whole algorithmic code runs on PC.
+	
+	On the other hand, the implementation of {\it Elib} brings new problems.
+	This thesis introduces the {\it Elib's} problems and discusses 
+	under which conditions is the approach of {\it Elib} suitable.	
+	\subsection*{Thesis structure}
+	We introduce a position of mobile robotics in the contemporary world in Chapter ~\ref{chap:robotics}.
+
+	Chapter ~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and benefits.
+
+	Chapter ~\ref{chap:software} lists software which help programmers to develop applications for robots.
+	In this chapter the usage of a software for e-Puck is discussed. 
+	
+	Chapters ~\ref{chap:elib} and ~\ref{chap:usage} presents the design and usage of {\it Elib} library in detail.
+	Conclusion sums up the properties of {\it Elib}.
+	In enclosed Appendixes are located a simple installation guide of {\it Elib}, list of {\it Elib's} functions 
+	for controling e-Puck and {\it Elib's} exceptions. 
+	An installation and a user guide for {\it Elib Joystick} application is also included. 
+
+

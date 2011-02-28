@@ -1,0 +1,104 @@
+%%%%%
+%sú väc¹ie medzery. Lep¹ie by bolo \emph{Kof} \emph{Okf} alebo \textit{Kof} ...
+% remove all %todo in following text!
+%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                    %%%
+%%% ©ablona bakalárské práce na MFF UK %%%
+%%%                                    %%%
+%%% (c) Franti¹ek ©trupl, 2005         %%%
+%%%                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                    %%%
+%%% (c) Ondøej Plátek, 2010
+%%%                                    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[12pt,notitlepage]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ondrej Platek part begin%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%DEBUGGING
+%\usepackage{srcltx}%use instead of latex -src-specials ,which needs tetex 2.0
+%%ENDDEBUGGING
+\usepackage{color}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{ifpdf}
+\ifpdf %if using pdfLaTeX in PDF mode
+  \usepackage[pdftex]{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.mps}
+  \usepackage{pgf}
+  \usepackage{tikz}
+\else %if using LaTeX or pdfLaTeX in DVI mode
+  \usepackage{graphicx}
+  \DeclareGraphicsExtensions{.eps,.bmp}
+  \DeclareGraphicsRule{.emf}{bmp}{}{}% declare EMF filename extension
+  \DeclareGraphicsRule{.png}{bmp}{}{}% declare PNG filename extension
+  \usepackage{pgf}
+  \usepackage{tikz}
+  \usepackage{pstricks}
+\fi
+\usepackage{epic,bez123}
+\usepackage{floatflt}% package for floatingfigure environment
+\usepackage{wrapfig}% package for wrapfigure environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Ondrej Platek part end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\pagestyle{headings}
+\pagestyle{plain}
+
+\frenchspacing % aktivuje poulití nekterých ceských typografických pravidel
+\usepackage[latin2]{inputenc} % nastavuje poulité kódování, (ulivatelé Windows zamení latin2 za cp1250)
+%\usepackage{czech}
+%\usepackage[czech]{babel}
+\usepackage{ucs}
+\usepackage{a4wide} % nastavuje standardní evropský formát stránek A4
+%\usepackage{index} % nutno poulít v prípade tvorby rejstríku balíckem makeindex
+%\usepackage{fancybox} % umolnuje pokrocilé rámeckování :-)
+\usepackage{graphicx} % nezbytné pro standardní vkládání obrázku do dokumentu
+
+\usepackage[left=4cm,top=3cm,right=2.5cm,bottom=3cm]{geometry} % nastavení dané velikosti okraju
+
+%\newindex{default}{idx}{ind}{Rejstrík} % zavádí rejstrík v prípade poulití balíku index
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% packages for a reference documentation%%%%%%%%%%%%%%%%%%%%
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{times}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue            
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage{dox_doxygen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%end of packages for a reference documenatation %%%%%%%%%%%%%
+
+%%%%%%%%%%%%end packages%%%%%%%%%%%%%%%%%%%%%%
+\title{Object Oriented Library for Controlling an e-Puck Robot}   
+\author{Ondøej Plátek} 
+
+\pagenumbering{Roman}
+%\date{}
+\setcounter{tocdepth}{1}
+%for changing depth of content dynamicly in document
+%\usepackage{tocvsec2} and see http://www.karinvandenberg.nl/node/22
+\begin{document}
+\graphicspath{{/pictures/}}
+
+
