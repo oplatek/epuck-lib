@@ -1,0 +1,176 @@
+\begin{titlepage}
+\begin{center}
+\ \\
+
+\vspace{15mm}
+
+\large
+Univerzita Karlova v Praze\\
+Matematicko-Fyzikální fakulta\\
+
+\vspace{5mm}
+
+{\Large\bf Bakaláøská práce}
+
+\vspace{10mm}
+
+\includegraphics[scale=0.3]{logo.eps} %%% source http://www.mff.cuni.cz/fakulta/symboly/logo.eps
+
+\vspace{15mm}
+%\normalsize
+{\Large Ondøej Plátek}\\ % doplnte vaae jméno
+
+\vspace{5mm}
+{\Large\bf Objektovì orientovaná knihovna pro øízení robota e-Puck}
+
+\vspace{20mm}
+\large
+\noindent
+Kabinet software a výuky informatiky \\
+\noindent
+ Vedoucí bakaláøské práce: RNDr. Franti¹ek Mráz, CSc.\\
+ Studijní program: Obecná informatika\\
+\end{center}
+\vspace{20mm}
+\begin{center}
+2010 
+\end{center}
+
+\end{titlepage} % zde koncí úvodní strana
+
+\normalsize % nastavení normální velikosti fontu
+\ \vspace{10mm} 
+
+\noindent  Chtìl bych podìkovat panu RNDr. Franti¹ku Mrázovi, CSc., za jeho rady
+a nekoneènou podporu pøi vedení mé bakaláøské práce. Dále jsem vdìèný panu Mgr. Pavlu Je¾kovi, který
+mi poskytl cenné informace o technologii .Net. 
+Dal¹í díky patøí kamarádum Jindøichu Vodrá¾kovi, Pavlu Menclovi a Adéle Èihákové,
+kteøí mì podporovali pøi psaní mé bakaláøské práce.
+Jidrovi jsem obzvlá¹» vdìèný za jeho odvahu, kdy¾ pou¾il nedokonèenou verzi {\it Elib} knihovny pro svùj projekt. V projektu úspì¹nì implementoval Breitenbergovo chování pro robota e-Puck.
+V neposlední øadì bych rád podìkoval rodièùm za ve¹kerou jejich péèi a podporu.
+
+\vspace{\fill} % nastavuje dynamické umístení následujícího textu do spodní cásti stránky
+\noindent Prohla¹uji, ¾e jsem svou bakaláøskou práci napsal samostatnì a výhradnì s pou¾itím citovaných pramenù. Souhlasím se zapùjèováním práce a jejím zveøejòováním.
+
+\bigskip
+\noindent V Praze dne 3. dubna 2011 \hspace{\fill}Ondøej Plátek\\ 
+
+%%%   Výtisk pak na tomto míste nezapomente PODEPSAT!
+
+\begin{titlepage}
+\begin{center}
+\ \\
+
+\vspace{15mm}
+
+\large
+Charles University in Prague\\
+Faculty of Mathematics and Physics\\
+
+\vspace{5mm}
+
+{\Large\bf BACHELOR THESIS}
+
+\vspace{10mm}
+
+\includegraphics[scale=0.3]{logo.eps} %%% source http://www.mff.cuni.cz/fakulta/symboly/logo.eps
+
+\vspace{15mm}
+%\normalsize
+{\Large Ondøej Plátek}\\ 
+
+\vspace{5mm}
+{\Large\bf Object Oriented Library for Controlling an e-Puck Robot}
+
+\vspace{20mm}
+\large
+\noindent
+Department of Software and Computer Science Education
+
+\noindent
+ Supervisor: RNDr. Franti¹ek Mráz, CSc.\\
+ Study branch: General Informatics\\
+\end{center}
+\vspace{20mm}
+\begin{center}
+2010
+\end{center}
+
+\end{titlepage} % zde koncí úvodní strana
+
+\normalsize % nastavení normální velikosti fontu
+\ \vspace{10mm} 
+
+\noindent I would like to thank my supervisor, RNDr. Franti¹ek Mráz, CSc., for his
+advice and endless support. I record my gratitude to Mgr. Pavel Je¾ek, who gave me 
+valuable informations about .Net technology. 
+My sincere gratitude belong to my friends Jindøich Vodrá¾ka, Pavel Mencl and Adéla Èiháková,
+who has supported me during writing of my bachelor thesis.
+Jidra has the courage to use the {\it Elib} library in an unfinished state in his project and
+he successfully implemented a Breitenberg behaviour for e-Puck robot.
+Last but not least I would like to give thanks to my patient parents for all their effort.
+
+\vspace{\fill} % nastavuje dynamické umístení následujícího textu do spodní cásti stránky
+\noindent I declare that I wrote my bachelor thesis independently and exclusively with the
+use of the cited sources. I agree with lending and publishing this thesis.
+
+%todo
+
+\noindent Prague, April 5, 2011 \hspace{\fill}Ondøej Plátek 
+
+%%%   Výtisk pak na tomto míste nezapomente PODEPSAT!
+%%%                                         *********
+
+\tableofcontents % vkládá automaticky generovaný obsah dokumentu
+
+\setcounter{page}{2} % nastavení císlování stránek
+\pagenumbering{arabic}
+\newpage % prechod na novou stránku
+
+%%% Následuje strana s abstrakty. Doplnte vlastní údaje.
+\noindent
+Název práce: Objektovì orientovaná knihovna pro øízení robota e-Puck\\
+Autor: Ondøej Plátek\\
+Katedra (ústav): Kabinet software a výuky informatiky (32-KSVI)\\
+Vedoucí bakaláøské práce: RNDr. Franti¹ek Mráz, CSc.\\
+e-mail vedoucího: Frantisek.Mraz@mff.cuni.cz\\
+
+\noindent Abstrakt:  Výsledkem práce je objektová $C\#$ knihovna {\it Elib} library, která umo¾òuje
+ovládat robota e-Puck pøes Bluetooth rozhraní.
+E-Puck je  výukový robot s diferenciálním pohonem dvou kol, který je adekvátnì vybaven senzory.
+Knihovna je pøedstavena pomocí hojnì dokumentovaných pøíkladù v konsolové aplikaci {\it TestElib}, která je ke knihovnì prilo¾ena.
+Knihovna {\it Elib} pro ovládání robota nabízí komfortní systém nápovìdy a mo¾nost logování
+poslaných pøíkazù.
+Takté¾ je pøílo¾ena sada nástrojù umo¾òující efektivnìj¹í ladìní programù pou¾ívající {\it Elib} library.
+Ukázková aplikace {\it Elib Joystick} pøedstavuje aktuátory a senzory e-Pucku pomocí grafického rozhraní.
+
+\noindent Klíèová slova: robot, e-Puck, asynchronní, $C\#$, knihovna
+
+\vspace{10mm}
+
+\noindent
+Title: Object Oriented Library for Controlling an e-Puck Robot\\
+Author: Ondrej Plátek\\
+Department: Kabinet software a výuky informatiky (32-KSVI)\\
+Supervisor: RNDr. Franti¹ek Mráz, CSc.\\
+Supervisor's e-mail address: Frantisek.Mraz@mff.cuni.cz\\
+
+\noindent Abstract: The result of present thesis is an $C\#$ object oriented {\it Elib} library, 
+which allows to control e-Puck robot over the Bluetooth wireless technology. 
+E-Puck is an educational robot with two differential motors and 
+it is sufficiently equipped with sensors.
+The {\it Elib} library is presented on well documented examples from the {\it TestElib} project. 
+{\it TestElib} is a console application,
+which is deployed together with {\it Elib}.
+The {\it Elib} library offers a possibility of logging the sent commands and an easy control of e-Puck's sensors and actuators.
+Moreover, it offers a comfortable system of help and documentation.
+Enclosed sets of tools allows more effective debugging of programs, 
+which use the {\it Elib} library.
+The exemplary application {\it Elib Joystick} presents e-Puck's sensors 
+and actuators on the graphical user interface.
+
+\noindent Keywords: robot, remote control, e-Puck, asynchronous, $C\#$, library
+
+\newpage
+
+
