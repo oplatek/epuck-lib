@@ -14,9 +14,9 @@ ${NAME}.ps: ${NAME}.dvi
 
 # LaTeX je potreba spustit dvakrat, aby spravne spocital odkazy
 ${NAME}.dvi: ${NAME}.tex $(wildcard *.tex)
-	cslatex $<
+	cslatex -src $<
 	cslatex -src $<
 
 
 clean:
-	rm -f *.log  *.dvi *.aux *.toc *.lof *.out ${NAME}.ps ${NAME}.pdf
+	rm -f *.log  *.dvi *.aux *.toc *.lof *.out *.idx *.ilg ${NAME}.ps ${NAME}.pdf

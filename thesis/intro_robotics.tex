@@ -1,211 +1,130 @@
 r{Introduction to mobile robotics}
 \label{chap:robotics}
-	Human beings always created tools to make its job easier. 
-	Even the word "robot", first used by Karel Capek in a novel RUR published in 1920, came from world "robota", 
-	which in Czech means labour.
-	\input{spirit_rover.TpX}%Rover Spirit on Mars
-	Nowadays mobile robots are useful in many areas. Robots excel in exploration of danger places. 
-	For example rover Spirit and Delta II flew to Mars.
-	Delta II is a space rocket. On the other hand Spirit, is a robot of our imagination. It is a six wheel robot
-	which is similar to police robots for a bomb manipulation.
-	Robots like Delta II and Spirit allow humankind to explore so distant places, which are too far for a man to travel there.
-	
-	Mobile robots are not narrow specialised in adventurous actions and impossible missions. 
-	Their main contribution is in daily life.
-	In many cities of the world the robots are used in public transport. They drive the trains in metro,
-	help pilots to take off or land planes. They are used to park cars or they control cruise controls.
-	Solutions which were studied in mobile robotics are usually incorporated in daily life use. 
-	One time a car computer helps to park a car,
-	another time a vacuum cleaner tidies up a room.
-	Robots are useful not only as independent machines. Most of the robots help people with difficult task, 
-	but people control their actions, which allow to people keep robots under control.
-	Nice example is a parking robot present in many contemporary cars.
-	
-	
-	On the other hand, the research in mobile robotics tries to produce robots which are autonomous as much as possible.
-	The developers take all the responsibility for a robot, which is particularly demanding if the robot interacts with people. 
-	There are areas where the research and industry already succeed.
-	
-	Autonomous lawnmowers and vacuum cleaners are broadly used in households and in garden and no one has fear from them.
-	A number of robotic toys have been already introduced.
-	A robotic dog Aibo introduced in 1999 is a nice example of a toy robot.
-	\input{aibo.TpX}
-	\begin{quote}
-	"About 4.4 million units for domestic use and about 2.8 million units for entertainment and leisure sold up to end 2009."
-	\cite{worldrob}
-	\end{quote}
-	
-	Not only entertainment robots are designed for human-robot interaction. In Japan there is a big stress 
-	on creating	robots for health care, which will compensate lack of medical personnel. 
-	A robot has to be a humanoid, because especially children and older people are used to 
-	communicate with other people and not with machines.
-	
-	Professor Hiroshi Ishiguro reached a great success in field of humanoid robots. 
-	He created several generations of humanoid robots.
-        Among other humanoids there are copies of him and his daughter.
-	The last generation of robots are so similar to humans, that they are almost unrecognisable.
-	Hiroshi Ishiguro is concentrating on simulating human behaviour, speech and motion, 
-	but he also invented a touch sensor, which substitus human skin on his robots.
-	\input{ishiguro_clone.TpX}%Ishiguro with his geminoid
-	
-	The humanoid robots and also the Aibo robot are not  wheeled robots, although the wheeled 
-	robot systems are still	dominating. The reason is in the field of the activity of the robot. 
-	The entertainment and the health care robots are in the human environment. 
-	Robots avoid a lot of different obstacles and they have to use stairs.
-	The industrial robots are usually indoors, where the terrain is adapted to machines movement. 
-	Also the agricultural robots have convenient conditions for wheel movement.
-	
-	Not only the design of robots, but also the control of robots differs and evolves.
-	
-	In the eighties the sense-plan-act model was current.
-	Later in the nighties the behaviour model was introduced by Brooks,
-	which was a very modern and sometimes strictly implemented.	
-	After a decade a compromise between the behaviour based robotics and the simple planning was popular.
-	In the nighties neural networks and other modern, biologically motivated attitudes were first introduced.
-	Genetic algorithms and neural networks have enormous success in solving complicated control problems like motion of
-	robot with a number of legs, implementing very sophisticated behaviour and so on.
-	
-	To conclude, mobile robotics is a dynamically evolving science,
-	which has all preconditions to be one of the leading research areas in the twenty first century.
-	The value of the market increased to 6.2 billion dollars in 2009 according to the International Federation of Robotics.
-	\cite{worldrob}
-	\begin{quote}	 	
-	"I can envision a future in which robotic devices will become a nearly ubiquitous part of our day-to-day lives," 
-	\end{quote}
-	says Bill Gates, who was at the beginning of the computer revolution. %todo citation?
-	
+  Human beings always created tools to make its job easier. 
+  Even the word "robot", first used by Karel Capek in a novel RUR published in 1920, came from world "robota", 
+  which in Czech means labour.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{E-Puck}
-\label{chap:epuck}
-	An object of interest of a this thesis is a programming of the e-Puck robot and e-Puck itself.
-	In this chapter e-Puck robot and its design is introduced. We focus on a programmer's point 
-	of view of e-Puck qualities.
-	For each sensor its functions, acceptable values and typical use is shortly presented. 
-	After mentioning the e-Puck history the chapter continues with describing e-Puck's mechanical design and stepper motors. 
-	The chapter finishes with a description of a e-Puck's camera and outlining e-Puck possibilities.
-\section{Origin of e-Puck}
-	E-Puck was developed in summer of 2004 at the École Polytechnique Fédérale de Lausanne (EPFL) 
-	as an open tool. E-Puck designers used open software and hardware development model. 
-	Motivation for a new robot arose from an absence of a very small educational robot,
-	which is sufficiently efficient, and can be used for education in many research areas.
-	E-Puck can be applied in automatic control, signal processing or 
-	distributed intelligent system research. E-Puck's structure is robust and simple to care about, 
-	because e-Puck is intended to be used by students.
-	Designers of e-Puck tried to use manufacturing components as much as possible 
-	in order to keep the price low.		 
-	
-	The first generation of e-Pucks was replaced by the second stable generation from 2006.
-	So far, more than 2000 robots have been manufactured.
-	There are several distributors for Switzerland and America, one is in Japan
-	\footnote{\url{http://www.roadnarrows.com/robotics/}, \url{http://www.aai.jp/}, \url{http://www.k-team.com/},
-	\url{http://www.cyberbotics.com/products/robots/e-puck.html}, \url{http://www.gctronic.com/},
-	\url{http://www.aai.ca/robots/e-puck.html}}.
-	The price of e-Puck should be between 450 and 550 euro.%todo znak eura
+  \begin{figure}
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(188.50, 153.07)(0,0)
+    \put(0,0){\includegraphics{spirit_rover.pdf}}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(188.50, 153.07)(0,0)
+    \put(0,0){\includegraphics{spirit_rover}}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:spirit_rover}%
+   Rover Spirit on Mars}
+  \end{figure}
+  %\input{spirit_rover.TpX}%Rover Spirit on Mars
 
-\section{Mechanical Design}
-	\input{epuck_str.TpX} %pouzite \cite{robotica2009}
-	The mechanical design  is shown in Figure ~\ref{pic:epuck_str}.
-	E-Puck consists of a rounded transparent body, a battery, two stepper motors with
-	wheels on their axis, a printed circuit board, plastic ring of LEDs, 
-	a camera and a default extension board.
-	There are extensions like floor sensors, a rotating scanner or a turret with linear cameras,
-	which can scale up e-Puck's sensors. If we are talking about e-Puck in this thesis,
-	it is meant e-Puck only with the default extension.
+  Nowadays mobile robots are useful in many areas. Robots excel in exploration of danger places. 
+  For example rover Spirit and Delta II flew to Mars.
+  Delta II is a space rocket. On the other hand Spirit, is a robot of our imagination. It is a six wheel robot
+  which is similar to police robots for a bomb manipulation.
+  Robots like Delta II and Spirit allow humankind to explore so distant places, which are too far for a man to travel there.
+  
+  Mobile robots are not narrow specialised in adventurous actions and impossible missions. 
+  Their main contribution is in daily life.
+  In many cities of the world the robots are used in public transport. They drive the trains in metro,
+  help pilots to take off or land planes. They are used to park cars or they control cruise controls.
+  Solutions which were studied in mobile robotics are usually incorporated in daily life use. 
+  One time a car computer helps to park a car,
+  another time a vacuum cleaner tidies up a room.
+  Robots are useful not only as independent machines. Most of the robots help people with difficult task, 
+  but people control their actions, which allow to people keep robots under control.
+  Nice example is a parking robot present in many contemporary cars.
+  
+  
+  On the other hand, the research in mobile robotics tries to produce robots which are autonomous as much as possible.
+  The developers take all the responsibility for a robot, which is particularly demanding if the robot interacts with people. 
+  There are areas where the research and industry already succeed.
+  
+  Autonomous lawnmowers and vacuum cleaners are broadly used in households and in garden and no one has fear from them.
+  A number of robotic toys have been already introduced.
+  A robotic dog Aibo introduced in 1999 is a nice example of a toy robot.
+  %\input{aibo.TpX}
+  \begin{figure}[!hbp]
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{hbp}%
+    \begin{picture}(241.89, 184.25)(0,0)
+    \put(0,0){\includegraphics{aibo.pdf}}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(241.89, 184.25)(0,0)
+    \put(0,0){\includegraphics{aibo}}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:aibo}%
+   Two versions of an Aibo robot}
+  \end{figure}
+  \begin{quote}
+  "About 4.4 million units for domestic use and about 2.8 million units for entertainment and leisure sold up to end 2009."
+  \cite{worldrob}
+  \end{quote}
+  
+  Not only entertainment robots are designed for human-robot interaction. In Japan there is a big stress 
+  on creating	robots for health care, which will compensate lack of medical personnel. 
+  A robot has to be a humanoid, because especially children and older people are used to 
+  communicate with other people and not with machines.
+  
+  Professor Hiroshi Ishiguro reached a great success in field of humanoid robots. 
+  He created several generations of humanoid robots.
+  Among other humanoids there are copies of him and his daughter.
+  The last generation of robots are so similar to humans, that they are almost unrecognisable.
+  Hiroshi Ishiguro is concentrating on simulating human behaviour, speech and motion, 
+  but he also invented a touch sensor, which substitus human skin on his robots.
+  %\input{ishiguro_clone.TpX}%Ishiguro with his geminoid
+
+  \begin{figure}[!hbp]
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(148.82, 213.43)(0,0)
+    \put(0,0){\includegraphics{ishiguro_clone.pdf}}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(148.82, 213.43)(0,0)
+    \put(0,0){\includegraphics{ishiguro_clone}}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:ishigure_clone}%
+   Ishiguro and his geminoid}
+  \end{figure}
 	
-	A default robot is more than 60 mm 
-	high and it has a diameter of 75 mm. 
-	The battery is placed in the bottom and can be easily extracted and recharged separately in a charger.
-	Two stepper motors with wheels are screwed to a plastic body and are located on axis of e-Puck
-	in order to allow robot turn around on place. Wheels has a diameter of 41 mm and the perch is 53 mm.
-	Printed circuit board is fixed to the top of the body and there is ring of LEDs' around the board.
-	A camera is placed on the front side of robot lying on the axis between the wheels.
-	The extension board covers the main printed circuit board.
-\section{Sensors, actuators and heart of a robot}
-	Sensors and actuators determine the possibility of the robot usage.
-	Luckily, e-Puck has a lot of sensors of different kinds and is equipped with typical actuators.
-	The following paragraphs shortly describes e-Puck's sensors and actuators and mention a few problems 
-	with transmitting data between the devices and PC using {\it BTCom}. {\it BTCom} protocol is used by {\it Elib},
-	so {\it Elib} is to some extent dependent on {\it BTCom}.
-	The actuators consist of motors, 8 red LEDs on perimeter, 4 green body LEDs,
-	 which are turned off and on together, a front LED and a speaker.
-	 
-	Stepper motors are a great advantage of e-Puck, because the motion of wheel can be split
-	into small steps. One wheel revolution corresponds to 1000 steps of motor. The 
-	diameter of the wheel is 41 mm. If the wheel makes revolution, the wheel goes 128.8 mm. 
-	In conclusion a thousand of steps matches 128.8 mm and one step is 0.128 mm. 
-	Motors are equipped with encoders and the motors are very accurate, 
-	which in combination with simple odometry really helps in localisation tasks.
-	A nice feature of encoders is that their value can be set at any time.
-	The maximum speed of the motors is one revolution per second in both directions.
-	{\it BTCom} allows a programmer to set the speed of motors and also get and set the values
-	of encoders.
-	 
-	All e-Puck LEDs can be used for debugging or for making robot visible to other devices.
-	Furthermore, the front LED can be used to illuminate the terrain in front of  e-Puck.
-	Each LED can be turned off, turned on or set to an inverse state.
-	
-	Three axis accelerometers are placed inside the robots body. In the rest position
-	the accelerometers measure the slant of e-Puck. They can also measure acceleration of e-Puck
-	and for example detect a collision or a falling state of e-Puck. 
-%	There is no problem with using accelerometer via {\it BTCom}.
-	
-	Infra Red (IR) sensors are typical sensors for mobile robotics. E-Puck has eight of them.
-	Four are located in the front part of e-Puck, two are on both sides, two on back side.
-	Sensors work in two modes. First they measure ambient infra red light.
-	In the second mode IR sensors emit IR light and they measure reflected light, so 
-	they can determine an obstacle, if it is near enough.
-	Both functions are available in {\it BTCom}. 				
-	Calibration of sensors increases the precision of detecting near obstacles.
-	Infra red sensors are capable of recognising an obstacle under 4 cm.
-	
-	The Speaker together with microphones is a suitable communication tool between the people and e-Puck.
-	On the other hand, a limited processing power of e-Puck does not allow to store and
-	 play complicated sounds. It is also impossible to use a speaker with microphones to speech
-	 recognition due to insufficient processing power.
-	Despite the limitation of processing power the microphones can be easily used to locate
-	the source of sound via amplitude measurement, because the microphones are placed near the perimeter
-	in a triangle. Microphones measure current amplitude of sound. As exact distances between microphones 
-	are known, we can compute frequency of the sound using Fast Fourier Transformation (FFT).
-	Digital Signal Processor (DSP) is suitable for computing FFT,
-	 which will be introduced in this chapter.
-	Maximal acquisition speed is 33 kHz. 
-	For more information see \cite{sound}.
-	
-	A program which uses {\it BTCom} can capture values of amplitude only in irregular intervals, so 
-	it is not possible to compute frequency of sound by running FFT on Personal Computer. 
-	However to locate the source of sound is still possible.
-	
-	\input{epuck.TpX}
-	%todo what is zoom? does it only narrow field of view? or does it make the picture look closer?
-	E-Puck's camera is a colour CMOS camera with 640 * 480 resolution. 
-	Because only 8 kB of RAM memory is available and a part of it is used by running program,
-	the picture size has to be reduced in order to save the image in a memory.
-	The image processing is really demanding on the processing power so it is not 
-	convenient to be run on the slow e-Puck's processor.
-	
-	On the other hand, using {\it BTCom} solves the problem with limited processing power
-	by sending picture to Personal Computer (PC). PC has enough resources to process the image fast,
-	 but the transport of an image takes a long time too. 
-	 For example capturing and sending a colour image of size 40 * 40 pixels 
-	takes more than 0.2 seconds, if it is sent over Bluetooth.
-	{\it BTCom} can set height, width, colour mode and zoom. A colourful picture is twice as big as the same picture taken
-	in grey scale mode.
-	 Zoom has three acceptable values 1, 4 and 8. One is for the biggest zoom, 8 represents the smallest.
-	Width and height are limited only by the size of the available memory in e-Puck.
-	
-	Processor, dsPIC 30F6014, is the heart of e-Puck and runs at 60 MHz, which correspond to 15 MIPS.
-	It has C oriented instructions and supports compiling from GNU compilers.
-	Apart from standard 16 bits core unit Digital Signal Processor brings very high performance for computation,
-	for example FFT or other signal processing.
-	Programs can be downloaded to flash memory with 144 kB and
-	 are loaded to RAM memory according to the selector position.
-	E-Puck's RAM memory has only 8 kB. A currently running program and all its data are placed in RAM memory.
-	
-	Communication with other devices is provided by Bluetooth and RS232 serial interface.
-	Both, Bluetooth and RS232, can be used to download programs to e-Puck's flash memory.
-	In addition, Bluetooth can be used to communicate with other e-Pucks or with a computer
-	using {\it BTCom}. 
-	The counter part of {\it BTCom} on computer is connected to the serial port.
+  The humanoid robots and also the Aibo robot are not  wheeled robots, although the wheeled 
+  robot systems are still	dominating. The reason is in the field of the activity of the robot. 
+  The entertainment and the health care robots are in the human environment. 
+  Robots avoid a lot of different obstacles and they have to use stairs.
+  The industrial robots are usually indoors, where the terrain is adapted to machines movement. 
+  Also the agricultural robots have convenient conditions for wheel movement.
+  
+  Not only the design of robots, but also the control of robots differs and evolves.
+  
+  In the eighties the sense-plan-act model was current.
+  Later in the nighties the behaviour model was introduced by Brooks,
+  which was a very modern and sometimes strictly implemented.	
+  After a decade a compromise between the behaviour based robotics and the simple planning was popular.
+  In the nighties neural networks and other modern, biologically motivated attitudes were first introduced.
+  Genetic algorithms and neural networks have enormous success in solving complicated control problems like motion of
+  robot with a number of legs, implementing very sophisticated behaviour and so on.
+  
+  To conclude, mobile robotics is a dynamically evolving science,
+  which has all preconditions to be one of the leading research areas in the twenty first century.
+  The value of the market increased to 6.2 billion dollars in 2009 according to the International Federation of Robotics.
+  \cite{worldrob}
+  \begin{quote}	 	
+  "I can envision a future in which robotic devices will become a nearly ubiquitous part of our day-to-day lives," 
+  \end{quote}
+  says Bill Gates, who was at the beginning of the computer revolution. %todo citation?
+  
+
 
 
