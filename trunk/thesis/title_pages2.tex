@@ -1,0 +1,293 @@
+% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
+\lefthyphenmin=2
+\righthyphenmin=2
+
+%%% Titulní strana práce
+
+\pagestyle{empty}
+\begin{center}
+
+\large
+
+Univerzita Karlova v Praze
+
+\medskip
+
+Matematicko-fyzikální fakulta
+
+\vfill
+
+{\bf\Large BAKALÁØSKÁ PRÁCE}
+
+\vfill
+
+\centerline{\mbox{\includegraphics[width=60mm]{logo.eps}}}
+
+\vfill
+\vspace{5mm}
+
+{\LARGE Ondøej Plátek}
+
+\vspace{15mm}
+
+% Název práce pøesnì podle zadání
+{\LARGE\bfseries Objektovì orientovaná knihovna pro øízení robota e-Puck}
+
+\vfill
+
+% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
+% (dle Organizaèní struktury MFF UK)
+Kabinet software a výuky informatiky
+
+\vfill
+
+\begin{tabular}{rl}
+
+Vedoucí bakaláøské práce: & RNDr. Franti¹ek Mráz, CSc. \\
+\noalign{\vspace{2mm}}
+Studijní program: & Informatika \\
+\noalign{\vspace{2mm}}
+Studijní obor: & Obecná informatika \\
+\end{tabular}
+
+\vfill
+
+% Zde doplòte rok
+Praha 2011
+
+\end{center}
+
+\newpage
+
+%%% Následuje vevázaný list -- kopie podepsaného "Zadání bakaláøské práce".
+%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
+
+%%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
+%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
+
+\openright
+
+\noindent
+Chtìl bych podìkovat panu RNDr. Franti¹ku Mrázovi, CSc., za jeho rady
+a nekoneènou podporu pøi vedení mé bakaláøské práce. Dále jsem vdìèný panu Mgr. Pavlu Je¾kovi, který
+mi poskytl cenné informace o technologii .Net. 
+Dal¹í díky patøí kamarádum Jindøichu Vodrá¾kovi, Pavlu Menclovi a Adéle Èihákové,
+kteøí mì podporovali pøi psaní mé bakaláøské práce.
+Jidrovi jsem obzvlá¹» vdìèný za jeho odvahu, kdy¾ pou¾il nedokonèenou verzi {\it Elib} knihovny pro svùj projekt. V projektu úspì¹nì implementoval Breitenbergovo chování pro robota e-Puck.
+V neposlední øadì bych rád podìkoval rodièùm za ve¹kerou jejich péèi a podporu.
+
+
+\newpage
+
+%%% Strana s èestným prohlá¹ením k bakaláøské práci
+
+\vglue 0pt plus 1fill
+
+\noindent
+Prohla¹uji, ¾e jsem tuto bakaláøskou práci vypracoval(a) samostatnì a výhradnì
+s~pou¾itím citovaných pramenù, literatury a dal¹ích odborných zdrojù.
+
+\medskip\noindent
+Beru na~vìdomí, ¾e se na moji práci vztahují práva a povinnosti vyplývající
+ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
+¾e Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~u¾ití této
+práce jako ¹kolního díla podle §60 odst. 1 autorského zákona.
+
+\vspace{10mm}
+
+\hbox{\hbox to 0.5\hsize{%
+V ........ dne ............
+\hss}\hbox to 0.5\hsize{%
+Podpis autora
+\hss}}
+
+\vspace{20mm}
+\newpage
+
+%%%%%%%%%%%% Anglická verze titulní strany %%%%%%%%%%%%%%%
+
+% Trochu volnìj¹í nastavení dìlení slov, ne¾ je default.
+\lefthyphenmin=2
+\righthyphenmin=2
+
+%%% Titulní strana práce anglicky
+
+\pagestyle{empty}
+\begin{center}
+
+\large
+
+Charles University in Prague
+
+\medskip
+
+Faculty of Mathematics and Physics
+
+\vfill
+
+{\bf\Large BACHELOR THESIS}
+
+\vfill
+
+\centerline{\mbox{\includegraphics[width=60mm]{logo.eps}}}
+
+\vfill
+\vspace{5mm}
+
+{\LARGE Ondøej Plátek}
+
+\vspace{15mm}
+
+% Název práce pøesnì podle zadání
+{\LARGE\bfseries Object Oriented Library for Controlling an e-Puck Robot}
+
+\vfill
+
+% Název katedry nebo ústavu, kde byla práce oficiálnì zadána
+% (dle Organizaèní struktury MFF UK)
+Department of Software and Computer Science Education
+
+\vfill
+
+\begin{tabular}{rl}
+
+Supervisor: RNDr. Franti¹ek Mráz, CSc. \\
+\noalign{\vspace{2mm}}
+Study program: & Informatics \\
+\noalign{\vspace{2mm}}
+Study branch: General Informatics\\
+\end{tabular}
+
+\vfill
+
+% Zde doplòte rok
+Praha 2011
+
+\end{center}
+
+\newpage
+
+%%% Následuje vevázaný list -- kopie podepsaného "Zadání bakaláøské práce".
+%%% Toto zadání NENÍ souèástí elektronické verze práce, nescanovat.
+
+%%% Na tomto místì mohou být napsána pøípadná podìkování (vedoucímu práce,
+%%% konzultantovi, tomu, kdo zapùjèil software, literaturu apod.)
+
+\openright
+
+\noindent
+I would like to thank my supervisor, RNDr. Franti¹ek Mráz, CSc., for his
+advice and endless support. I record my gratitude to Mgr. Pavel Je¾ek, who gave
+me valuable informations about .Net technology. 
+My sincere gratitude belong to my friends Jindøich Vodrá¾ka, Pavel Mencl and Adéla Èiháková,
+who has supported me during writing of my bachelor thesis.
+Jidra has the courage to use the {\it Elib} library in an unfinished state in his project and
+he successfully implemented a Breitenberg behaviour for e-Puck robot.
+Last but not least I would like to give thanks to my patient parents for all their effort.
+
+
+
+\newpage
+
+%%% Strana s èestným prohlá¹ením k bakaláøské práci
+
+\vglue 0pt plus 1fill
+
+\noindent
+I declare that I wrote my bachelor thesis independently and exclusively with the
+use of the cited sources. I agree with lending and publishing this thesis.
+
+
+\medskip\noindent
+I acknoledge, that on my bachelor thesis is todo { \bf Amy Linvingstone translate}
+Beru na~vìdomí, ¾e se na moji práci vztahují práva a povinnosti vyplývající
+ze zákona è. 121/2000 Sb., autorského zákona v~platném znìní, zejména skuteènost,
+¾e Univerzita Karlova v Praze má právo na~uzavøení licenèní smlouvy o~u¾ití této
+práce jako ¹kolního díla podle §60 odst. 1 autorského zákona.
+
+\vspace{10mm}
+
+\hbox{\hbox to 0.5\hsize{%
+In ........, ............%April 5, 2011
+\hss}\hbox to 0.5\hsize{%
+Sign of author %todo precist Amy
+\hss}}
+
+\vspace{20mm}
+\newpage
+%%%%%%%%%%%% Povinná informaèní strana bakaláøské práce %%%%%%%%%%%%%%%
+
+\vbox to 0.5\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Název práce:
+Objektovì orientovaná knihovna pro øízení robota e-Puck\\
+% pøesnì dle zadání
+
+Autor:
+Ondøej Plátek
+
+Katedra:  % Pøípadnì Ústav:
+Kabinet software a výuky informatiky (32-KSVI)
+% dle Organizaèní struktury MFF UK
+
+Vedoucí bakaláøské práce:
+RNDr. Franti¹ek Mráz, CSc.
+% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì mimo MFF UK
+
+Abstrakt: Výsledkem práce je objektová $C\#$ knihovna {\it Elib} library, která umo¾òuje
+ovládat robota e-Puck pøes Bluetooth rozhraní.
+E-Puck je  výukový robot s diferenciálním pohonem dvou kol, který je adekvátnì vybaven senzory.
+Knihovna je pøedstavena pomocí hojnì dokumentovaných pøíkladù v konsolové aplikaci {\it TestElib}, která je ke knihovnì prilo¾ena.
+Knihovna {\it Elib} pro ovládání robota nabízí komfortní systém nápovìdy a mo¾nost logování
+poslaných pøíkazù.
+Takté¾ je pøílo¾ena sada nástrojù umo¾òující efektivnìj¹í ladìní programù pou¾ívající {\it Elib} library.
+Ukázková aplikace {\it Elib Joystick} pøedstavuje aktuátory a senzory e-Pucku pomocí grafického rozhraní.
+
+
+% abstrakt v rozsahu 80-200 slov; nejedná se v¹ak o opis zadání bakaláøské práce
+
+Klíèová slova: robot, e-Puck, asynchronní, $C\#$, knihovna
+% 3 a¾ 5 klíèových slov
+
+\vss}\nobreak\vbox to 0.49\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{5mm}
+
+Title: 
+Object Oriented Library for Controlling an e-Puck Robot
+% pøesný pøeklad názvu práce v angliètinì
+
+Author:
+Ondøej Plátek
+
+Department:
+Department of Software and Computer Science Education
+% dle Organizaèní struktury MFF UK v angliètinì
+
+Supervisor:
+RNDr. Franti¹ek Mráz, CSc.
+% dle Organizaèní struktury MFF UK, pøípadnì plný název pracovi¹tì
+% mimo MFF UK v angliètinì
+
+Abstract: The result of present thesis is an $C\#$ object oriented {\it Elib} library, 
+which allows to control e-Puck robot over the Bluetooth wireless technology. 
+E-Puck is an educational robot with two differential motors and 
+it is sufficiently equipped with sensors.
+The {\it Elib} library is presented on well documented examples from the {\it TestElib} project. 
+{\it TestElib} is a console application,
+which is deployed together with {\it Elib}.
+The {\it Elib} library offers a possibility of logging the sent commands and an easy control of e-Puck's sensors and actuators.
+Moreover, it offers a comfortable system of help and documentation.
+Enclosed sets of tools allows more effective debugging of programs, 
+which use the {\it Elib} library.
+The exemplary application {\it Elib Joystick} presents e-Puck's sensors 
+and actuators on the graphical user interface.
+% abstrakt v rozsahu 80-200 slov v angliètinì; nejedná se v¹ak o pøeklad
+% zadání bakaláøské práce
+
+Keywords: robot, remote control, e-Puck, asynchronous, $C\#$, library
+% 3 a¾ 5 klíèových slov v angliètinì
+
+\vss}
