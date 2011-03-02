@@ -6,7 +6,7 @@
 \begin{figure}[!hbp]
 \centering
 \ifpdf
-  \setlength{\unitlength}{1bp}%
+  \setlength{\unitlength}{hbp}%
   \begin{picture}(241.89, 184.25)(0,0)
   \put(0,0){\includegraphics{aibo.pdf}}
   \end{picture}%
