@@ -1,0 +1,42 @@
+\lstdefinelanguage{cs}
+{morekeywords={abstract,event,new,struct,as,explicit,null,switch
+          base,extern,object,this,bool,false,operator,throw,
+          break,finally,out,true,byte,fixed,override,try,
+          case,float,params,typeof,catch,for,private,uint,
+          char,foreach,protected,ulong,checked,goto,public,unchecked,
+          class,if,readonly,unsafe,const,implicit,ref,ushort,
+          continue,in,return,using,decimal,int,sbyte,virtual,
+          default,interface,sealed,volatile,delegate,internal,short,void,
+          do,is,sizeof,while,double,lock,stackalloc,
+          else,long,static,enum,namespace,string},
+    sensitive=false,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+}
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+  language=cs,
+  keywordstyle=\bfseries\ttfamily\color[rgb]{0,0,1},
+  identifierstyle=\ttfamily,
+  commentstyle=\color[rgb]{0.133,0.545,0.133},
+  stringstyle=\ttfamily\color[rgb]{0.627,0.126,0.941},
+  showstringspaces=false,
+  basicstyle=\small,
+  numbers=left,
+  stepnumber=1,
+  numbersep=8pt,
+  tabsize=2,
+  breaklines=true,
+  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  breakatwhitespace=false,
+  aboveskip={1.5\baselineskip},
+  columns=fixed,
+  keywordstyle=\color[rgb]{0,0,1},
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+stringstyle=\color[rgb]{0.627,0.126,0.941},
+  extendedchars=true,
+  backgroundcolor=\color{lbcolor},
+}
