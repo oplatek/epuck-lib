@@ -16,7 +16,7 @@
     * Open the unzipped MSVS 2008 solution. (Visual Studio 2008 or above is needed). There are two projects, which you can see in solution explorer in Visual Studio.       
     First is Elib library and second is console application TestElib.
     * Change port according your serial connections e.g. from "COM4" to "COM3".
-    * Open Program.cs from TestElib in Solution explorer and uncomment "\\Examples.TestPort();".     *Move your mouse above Examples.TestPort() and click on right button and select Go to definition. After that an editor jumps to body of  Examples.TestPort() method 
+    * Open Program.cs from TestElib in Solution explorer and uncomment "\\Examples.TestPort();".    *Move your mouse above Examples.TestPort() and click on right button and select Go to definition. After that an editor jumps to body of  Examples.TestPort() method 
     * We are going to test the robot if it is ready. Press Ctrl+F5, which will run the console application TestElib.
     If everything is ok, the e-Puck moves a little.
     * If e-Puck is connected and the TestPort() function runs in TestElib, so the orange LED near the switch sould be turn on.   
