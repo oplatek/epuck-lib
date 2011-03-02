@@ -1,0 +1,31 @@
+    == Jak zprovoznit e-Pucka a Elib knihovna ==
+    =Požadavky=
+      *Nabitý robot epuck.
+      *Bluetooth
+      *PC s .Net Runtimem 2.0 a vyšším.
+      *Elib lze použít z jakéhokoliv .Net jazyka.
+      *Lze spustit i pod Linuxem v runtimu Mono, napožádání poskytnu aktuální 
+      Mono Solution pro vývojové prostředí C# pod Linuxem.
+      *Zatím bude knihovna zveřejňována jako MS Visual Studio 2008 Solution.
+        Pokud byste někdo měli problémy se solutionem verze MS VS 2008 a chtěli 2005, dodám na požádání. 
+      
+    =Doporučený postup=
+    *Nainstalujte Bluetooth. Stáhněte a rozbalte knihovnu pro Linux nebo Windows.
+    *Zapněte e-Pucka a Bluetooth. Spárujte PC a e-Pucka. Pin pro Bluetooth je na cedulce po obvodu robota. 
+      Je to 4 místné číslo.
+      *Jděte do My Bluetooth places a otevřete sériové spojení. Windows Vám přidělí seriový port např. COM3. 
+      *Otevřete rozbalený solution v MSVS 2008, kde se nacházejí dva projekty. První je Elib, 
+      druhý testovací projekt TestElib.
+      *Otevřete soubor Program.cs v projektu TestElib a odkomentujte Examples.TestPort(); 
+      *Změňte port ve funkci main podle vámi zjištěného portu, přes který budete komunikovat s e-Puckem
+      *Najeďte nad Examples.TestPort(port) a po kliknutí pravým tlačítkem vyberte menu Go to definition. 
+      Ocitnete se v těle Examples.TestPort();       
+      *Nyní vyzkoušíme zda je robot připojený. Zmáčkněte Ctrl+F5, které spustí program. Robot by se měl pootočit.
+      *V případě úspěšsného spojení se rozsvítí oranžová diodka na e-Pucku. 
+      Pokud se Vám nedaří připojit pravděpodobně jste špatně zadali jméno portu. Jměna pod Windows jsou např. COM1,..,COM3,..
+      Jména pod Linuxem jsou /dev/rfcomm0,..,/dev/rfcomm2.
+      
+      *Prohlídněte si ostatní funkce ve tříde Elib.Examples. Ukazují různé druhy použití třídy Epuck.
+      
+      *Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestLib, který má již naincludované reference a "usingy" na knihovnu Elib.
+      *Pokud chcete používat knihovnu již zkompilovanou. Nastavte build na Release a spusťě ho Ctrl+B a na cestě .\elib\bin\Release\elib.dll najdete knihovnu.
