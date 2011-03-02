@@ -1,4 +1,5 @@
 #summary The TestElib application uses Elib library to control e-Puck
+#sidebar navigation    
 
 = TestElib =
 

@@ -1,3 +1,5 @@
+#summary Návod jak instalovat e-Puck a Elib knihovnu.
+#sidebar navigation    
     = Jak zprovoznit e-Pucka a Elib knihovna =
     ==Požadavky==
     * Nabitý robot epuck.
