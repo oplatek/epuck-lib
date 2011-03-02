@@ -1,28 +1,26 @@
-    == How to run a programu using e-Puck and the Elib library==
-    =Requirements and features=
-      *E-puck with charged accumulator
-      *Bluetooth
-      *Computer with .Net Runtimem 2.0 and above. Elib can be used in every .Net language.
-      *OR Computer with Mono under Linux(or other OS)
-      *Library is in the first place deployed for .Net in MS Visual Solution 2008.
-      But don't be afraid to tell me if you need up-to-date MSVS Solution 2005 or Mono Developed solution.         
-      *Elib is C# library and all examples are written in C#. Threfore is handy to know some C++ like language.
+    = How to run a programu using e-Puck and the Elib library=
+    ==Requirements and features==
+    * E-puck with charged accumulator
+    * Bluetooth
+    * Computer with .Net Runtimem 2.0 and above. Elib can be used in every .Net language.
+    * OR Computer with Mono under Linux(or other OS)
+    * Library is in the first place deployed for .Net in MS Visual Solution 2008.
+    But don't be afraid to tell me if you need up-to-date MSVS Solution 2005 or Mono Developed solution.         
+    * Elib is C# library and all examples are written in C#. Threfore is handy to know some C++ like language.
 
     =Simple guide=
-      *Install your Bluetooth device. Download and extract library Elib for Linux or Windows.
-      *Turn on e-Puck and Bluetooth. Pair computer and e-Pucka. A pin code for Bluetooth can be found on label on e-Puck's body. 
-      *Open folder My Bluetooth places and choose Serial connections. Windows will connect to e-Puck using some port e.g "COM4". 
-      You can find it out clicking with a right mouse button on the serial connection icon. 
-      *Open the unzipped MSVS 2008 solution. (Visual Studio 2008 or above is needed). There are two projects, which you can see in solution explorer in Visual Studio.       
-      First is Elib library and second is console application TestElib.
-      *Change port according your serial connections e.g. from "COM4" to "COM3".
-      *Open Program.cs from TestElib in Solution explorer and uncomment "\\Examples.TestPort();".        
-      *Move your mouse above Examples.TestPort() and click on right button and select Go to definition.
-        After that an editor jumps to body of  Examples.TestPort() method 
-      *We are going to test the robot if it is ready. Press Ctrl+F5, which will run the console application TestElib.
-      If everything is ok, the e-Puck moves a little.
-      *If e-Puck is connected and the TestPort() function runs in TestElib, so the orange LED near the switch sould be turn on.   
-      If you can't run this example, try pair the e-Puck and connect the serial connection again. Give a special care changing the port string
-      in main TestElib function. Under Windows port names are e.g COM1,..,COM3,.. Under linux the names look like /dev/rfcomm0,..,/dev/rfcomm2.
-      *Check out other functions in class Elib.Examples. They show different usage of elib on simple examples.
-      *TestElib project is ready for you to develop your own application, because all needed references and "using" keywords have been included.      
+    * Install your Bluetooth device. Download and extract library Elib for Linux or Windows.
+    * Turn on e-Puck and Bluetooth. Pair computer and e-Pucka. A pin code for Bluetooth can be found on label on e-Puck's body. 
+    * Open folder My Bluetooth places and choose Serial connections. Windows will connect to e-Puck using some port e.g "COM4". 
+    You can find it out clicking with a right mouse button on the serial connection icon. 
+    * Open the unzipped MSVS 2008 solution. (Visual Studio 2008 or above is needed). There are two projects, which you can see in solution explorer in Visual Studio.       
+    First is Elib library and second is console application TestElib.
+    * Change port according your serial connections e.g. from "COM4" to "COM3".
+    * Open Program.cs from TestElib in Solution explorer and uncomment "\\Examples.TestPort();".     *Move your mouse above Examples.TestPort() and click on right button and select Go to definition. After that an editor jumps to body of  Examples.TestPort() method 
+    * We are going to test the robot if it is ready. Press Ctrl+F5, which will run the console application TestElib.
+    If everything is ok, the e-Puck moves a little.
+    * If e-Puck is connected and the TestPort() function runs in TestElib, so the orange LED near the switch sould be turn on.   
+    If you can't run this example, try pair the e-Puck and connect the serial connection again. Give a special care changing the port string
+    in main TestElib function. Under Windows port names are e.g COM1,..,COM3,.. Under linux the names look like /dev/rfcomm0,..,/dev/rfcomm2.
+    * Check out other functions in class Elib.Examples. They show different usage of elib on simple examples.
+    * TestElib project is ready for you to develop your own application, because all needed references and "using" keywords have been included.      
