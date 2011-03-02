@@ -1,5 +1,5 @@
 #summary The Guide howto install e-Puck and the Elib library.
-#sidebar TableOfContents    
+#sidebar navigation    
     = How to run a programu using e-Puck and the Elib library=
     ==Requirements and features==
     * E-puck with charged accumulator
