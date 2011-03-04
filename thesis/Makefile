@@ -4,8 +4,9 @@ all: ${NAME}.dvi
 # Vyroba PDF primo z DVI by byla prijemnejsi, ale vetsina verzi dvipdfm nici obrazky
 # ${NAME}.pdf: ${NAME}.dvi
 #	dvipdfm -o $@ -p a4 -r 600 $<
-pdf: ${NAME}.pdf
-	acroread ${NAME}.pdf 
+pdf: ${NAME}.pdf mv ${NAME}.pdf ./actual/${NAME}.pdf
+	
+pdfview: acroread ./actual/${NAME}.pdf 
 ${NAME}.pdf: ${NAME}.ps
 	ps2pdf $< $@
 
