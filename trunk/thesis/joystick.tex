@@ -132,22 +132,23 @@
 \begin{lstlisting}
 //Ep is instance of e-Puck,
 Ep.BeginGetImage(imgto,
-//the callback(lambda function), which is called after an image capture
-(ar) => {
-try {
-Bitmap bmp = Ep.EndGetImage(ar);
-//delegate, which enwrap the lambda function, which updates the GUI
-updateUIDelegate d = delegate {
-  //body of the callback, which updates the GUI
-  pic.Source = Convert2BitmapSource(bmp,colorful);
-};
-//updating the GUI by passing the update GUI callback to guid Dispatcher
-guid.Invoke(DispatcherPriority.Normal,d);
-} catch (ElibException) {
-notConfirmedCommand(this);
-}
-}, 
-null);
+  //the callback(lambda function), which is called after an image capture
+  (ar) => {
+    try {
+    Bitmap bmp = Ep.EndGetImage(ar);
+    //delegate, which enwrap the lambda function, which updates the GUI
+    updateUIDelegate d = delegate {
+      //body of the callback, which updates the GUI
+      pic.Source = Convert2BitmapSource(bmp,colorful);
+    };
+    //updating the GUI by passing the update GUI callback to guid Dispatcher
+    guid.Invoke(DispatcherPriority.Normal,d);
+    } catch (ElibException) {
+      notConfirmedCommand(this);
+    }
+  }, 
+  null
+);
 \end{lstlisting}
 \caption{Update of an image using $Dispatcher$}
 \label{updispatcher}

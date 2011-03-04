@@ -135,16 +135,16 @@ suitable method -333
 \begin{lstlisting}[language=cs]
 static EventWaitHandle e = null;
 static void Athread() {
-Thread t = new Thread(Bthread);
-e = new EventWaitHandle(false, EventResetMode.ManualReset);
-t.Start();
-e.WaitOne();
-Console.WriteLine("Finally someone press the button!!!");
+  Thread t = new Thread(Bthread);
+  e = new EventWaitHandle(false, EventResetMode.ManualReset);
+  t.Start();
+  e.WaitOne();
+  Console.WriteLine("Finally someone press the button!!!");
 }
 static void Bthread() {
-//simulate the work      
-Console.Readline();
-e.Set();
+  //simulate the work      
+  Console.Readline();
+  e.Set();
 }
 \end{lstlisting}
 \caption{Definition of a delegate} \label{ewh}
@@ -242,14 +242,14 @@ ada.PlaySound(3,
   or $timeout$ elapsed. Simple synchronization is done via $end$ flag.
 \begin{lstlisting}[language=cs]
 static void wait(int gap) {
-///<remarks> Simple but unefficient way of waiting. See KofOkfWaiting(..) in Behaviour for usage of EventWaitHandle.</remarks>
-while (!end) { 
-  Thread.Sleep(5); 
-} 
-end = false; 
-Console.WriteLine("Ended: {0}",Stamp.Get());
-Thread.Sleep(gap);
-Console.WriteLine("Start: {0}", Stamp.Get());
+  ///<remarks> Simple but unefficient way of waiting. See KofOkfWaiting(..) in Behaviour for usage of EventWaitHandle.</remarks>
+  while (!end) { 
+    Thread.Sleep(5); 
+  } 
+  end = false; 
+  Console.WriteLine("Ended: {0}",Stamp.Get());
+  Thread.Sleep(gap);
+  Console.WriteLine("Start: {0}", Stamp.Get());
 }
 \end{lstlisting}
 
@@ -265,10 +265,10 @@ Console.WriteLine("Start: {0}", Stamp.Get());
 
 
 \begin{lstlisting}[language=cs]
-  IAsyncResult ar = e.BeginSetCam(40, 40, Zoom.Small, CamMode.Color, toSetCam, null, null);
-  e.EndFtion(ar);
-  ar = e.BeginGetImage(toImg, null, null);
-  Bitmap bm = e.EndGetImage(ar);	
+IAsyncResult ar = e.BeginSetCam(40, 40, Zoom.Small, CamMode.Color, toSetCam, null, null);
+e.EndFtion(ar);
+ar = e.BeginGetImage(toImg, null, null);
+Bitmap bm = e.EndGetImage(ar);	
 \end{lstlisting}
 
 
@@ -479,11 +479,11 @@ IAsyncResult ar = ada.BeginGetImage(toImg, null, null);
 Bitmap a = ada.EndGetImage(ar);
 howRed(a, out red, out dir);
 if (red > redl) {
-ada.BeginMotors(0.4, 0.4, to, agressive, ada);
+  ada.BeginMotors(0.4, 0.4, to, agressive, ada);
 } else {
-ar = ada.BeginStop(to, null, null);
-ada.EndFtion(ar);
-ada.BeginGetImage(toImg, searchAround, new CountDown(ada, 3));
+  ar = ada.BeginStop(to, null, null);
+  ada.EndFtion(ar);
+  ada.BeginGetImage(toImg, searchAround, new CountDown(ada, 3));
 }
 \end{lstlisting}
   
@@ -500,27 +500,27 @@ ada.BeginGetImage(toImg, searchAround, new CountDown(ada, 3));
 
 \begin{lstlisting}[language=cs]
 static void go2wall(IAsyncResult ar) {
-//value to decide if an obstacle is near enough
-int frontLimit = 1000;  
-//does not throw ElibException
-Epuck ada = (Epuck)ar.AsyncState;
-try {
-//doesn't create EventWaitHandle because the action has already completed synchronously.
-//Can throw an TimeoutElibException
-int[] ir = ada.EndGetFtion(ar);    
-if (ir[0] + ir[7] > frontLimit)
-ada.BeginStop(to, rebound, ada);
-else {
-//Does not use EndFtion, it safes the EventWaitHandle. We suppose, that it succeeds now or in next rounds.
-ada.BeginMotors(0.2, 0.2, to, null, null);
-//The BeginGetIR command is enqueued in the same mommen as BeginMotors, therefor 2*to.
-ada.BeginGetIR(2 * to, go2wall, ada);
-}
-} catch (ElibException e) {
-Console.WriteLine("Billiard restarted in go2wall, because of exception:\n" + e.Message);
-Invokes go2wall function again. It needs to be invoked by BeginGetIR command, because it expects ar with IR values.
-ada.BeginGetIR(to, go2wall, ada);
-}
+  //value to decide if an obstacle is near enough
+  int frontLimit = 1000;  
+  //does not throw ElibException
+  Epuck ada = (Epuck)ar.AsyncState;
+  try {
+    //doesn't create EventWaitHandle because the action has already completed synchronously.
+    //Can throw an TimeoutElibException
+    int[] ir = ada.EndGetFtion(ar);    
+    if (ir[0] + ir[7] > frontLimit)
+      ada.BeginStop(to, rebound, ada);
+    else {
+      //Does not use EndFtion, it safes the EventWaitHandle. We suppose, that it succeeds now or in next rounds.
+      ada.BeginMotors(0.2, 0.2, to, null, null);
+      //The BeginGetIR command is enqueued in the same mommen as BeginMotors, therefor 2*to.
+      ada.BeginGetIR(2 * to, go2wall, ada);
+    }
+  } catch (ElibException e) {
+    Console.WriteLine("Billiard restarted in go2wall, because of exception:\n" + e.Message);
+    Invokes go2wall function again. It needs to be invoked by BeginGetIR command, because it expects ar with IR values.
+    ada.BeginGetIR(to, go2wall, ada);
+  }
 }
 \end{lstlisting}
   The exception can be throw only on in call of $EndGetFtion$ at the beginning and 
@@ -554,21 +554,21 @@ ada.BeginGetIR(to, go2wall, ada);
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void goXmiliseconds(Epuck e, double L, double R, int milisec, double addto) {
-int x = e.Working;
-if (x != 0)
-throw new ElibException("It would be extremely inaccurate, if commands are still waiting to be sent.");
-double st0 = Stamp.Get();
-IAsyncResult ar = e.BeginMotors(L, R, addto, null, null);
-//debugging
-AsyncResultNoResult pom = (AsyncResultNoResult)ar;
-//debugging
-pom.Name += "goXms";
-e.EndFtion(ar);
-double st1 = Stamp.Get();
-milisec -= (int)((st1 - st0) / 2);//heuristic
-Thread.Sleep(milisec);
-ar = e.BeginStop(addto, null, null);
-e.EndFtion(ar);
+  int x = e.Working;
+  if (x != 0)
+    throw new ElibException("It would be extremely inaccurate, if commands are still waiting to be sent.");
+  double st0 = Stamp.Get();
+  IAsyncResult ar = e.BeginMotors(L, R, addto, null, null);
+  //debugging
+  AsyncResultNoResult pom = (AsyncResultNoResult)ar;
+  //debugging
+  pom.Name += "goXms";
+  e.EndFtion(ar);
+  double st1 = Stamp.Get();
+  milisec -= (int)((st1 - st0) / 2);//heuristic
+  Thread.Sleep(milisec);
+  ar = e.BeginStop(addto, null, null);
+  e.EndFtion(ar);
 }
 \end{lstlisting}
 \caption{Function goXmiliseconds} \label{gox}
@@ -595,23 +595,24 @@ e.EndFtion(ar);
 \begin{lstlisting}
   
 static void recGotoLight(IAsyncResult ar) {
-Epuck ada = (Epuck)ar.AsyncState;
-try {
-ar = ada.BeginGetLight(to, null, null);
-int[] light = ada.EndGetFtion(ar);
-//..missing part
-if (diff_fb > 0) {
-if (light[2] < light[5]) {
-  Console.WriteLine("turn around right {0}", diff_lr);
-  ar = ada.BeginMotors(speed, 0, to, recGotoLight, ada);
-} else {
-//...missing part: the lighst is on front left, back right,...
-}
-//there is no need to repeat EndFtion in the branches
-ada.EndFtion(ar);
-} catch (TimeoutElibException) {
-exceptionOccured_Restart(ada);
-}
+  Epuck ada = (Epuck)ar.AsyncState;
+  try {
+    ar = ada.BeginGetLight(to, null, null);
+    int[] light = ada.EndGetFtion(ar);
+    //..missing part
+    if (diff_fb > 0) {
+      if (light[2] < light[5]) {
+        Console.WriteLine("turn around right {0}", diff_lr);
+        ar = ada.BeginMotors(speed, 0, to, recGotoLight, ada);
+      } else {
+      //...missing part: the lighst is on front left, back right,...
+      }
+    }
+    //there is no need to repeat EndFtion in the branches
+    ada.EndFtion(ar);
+  } catch (TimeoutElibException) {
+    exceptionOccured_Restart(ada);
+  }
 }
 \end{lstlisting}
 \caption{Function $recGotoLight$ function} \label{go2light}
@@ -673,44 +674,45 @@ static void exceptionOccured_Restart(Epuck ada) {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void stopKof(object robotAndTime) {
-Console.WriteLine("stopKof was called.");
-RobotAndTime x = (RobotAndTime)robotAndTime;
-x.stopKof++;
-if (x.stopKof > 5) {
-  if (!reconnect(x))
-    return;
-  else
-    x.stopKof = 0;
-}
-double time = Stamp.Get() - x.StartTime;
-if (travelled(time, x.Speed) < (x.Cm + 0.05))
-  x.E.Stop(stopOkf, stopKof, x, to);
-else {
-  Console.WriteLine("We passed the destination spot, we returns back, Try repair the connection.");
-  x.Cm = travelled(x.StartTime, x.Speed) - x.Cm;
-  x.Speed = -x.Speed;
-  x.StartTime = Stamp.Get();
-  x.E.Motors(x.Speed, x.Speed, goOkf, goKof, x, to);
-}
-}
-class RobotAndTime {
-// Lot of parts missing!! The thread.Safe read and write is missing!!
-public double StartTime;
-double cm;
-double speed;
-public volatile int stopKof = 0;
-public volatile int goKof = 0;
+  Console.WriteLine("stopKof was called.");
+  RobotAndTime x = (RobotAndTime)robotAndTime;
+  x.stopKof++;
+  if (x.stopKof > 5) {
+    if (!reconnect(x))
+      return;
+    else
+      x.stopKof = 0;
+  }
+  double time = Stamp.Get() - x.StartTime;
+  if (travelled(time, x.Speed) < (x.Cm + 0.05))
+    x.E.Stop(stopOkf, stopKof, x, to);
+  else {
+    Console.WriteLine("We passed the destination spot, we returns back, Try repair the connection.");
+    x.Cm = travelled(x.StartTime, x.Speed) - x.Cm;
+    x.Speed = -x.Speed;
+    x.StartTime = Stamp.Get();
+    x.E.Motors(x.Speed, x.Speed, goOkf, goKof, x, to);
+  }
 }
 
+class RobotAndTime {
+  // Lot of parts missing!! 
+  // The thread.Safe read and write are missing!!
+  public double StartTime;
+  double cm;
+  double speed;
+  public volatile int stopKof = 0;
+  public volatile int goKof = 0;
+}
 \end{lstlisting}
 \caption{$Kof$ callback $stopKof$} \label{stopKof}
 \end{figure}
-  Interesting is the logic of this example. After five unsuccessful attempts to stop the $reconnec$ function
-  prompt the user to repair the connection. 
-  If the user tell the behaviour to end no other function is invoked and the behaviour is ended.
+  The logic of this example is very interesting. After five unsuccessful attempts to stop, the $reconnec$ function
+  prompts the user to repair the connection. 
+  If the user refuse to continue, no other function is invoked, and the behaviour is ended.
   Otherwise, the actions for going to a desired place are executed.
-  If the robot does not drive away too far, $Stop$ function is called again.
-  It has $stopKof$ function as its $Kof$ callback.
+  If the robot does not drive away too far, the $Stop$ function is called again.
+  The $Stop$ function calls $stopKof$ function as its $Kof$ callback.
   If the robot travels too long than it has to go in an opposite direction.
   The change of the direction is is done in the second branch of the $if$ command.
 
@@ -837,27 +839,27 @@ Action action = parseArguments(args, out source, out destination);
 \begin{figure}[!hbp]
 \begin{lstlisting}
 abstract class Action {
-const string Comment = "#";
-protected int column;
-protected TextReader r;
-public TextReader R { get { return r; } set { r = value; } }
-protected TextWriter w;
-public TextWriter W { get { return w; } set { w = value; } }
-protected char[] sep;
-public char[] Separators { get { return sep; } set { sep = value; } }
-public Action(int Column) {
-column = Column;
-}
-public void DoAction() {
-string line = null;
-while ((line = r.ReadLine()) != null) {
-  if (!line.StartsWith(Comment))
-    LineAction(line);
-}
-LastAction();
-}
-protected virtual void LastAction() { /*usually does nothing and is called after all lines are processed*/}
-protected abstract void LineAction(string line);
+  const string Comment = "#";
+  protected int column;
+  protected TextReader r;
+  public TextReader R { get { return r; } set { r = value; } }
+  protected TextWriter w;
+  public TextWriter W { get { return w; } set { w = value; } }
+  protected char[] sep;
+  public char[] Separators { get { return sep; } set { sep = value; } }
+  public Action(int Column) {
+    column = Column;
+  }
+  public void DoAction() {
+    string line = null;
+    while ((line = r.ReadLine()) != null) {
+      if (!line.StartsWith(Comment))
+        LineAction(line);
+    }
+    LastAction();
+  }
+  protected virtual void LastAction() { /*usually does nothing and is called after all lines are processed*/}
+  protected abstract void LineAction(string line);
 }
 \end{lstlisting}
 
@@ -871,26 +873,26 @@ protected abstract void LineAction(string line);
 \begin{figure}[!hbp]
 \begin{lstlisting}
 class Average : Action {
-long count;
-double avg;
-public Average(int Column)
-: base(Column) {
-count = 0;
-avg = 0;
-}
-protected override void LineAction(string line) {
-count++;
-avg *= (count - 1) / (double)count;
-try {
-  avg += (Double.Parse((line.Split(sep)[column])) / count);
-} catch (FormatException e) {
-  Console.WriteLine("Avg has to be done from Integer. Error: " + e.Message);
-  avg = double.NaN;
-}
-}
-protected override void LastAction() {
-w.WriteLine("{0:F8}", avg);
-}
+  long count;
+  double avg;
+  public Average(int Column)
+  : base(Column) {
+    count = 0;
+    avg = 0;
+  }
+  protected override void LineAction(string line) {
+    count++;
+    avg *= (count - 1) / (double)count;
+    try {
+      avg += (Double.Parse((line.Split(sep)[column])) / count);
+    } catch (FormatException e) {
+      Console.WriteLine("Avg has to be done from Integer. Error: " + e.Message);
+      avg = double.NaN;
+    }
+    }
+    protected override void LastAction() {
+    w.WriteLine("{0:F8}", avg);
+  }
 }
 \end{lstlisting}
 \caption{$Average$ class}\label{average}

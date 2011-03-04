@@ -828,7 +828,6 @@ interface IAsyncResult{
   public Boolean CompletedSynchronously{get; } 
   public WaitHandle AsyncWaitHandle { get; }
   public Boolean IsCompleted { get; }
-  
 }
 \end{lstlisting}
 \caption{$IAsyncResult$ interface}
@@ -1041,29 +1040,29 @@ public class AsyncResultNoResult : IAsyncResult {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 public class AsyncResult<TResult> : AsyncResultNoResult {
-// Field set when operation completes
-TResult m_result = default(TResult);
-public AsyncResult(AsyncCallback asyncCallback, Object state,string name) : 
-base(asyncCallback, state,name) { }
-public AsyncResult(AsyncCallback asyncCallback, Object state) : 
-this(asyncCallback, state, null) { }
-//enable to set Result. AsyncNoResult enables to set exception.
-public void SetAsCompleted(TResult result, Boolean completedSynchronously) {
-// Save the asynchronous operation's result
-m_result = result;
-// Tell the base class that the operation completed 
-// sucessfully (no exception)
-base.SetAsCompleted(null, completedSynchronously);
-}
-// Allows to set both the exception and the result. Added for GetImage(..).
-public void SetAsCompleted(TResult result, Boolean completedSynchronously, Exception exception) {
-m_result = result;
-base.SetAsCompleted(exception, completedSynchronously);
-}
-new public TResult EndInvoke() {
-base.EndInvoke();// Wait until operation has completed 
-return m_result; // Return the result (if above didn't throw)
-}
+  // Field set when operation completes
+  TResult m_result = default(TResult);
+  public AsyncResult(AsyncCallback asyncCallback, Object state,string name) : 
+    base(asyncCallback, state,name) { }
+  public AsyncResult(AsyncCallback asyncCallback, Object state) : 
+    this(asyncCallback, state, null) { }
+  //enable to set Result. AsyncNoResult enables to set exception.
+  public void SetAsCompleted(TResult result, Boolean completedSynchronously) {
+    // Save the asynchronous operation's result
+    m_result = result;
+    // Tell the base class that the operation completed 
+    // sucessfully (no exception)
+    base.SetAsCompleted(null, completedSynchronously);
+  }
+  // Allows to set both the exception and the result. Added for GetImage(..).
+  public void SetAsCompleted(TResult result, Boolean completedSynchronously, Exception exception) {
+    m_result = result;
+    base.SetAsCompleted(exception, completedSynchronously);
+  }
+  new public TResult EndInvoke() {
+    base.EndInvoke();// Wait until operation has completed 
+    return m_result; // Return the result (if above didn't throw)
+  }
 }
 \end{lstlisting}
 \caption{$AsyncResult<T>$} \label{result}
@@ -1080,17 +1079,17 @@ return m_result; // Return the result (if above didn't throw)
 \begin{figure}[!hbp]
 \begin{lstlisting}
 public IAsyncResult BeginGetIR(double timeout, AsyncCallback callback, object state) {
-AsyncResult<int[]> a = 
-new AsyncResult<int[]>(callback, state, logFunctionNames["BeginGetIR(..)"]);
-GetMikes(receivedSensors<int[]>, failed, a, timeout);
-return a;
+  AsyncResult<int[]> a = 
+  new AsyncResult<int[]>(callback, state, logFunctionNames["BeginGetIR(..)"]);
+  GetMikes(receivedSensors<int[]>, failed, a, timeout);
+  return a;
 }
 static T EndSensors<T>(IAsyncResult ar) {
-AsyncResult<T> a = (AsyncResult<T>)ar;
-return a.EndInvoke();
+  AsyncResult<T> a = (AsyncResult<T>)ar;
+  return a.EndInvoke();
 }
 public int[] EndGetFtion(IAsyncResult ar) { 
-return EndSensors<int[]>(ar); 
+  return EndSensors<int[]>(ar); 
 }
 \end{lstlisting}	
 \caption{An example of "Begin" and "End" function for sensors.}
@@ -1163,16 +1162,16 @@ a.EndInvoke();
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void failed(object asyncNoResult) {
-AsyncResultNoResult ar = (AsyncResultNoResult)asyncNoResult;
-ar.SetAsCompleted(new ElibException(ar.Name + " command hasn't been confirmed in timeout"), false); 
+  AsyncResultNoResult ar = (AsyncResultNoResult)asyncNoResult;
+  ar.SetAsCompleted(new ElibException(ar.Name + " command hasn't been confirmed in timeout"), false); 
 }
 static void failedBitmap(Bitmap pic,object asyncResult) {
-if (pic != null) {
-  AsyncResult<Bitmap> ar = (AsyncResult<Bitmap>)asyncResult;        
-  ar.SetAsCompleted(pic, false, new ElibException(ar.Name + 
-    " command GetPicture has not been confirmed in timeout, but picture is still available in AsyncResult<Bitmap>"));
-} else
-  failed(asyncResult);
+  if (pic != null) {
+    AsyncResult<Bitmap> ar = (AsyncResult<Bitmap>)asyncResult;        
+    ar.SetAsCompleted(pic, false, new ElibException(ar.Name + 
+      " command GetPicture has not been confirmed in timeout, but picture is still available in AsyncResult<Bitmap>"));
+  } else
+    failed(asyncResult);
 }
 \end{lstlisting}	
 \caption{$Kof$ callbacks for $IAsyncResult$} \label{Ikofs}
@@ -1237,8 +1236,8 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void SimulatingKof_over_IAsResult(Epuck ada) {
-//the timeout is too small!
-ada.BeginGetImage(0.001, okf, ada);
+  //the timeout is too small!
+  ada.BeginGetImage(0.001, okf, ada);
 }
 \end{lstlisting}
 \caption{Start of the behaviour.}
@@ -1268,22 +1267,22 @@ ada.BeginGetImage(0.001, okf, ada);
 //because the ar paramater has to contain a Bitmap
 //See 8. row!
 static void okf(IAsyncResult ar_) {
-if (!endf) {
-Epuck ada = (Epuck)ar_.AsyncState;
-try{
-Bitmap b = ada.EndGetImage(ar_);//no EventWaitHandle created
-IAsyncResult ar = ada.BeginMotors(-1, 1, 0.1, null, null);// some work
-//simulate image processig
-Thread.Sleep(20);
-ada.EndFtion(ar);
-//the timeout is too small!
-ada.BeginGetImage(0.01, okf, ada);
-} catch (ElibException) {
-//has to be fixed in kof
-ada.BeginStop(0.1, kof, ada);
-}
-} else
-endconfirmed.Set();
+  if (!endf) {
+    Epuck ada = (Epuck)ar_.AsyncState;
+    try{
+      Bitmap b = ada.EndGetImage(ar_);//no EventWaitHandle created
+      IAsyncResult ar = ada.BeginMotors(-1, 1, 0.1, null, null);// some work
+      //simulate image processig
+      Thread.Sleep(20);
+      ada.EndFtion(ar);
+      //the timeout is too small!
+      ada.BeginGetImage(0.01, okf, ada);
+    } catch (ElibException) {
+      //has to be fixed in kof
+      ada.BeginStop(0.1, kof, ada);
+    }
+  } else
+    endconfirmed.Set();
 }
 \end{lstlisting}
 \caption{The $Okf$ callback with too small timeout.}
@@ -1319,19 +1318,19 @@ endconfirmed.Set();
 //It can be applied to every IAsyncResult in Elib.
 //See 7. row!
 static void kof(IAsyncResult ar_) {
-if (!endf) {
-Epuck ada = (Epuck)ar_.AsyncState;
-ada.EndFtion(ar_);
-try {
-IAsyncResult ar = ada.BeginStop(to, null, null);//do the repair actions
-ada.EndFtion(ar);
-Console.WriteLine("The problem is fixed. Lets call okf!");
-ada.BeginGetImage(0.1, okf, ada);
-} catch (ElibException) {
-ada.BeginStop(0.1, kof, ada);
-}
-} else
-endconfirmed.Set();
+  if (!endf) {
+    Epuck ada = (Epuck)ar_.AsyncState;
+    ada.EndFtion(ar_);
+    try {
+      IAsyncResult ar = ada.BeginStop(to, null, null);//do the repair actions
+      ada.EndFtion(ar);
+      Console.WriteLine("The problem is fixed. Lets call okf!");
+      ada.BeginGetImage(0.1, okf, ada);
+    } catch (ElibException) {
+      ada.BeginStop(0.1, kof, ada);
+    }
+  } else
+    endconfirmed.Set();
 }
 \end{lstlisting}
 \caption{Simulation of $Kof$ using $IAsyncResult$}
