@@ -10,5 +10,3 @@ of .Net languages and it allows programmers to access all e-Puck's sensors and a
 
 = Details =
 The Page is under reconstruction
-
- <wiki:video url="http://www.youtube.com/watch?v=3LkNlTNHZzE"/>
