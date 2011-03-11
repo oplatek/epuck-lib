@@ -1,13 +1,12 @@
 #summary Návod jak instalovat e-Puck a Elib knihovnu.
-#sidebar navigation    
+#sidebar navigation
     = Jak zprovoznit e-Pucka a Elib knihovna =
     ==Požadavky==
     * Nabitý robot epuck.
     * Bluetooth
     * PC s .Net Runtimem 2.0 a vyšším.
     * Elib lze použít z jakéhokoliv .Net jazyka.
-    * Lze spustit i pod Linuxem v runtimu Mono, napožádání poskytnu aktuální 
-    Mono Solution pro vývojové prostředí C# pod Linuxem.
+    * Lze spustit pod Linuxem pod Monem
     * Zatím bude knihovna zveřejňována jako MS Visual Studio 2008 Solution.
       Pokud byste někdo měli problémy se solutionem verze MS VS 2008 a chtěli 2005, dodám na požádání. 
       
@@ -27,4 +26,4 @@
     Jména pod Linuxem jsou /dev/rfcomm0,..,/dev/rfcomm2.
     * Prohlídněte si ostatní funkce ve tříde Elib.Examples. Ukazují různé druhy použití třídy Epuck.
     * Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestLib, který má již naincludované reference a "usingy" na knihovnu Elib.
-    * Pokud chcete používat knihovnu již zkompilovanou. Nastavte build na Release a spusťě ho Ctrl+B a na cestě .\elib\bin\Release\elib.dll najdete knihovnu.
+    * Pokud chcete používat knihovnu již zkompilovanou. Nastavte build na Release a spusťě ho Ctrl+B a na cestě .\elib\bin\Release\elib.dll najdete knihovnu.o
