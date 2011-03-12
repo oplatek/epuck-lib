@@ -8,7 +8,9 @@ all: ${NAME}.dvi
 pdf:  ${NAME}.pdf
 	mv ${NAME}.pdf ../actual/${NAMEOUT}.pdf
 	
-pdfview: acroread ./actual/${NAME}.pdf 
+pdfview: 
+	acroread ../actual/${NAMEOUT}.pdf &
+
 ${NAME}.pdf: ${NAME}.ps
 	ps2pdf $< $@
 
