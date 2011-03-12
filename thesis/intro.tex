@@ -1,12 +1,10 @@
 \chapter{Introduction}
 \label{chap:intro}
-  Mobile robotics is nowadays a~prestigious research area, and building a~highly functional 
+  Mobile robotics is nowadays a~prestigious research area. Building a~highly functional 
   mobile robot is considered to be difficult. 
-  Not only is it considered difficult, but it is a~fascinating process, which
+  It is a~fascinating process, which
   involves a~lot of engineering disciplines.
   
-  %The processing power of microchips has grown more than ten times in~the~last decade. 
-  %A large variety of different sensors are available on~the~market.	
   A lot of cheap and sufficient components result in~a~boom of simple robots used in~daily life. 
   Lawnmowers and vacuum cleaners are typical examples of mobile robots invasion~into our households in~these days.
   We also get used to robot prototypes, which are highly specialised in~the~space exploration~or in~army services.
@@ -18,11 +16,11 @@
   Many complex problems like driving a car in full traffic or to move in humam
   like environment are still a real challenge for a robot.
    
-  The young scientests often are discouraged by
-  studying hardware details during a~building of their own robot.
+  The young scientests are often discouraged by
+  studying hardware details during building their own robots.
   Luckily, several educational robots were made to help the novices.
   Educational robots help students focus on the other aspects of mobile robotics than the hardware one.
-  
+ 
   This work describes and implements a~library for one of the~educational robots.
   Its name is e-Puck and it is a~typical example of an educational robot for students at the~university level. 
   E-Puck has a~clean, simple and robust mechanical design, which is easy to understand.
@@ -54,9 +52,9 @@
   On e-Puck such a~program exists and is called {\it BTCom}. 
   {\it BTCom} is distributed under an open source licence with e-Puck.
 
-  Programming e-Puck's microchip needs knowledge of sensors and actuators interfaces.
+  Programming e-Puck's microchip requires knowledge of sensors and actuators interfaces.
   Furthermore debugging is limited to blinking with diodes or playing sounds.
-  Mentioned reasons and insufficient processing power hinder rapid development of even a~simple program, 
+  The mentioned reasons and insufficient processing power hinder rapid development of even a~simple program, 
   which makes e-Puck programming inconvenient for students.
   
   At the~time of writing this thesis there was only one well developed software for e-Puck called Webots,
@@ -64,28 +62,27 @@
   Webots is an useful develop and simulation~environment, but it is an expensive commercial software.
   Other simulators, which can be free alternatives for Webots, are introduced in~Chapter ~\ref{chap:software}.
   
-  %todo uvest proc rikam o remote control
   The drawbacks of low level programming are removed by the~{\it Elib} library, which is the~main~
   contribution~of this work.
   {\it Elib} library uses {\it BTCom} program on~e-Puck.
   {\it Elib} library runs on~PC and communicates with the~robot via~Bluetooth. 
-  A program, which uses {\it Elib} library,	makes an e-Puck a~carrier of sensors. It only gives e-Puck 	
-  commands to change state of its actuators, whereas the~whole algorithmic code runs on~PC.
+  A program, which uses {\it Elib} library,	makes an e-Puck a~carrier of sensors and actuators. 
+  Such program sends commands for changing states of its actuators to e-Puck,
+  whereas the~whole algorithmic code runs on~PC.
   
   On the~other hand, the~implementation~of {\it Elib} brings new problems.
   This thesis introduces the~{\it Elib's} problems and discusses 
   under which conditions is the~approach of {\it Elib} suitable.	
   \subsection*{Thesis structure}
-  We introduce a~position~of mobile robotics in~the~contemporary world in~Chapter ~\ref{chap:robotics}.
+  We introduce mobile robotics in~Chapter ~\ref{chap:robotics}.
 
-  Chapter ~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and benefits.
-
+  Chapter ~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and advantages.
   Chapter ~\ref{chap:software} lists software which help programmers to develop applications for robots.
-  In this chapter the~usage of a~software for e-Puck is discussed. 
+  In this chapter we discuss the~usage of a~software for e-Puck. 
   
   Chapters ~\ref{chap:elib} and ~\ref{chap:usage} presents the~design and usage of {\it Elib} library in~detail.
   Conclusion~sums up the~properties of {\it Elib}.
-  A~simple installation~guide of {\it Elib}, a list of {\it Elib's} functions and a list of {\it Elib's} exceptions  are located in enclosed Appendixes.
-  An installation and a~user guide for {\it Elib Joystick} application~is also included. 
+  A~simple installation~guide of {\it Elib}, a list of {\it Elib's} functions and a list of {\it Elib's} exceptions  are located in Appendixes \ref{app:installelib} and\ref{app:epuckref}.
+  An installation and a~user guide for {\it Elib Joystick} application~is included in Appendix \ref{app:joystick}. 
 
 
