@@ -31,7 +31,7 @@
 
 
   In the middle is a connection panel. The connection panel is the only panel, which 
-  has actived controls after start up. To activate the rest of controls following actions are necessary to
+  has activated controls after start up. To activate the rest of controls following actions are necessary to
   perform. At first pair e-Puck with your computer. Then connect the assigned virtual port with e-Puck.
   Fill the assigned port's name in text box above the "Connect" button and press
   the "Connect" button. After pressing the "Connect" button {\it Elib Joystick} is connected to e-Puck. 
@@ -103,7 +103,7 @@
    Joystick after Bluetooth connection failure.}
   \end{figure}
 
-  In Figure ~\ref{pic:joystick_ko} is shown the MessageBox, which tells the user to reconnect the application
+  In Figure ~\ref{pic:joystick_ko} is shown the $Message Box$, which tells the user to reconnect the application
   in order to continue.
 
   The actuators of e-Puck can be controlled either by clicking on the appropriate button or check box. 
@@ -120,7 +120,7 @@
   In {\it Elib Joystick} we use callbacks to retrieve an image, because it can last a long time.
   Problems in a graphical application arise if a graphical interface is accessed by a thread different from
   the main thread, where a message loop of the graphical application is running. The problem is solved,
-  if all functions use the same thread in the so called Single Thread Appartment(STA).
+  if all functions use the same thread in the so called Single Thread Apartment (STA).
 
   {\it Elib Joystick} challenges this problem, because it presents a picture from e-Puck's camera, which is updated
   in $Label$ of {\it Elib Joystick's} window. The callback, which updates the image, runs in a different thread.
