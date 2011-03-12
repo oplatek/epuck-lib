@@ -147,7 +147,7 @@
   The resources of PC are useful first of all for implementation of the program and not only for
   its debugging. E-Puck for example takes pictures smaller than 3200 bytes, complicated image processing still
   requires too much work for e-Puck's microchip. It is faster to process the picture
-  on a computer. Let us note that also implementing a neural network or even genetic algorithm on 8kB memory
+  on a computer. Let us note that also implementing a neural network or even genetic algorithm on 8 kB memory
   is very difficult.
 \section{Design of {\it BTCom} program. What does it mean for {\it Elib}?}
   \label{sec:btcomdesign}
@@ -188,7 +188,7 @@
 \end{lstlisting}
     
     
-  Let $A$ be a PC and $B$ be an e-Puck robot. $A$ controls $B$ over BTCom protocol. {\it BTCom} program located on $B$ 
+  Let $A$ be a PC and $B$ be an e-Puck robot. $A$ controls $B$ over {\it BTCom} protocol. {\it BTCom} program located on $B$ 
   replies to all commands sent from $A$.
   The answers of {\it BTCom} from $B$ allows $A$ to know that the sent command was received and
   executed. 
@@ -260,7 +260,7 @@
    
   There is an synchronous communication using {\it BTCom} implemented in Epuck Monitor
   \footnote{\small{Download at \url{http://www.gctronic.com/files/e-puckMonitor_2.0_code.rar}}}. 
-  Epuck Monitor waits not only to send the commands, but also it waits synchronously on the answers.
+  $Epuck Monitor$ waits not only to send the commands, but also it waits synchronously on the answers.
    
   Graphical applications usually explicitly require to stay responsive. 
   If they are not responsive, they freeze like Epuck Monitor.
@@ -339,7 +339,7 @@ public class Epuck {
   The $nonhandshaking$ sending does not wait to answer of the previous command. It sends the next command immediately. 
   Motivation for $nonhandshaking$ is to save time which is spent on waiting to the answers of the sent commands.
   Consequently $nonhandshaking$ has to ensure that the input buffer does not overflow.
-  We have experienced that it is a nontrivial task to set the correct time gap after different types of commands. 
+  We have experienced that it is a non-trivial task to set the correct time gap after different types of commands. 
   The final observation is that the $nonhandshaking$ sending is even slower than the $handshaking$ sending, 
   because the gaps after sent commands have to be set at maximum in order to avoid a failure under all conditions. 
   The gaps in $nonhandshaking$ mode has too be exorbitant, %todo naddimenzovany
@@ -605,7 +605,7 @@ void SendAsyncCall(){
     \put(26.79,220.40){\fontsize{8.83}{10.60}\selectfont public Write(..)}
     \end{picture}%
   \fi
-  \caption{\label{pic:sercom_handshake}%
+  \caption{\label{pic:sercom_handshake}
    Sercom current design}
   \end{figure}
 
@@ -637,7 +637,7 @@ void SendAsyncCall(){
   the operating system switch to different thread during the reading.
   If the picture is transferred before the $timeout$ elapsed, then the $Okf$ callback is called.
   The $Kof$ callback is called otherwise. 
-  If $Sercom$ is receiving the picture and the timeout elapses,
+  If $Sercom$ is receiving the picture and the time out elapses,
   $Sercom$ continues receiving the picture. $Sercom$ stops the receiving only if
   the image is complete or if no bytes have been received longer than 0.1 seconds.
   The $Kof$ callback of "GetImage" command is the only $Kof$ callback 
@@ -708,7 +708,7 @@ public class Sercom:IDisposable{
   If the $Okf$ was called on the last taken image then $FullImgBytes$ is always set to $true$. The property
   comes in use if the $Kof$ callback was called, because it can be called from $notSent$ queue 
   or the bytes of image got lost, or the image is all right, but it was received too late. 
-  From width, height, mode and bytes a bitmap can be built, which is perfromed
+  From width, height, mode and bytes a bitmap can be built, which is performed
   in the $Epuck$ class.
 
 \section{The $Epuck$ class} \label{sec:epuck}
@@ -1155,7 +1155,7 @@ a.EndInvoke();
   The function $receivedSensors<Bitmap>$ is used in the $Okf$ delegate $BeginGetPicture(..)$, and 
   the special function $failedBitmap(..)$ is called if an exception has been raised.
   The $Kof(..)$ callback raise a special exception, if the image was captured and has been 
-  delivered after timeout expiration.
+  delivered after time out expiration.
   Implementation is shown in Figure ~\ref{Ikofs}. 
 
   
@@ -1251,7 +1251,7 @@ static void SimulatingKof_over_IAsResult(Epuck ada) {
   which implements the $Kof$ logic in spite of the functions use $IAsyncResult$ interface.
 
   The $Kof$ logic should be implemented if an exception is raised. 
-  The exception is raised in callback passed to $IAsyncResult$ if the answer is not delivered in timeout. 
+  The exception is raised in callback passed to $IAsyncResult$ if the answer is not delivered in time out. 
   The nearest place, where it can be caught is in the call of the $EndInvoke$ method.
   The called $EndInvoke$ method is associated with the $IAsyncResult$ instance. 
   The common way for a user to invoke the $EndInvoke$ method is to call the "End" method 
@@ -1391,7 +1391,7 @@ static void kof(IAsyncResult ar_) {
   On contrary, the commands to take a picture or to set camera parameters, 
   which is very useful, last almost half a second. 
   The reason is that a camera is very demanding device and it produces a lot of data.
-  The special commands for calibrating IR sensors and for reseting e-Puck lasted even longer.
+  The special commands for calibrating IR sensors and for resetting e-Puck lasted even longer.
   The "reset" command has even exceeded the $timeout$.
 
   The values in table were measured from 10 independent measurement. 

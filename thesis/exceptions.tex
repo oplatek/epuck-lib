@@ -19,7 +19,7 @@ try {
 //retrieving original exception after catching the ElibException
 try {
   //...some functions which use Elib and 
-  // which throws new ApplicationException("My examplary exception")
+  // which throws new ApplicationException("My model exception")
 } catch (ElibException e) {
   Console.WriteLine(e.InnerException.Message);
 }
@@ -29,16 +29,16 @@ try {
 \end{figure}
   In the example is shown how is every single exception wrapped and thrown again in {\it Elib}.
   There is also depicted a way how to extract the original exception.
-  The code, which catch exceptions from {\it Elib} would print followint output:
+  The code, which catch exceptions from {\it Elib} would print following output:
 \begin{verbatim}
-  My examplary exception
+  My model exception
 \end{verbatim}
 
   The following snippet illustrates the structure of {\it Elib's} exceptions and
   introduces all inherited subclasses.
   The subclasses serves to differentiate the {\it Elib's} exceptions.
 \begin{lstlisting}
-// The ElibEception is thrown, if an unusual situation happends in Elib.
+// The ElibException is thrown, if an unusual situation happens in Elib.
 // It wraps all other exceptions, which are thrown from Elib
 public class ElibException : Exception { 
   //Only constructors are implemented

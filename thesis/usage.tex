@@ -1,5 +1,4 @@
 \chapter{Usage of {\it Elib}} \label{chap:usage}
-  %\input{6chapter.tex}
   This chapter is aimed at a programmer who wants to start playing with a e-Puck using {\it Elib}. 
   {\it Elib} offers a lot of tools, which make e-Puck programming easier. 
   The tools are useless without a proper use. This chapter introduces guidelines and numerous
@@ -111,7 +110,8 @@ suitable method -333
   was defined and declared in place. Functions defined in place are called lambda functions 
   and have several advantages. 
   They can omit types of arguments, because they are inferred from delegate definitions. Lambda functions
-  can also directly use variables from the scope of its declaration. The lambda function printed 8 in enclosed output above,
+  can also directly use variables from the scope of its declaration. 
+  The lambda function printed $8$ in the enclosed output above,
   although we have not passed it as an argument to the delegate.
 
   $EventWaitHandler$ class is not tricky itself, but sometimes it is used in multi thread programming, which is usually complicated.
@@ -170,16 +170,16 @@ static void Bthread() {
   and explore the samples from {\it TestElib} in detail.
 
   The examples are listed from the simplest to the more complex. 
-  Firsta function, which tests the communication between e-Puck and your computer is described,
+  First function, which tests the communication between e-Puck and your computer is described,
   then we focus on starting session using $Epuck$.
   Later simple functions describe all e-Puck's sensors and actuators using simple $Epuck's$ interface.
   Next functions create a window, where a captured picture by e-Puck's camera is drawn.
   Four methods, which invoke different behaviours using $IAsynResult$ interface follow.
   One behaviour implemented by $Epuck's$ basic interface is presented.
   After main section, which covers the behaviours, some "tips and tricks" are shown.
-  There is a behaviour in TestElim, that emulates $Epuck's$ basic interface via $IAsyncResult$. 
+  There is a behaviour in TestElib, that emulates $Epuck's$ basic interface via $IAsyncResult$. 
   It is depicted in the summary of Chapter ~\ref{chap:elib}.
-  We will skip the behaviour, because it is implemented only for teoretic purposes.
+  We will skip the behaviour, because it is implemented only for theoretical purposes.
   Apart from minor functions there is an example of image processing in "Tips and Tricks" part and a logging example.
   Logging $Epuck's$ actions is the last example.
 
@@ -191,7 +191,7 @@ static void Bthread() {
 
   Function $startEpuck$ return instance of $Epuck$, which allows you later to control an e-Puck.
 \begin{lstlisting}[language=cs]
-return new Epuck(port, "Ada"); //Name it. It is usefull for logging and debugging.
+return new Epuck(port, "Ada"); //Name it. It is useful for logging and debugging.
 \end{lstlisting}
   The function throws exception, only if other application blocks the port. Windows remember
   the port, which is set up for the communication with e-Puck, therefore
@@ -199,7 +199,7 @@ return new Epuck(port, "Ada"); //Name it. It is usefull for logging and debuggin
   In such a case $Kof$ callback from $Epuck's$ basic interface or an exception	
   from $IAsyncResult$ are raised after sending a command to e-Puck.
   Sending a command to e-Puck is done via calling one of $Epuck's$ functions.
-  i$Kof$ callback and exception let user know, that a command was not delivered in time.
+  $Kof$ callback and exception let user know, that a command was not delivered in time.
   Let us mentioned the closing of session and then we introduce both interfaces.
 \begin{lstlisting}[language=cs]
 //dispose can take a while (under 500ms)
@@ -237,7 +237,7 @@ ada.PlaySound(3,
   The first delegate is called called if the answer from {\it BTCom} is confirmed before $timeout$ has elapsed. 
   $KofCallback$ is called otherwise.
   $ConsoleTestActuatorsTimeout$ function wants to present the reaction time of all commands, 
-  therefor it does not allow commands to be called asynchrounously one after another.
+  therefor it does not allow commands to be called asynchronously one after another.
   Function $wait(0)$ forces the current thread to wait until answer is delivered
   or $timeout$ elapsed. Simple synchronization is done via $end$ flag.
 \begin{lstlisting}[language=cs]
@@ -274,7 +274,7 @@ Bitmap bm = e.EndGetImage(ar);
 
   $ShowImage$ uses an $IAsyncResult$ interface to set the camera and get the picture.
   Let us shortly introduce the interface on $BeginSetCam$ method, which called on instance $e$ of e-Puck.
-  $IAsyncResult$ interface allows easily to start asynchronous operation and after that easily wait for the the result.
+  $IAsyncResult$ interface allows easily to start asynchronous operation and after that easily wait for the result.
   $BeginSetCam$ starts the asynchronous operation, which sends the relevant command, and $EndFtion$ waits to it.
   The $EndFtion$ can wait for $BeginSetCam$ result, because $ar$ $IAsyncResult$ instance was created in $BeginSetCam$.
   Every $IAsyncResult$ asynchronous function start with "$Begin$" prefix. 
@@ -325,14 +325,14 @@ Bitmap bm = e.EndGetImage(ar);
   If we use "BeginGet" function to get a sensor values, then the values are returned by "EndGetFtion" call on $ar$ as we can see
   on line below.
 
-  Callbacks are called always after the the operation finish, therefore the $EndFion(..)$ on $IAsyncResult$ does not wait.
+  Callbacks are called always after the operation finish, therefore the $EndFion(..)$ on $IAsyncResult$ does not wait.
   Furthermore no $EventWaitHandle$ is created, which results in a better performance if we use callback.
   For information about how this feature is implemented see Section ~\ref{sec:iasync}.
 
-  Callbacks are invoked in separate threads, which bring comlications, if we invoked more than one behaviour
+  Callbacks are invoked in separate threads, which bring complications, if we invoked more than one behaviour
   from one function as we do in the $Main(..)$ function. The problem is that $Epuck$ instance gets 
   commands from completely different behaviours at one time.
-  Luckily all behaviours in {\it TestElib} let the the thread with $Main(..)$ function wait, until they are finished.
+  Luckily all behaviours in {\it TestElib} let the thread with $Main(..)$ function wait, until they are finished.
   After an end of one behaviour the next is invoked.
 
   For implementing a single behaviour there is guideline, which introduce how to avoid problems with ending a behaviour.
@@ -378,7 +378,7 @@ static void SafeDispose(IAsyncResult ar{
 
   
   The start function firstly sets e-Puck's camera to desired settings then it invokes the behaviour.
-  $CountDown$ is a struct, which wraps the Epuck and number of rotation.
+  $CountDown$ is a struct, which wraps the e-Epuck and number of rotation.
 
 \begin{lstlisting}[language=cs]
 public static void Bull(Epuck ada) {
@@ -429,7 +429,7 @@ static void endBehaviour() {
   Three states are named after the functions, which control the robot. "GetStacked" state
   is the final state and it arises, if the e-Puck is surrounded with obstacles from the front and from behind.
   The $searchAround$ procedure calls itself 4 times if no red obstacle is in front of e-Puck.
-  It uses struct $CountDown$ to count the number of rotations.
+  It uses the struct $CountDown$ to count the number of rotations.
 
   %\input{bull.TpX}
   \begin{figure}[!hbp]
@@ -487,7 +487,7 @@ if (red > redl) {
 }
 \end{lstlisting}
   
-\subsection{Billiardball behaviour}\label{billiard}
+\subsection{Billiard ball behaviour}\label{billiard}
   The behaviour is invoked by $Billiard$ function. The behaviour is rather simple.
   It goes to a wall and before the wall it stops. Then the robot tries to compute the
   orientation of the wall it turns around to go in a next direction and than it goes straight
@@ -537,10 +537,10 @@ static void go2wall(IAsyncResult ar) {
 
 \subsection{Exact movement and $GoAndTurn$ behaviour} \label{sec:go}
   Exact movement is a very strong feature of e-Puck. E-Puck uses two stepper motors,
-  which allows you to travel exactly 10 cm. The deviation is less than one milimeter.
+  which allows you to travel exactly 10 cm. The deviation is less than one millimeter.
   E-Puck has also encoders, which allow you to measure the distance of travel with the same resolution.
   On the other hand, communication over Bluetooth brings problems, which are typical for common electric motors.
-  Usual motors have an ineria and they do not stop immediately and they do not reach the desired speed at once. The same problem is with 
+  Usual motors have an inertia and they do not stop immediately and they do not reach the desired speed at once. The same problem is with 
   {\it Elib} and Bluetooth communication. The commands have a delay.
   A common problem is also with a flat tyre, because one wheel has bigger perimeter than the other.
   Programmers of e-Puck do not have to solve these problems due to good design of e-Puck.
@@ -922,7 +922,7 @@ class Average : Action {
   different instances of $Epuck$ class. Programs, which need more than 8 KB of memory on e-Puck such 
   as genetic programs or neural networks, can easily control e-Puck over Bluetooth.
 
-  The real challenge is processing a picture from e-Puck, because the dsPic processor of e-Puck is not sufficiant
+  The real challenge is processing a picture from e-Puck, because the dsPic processor of e-Puck is not sufficient
   and also {\it Elib} needs to wait quite a lot of time for a picture.
   On the other hand, $Bull$ behaviour successfully use the camera to grab the picture
   and also a graphical application {\it Elib Joystick} shoots the pictures with a camera.

@@ -24,7 +24,7 @@ delegate void \hyperlink{class_elib_1_1_epuck_a410eea190419792987ceb49c2a7b2c9b}
 void \hyperlink{class_elib_1_1_epuck_a8b0942a1bbf1b78115b0eedf77e535a0}{SetEncoders} (int leftMotor, int rightMotor, OkfActuators okf, KofCallback kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It sets the values of the encoder to its motors. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_aa15c26b061ee31dfb343f546d89bd864}{CalibrateIRSensors} (OkfActuators okf, KofCallback kof, object state, double timeout)
-\begin{DoxyCompactList}\small\item\em It calibrates the IR sensors. Usufull for proximity measurement. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It calibrates the IR sensors. Useful for proximity measurement. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a6c5b0e61b183ae36e78251e51e32bdd3}{Stop} (OkfActuators okf, KofCallback kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It stops e-\/Puck. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a36714362701622796cf01480ea4f8d32}{Reset} (OkfActuators okf, KofCallback kof, object state, double timeout)
@@ -50,7 +50,7 @@ string \hyperlink{class_elib_1_1_epuck_a74b28dea3f43cda9a42745236a2a0910}{EndInf
 Bitmap \hyperlink{class_elib_1_1_epuck_a8b2cf6f690beeab328e5a6c533cfa2b0}{EndGetImage} (IAsyncResult ar)
 \begin{DoxyCompactList}\small\item\em It waits synchronously until a function, which asked for an image, gets the System.Drawing.Bitmap or timeout elapses. It uses {\itshape ar\/}  ir order to get the System.Drawing.Bitmap. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_a760541d00f318ee59be9fb1c83a0f8cd}{BeginCalibrateIRSensors} (double timeout, AsyncCallback callback, Object state)
-\begin{DoxyCompactList}\small\item\em It calibrates the IR sensors. Usufull for proximity measurement. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It calibrates the IR sensors. Useful for proximity measurement. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_aaa46f6da4226876036df7ba7cf2adca3}{BeginMotors} (double leftMotor, double rightMotor, double timeout, AsyncCallback callback, Object state)
 \begin{DoxyCompactList}\small\item\em It sets the speed of e-\/Puck's motors. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_af69a96d43cc6d5c47960061312d1937b}{BeginGetMikes} (double timeout, AsyncCallback callback, object state)
@@ -68,7 +68,7 @@ IAsyncResult \hyperlink{class_elib_1_1_epuck_ac5cbe768e3e85fc8c627331e539221a1}{
 IAsyncResult \hyperlink{class_elib_1_1_epuck_a42ebf85e7f8c6e507ef83d5bd0818650}{BeginBodyLight} (Turn how, double timeout, AsyncCallback callback, Object state)
 \begin{DoxyCompactList}\small\item\em It changes state of the body light. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_a58eb06f216af8ff7a7203f0f91b010e7}{BeginGetIRData} (double timeout, AsyncCallback callback, Object state)
-\begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 6 ints with following meaning g IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 6 integers with following meaning g IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_a0e599fe0065ac2c3ae2ac96aede901c6}{BeginGetInfoHelp} (double timeout, AsyncCallback callback, Object state)
 \begin{DoxyCompactList}\small\item\em It shows Epuck's help. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_a55e442eec492fc282ae978b3ec1e78c2}{BeginSetCam} (int width, int height, Zoom zoom, CamMode mode, double timeout, AsyncCallback callback, Object state)
@@ -88,7 +88,7 @@ IAsyncResult \hyperlink{class_elib_1_1_epuck_a26cd19a983186a23aa49d99106bd33d1}{
 IAsyncResult \hyperlink{class_elib_1_1_epuck_aa9e87b03e5a8ec36db30b6340d0da861}{BeginGetCamParams} (double timeout, AsyncCallback callback, object state)
 \begin{DoxyCompactList}\small\item\em It gets current camera settings. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_ad4cfe3776708816e78a7c53ddde315fb}{BeginGetEncoders} (double timeout, AsyncCallback callback, object state)
-\begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. It is nulled if the e-\/Puck resets. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. It is set to null if the e-\/Puck resets. \item\end{DoxyCompactList}\item 
 IAsyncResult \hyperlink{class_elib_1_1_epuck_afe274f8efd46c68587ec706f7dfc8a35}{BeginGetImage} (double timeout, AsyncCallback callback, object state)
 \begin{DoxyCompactList}\small\item\em It gets a picture. It can take a long time. E.g. piture 40$\ast$40 in colour takes more than 0.4 s under good light conditions and with battery fully charged. \item\end{DoxyCompactList}\item 
 \hyperlink{class_elib_1_1_epuck_a8c9936bf3d9add474c0ca5d2f0ea9eb4}{Epuck} (string Port, string Name)
@@ -107,15 +107,15 @@ void \hyperlink{class_elib_1_1_epuck_a3cf8241a923b30d480013a3f6cef3620}{StartLog
 void \hyperlink{class_elib_1_1_epuck_abe3d90d57e2035e9c7766f1fdb34db82}{StopLogging} ()
 \begin{DoxyCompactList}\small\item\em Disables logging. \item\end{DoxyCompactList}\item 
 delegate void \hyperlink{class_elib_1_1_epuck_ae28892dce5a837c025be2d29e80ccab7}{OkfIntsSensors} (int\mbox{[}$\,$\mbox{]} ans, object data)
-\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requireing an array of {\ttfamily int} is confirmed in timeout. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requiring an array of {\ttfamily int} is confirmed in timeout. \item\end{DoxyCompactList}\item 
 delegate void \hyperlink{class_elib_1_1_epuck_a4bfdd999c7ba6f9e1282077b2cec1cc0}{OkfStringSensors} (string ans, object data)
-\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requireing a {\ttfamily string} is confirmed in timeout. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requiring a {\ttfamily string} is confirmed in timeout. \item\end{DoxyCompactList}\item 
 delegate void \hyperlink{class_elib_1_1_epuck_a0b10e3ac7ceeaee8f73bc5194366e3d4}{OkfKofCamSensor} (Bitmap ans, object data)
-\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requireing a {\ttfamily Bitmap} is confirmed in timeout. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em A format of functions, which are called when a command requiring a {\ttfamily Bitmap} is confirmed in timeout. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a93ba5219d4d0b3ac382a902b35e7e372}{GetImage} (OkfKofCamSensor okf, OkfKofCamSensor kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It gets a picture. It can take a long time. E.g. piture 40$\ast$40 in colour takes more than 0.4 s under good light conditions and with battery fully charged. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a18153b3e43432af66a9baa973b77c5bd}{GetIR} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-\begin{DoxyCompactList}\small\item\em It gets the proximity from IR sensors. Obstacle can be recongnized up to 4 cm. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a87e5d0c07a8d2cc6909dabbc1a79ca1d}{GetAccelerometer} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It returns vector of values, which indicates the slant of e-\/Puck. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a40c8bc92b67a20c3fdf891997eaf03c5}{GetSelector} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
@@ -127,7 +127,7 @@ void \hyperlink{class_elib_1_1_epuck_a77057f06395cb1887ca3d504f1c51d2f}{GetCamPa
 void \hyperlink{class_elib_1_1_epuck_a99130d9756d311379572f65411539888}{GetLight} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It gets ambient light from IR sensors. The smaller values the greater light. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_adad61bb9ea144ca17533e59ddf583bc8}{GetEncoders} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-\begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. It is nulled if the e-\/Puck resets. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. It is set to null if the e-\/Puck resets. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_a176a4a63393394a409220699635a9196}{GetMikes} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
 \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound.(Sound strenght\}. \item\end{DoxyCompactList}\item 
 void \hyperlink{class_elib_1_1_epuck_ad74c7a6d5618da33d84aee5666d990c5}{GetIRData} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
@@ -163,9 +163,9 @@ static string \hyperlink{class_elib_1_1_epuck_ac4765eb73ad6925a5257a9ad53ba7bda}
 static string \hyperlink{class_elib_1_1_epuck_a0c2ac9894699214d11d34393f4c37681}{BTComHelp}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em It gets the BTCom help. \item\end{DoxyCompactList}\item 
 int \hyperlink{class_elib_1_1_epuck_af2dd18800c02f63e0c567abede754c1c}{Working}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Gets the number of unconfirmed commads called on \hyperlink{class_elib_1_1_epuck}{Epuck} instance. \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets the number of unconfirmed commands called on \hyperlink{class_elib_1_1_epuck}{Epuck} instance. \item\end{DoxyCompactList}\item 
 int \hyperlink{class_elib_1_1_epuck_ac6b633257eb484f1126878b343d0c850}{NotSended}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Gets the number of waiting commands in notSended queue to be send via Serial Communication(Bluetooth). \item\end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets the number of waiting commands in $notSended$ queue to be send via Serial Communication(Bluetooth). \item\end{DoxyCompactList}\item 
 string \hyperlink{class_elib_1_1_epuck_a33c661ddaae53d658ea4f36de2e0f835}{Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Gets the name specified in a constructor. \item\end{DoxyCompactList}\item 
 string \hyperlink{class_elib_1_1_epuck_ac267eba98589b346ef38a5ce942eff95}{Port}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
@@ -173,5 +173,5 @@ string \hyperlink{class_elib_1_1_epuck_ac267eba98589b346ef38a5ce942eff95}{Port}\
 bool \hyperlink{class_elib_1_1_epuck_a91d6eb45360b7338b65faa185f657f61}{Log}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Return a {\ttfamily bool} flag, which indicates whether logging is on. \item\end{DoxyCompactList}\item 
 TextWriter \hyperlink{class_elib_1_1_epuck_ac62091639e5474b54082b4c92d6f9fd5}{LogStream}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Enables sets or get TextWriter of e-\/Puck, where all actions of e-\/Puck are logged if loggin is turned on. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enables sets or get TextWriter of e-\/Puck, where all actions of e-\/Puck are logged if logging is turned on. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
