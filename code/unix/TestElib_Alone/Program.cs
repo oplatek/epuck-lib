@@ -1,4 +1,4 @@
-/*////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //       Elib library and TestElib console application              //
 //        for a remote controll of e-Puck robot.                    //
 //               As a bachelor study                                //
@@ -8,7 +8,7 @@
 //        Please use the code and application freely,               //
 //           but add a reference to this work.                      //
 //////////////////////////////////////////////////////////////////////
-///////////////////// Main begins at 76 ////////////////////////////*/
+///////////////////// Main begins at 76 //////////////////////////////
 using System;
 using Elib;
 using System.Threading;
@@ -31,15 +31,13 @@ namespace TestElib {
     /// etc. significatly influence the behaviour of functions!
     /// </summary>
     static void Main() {
-	/* 
-	* start commented block	
-	*
+	
       //if your e-Puck moves everything is ok.
       TestPortTurnAround("/dev/rfcomm0");
 
-	  *
-      * End commented block
-      */   
+      /* 
+      * start commented block	
+      *
 	 
       //see startEpuck and how easy is to make connection
       Epuck ada = startEpuck();      
@@ -80,6 +78,9 @@ namespace TestElib {
       //Appropriate end of session. (But not completely necessary.)
       endEpuckSession(ada);      
       
+      *
+      * End commented block
+      */   
     
     }
 		
