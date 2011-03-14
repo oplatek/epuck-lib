@@ -14,13 +14,14 @@ using System.Windows.Forms;
 namespace TestElib {
   partial class Program {
 
-    ///<summary>Tests if you are able to control e-Puck via Bluetooth using a specific port!
-    ///The ports are specific according settings of your computer. The two lines below shows the typical format.
-    ///string port="/dev/rfcomm0";//typical port name in Linux
-    ///string port = "COM4";//typical port name in Windows
-    ///if your e-Puck moves, than everything is ok.</summary>      
+    ///<summary>This function does not use ELib. 
+	/// It test whether you are able to control e-Puck via Bluetooth using a specific port!
+    /// The ports are specific according settings of your computer. The two lines below shows the typical format.
+    /// string port="/dev/rfcomm0";typical port name in Linux
+    /// string port = "COM4"; typical port name in Windows
+    /// If your e-Puck moves, than everything is ok.</summary>      
     public static void TestPortTurnAround(string port) {
-      SerialPort p = new SerialPort(port);//port e.g =="COM4"
+      SerialPort p = new SerialPort(port);//port e.g =="COM4" on Windows or "/dev/rfcomm0" on Linux
       p.Open();
       for (int i = 0; i < 10; ++i) {
         p.Write("d,-100,100\r");//turn around

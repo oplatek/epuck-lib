@@ -18,52 +18,9 @@ using System.IO;
 
 namespace TestElib {  
   partial class Program {
-    /// <summary>
-    /// Timeout for command, which set CamParameters
-    /// </summary>
-    static double toSetCam = 0.3;//0.3 is common
-    /// <summary>
-    /// Timeout for command, which asks for picture
-    /// </summary>
-    static double toImg = 0.5;//0.5 is common
-    /// <summary>
-    /// Timeout for command, which let e-Puck reset
-    /// </summary>
-    static double toReset = 1.5 ;//1.5 is common
-    /// <summary>
-    /// Timeout for all commands except the above.
-    /// </summary>
-    static double to = 0.1;
+    
 
-    /// <summary>
-    /// Creates an Epuck instance and starts the session with real e-Puck.
-    /// </summary>
-    /// <returns></returns>
-    /// <remarks>The ports are specific according settings of your computer. The two lines below shows the typical format.
-    /// <c>string port="/dev/rfcomm0";</c> is an example of port under Linux. Under windows looks serial port name like <c>string port = "COM4";</c>.
-    /// </remarks>
-    static Epuck startEpuck() { 
-      string port = "/dev/rfcomm0";//typical port name under Linux
-      //instanciation of Epuck can take a while (under 500ms)
-      return new Epuck(port, "Ada"); //Name it. It is usefull for logging and debugging.
-    }
-    /// <summary>
-    /// Terminates the session with e-Puck in a nice way.
-    /// </summary>
-    /// <param name="ada">An <see cref="Elib.Epuck"/> instance.</param>
-    static void endEpuckSession(Epuck ada) { 
-      //e-Puck should be stopped at the end
-      try {
-        IAsyncResult ar = ada.BeginStop(2*to, null, null);
-        ada.EndFtion(ar);
-      } catch (TimeoutElibException) {
-        Console.WriteLine("Catch the robot!");
-      }
-      //dispose can take a while (under 500ms)
-      ada.Dispose();
-    }
-
-    /*////////////////////////////////// Main function ///////////////////////////////////////////////////*/
+    //////////////////////////////////// Main function /////////////////////////////////////////////////////
 
     /// <summary>
     /// Presents all prepared examples, which introduce Elib dictionary.
@@ -73,10 +30,17 @@ namespace TestElib {
     /// Keep in mind, that  <see cref="Program.to"/>,<see cref="Program.toImg"/>
     /// etc. significatly influence the behaviour of functions!
     /// </summary>
-    static void Main() {   
+    static void Main() {
+	/* 
+	* start commented block	
+	*
       //if your e-Puck moves everything is ok.
-      //TestPortTurnAround("/dev/rfcomm0");
-      
+      TestPortTurnAround("/dev/rfcomm0");
+
+	  *
+      * End commented block
+      */   
+	 
       //see startEpuck and how easy is to make connection
       Epuck ada = startEpuck();      
 
@@ -115,6 +79,54 @@ namespace TestElib {
 
       //Appropriate end of session. (But not completely necessary.)
       endEpuckSession(ada);      
+      
+    
+    }
+		
+	
+	/// <summary>
+    /// Timeout for command, which set CamParameters
+    /// </summary>
+    static double toSetCam = 0.3;//0.3 is common
+    /// <summary>
+    /// Timeout for command, which asks for picture
+    /// </summary>
+    static double toImg = 0.5;//0.5 is common
+    /// <summary>
+    /// Timeout for command, which let e-Puck reset
+    /// </summary>
+    static double toReset = 1.5 ;//1.5 is common
+    /// <summary>
+    /// Timeout for all commands except the above.
+    /// </summary>
+    static double to = 0.5;
+
+    /// <summary>
+    /// Creates an Epuck instance and starts the session with real e-Puck.
+    /// </summary>
+    /// <returns></returns>
+    /// <remarks>The ports are specific according settings of your computer. The two lines below shows the typical format.
+    /// <c>string port="/dev/rfcomm0";</c> is an example of port under Linux. Under windows looks serial port name like <c>string port = "COM4";</c>.
+    /// </remarks>
+    static Epuck startEpuck() { 
+      string port = "/dev/rfcomm0";//typical port name under Linux
+      //instanciation of Epuck can take a while (under 500ms)
+      return new Epuck(port, "Ada"); //Name it. It is usefull for logging and debugging.
+    }
+    /// <summary>
+    /// Terminates the session with e-Puck in a nice way.
+    /// </summary>
+    /// <param name="ada">An <see cref="Elib.Epuck"/> instance.</param>
+    static void endEpuckSession(Epuck ada) { 
+      //e-Puck should be stopped at the end
+      try {
+        IAsyncResult ar = ada.BeginStop(2*to, null, null);
+        ada.EndFtion(ar);
+      } catch (TimeoutElibException) {
+        Console.WriteLine("Catch the robot!");
+      }
+      //dispose can take a while (under 500ms)
+      ada.Dispose();
     }
   }
 }

@@ -34,8 +34,7 @@ namespace Elib {
       try {
         port = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
         port.DiscardNull = false;
-        port.ReceivedBytesThreshold = 1;
-        port.DataReceived += new SerialDataReceivedEventHandler(Read);
+        port.ReceivedBytesThreshold = 1;        
         if (serialPortWriteTimeout < 0)
           port.WriteTimeout = SerialPort.InfiniteTimeout;
         else
@@ -44,7 +43,7 @@ namespace Elib {
           port.ReadTimeout = SerialPort.InfiniteTimeout;
         else
           port.ReadTimeout = serialPortReadTimeout;
-
+		port.DataReceived += new SerialDataReceivedEventHandler(Read);
       } catch (Exception e) {
         throw new SerialPortException("Opening port problem: " + portName, e);
       }
