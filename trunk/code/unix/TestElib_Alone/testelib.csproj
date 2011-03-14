@@ -44,8 +44,5 @@
     <Compile Include="TestEpuck.cs" />
     <Compile Include="TipsAndTricks.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="app.desktop" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
