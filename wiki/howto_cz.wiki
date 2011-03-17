@@ -1,32 +1,30 @@
 #summary Návod jak instalovat e-Puck a Elib knihovnu.
 #sidebar navigation
-    = Jak zprovoznit e-Pucka a Elib knihovna =
+    = Jak zprovoznit e-Pucka a Elib knihovnu =
     ==Požadavky==
     * Nabitý robot epuck.
     * Bluetooth
-    * PC s .Net Runtimem 2.0 a vyšším.
+    * PC s .Net Runtimem 2.0 a vyšším resp s Mono 2.0 a vyšším.
     * Elib lze použít z jakéhokoliv .Net jazyka.
-    * Lze spustit pod Linuxem pod Monem
-    * Zatím bude knihovna zveřejňována jako MS Visual Studio 2008 Solution.
-      Pokud byste někdo měli problémy se solutionem verze MS VS 2008 a chtěli 2005, dodám na požádání. 
       
     ==Doporučený postup==
-    * Nainstalujte Bluetooth. Stáhněte a rozbalte knihovnu pro Linux nebo Windows.
-    * Zapněte e-Pucka a Bluetooth. Spárujte PC a e-Pucka. Pin pro Bluetooth je na cedulce po obvodu robota. Pin je 4 místné číslo.
-    * Jděte do My Bluetooth places a otevřete sériové spojení. Windows Vám přidělí seriový port např. COM3. 
-    * Otevřete rozbalený solution v MSVS 2008, kde se nacházejí dva projekty. První je Elib, 
-    druhý testovací projekt TestElib.
-    * Otevřete soubor Program.cs v projektu TestElib a odkomentujte Examples.TestPort(); 
-    * Změňte port ve funkci main podle vámi zjištěného portu, přes který budete komunikovat s e-Puckem
-    * Najeďte nad Examples.TestPort(port) a po kliknutí pravým tlačítkem vyberte menu Go to definition. 
-    Ocitnete se v těle Examples.TestPort();       
+    * Nainstalujte Bluetooth. Stáhněte a rozbalte Elib knihovnu. Nezáleží zda pro Linux nebo Windows.
+    * Zapněte e-Pucka a Bluetooth. Spárujte PC a e-Pucka. Pin pro Bluetooth je 4 místné číslo na cedulce po obvodu robota.
+    * *Na Windows* Jděte do složky My Bluetooth places a otevřete sériové spojení.
+      Windows Vám přidělí seriový port např. COM3. 
+    * *Na Linuxu* Otevřete sériové spojení na spárovaném e-Pucku dle vaší instalace.
+    * Otevřete rozbalený Microsoft Visual Studio Solution (MSVS) ve složce TestElib.(Monodevelop umí otevřít MSVS) 
+    * Otevřete soubor Program.cs v projektu TestElib a odkomentujte TestPortAround("nazev portu"); 
+    * Změňte "název portu" ve funkci main podle Vámi zjištěného portu, přes který budete komunikovat s e-Puckem.
     * Nyní vyzkoušíme zda je robot připojený. Zmáčkněte Ctrl+F5, které spustí program. Robot by se měl pootočit.
-    * V případě úspěšsného spojení se rozsvítí oranžová diodka na e-Pucku. 
-    Pokud se Vám nedaří připojit pravděpodobně jste špatně zadali jméno portu. Jměna pod Windows jsou např. COM1,..,COM3,..
-    Jména pod Linuxem jsou /dev/rfcomm0,..,/dev/rfcomm2.
-    * Prohlídněte si ostatní funkce ve tříde Elib.Examples. Ukazují různé druhy použití třídy Epuck.
-    * Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestElib, který má již naincludované reference a "usingy" na knihovnu Elib.
-    * Pokud chcete používat knihovnu již zkompilovanou. Nastavte build na Release a spusťě ho Ctrl+B a na cestě .\elib\bin\Release\elib.dll najdete knihovnu.o
+    * V případě úspěšného spojení se rozsvítí oranžová diodka na e-Pucku. 
+      Pokud se Vám nedaří připojit pravděpodobně jste špatně zadali jméno portu. 
+      Jména pod Windows jsou např. COM1,..,COM3,..
+      Jména pod Linuxem jsou /dev/rfcomm0,..,/dev/rfcomm2.
+    * Prohlídněte si ostatní funkce v Projetku TestElib. Nejzajímavější se nachází v souboru Behaviour.cs 
+    * Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestElib, který má již naincludované reference a zkompilovanou knihovnu Elib, která se nachází také v adresáři TestElib.
+    * Pokud si chcete knihovnu upravit a zkompilovat. Otevřete adresář Elib nastavte build na Release, spusťtě build a 
+      výsledná knihovna elib.dll se nachází v adresáři Elib\bin\Release.
 
     ==Poznámky==
     === Jak rychle otestovat, že na e-Pucku běží BTcom? ===
@@ -54,9 +52,9 @@
         }}} 
 
     === Windows ===
-    * Spárovali jste e-Puck a váš počítač a otevřeli sériový port na portu Comm1
+    * Spárovali jste e-Puck a váš počítač a otevřeli sériový port na portu COM1
     * Otevřete Hyperterminál (Programy/Příslušenství/Systémové nástroje)
-    * Zadejte číslo sériového portu Comm1
+    * Zadejte číslo sériového portu COM1
     * Příkazy pro otestování BTCom verze 
       {{{
   V (zmáčkněte enter) 
@@ -80,4 +78,5 @@
     * Tutoriál jak nahrát program do e-Pucka: http://www.e-puck.org/index.php?option=com_phocadownload&view=file&id=16:btboot-epuck-gettingstarted&Itemid=38
     * Tiny Boatloader pro nahrávání hex souborů do e-Pucku: http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  
     * Hex soubor je zkompilovaný soubor s programem pro e-Pucka viz:
-      http://en.wikipedia.org/wiki/Intel_HEX  a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
+    http://en.wikipedia.org/wiki/Intel_HEX  a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
+    * Jak nainstalovat Bluetooth na Ubuntu: http://www.iamatechie.com/set-up-bluetooth-in-ubuntu/
