@@ -10,8 +10,7 @@
     ==Doporučený postup==
     * Nainstalujte Bluetooth. Stáhněte a rozbalte Elib knihovnu. Nezáleží zda pro Linux nebo Windows.
     * Zapněte e-Pucka a Bluetooth. Spárujte PC a e-Pucka. Pin pro Bluetooth je 4 místné číslo na cedulce po obvodu robota.
-    * *Na Windows* Jděte do složky My Bluetooth places a otevřete sériové spojení.
-      Windows Vám přidělí seriový port např. COM3. 
+    * *Na Windows* Jděte do složky My Bluetooth places a otevřete sériové spojení. Windows Vám přidělí seriový port např. COM3. 
     * *Na Linuxu* Otevřete sériové spojení na spárovaném e-Pucku dle vaší instalace.
     * Otevřete rozbalený Microsoft Visual Studio Solution (MSVS) ve složce TestElib.(Monodevelop umí otevřít MSVS) 
     * Otevřete soubor Program.cs v projektu TestElib a odkomentujte TestPortAround("nazev portu"); 
