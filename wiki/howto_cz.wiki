@@ -46,7 +46,8 @@
       {{{
         echo "Hr\n">/dev/rfcomm1   
       }}}
-      Vyberte si příkaz dle nápovědy. Např příkaz "Set motor speed left, right".      {{{
+      Vyberte si příkaz dle nápovědy. Např příkaz "Set motor speed left, right".      
+      {{{
         $ echo "D,500,-500r\n">/dev/rfcomm1 
         $ cat /dev/rfcomm1
       }}} 
@@ -69,7 +70,7 @@
       {{{ 
         H(zmáčkněte enter)   
       }}}
-      * Vyberte si příkaz dle nápovědy. Například příkaz Set motor speed left, right.
+      * Vyberte si příkaz dle nápovědy. Například příkaz "Set motor speed left, right."
       {{{ 
         D,500,-500 (Zmáčkněte enter)
       }}} 
