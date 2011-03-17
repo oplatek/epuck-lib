@@ -69,7 +69,7 @@
       {{{ 
         H(zmáčkněte enter)   
       }}}
-      * Vyberte si příkaz dle nápovědy. Například příkaz "Set motor speed left, right".
+      * Vyberte si příkaz dle nápovědy. Například příkaz Set motor speed left, right.
       {{{ 
         D,500,-500 (Zmáčkněte enter)
       }}} 
