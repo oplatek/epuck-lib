@@ -30,6 +30,8 @@
 
     == Reference ==
     * Tutoriál jak nahrát program do e-Pucka: http://www.e-puck.org/index.php?option=com_phocadownload&view=file&id=16:btboot-epuck-gettingstarted&Itemid=38
-    * http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  - Tiny Boatloader pro nahrávání hex souborů do e-Pucku 
-    * hex soubor je zkompilovaný soubor s programem pro e-Pucka viz http://en.wikipedia.org/wiki/Intel_HEX    a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
+    * Tiny Boatloader pro nahrávání hex souborů do e-Pucku: http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  
+    * Hex soubor je zkompilovaný soubor s programem pro e-Pucka viz:
+      http://en.wikipedia.org/wiki/Intel_HEX  
+      http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
 
