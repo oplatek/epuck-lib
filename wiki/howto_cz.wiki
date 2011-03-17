@@ -33,16 +33,20 @@
     === UNIX ===
     * Spárovali jste e-Puck a váš počítač a otevřeli sériový port na portu /dev/rfcomm1
     * Příkazy pro otestování BTCom verze 
-      {{{$ echo "Vr\n">/dev/rfcomm1 
-         $ cat /dev/rfcomm1
+      {{{
+        $ echo "Vr\n">/dev/rfcomm1 
+        $ cat /dev/rfcomm1
       }}} 
     * Verze 2.0 a 1.3 jsou otestované. Zobrazí-li se zpráva,
-      {{{v,Version 2.0.0 January 2008 }}}
+      {{{
+        v,Version 2.0.0 January 2008 
+      }}}
       vše je v pořádku. Můžete dále ovládat robota pomocí příkazů z terminálu.
     * *Ovládání*: Příkaz pro vypsání nápovědy{{{ echo "Hr\n">/dev/rfcomm1   }}}
       Vyberte si příkaz dle nápovědy. Např příkaz "Set motor speed left, right". 
-      {{{$ echo "D,500,-500r\n">/dev/rfcomm1 
-         $ cat /dev/rfcomm1
+      {{{
+        $ echo "D,500,-500r\n">/dev/rfcomm1 
+        $ cat /dev/rfcomm1
       }}} 
 
     === Windows ===
@@ -50,14 +54,18 @@
     * Otevřete Hyperterminál (Programy/Příslušenství/Systémové nástroje)
     * Zadejte číslo sériového portu Comm1
     * Příkazy pro otestování BTCom verze 
-      {{{V (zmáčkněte enter) 
+      {{{
+        V (zmáčkněte enter) 
       }}} 
     * Verze 2.0 a 1.3 jsou otestované. Zobrazí-li se zpráva,
-      {{{v,Version 2.0.0 January 2008 }}}
+      {{{
+        v,Version 2.0.0 January 2008 
+      }}}
       vše je v pořádku. Můžete dále ovládat robota pomocí příkazů z terminálu.
     * *Ovládání*: Příkaz pro vypsání nápovědy{{{ H(zmáčkněte enter)   }}}
       Vyberte si příkaz dle nápovědy. Např příkaz "Set motor speed left, right". 
-      {{{ D,500,-500 (Zmáčkněte enter)
+      {{{ 
+        D,500,-500 (Zmáčkněte enter)
       }}} 
 
     == Reference ==
@@ -65,4 +73,3 @@
     * Tiny Boatloader pro nahrávání hex souborů do e-Pucku: http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  
     * Hex soubor je zkompilovaný soubor s programem pro e-Pucka viz:
       http://en.wikipedia.org/wiki/Intel_HEX  a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
-
