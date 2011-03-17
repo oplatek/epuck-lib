@@ -25,5 +25,10 @@
     Pokud se Vám nedaří připojit pravděpodobně jste špatně zadali jméno portu. Jměna pod Windows jsou např. COM1,..,COM3,..
     Jména pod Linuxem jsou /dev/rfcomm0,..,/dev/rfcomm2.
     * Prohlídněte si ostatní funkce ve tříde Elib.Examples. Ukazují různé druhy použití třídy Epuck.
-    * Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestLib, který má již naincludované reference a "usingy" na knihovnu Elib.
+    * Pokud chcete vytvářet vlastní program pomocí knihovny, použijte projekt TestElib, který má již naincludované reference a "usingy" na knihovnu Elib.
     * Pokud chcete používat knihovnu již zkompilovanou. Nastavte build na Release a spusťě ho Ctrl+B a na cestě .\elib\bin\Release\elib.dll najdete knihovnu.o
+
+    == Reference ==
+    * http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  - Tiny Boatloader pro nahrávání hex souborů do e-Pucku 
+    * hex soubor je zkompilovaný soubor s programem pro e-Pucka viz http://en.wikipedia.org/wiki/Intel_HEX    a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
+
