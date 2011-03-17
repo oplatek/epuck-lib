@@ -1,4 +1,5 @@
-  * [howto_en HOWTO Install e-Puck(en)]
-  * [howto_cz HOWTO instalovat e-Puck(cz)]
+ == Navigation ==
+  * [howto_en Howto Install e-Puck(en)]
+  * [howto_cz Jak instalovat e-Puck(cz)]
   * [Elib The Elib library]
   * [TestElib The TestElib application]
