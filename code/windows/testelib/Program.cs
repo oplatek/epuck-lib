@@ -30,11 +30,11 @@ namespace TestElib {
     /// </summary>
     static void Main() {      
       //if your e-Puck moves everything is ok.
-      TestPortTurnAround("COM13");
+      //TestPortTurnAround("COM18");
       
       //see startEpuck and how easy is to make connection
-      Epuck ada = startEpuck();      
-
+      Epuck ada = startEpuck("COM18","Ada");      
+      
       //Do you want to see, where the limit of timeout is? Set your timeout and runs this simple functions below!
       ConsoleTestActuatorsTimeout(ada, to);//wait to answer before, in order to measure time (logging can measure time in much more convinient way.)
       ConsoleTestSensorsTimeout(ada, to); //same example for Sensors
@@ -54,19 +54,22 @@ namespace TestElib {
 
       Console.WriteLine("The behaviour last about 10 seconds pressing an enter cause to stop it after it finishes the square.");
       //Can throw an exception.
-      GoAndTurn(ada);//finite
+      //GoAndTurn(ada);//finite
 
       Go2Light(ada);//infinite behaviour
       //Epuck basic interface usage
-      KofGoXcm(ada,20,0.2);
+      //KofGoXcm(ada,20,0.2);
 
       // //////////////////// Tips and tricks //////////////////////////
       // See 5. chapter of bachelor thesis and the code for detail info.
-      SimulatingKof_over_IAsResult(ada);
+
+      //SimulatingKof_over_IAsResult(ada);
+      
       //Example of filtering red colour from image. Use e-Puck's box and try to capture e-Puck logo;-).
       ShowProcessedImage(ada);
+
       //Runs TestEpuck.ConsoleTestSensorsTimeout twice with different timeouts and logs to log file
-      LoggingExample(ada,"log");//If you do not specify your path, log is located in Debug or Release folder of this solution.
+      //LoggingExample(ada,"log");//If you do not specify your path, log is located in Debug or Release folder of this solution.
 
       //Appropriate end of session. (But not completely necessary.)
       endEpuckSession(ada);      
@@ -80,11 +83,11 @@ namespace TestElib {
     /// <remarks>The ports are specific according settings of your computer. The two lines below shows the typical format.
     /// <c>string port="/dev/rfcomm0";</c> is an example of port under Linux. Under windows looks serial port name like <c>string port = "COM4";</c>.
     /// </remarks>
-    static Epuck startEpuck() {
+    static Epuck startEpuck(string port,string name) {
       //typical port name under Windows is COM4
       //instanciation of Epuck can take a while (under 500ms)
       //Name it. It is usefull for logging and debugging while working with multiple robots
-      return new Epuck("COM13", "Ada");
+      return new Epuck(port,name);
     }
     /// <summary>
     /// Terminates the session with e-Puck in a nice way.
@@ -118,6 +121,6 @@ namespace TestElib {
     /// <summary>
     /// Timeout for all commands except the above.
     /// </summary>
-    static double to = 0.1;
+    static double to = 0.2;
   }
 }
