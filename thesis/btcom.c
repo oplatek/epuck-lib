@@ -1,9 +1,9 @@
-//All added comments to original source file beginn with 4 slashes e.g ////this is comment added in order to introduce Elib comments
-//// version 1.1.3. Following comment is copied from version 2.0, which is a compatible version for Elib library.
-////Not all commands of BTCom are used in Elib, because we have concentrated on textual transfer of commands.
-////A relevant source code of processing the textual commands is located between  lines 322 and  502 in "btcom.c" file.
-////The only binary command used by Elib is command to get a picture from e-Puck's camera.
-////The code begins at row 259 in "btcom.c.
+//// README!!!! All added comments to original source file beginn with 4 slashes e.g this comment
+//// Version 1.1.3. Following comment is copied from version 2.0, which is a compatible version for Elib library.
+//// Not all commands of BTCom are used in Elib, because we have concentrated on textual transfer of commands.
+//// A relevant source code of processing the textual commands is located between  lines 322 and  502 in "btcom.c" file.
+//// The only binary command used by Elib is command to get a picture from e-Puck's camera.
+//// The code begins at row 259 in "btcom.c.
 /*!\mainpage BTcom programm
  * \section intro_sec Introduction
  * BTcom is a simple text-based protocol that allows the PC to control the e-puck via Bluetooth. With BtCom, the PC can read
