@@ -23,7 +23,7 @@ namespace Elib {
     public const double MaxSpeed = 13;
     /// <summary>
     /// Eight Infra Red sensors are placed on the perimeter of e-Puck, which can be obtained on the 
-    /// instance e of e-Puck by <see cref="Epuck.BeginGetIRSensors(IAsyncResult)">e.BeginGetIRSensors(..)</see> method
+    /// instance e of e-Puck by <see cref="Epuck.BeginGetIR(IAsyncResult)">e.BeginGetIRSensors(..)</see> method
     /// or by <c>e.GetIRSensors(..)</c> method.
     /// IrSensorsDegrees describes the degrees measured from front(There is a cam.) As you can see most of the sensors are on the front side of e-Puck.
     /// </summary>
