@@ -6,10 +6,10 @@ all: ${NAME}.dvi
 # ${NAME}.pdf: ${NAME}.dvi
 #	dvipdfm -o $@ -p a4 -r 600 $<
 pdf:  ${NAME}.pdf
-	mv ${NAME}.pdf ../actual/${NAMEOUT}.pdf
+	mv ${NAME}.pdf actual/${NAMEOUT}.pdf
 	
 pdfview: 
-	acroread ../actual/${NAMEOUT}.pdf &
+	acroread actual/${NAMEOUT}.pdf &
 
 ${NAME}.pdf: ${NAME}.ps
 	ps2pdf $< $@
