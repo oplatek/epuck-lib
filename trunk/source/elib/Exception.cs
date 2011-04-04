@@ -5,8 +5,8 @@ using System.Text;
 namespace Elib {
 
   /// <summary>
-  /// The ElibEception is thrown, if an unusual situation happends in Elib.
-  /// It wraps all other exceptions, which are thrown from Elib
+  /// The ElibEception is thrown, if an unusual situation happens in Elib.
+  /// It wraps all other exceptions, which are thrown from Elib.
   /// </summary>
   public class ElibException : Exception {
     /// <summary>
@@ -44,7 +44,7 @@ namespace Elib {
     public TimeoutElibException(string message, Exception innerException) : base(message, innerException) { }
   }
   /// <summary>
-  /// If SerialPort throws any exception, than this exception wraps the original exception. After that the SerialPortException is thrown
+  /// If SerialPort class throws any exception, than this exception wraps the original exception. After that the SerialPortException is thrown.
   /// </summary>
   public class SerialPortException : ElibException {
     /// <summary>

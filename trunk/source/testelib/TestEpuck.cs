@@ -15,10 +15,10 @@ namespace TestElib {
   partial class Program {
 
     ///<summary>Tests if you are able to control e-Puck via Bluetooth using a specific port!
-    ///The ports are specific according settings of your computer. The two lines below shows the typical format.
-    ///string port="/dev/rfcomm0";//typical port name in Linux
-    ///string port = "COM4";//typical port name in Windows
-    ///if your e-Puck moves, than everything is ok.</summary>      
+    /// The ports are specific according settings of your computer. The two lines below shows the typical format.
+    /// string port="/dev/rfcomm0";//typical port name in Linux
+    /// string port = "COM4";//typical port name in Windows
+    /// if your e-Puck moves, than everything is OK.</summary>      
     public static void TestPortTurnAround(string port) {
       SerialPort p = new SerialPort(port);//port e.g =="COM4"
       p.Open();
@@ -34,7 +34,7 @@ namespace TestElib {
     }
 
     static volatile bool end;
-    ///<summary> Simple but unefficient way of waiting. <see cref="M:Program.KofOkfWaiting(Epuck)"/> for usage of  <see cref="EventWaitHandle"/>.</summary>
+    ///<summary> Simple but inefficient way of waiting. <see cref="M:Program.KofOkfWaiting(Epuck)"/> for usage of  <see cref="EventWaitHandle"/>.</summary>
     static void wait(int gap) {
       while (!end) { 
         Thread.Sleep(5); 
@@ -232,38 +232,37 @@ namespace TestElib {
         (nth) => { Console.WriteLine("Microphones (..) KO"); },
         null, 9*myto);
       //We have to synchronize at the end in order to avoid collisions of behaviour in next example functions.
-      //GetSpeed ellapses at last, because its has started the last from commands in ConsoleAsynchronousSensors and has biggest timeout to.
+      // GetSpeed elapses at last, because its has started the last from commands in ConsoleAsynchronousSensors and has biggest timeout to.
       end = false;
       ada.GetSpeed(
         (values, nth) => { Console.WriteLine("GetSpeed(..) OK {0}", ArrayToString<int>(values)); sensors = values; end = true; },
         (nth) => { Console.WriteLine("GetSpeed (..) KO"); end = true; },
         null, 10 * myto);
       //Prints time after asynchronous calls.
-      Console.WriteLine("See diference between asynchronous call and the time when the callback is called!!!!!! Compare this time {0} with next End of ConsoleAsynchronoutSensors time !!!!!!!!!", Stamp.Get());
+      Console.WriteLine("See difference between asynchronous call and the time when the callback is called!!!!!! Compare this time {0} with next End of ConsoleAsynchronoutSensors time !!!!!!!!!", Stamp.Get());
       wait(0);
       //Prints time after synchronization.
       Console.WriteLine("---------------- Test of ConsoleAsynchronoutSensors ends at {0} --------------",Stamp.Get());
     }
 
     #region ShowImage
-    //todo executable only on windows? 
     /// <summary>
     /// DEBUGGING FUNCTION!:
-    /// It shows the image grabbed from e-Puck in a Windows Forms window. It has to be run in Single Thread Appartment.
-    /// The openned window blocks the current thread until is closed. 
+    /// It shows the image grabbed from e-Puck in a Windows Forms window. It has to be run in Single Thread Apartment.
+    /// The opened window blocks the current thread until is closed. 
     /// </summary>
     /// <param name="e">The e.</param>
     [STAThread]
     public static void ShowImage(Epuck e) {
       //timeouts are big enough to set cam and get picture if the connection is working
       try {
-        IAsyncResult ar = e.BeginSetCam(40, 40, Zoom.Small, CamMode.Color, toSetCam, null, null);
+        IAsyncResult ar = e.BeginSetCam(40, 40, Zoom.Small, CamMode.Color, 1, null, null);
         e.EndFtion(ar);
         ar = e.BeginGetImage(toImg, null, null);
         Bitmap bm = e.EndGetImage(ar);
         ShowBitmap(bm);
       } catch (ElibException ex){
-        MessageBox.Show("The connection is demage. Try reconnect reconnect to e-Puck. \n Reason: "+ex.Message);
+        MessageBox.Show("The connection is damaged. Try reconnect reconnect to e-Puck. \n Reason: "+ex.Message);
       } 
     }
 
@@ -272,7 +271,7 @@ namespace TestElib {
       Application.EnableVisualStyles();
       //Application.SetCompatibleTextRenderingDefault(false);
       Application.Run(new Form1(bm));
-      //end gui
+      //end GUI
     }
     class Form1 : Form {
       private PictureBox pictureBox1;

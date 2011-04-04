@@ -41,9 +41,9 @@ namespace TestElib {
       /// <param name="ada"></param>
       public static void Bull(Epuck ada) {
         startBehaviour();
-        //modes are Big(not very usefull),Medium(useful big zoom),Small(most common lowest) zoom
-        //not nice: trimmed pictures are from top left area.
-        //best choice is zoom 8 a picture 40*40 because it can quite good se on a floor.      
+        //modes are Big(not very useful),Medium(useful big zoom),Small(most common lowest) zoom
+        //Note: trimmed pictures are from top left area.
+        //best choice is zoom 8 and width*height = 40*40       
         int width = 40, height = 40;
         try {
           IAsyncResult ar = ada.BeginSetCam(width, height, Zoom.Small, CamMode.Color, toSetCam, null, null);
@@ -185,9 +185,9 @@ namespace TestElib {
 
       #region Billiardball
       /// <summary>
-      /// A behaviour, where e-Puck bahaves like billiardball. It goes straight until it is very near an obstacle 
-      /// and then it bounce under same angle to other side.
-      /// If an <exception cref="TimeoutElibException">TimeoutElibException</exception> is thrown, than it invokes the function again.
+      /// E-Puck behaves like a billiard ball. It goes straight until it is very near an obstacle 
+      /// and then it "bounce" under same angle to other side.
+      /// If an <exception cref="TimeoutElibException">TimeoutElibException</exception> is thrown, then it invokes the function again.
       /// </summary>
       /// <param name="ada">An <see cref="Elib.Epuck"/> instance.</param>
       public static void Billiard(Epuck ada) {
@@ -219,12 +219,12 @@ namespace TestElib {
             else {
               //Does not use EndFtion, it safes the EventWaitHandle. We suppose, that it succeeds now or in next rounds.
               ada.BeginMotors(0.2, 0.2, to, null, null);
-              //The BeginGetIR command is enqueued in the same mommen as BeginMotors, therefor 2*to.
+              // The BeginGetIR command is enqueued in the same moment as BeginMotors, therefor double timeout is used.
               ada.BeginGetIR(2 * to, go2wall, ada);
             }
           } catch (ElibException e) {
             Console.WriteLine("Billiard restarted in go2wall, because of exception:\n" + e.Message);
-            //Invokes go2wall function again. It needs to be invoked by BeginGetIR command, because it expects ar_ with IR values.
+            // BeginGetIR invokes the go2wall function again. It needs to be invoked by BeginGetIR command, because it expects ar_ with IR values.
             ada.BeginGetIR(to, go2wall, ada);
           }
         } else
@@ -247,7 +247,7 @@ namespace TestElib {
             for (int i = 0; i < index.Length; ++i) {
               if (ir[0] - limit < ir[i]) {
                 if (index[i] == 2 || index[i] == 3) {
-                  //because in front of e-Puck (measured in go2wall(..)) is an obstacle and behind too.
+                  // In front of e-Puck (measured in go2wall(..)) is an obstacle and behind too!
                   ar = ada.BeginPlaySound(4, to, null, null);
                   ada.EndFtion(ar);
                   Console.WriteLine("e-Puck is stacked");
@@ -274,7 +274,7 @@ namespace TestElib {
           } catch (ElibException e) {
             Console.WriteLine("Billiard restarted in go2wall, because of exception:\n" + e.Message);
             //Invokes rebound function again. It needs to be invoked by BeginStop command, but it never fails on in, because no GetFtion is
-            //called after BeginStop. If the "stop" command is unconfirmed it continues going and than suddendly turnd around, if the connection has been recovered.
+            //called after BeginStop. If the "stop" command is unconfirmed it continues going and then suddenly turns around, if the connection has been recovered.
             ada.BeginStop(to, rebound, ada);
           }
         } else
@@ -285,7 +285,7 @@ namespace TestElib {
       #region GoAndTurn
       /// <summary>
       /// Simple behaviour, which let e-Puck make a square.
-      /// If an exception occured nothing is done.
+      /// If an exception occurred nothing is done.
       /// </summary>
       /// <param name="ada"></param>
       public static void GoAndTurn(Epuck ada) {
@@ -321,8 +321,8 @@ namespace TestElib {
          *   turnAround(ada, 1, 30, to);
          */
         /*perch(distance between wheels) of e-Puck is 5.3cm      
-         *The weels diameter is about 41 mm. The distance between the wheels is about 53 mm. Perimeter is about 128.8mm.
-         * The maximum speed of the wheels is about 1000 steps / s, which corresponds to one wheel revolution per second. 
+         *The wheels diameter is 41 mm. The distance between the wheels is 53 mm. Perimeter is 128.8mm.
+         * The maximum speed of the wheels is about 1000 steps / sec, which corresponds to one wheel revolution per second. 
          */
         double ms = Math.Abs(Epuck.Perch * Math.PI * ((double)degrees / 360) / (speed * Epuck.MaxSpeed) * 1000);
         speed *= degrees < 0 ? -1 : 1;
@@ -336,21 +336,13 @@ namespace TestElib {
         if (!endf) {
           int x = e.Working;
           if (x != 0)
-            throw new ElibException("It would be extremely inaccurate if commadns are still waiting to be sent");
-          double st0 = Stamp.Get();
+            throw new ElibException("It would be extremely inaccurate if commands are still waiting to be sent");
           IAsyncResult ar = e.BeginMotors(L, R, addto, null, null);
-          //debugging
           AsyncResultNoResult pom = (AsyncResultNoResult)ar;
-          //debugging
           pom.Name += "goXms";
           e.EndFtion(ar);
-          double st1 = Stamp.Get();
-          //heuristic
-          milisec -= (int)((st1 - st0) / 2);
-          Thread.Sleep(milisec);
           ar = e.BeginStop(addto, null, null);
           e.EndFtion(ar);
-          // debugging Console.WriteLine("{0} {1}", st0, st1);
         } else
           endconfirmed.Set();
       }
@@ -359,7 +351,7 @@ namespace TestElib {
       #region Go2Light
       /// <summary>Let the robot go to source of infra red light. E.g. a candle or lighter.
       ///After five unconfirmed commands, which are signaled by <exception cref="TimeoutElibException">TimeoutElibException</exception>,
-      ///this behavoiour ends.
+      /// The behaviour ends.
       /// </summary>
       /// <param name="ada">An <see cref="Elib.Epuck"/> instance.</param>
       public static void Go2Light(Epuck ada) {
@@ -381,10 +373,10 @@ namespace TestElib {
         ada = new Epuck(ada.Port, ada.Name);
         restarts--;
         if (restarts >= 0) {
-          Console.WriteLine("Remaining " + restarts.ToString() + " restart. Press enter to continue");
+          Console.WriteLine("Remaining " + restarts.ToString() + " restart(s). Press enter to continue");
           ada.BeginStop(to, recGotoLight, ada);
         } else {
-          Console.WriteLine("End of Go2Light, because all " + restarts_startingValue.ToString() + " has been used.");
+          Console.WriteLine("End of Go2Light, because all " + restarts_startingValue.ToString() + " restarts have been used.");
           Console.WriteLine("Behaviour has finished. Press enter to perform next actions");
           endf = true;
         }
@@ -470,9 +462,9 @@ namespace TestElib {
         x.Cm=cm;
         x.StartTime = Stamp.Get();
         x.End = new ManualResetEvent(false);
-        Console.WriteLine("KofGoXcm beginns");
+        Console.WriteLine("KofGoXcm begins");
         e.Motors(x.Speed, x.Speed, goOkf, goKof, x, to);
-        //It is an asynchronous invocation next function will be immediatly, we have to wait in order to avoid mixture of behaviours.
+        //It is an asynchronous invocation next function will be immediately, we have to wait in order to avoid mixture of behaviours.
         x.End.WaitOne();
       }
 
@@ -532,7 +524,7 @@ namespace TestElib {
         if (travelled(time,x.Speed) < (x.Cm+0.05))
           x.E.Stop(stopOkf, stopKof,x,to);
         else {
-          Console.WriteLine("We passed the destination spot, we returns back, Try repair the connection.");
+          Console.WriteLine("We missed the destination spot, we return back, try to repair the connection.");
           // Thread safe read and write to x.Speed
           x.Cm = travelled(x.StartTime,x.Speed) - x.Cm;
           x.Speed = -x.Speed;
@@ -548,7 +540,7 @@ namespace TestElib {
 
       #region Simulation Kof callback using IAsyncResult interface
       /// <summary>
-      /// An simpe example, that Kof callbacks can be simulated with IAsyncResult interface.
+      /// An simple example, that Kof callbacks can be simulated with IAsyncResult interface.
       /// Good for theory, useless for common usage.
       /// </summary>
       /// <param name="ada"></param>
@@ -569,7 +561,7 @@ namespace TestElib {
             Bitmap b = ada.EndGetImage(ar_);
             //simulate some work
             IAsyncResult ar = ada.BeginMotors(-1, 1, 0.1, null, null);
-            //simulate image processig
+            //simulate image processing
             Thread.Sleep(20);
             ada.EndFtion(ar);
 
