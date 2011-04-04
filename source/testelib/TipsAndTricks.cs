@@ -10,7 +10,7 @@ namespace TestElib {
     ///////////////////////////////// tips and tricks ////////////////////////////////////
     #region tips and tricks
 
-    /* * //usefull function for Wpf application in .Net 3.5 and higher, because there is used BitmapSource instead of Bitmap
+    /* * //useful function for WPF application in .Net 3.5 and higher, because there is used BitmapSource instead of Bitmap
     public static BitmapSource convertBitmap(System.Drawing.Bitmap source) {
         return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
             System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
@@ -18,7 +18,7 @@ namespace TestElib {
     * */
 
     /// <summary>
-    ///  Usefull function for logging or debugging, prints the value from a array using ToString() function.
+    ///  Useful function for logging or debugging, prints the value from a array using ToString() function.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="arr"></param>

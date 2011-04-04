@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace Elib {
   /// <summary>
-  /// An enumaration of possible action performed with LED on e-Puck.
+  /// An enumeration of possible action performed with LED on e-Puck.
   /// </summary>
   public enum Turn { 
     /// <summary>
@@ -27,7 +27,7 @@ namespace Elib {
     /// </summary>
     BaW = 0, 
     /// <summary>
-    /// Colour mode. One pixel corresponds to 2 bytes.
+    /// Colour mode. One pixel corresponds to 2 bytes= 5+6+5 ~ R+G+B
     /// </summary>
     Color = 1 };
   /// <summary>
@@ -35,7 +35,7 @@ namespace Elib {
   /// </summary>
   public enum Zoom {
     /// <summary>
-    /// The biggest zoom. Usefull for linear camera.
+    /// The biggest zoom. Useful for linear camera.
     /// </summary>
     Big = 1, 
     /// <summary>
@@ -53,6 +53,9 @@ namespace Elib {
   static class Commands {    
     public static readonly List<char> Commands_BigChars = new List<char> {'A','B','C','D','E','F','G','H','I','J','K','L','N',
       'O','P','Q','R','S','U','V','T'};    
+    /// <summary>
+    /// Private auxiliary function for light actuators.
+    /// </summary>
     static string Light(string Command, Turn how) {
       StringBuilder ans = new StringBuilder();
       ans.Append(Command); ans.Append(',');
@@ -66,7 +69,8 @@ namespace Elib {
     }
 
     /// <summary>
-    ///c_LedBody(how) returns command to set Body led on,off,inv.
+    ///c_LedBody(how) returns command to set Body led on, off
+    /// or into an inverse state.
     /// </summary>
     public static string c_LedBody(Turn how) {
       return Light("B", how); 
@@ -74,7 +78,7 @@ namespace Elib {
 
 
     /// <summary>
-    /// Returns a command to set front led on, off or into inverse state.
+    /// Returns a command to set front led on, off or into an inverse state.
     /// </summary>
     /// <param name="how">The how (on, off, inverse).</param>
     /// <returns></returns>
@@ -90,120 +94,68 @@ namespace Elib {
     /// <param name="how">The how(on, off, inverse).</param>
     public static string c_LedX(int n, Turn how) {
       if ((n < 0) || (n > 8))
-        throw new CommandArgsException("///c_LedOf returns command to set led with number n of. Acceptable values are 0..8");
+        throw new CommandArgsException("c_LedOf returns command to set led with number n of. Acceptable values are 0..8");
       return Light("L," + n, how);
     }
     
-    /// <summary>
-    ///Returns command to gets motors speed left,right.
+    /// <summary>  Returns a command to get the speed 
+    /// of left and right motor in steps per second. 
+    /// One step is 0.1288 mm   
     /// </summary>
     public static string c_GetSpeed() {
       return "E\r";
     }
     /// <summary>
-    ///Returns command to get Accelerometer values.
+    /// Returns a command to get the Accelerometer values.
     /// </summary>
     public static string c_GetAccelerometr() {
       return "A\r";
     }
+
     /// <summary>
-    ///Returns command to get selector position.
+    /// Returns command to get array of setting for IR port.
+    /// </summary>
+    public static string c_IrData() {
+      return "G\r";
+    }
+
+    /// <summary>
+    /// Returns a command to get the selector position.
     /// </summary>
     public static string c_SelectorPos() {
       return "C\r";
     }
     /// <summary>
-    ///Returns command to get array of IR.
+    /// Returns a command to get the array of light from IR sensors. 
+    /// The more light, the lower the values. Usual values above 3000 max 5000.
     /// </summary>
-    public static string c_IrData() {
-      return "G\r";
+    public static string c_Light() {
+      return "O\r";
     }
-       
     /// <summary>
-    ///Returns command to Calibrate proximity sensors.
+    /// Returns a command to get 8 values from IR sensors. In this mode they measure proximity. 
+    /// Values range from 570 to 4000. Values start increasing from 16 cm to 3900 at 0.5 cm.
+    /// </summary>
+    public static string c_Proximity() {
+      return "N\r";
+    }
+    /// <summary>
+    /// Returns command to Calibrate proximity IR sensors, which 
+    /// makes IR sensors more accurate for measuring proximity.
+    /// Calibration adapts sensor for different reflection of IR light 
+    /// in the current environment.
     /// </summary>
     public static string c_CalibrateIR() {
       return "K\r";
     }
 
     /// <summary>
-    /// Returns a command to set e-Puck's camera parameters.
+    /// Returns command to set Left and Right Motor speed. Acceptable values are from -1000 to 1000. 
+    /// Value of 1000 steps corresponds to 1 revolution per second. 
+    /// One step is 0.1288 mm.
     /// </summary>
-    /// <param name="width">The width.</param>
-    /// <param name="height">The height.</param>
-    /// <param name="mode">The mode can be 0 or 1.</param>
-    /// <param name="zoom">The zoom can be 1,4,8.</param>
-    ///<remarks> Last parametr is immutable and has to be set 3200 viz http://www.dailyenigma.org/e-puck-cam.shtml.
-    ///</remarks>
-    public static string c_SetCamPar(int width, int height, CamMode mode, Zoom zoom) {
-      const int MAX_CAM_RESOLUTION = 3200;            
-      int size = (((int)mode)+1) * height * width;
-      
-      if (size > MAX_CAM_RESOLUTION)
-        throw new CommandArgsException("///c_SetCamPar returns command to set cam parameters. Width, height can be only positive and width*height*mode<" + MAX_CAM_RESOLUTION.ToString());      
-      return "J," + ((int)mode).ToString() + "," + width.ToString() + "," + height.ToString() + "," + ((int)zoom).ToString() + "\r";      
-    }
-    
-    /// <summary>
-    ///Returns a command to get camera parametrs.
-    /// </summary>
-    public static string c_GetCamPar() {
-      return "I\r";
-    }
-    /// <summary>
-    ///Returns a command to get camera parametrs.
-    /// </summary>
-    public static string c_GetImage() {
-      return "-I\r"; //works in unmanaged code with type signed char like in c++. In c# is char unicode character and there is no - operator
-    }
-    /// <summary>
-    ///Returns a command to get help.
-    /// </summary>
-    public static string c_Help() {      
-      return "H\r";
-    }
-    /// <summary>
-    ///Returns a command to stop e-Puck and turn off leds.
-    /// </summary>
-    public static string c_Stop() {      
-      return "S\r";
-    }
-    /// <summary>
-    /// Returns a command to set encoders values.
-    /// One revolution corresponds to 1000 steps.
-    /// </summary>
-    /// <param name="LM">The encoder of the left wheel.</param>
-    /// <param name="RM">The encoder fo the right wheel.</param>
-    public static string c_SetMotorPosition(int LM, int RM) {      
-      return "P," + LM.ToString() + "," + RM.ToString() + "\r";
-    }
-    /// <summary>
-    ///c_getMotorPosition() returns command to get left and right values
-    ///about how many times left and right wheel spinned*1000.
-    /// </summary>
-    public static string c_GetMotorPosition() {
-      return "Q\r";
-    }
-    /// <summary>
-    ///Returns a command to get 8 values from sensors, which detect ambient light. The more light, the lower the values. 
-    ///Usual values above 3000 max 5000.
-    /// </summary>
-    public static string c_Light() {
-      return "O\r";
-    }
-    /// <summary>
-    ///Returns a command to get 8 values from proximity sensors. Values range from aprox. 570 to 4000. 
-    ///Values start increasing from about 16 cm, up to 3900 at 0.5 cm.
-    /// </summary>
-    public static string c_Proximity() {
-      return "N\r";
-    }
-
-    /// <summary>
-    /// Returns command to set Left and Right Motor speed. Acceptable values are from -1000 to 1000.
-    /// </summary>
-    /// <param name="LM">The left motor speed.</param>
-    /// <param name="RM">The right motor speed.</param>
+    /// <param name="LM">The left motor speed in steps per second.</param>
+    /// <param name="RM">The right motor speed in steps per second.</param>
     public static string c_Move(int LM, int RM) {      
       string command;
       if ((LM > 1000) || (LM < -1000) || (RM > 1000) || (RM < -1000))
@@ -218,13 +170,13 @@ namespace Elib {
       return "R\r";
     }
     /// <summary>
-    ///Returns a command to get version of E-puck BTcom.
+    /// Returns a command to help about version of E-puck BTcom.
     /// </summary>
     public static string c_Version() {
       return "V\r";
     }
     /// <summary>
-    ///Returns a command to get strenght of 3 speakers.
+    /// Returns a command to get amplitude of sound on e-Pucks's 3 speakers.
     /// </summary>
     public static string c_Microphones() {      
       return "U\r";

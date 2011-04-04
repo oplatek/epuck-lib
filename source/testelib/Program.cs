@@ -1,6 +1,6 @@
 ﻿/*////////////////////////////////////////////////////////////////////
 //       Elib library and TestElib console application              //
-//        for a remote controll of e-Puck robot.                    //
+//        for a remote control of e-Puck robot.                    //
 //               As a bachelor study                                //
 //              Ondrej Platek (c),2010                              //
 //                      and                                         //
@@ -21,56 +21,57 @@ namespace TestElib {
     /*////////////////////////////////// Main function ///////////////////////////////////////////////////*/
 
     /// <summary>
-    /// Presents all prepared examples, which introduce Elib dictionary.
+    /// The Main function presents all prepared examples, which introduce Elib dictionary.
     /// The examples are listed from the easiest to the more complex.
     /// The key section implements different behaviours.
-    /// Section tips and tricks presents not so common, but usefull code.
+    /// Section tips and tricks presents not so common, but useful code.
     /// Keep in mind, that  <see cref="Program.to"/>,<see cref="Program.toImg"/>
-    /// etc. significatly influence the behaviour of functions!
+    /// etc. significantly influence the behaviour of functions!
     /// </summary>
     static void Main() {      
-      //if your e-Puck moves everything is ok.
+      //if your e-Puck moves everything is OK.
       //TestPortTurnAround("COM18");
       
       //see startEpuck and how easy is to make connection
-      Epuck ada = startEpuck("COM18","Ada");      
+      Epuck ada = startEpuck("COM18","Ada");
       
-      //Do you want to see, where the limit of timeout is? Set your timeout and runs this simple functions below!
-      ConsoleTestActuatorsTimeout(ada, to);//wait to answer before, in order to measure time (logging can measure time in much more convinient way.)
+      // Do you want to see, where the limit of timeout is? 
+      // Set your timeout and runs this simple functions below!
+      ConsoleTestActuatorsTimeout(ada, to);//wait to answer before, in order to measure time (logging can measure time in much more convenient way.)
       ConsoleTestSensorsTimeout(ada, to); //same example for Sensors
       ConsoleAsynchronousSensors(ada, to);
-      
       Console.WriteLine("Close the new windows in order to continue with the TestElib program");
-      //Show you the biggest image, which can e-Puck capture.
+      // Show the biggest image, which can e-Puck capture.
       ShowImage(ada);
       
       // /////////////////////// Behaviours //////////////////////////////
       
-      // See 6. chapter of Ondrej Platek bachelor thesis and the code for detail info behaviours.
-      //Press enter to end it and go to next action
-      //IAsyncResult interface usage
+      // See Chapter 6 of Ondrej Platek bachelor thesis and the code for detail info behaviours.
+      // Press enter to end it and go to next action
+      // IAsyncResult interface usage
       Bull(ada);//infinite behaviour
       Billiard(ada);//infinite behaviour
 
       Console.WriteLine("The behaviour last about 10 seconds pressing an enter cause to stop it after it finishes the square.");
       //Can throw an exception.
-      //GoAndTurn(ada);//finite
+      GoAndTurn(ada);//finite
 
       Go2Light(ada);//infinite behaviour
-      //Epuck basic interface usage
-      //KofGoXcm(ada,20,0.2);
+      // Epuck basic interface usage
+      // KofGoXcm(ada,20,0.2);
 
       // //////////////////// Tips and tricks //////////////////////////
-      // See 5. chapter of bachelor thesis and the code for detail info.
+      // See Chapter 5 of bachelor thesis and the code for detail info.
 
-      //SimulatingKof_over_IAsResult(ada);
+      // SimulatingKof_over_IAsResult(ada);
       
-      //Example of filtering red colour from image. Use e-Puck's box and try to capture e-Puck logo;-).
+      // Example of filtering red colour from image. Use e-Puck's box and try to capture e-Puck logo;-).
+       
       ShowProcessedImage(ada);
-
-      //Runs TestEpuck.ConsoleTestSensorsTimeout twice with different timeouts and logs to log file
-      //LoggingExample(ada,"log");//If you do not specify your path, log is located in Debug or Release folder of this solution.
-
+      
+      // Runs TestEpuck.ConsoleTestSensorsTimeout twice with different timeouts and logs to log file
+      // LoggingExample(ada,"log");//If you do not specify your path, log is located in Debug or Release folder of this solution.
+      
       //Appropriate end of session. (But not completely necessary.)
       endEpuckSession(ada);      
     }
@@ -84,9 +85,9 @@ namespace TestElib {
     /// <c>string port="/dev/rfcomm0";</c> is an example of port under Linux. Under windows looks serial port name like <c>string port = "COM4";</c>.
     /// </remarks>
     static Epuck startEpuck(string port,string name) {
-      //typical port name under Windows is COM4
-      //instanciation of Epuck can take a while (under 500ms)
-      //Name it. It is usefull for logging and debugging while working with multiple robots
+      // Typical port name under Windows is COM4
+      // Instanciation of Epuck can take a while (under 500ms)
+      //Name it. It is useful for logging and debugging while working with multiple robots
       return new Epuck(port,name);
     }
     /// <summary>
@@ -94,7 +95,7 @@ namespace TestElib {
     /// </summary>
     /// <param name="robot">An <see cref="Elib.Epuck"/> instance.</param>
     static void endEpuckSession(Epuck robot) {
-      //e-Puck should be stopped at the end
+      // e-Puck should be stopped at the end
       try {
         IAsyncResult ar = robot.BeginStop(2 * to, null, null);
         robot.EndFtion(ar);
@@ -102,24 +103,24 @@ namespace TestElib {
       catch (TimeoutElibException) {
         Console.WriteLine("Catch the robot!");
       }
-      //dispose can take a while (under 500ms)
+      // disposal can take a while (under 500ms)
       robot.Dispose();
     }
 
     /// <summary>
-    /// Timeout for command, which set CamParameters
+    /// Timeout for the command, which sets CamParameters
     /// </summary>
-    static double toSetCam = 0.3;//0.3 is common
+    static double toSetCam = 0.3;//0.3 sec is common
     /// <summary>
-    /// Timeout for command, which asks for picture
+    /// Timeout for the command, which asks for picture
     /// </summary>
-    static double toImg = 0.7;//0.7 is common(depends on light condition)
+    static double toImg = 0.7;//0.7 sec is common(depends on light condition)
     /// <summary>
-    /// Timeout for command, which let e-Puck reset
+    /// Timeout for the command, which resets e-Puck
     /// </summary>
-    static double toReset = 1.5;//1.5 is common
+    static double toReset = 1.5;//1.5 sec is common
     /// <summary>
-    /// Timeout for all commands except the above.
+    /// Timeout for common commands
     /// </summary>
     static double to = 0.2;
   }

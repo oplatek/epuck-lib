@@ -30,8 +30,9 @@
   \end{figure}
 
 
-  In the middle is a connection panel. The connection panel is the only panel, which 
-  has activated controls after start up. To activate the rest of controls following actions are necessary to
+  In the middle there is a connection panel. The connection panel is the only panel, which 
+  has activated controls after start up. 
+  To activate the rest of controls the following actions are necessary to
   perform. At first pair e-Puck with your computer. Then connect the assigned virtual port with e-Puck.
   Fill the assigned port's name in text box above the "Connect" button and press
   the "Connect" button. After pressing the "Connect" button {\it Elib Joystick} is connected to e-Puck. 
@@ -67,9 +68,10 @@
   In order to start using the application connect it to the right serial port and press the "Connect" button.
   Automatically the position of selector is retrieved and the session is established.
 
-  At the beginning all sensors has an uninitialised value, which is represented as a question mark 
-  in most cases.
-  Press the relevant button for retrieving the sensors value, then the values are displayed in the nearest label.
+  At the beginning all sensors have uninitialised values, 
+  which is represented as a question marks in most cases.
+  Press the relevant button for retrieving the sensors value. 
+  The values will be displayed in the nearest label.
   There are two exceptions. The first exception is the visualization of e-Puck's IR sensors. 
   The values of the IR sensors
   are represented as the blue levels under check boxes on 
@@ -77,13 +79,15 @@
   The second  exception is the captured picture, which is displayed enlarged on the right side after its delivery.
 
   If the connection is too slow or the connection is lost, the application
-  is set to initial state. The e-Puck has to be reconnected in order to continue control the robot.
+  is set to initial state. The e-Puck has to be reconnected 
+  in order to continue controlling the robot.
 
-  Let us remark that checking the Refresh check box can cause the application to be a little unresponsive.	
+  Let us remark that checking the Refresh check box can 
+  cause the application to be a little unresponsive.	
   It is so, because the application waits on all values of sensors including an image synchronously.
-  On the other hand, a capture and transfer of an image, which was invoked by pressing "Get Pic" button,
-  is performed asynchronously. 
-  We have implemented both variants in order to compare the different attitudes.
+  On the other hand, a capture and transfer of an image, 
+  which was invoked by pressing "Get Pic" button, is performed asynchronously. 
+  We have implemented both variants in order to compare the different approaches.
 
   %\input{joystick_ko.TpX} %lost connection se zachycenym obrazkem a ruznymi hodnotami.
   \begin{figure}[!hbp]
@@ -103,15 +107,17 @@
    Joystick after Bluetooth connection failure.}
   \end{figure}
 
-  In Figure ~\ref{pic:joystick_ko} is shown the $Message Box$, which tells the user to reconnect the application
-  in order to continue.
+  Figure ~\ref{pic:joystick_ko} shows the $Message Box$, 
+  which tells the user to reconnect the application in order to continue.
 
-  The actuators of e-Puck can be controlled either by clicking on the appropriate button or check box. 
+  The actuators of e-Puck can be controlled either by clicking 
+  on the appropriate button or check box. 
   Another	possibility is to choose a value from combo box.
-  The last option is to specify the  convenient values to text boxes and press relevant $set$ button.
+  The last option is to specify the  convenient values 
+  to text boxes and press relevant $set$ button.
 
-  If you want to change the session press the $Disconnect$ button, choose some another port and 
-  press again "Connect" button or	just quit the application and restart it.
+  If you want to change the session press the $Disconnect$ button, choose another port and 
+  press again "Connect" button or just quit the application and restart it.
 
   \section{{\it Elib} usage in {\it Elib Joystick}}\label{sec:joystick_trick}
   {\it Elib Joystick} is a graphical application and does not use any sophisticated algorithms. 
@@ -122,11 +128,12 @@
   the main thread, where a message loop of the graphical application is running. The problem is solved,
   if all functions use the same thread in the so called Single Thread Apartment (STA).
 
-  {\it Elib Joystick} challenges this problem, because it presents a picture from e-Puck's camera, which is updated
-  in $Label$ of {\it Elib Joystick's} window. The callback, which updates the image, runs in a different thread.
-  The problem is solved by using a $Dispatcher$ class. $Dispatcher$ accepts functions, which updates
-  the GUI from different threads and calls them on the main thread in order to maintain STA character
-  of GUI. 
+  {\it Elib Joystick} must solve this problem, because it presents a picture from e-Puck's camera, 
+  which is updated in $Label$ of {\it Elib Joystick's} window. 
+  The callback, which updates the image, runs in a different thread.
+  The problem is solved by using a $Dispatcher$ class. $Dispatcher$ accepts functions, 
+  which update the GUI from different threads and calls them in the main thread 
+  in order to maintain STA character of GUI. 
 
 \begin{figure}[!hbp]
 \begin{lstlisting}
@@ -136,7 +143,7 @@ Ep.BeginGetImage(imgto,
   (ar) => {
     try {
     Bitmap bmp = Ep.EndGetImage(ar);
-    //delegate, which enwrap the lambda function, which updates the GUI
+    //delegate, which wraps the lambda function that updates the GUI
     updateUIDelegate d = delegate {
       //body of the callback, which updates the GUI
       pic.Source = Convert2BitmapSource(bmp,colorful);
@@ -160,7 +167,7 @@ Ep.BeginGetImage(imgto,
   because it is performed from main thread.
 
   The $guid$ $Dispatcher$ used in ~\ref{updispatcher} snippet is obtained from the main thread and
-  allows the passed functions to access objects as if they are be called from the main thread.
+  allows the passed functions to access objects as if they were called from the main thread.
 
 \begin{figure}[!hbp]
 \begin{lstlisting}

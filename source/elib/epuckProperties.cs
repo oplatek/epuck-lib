@@ -10,13 +10,13 @@ namespace Elib {
 
     #region Properties
     /// <summary>
-    /// Gets the number of unconfirmed commads called on Epuck instance. 
+    /// Gets the number of unconfirmed commands called on Epuck instance. 
     /// </summary>
     /// <value>The working.</value>
     public int Working { get { return ser.NotAnswered; } }
     
     /// <summary>
-    /// Gets the number of waiting commands in notSent queue to be send via Serial Communication(Bluetooth).
+    /// Gets the number of waiting commands in notSent queue = commands waiting to be sent via Serial Port(Bluetooth).
     /// </summary>
     /// <value>The waiting commands.</value>
     public int NotSent { get { return ser.NotSent; } }
@@ -28,7 +28,7 @@ namespace Elib {
     public string Name { get { return name; } }
 
     /// <summary>
-    /// Gets the port specified in a constructor.
+    /// Gets the port specified in the constructor.
     /// </summary>
     /// <value>The port.</value>
     public string Port { get { return port; } }
@@ -64,7 +64,7 @@ namespace Elib {
     public void StopLogging() { log = false; Thread.Sleep(20); }
 
     /// <summary>
-    /// Enables sets or get TextWriter of e-Puck, where all actions of e-Puck are logged if loggin is turned on.
+    /// Enables sets or get TextWriter of e-Puck, where all actions of e-Puck are logged if logging is turned on.
     /// </summary>
     public TextWriter LogStream {
       set { if (log) throw new ElibException("Stop logging before changing LogStream"); w = value; }

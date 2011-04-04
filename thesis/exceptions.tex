@@ -7,6 +7,7 @@
   with $SerialPortException$, which is inherited from $ElibException$.
   The original $System.TimeoutException$ can be retrieved from $InnerException$ property.
   See Figure ~\ref{exceptionuse}.
+
 \begin{figure}[!hbp]
 \begin{lstlisting}
 //in Elib all exception are caught like this exemplary exception
@@ -27,7 +28,9 @@ try {
 \caption{How to retrieve the original exception?}
 \label{exceptionuse}
 \end{figure}
-  In the example is shown how is every single exception wrapped and thrown again in {\it Elib}.
+
+  In the example there is shown how every single exception is wrapped 
+  and thrown again in {\it Elib}.
   There is also depicted a way how to extract the original exception.
   The code, which catch exceptions from {\it Elib} would print following output:
 \begin{verbatim}
@@ -48,12 +51,12 @@ public class ElibException : Exception {
 public class TimeoutElibException : ElibException { 
   //Only constructors are implemented
 }
-// If SerialPort throws any exception, than this exception wraps the original exception.
+// If SerialPort throws any exception, then this exception wraps the original exception.
 // After that the SerialPortException is thrown.
 public class SerialPortException : ElibException {
   //Only constructors are implemented
 }
-// ArgsException is thrown if wrong arguments are passed to function in Elib.
+// ArgsException is thrown if wrong arguments are passed to a function in Elib.
 public class ArgsException : ElibException {
   //Only constructors are implemented
 }
