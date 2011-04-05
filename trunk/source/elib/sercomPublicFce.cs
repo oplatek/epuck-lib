@@ -9,8 +9,8 @@ using System.Drawing;
 
 namespace Elib {
   /// <summary>
-  /// Sercom wraps serial communication with epuck. Main qoal is to keep application responsive, 
-  /// although the used serial communication could be very irresponsive.
+  /// Sercom wraps serial communication with e-Puck. Main goal is to keep application responsive, 
+  /// although the used serial communication could be very unresponsive.
   /// </summary>
   /// <remarks>
   /// More sent commands does not mean better control of e-Puck. 
@@ -24,7 +24,7 @@ namespace Elib {
   /// </para>
   /// <para>
   /// Luckily, most of commands are confirmed even with low battery until 0.1 seconds, but calibration of IR sensors, reseting e-Puck and shooting an image takes
-  /// much more time. Calibration of IR sensors takes more than 1 second. Reseting e-Puck last more than 1.5 s and capturing a colourful image 40 * 40 takes around 0.5 s.
+  /// much more time. Calibration of IR sensors takes more than 1 second. Reseting e-Puck last more than 1.5 sec and capturing a colourful image 40 * 40 takes around 0.5 sec.
   /// </para>
   /// </remarks>
   public partial class Sercom:IDisposable {
@@ -95,9 +95,9 @@ namespace Elib {
     }
 
     /// <summary>
-    /// Writes the specified command to notSended queue until it can be sent over serial connection.
+    /// Writes the specified command to notSent queue until it can be sent over serial connection.
     /// Each command waits until the commands before him arer sent and confirmed or
-    /// their timeout elaps.
+    /// their timeout elapses.
     /// ///
     /// </summary>
     /// <param name="command">The command.</param>
@@ -134,7 +134,7 @@ namespace Elib {
     ~Sercom() { Dispose(false);  }
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-    /// It takes under 0.5 s for e-Puck.
+    /// It takes under 0.5 sec for e-Puck.
     /// </summary>
     public void Dispose() { Dispose(true); GC.SuppressFinalize(this); }
     
@@ -198,7 +198,7 @@ namespace Elib {
     /// Raises Working event, if some handler is set.
     /// </summary>
     /// <param name="sender">Parameter for the event.</param>
-    /// <param name="ev">Paramter for the event.</param>
+    /// <param name="ev">Parameter for the event.</param>
     protected void OnWorking(object sender, EventArgs ev) {
       if (Working != null)
         Working(sender, ev);

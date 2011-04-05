@@ -1,9 +1,4 @@
-﻿/*#define checkSDlog
-#define testModeCalllog
-#define SendAsyncCalllog
-#define CheckNSlog
-*/
-using System;
+﻿using System;
 using System.IO;
 using System.IO.Ports;
 using System.Threading;
@@ -32,12 +27,9 @@ namespace Elib {
       if (command != null) {         
         if (Stamp.Get() > command.timeout) {
           callKof(command);
-#if SendAsyncCalllog
-          Console.WriteLine("on ansGuard {0} was called kof in SendAsyncCall(..)", command);
-#endif
         }
         else {
-          //wakes the thread that keeps an eye on every hshake_sended ansCommand if it is not expired
+          //wakes the thread that keeps an eye on every hshake_sent ansCommand if it is not expired
           hshake_sentUpdateWh.Reset();
           checkSDwh.Set();
           lock (hshake_sentLock) {              
@@ -55,12 +47,9 @@ namespace Elib {
             }else{
               port.Write(command.command);
             }
-#if SendAsyncCalllog
-            Console.WriteLine("Comand {0} was sended in SendAsyncCall(..)", command.command[0]);
-#endif
           }
           catch (Exception e) {
-            //IMPORTANT hshake_sended!=null  
+            //IMPORTANT hshake_sent!=null  
             Interlocked.Exchange<ansGuard>(ref hshake_sent, null);
             throw new SerialPortException("Serial port.write() is not responding in time for current timeout", e);
           }
@@ -90,14 +79,10 @@ namespace Elib {
           if (n.Elem.command == Commands.c_GetImage())
             Interlocked.Exchange<byte[]>(ref pics, null);
           callKof(n.Elem);
-#if CheckNSlog
-          Console.WriteLine("in CheckNS on ansguard {0} was called kof", n.Elem);
-          Console.WriteLine("hshake_sended in CheckNS {0}", hshake_sended);
-#endif
         }
         kofs.Clear();
 
-        //wake/sleep management (cooperates only if new element is added to notSended if deleted it wakes according its plan)
+        //wake/sleep management (cooperates only if new element is added to notSent if deleted it wakes according its plan)
         lock (notSentLock) {
           if (notSentSTS.Peek == null)
             nextTO = -1;
@@ -125,10 +110,7 @@ namespace Elib {
             if (hshake_sent != null) {
               if (Stamp.Get() > hshake_sent.timeout) {
                 callKof(hshake_sent);
-#if checkSDlog
-                Console.WriteLine("in checkSD was on hsshake_sended=={0} called kof in time {1} with to {2}", hshake_sended,stamp.Elapsed(),hshake_sended.timeout);
-#endif
-                //nextTo==-1 and checkSD will wait until next ansGuard will be sended
+                //nextTo==-1 and checkSD will wait until next ansGuard will be sent
                 hshake_sent = null;
                 Received(null, null);
               } else
@@ -142,7 +124,7 @@ namespace Elib {
         } else if (Stamp.Get() + 0.01 < nextTO) {
 			    checkSDwh.WaitOne((int)((nextTO - Stamp.Get()) * 1000),false);
         }
-        hshake_sentUpdateWh.WaitOne();//has to set up if you set up hshake_sended
+        hshake_sentUpdateWh.WaitOne();//has to set up if you set up hshake_sent
       }//end while loop      
     }//end of checkSD
 
@@ -153,12 +135,9 @@ namespace Elib {
           textModeCall();
         else          
           binaryModeRead();                         
-      }else
-#if MYDEBUG
-        Console.WriteLine("READY=false: {0}",port.ReadExisting());
-#else
+      }else {
         port.ReadExisting();
-#endif
+	  }
     }
     void binaryModeRead() {
       ansGuard a=null;      
@@ -299,11 +278,7 @@ namespace Elib {
           checkNSwh.Set();
           chN.Join(20);          
           chS.Join(20);         
-          lock (notSentLock) {
-#if MYDEBUG
-            Console.WriteLine("Dispose notSendedn Count {0}", notSended.Count);
-#endif
-            
+          lock (notSentLock) {           
             foreach (node n in notSent) {
               callKof(n.Elem);                
             }
@@ -312,7 +287,7 @@ namespace Elib {
           
         }//end if(disposing)
 
-        chN.Abort();//ends the thread that checks for run out commands in notSended
+        chN.Abort();//ends the thread that checks for run out commands in notSent
         chS.Abort();
 
         checkNSwh.Close();
@@ -327,7 +302,7 @@ namespace Elib {
     #endregion
   }
   /// <summary>
-  /// A wraper, which converts a system clock ticks to seconds. 
+  /// A wrapper, which converts a system clock ticks to seconds. 
   /// </summary>
   public static class Stamp {
     /// <summary>

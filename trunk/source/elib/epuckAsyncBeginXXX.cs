@@ -6,8 +6,10 @@ namespace Elib {
   /// </summary>
   /// <remarks>
   /// It uses <see cref="Sercom">Sercom</see> internally. 
-  /// Epuck can logg its commands. It has two interfaces(basic inteface 
-  /// based on <see cref="Sercom">Sercom</see> and <see cref="T:IAsyncResult">IAsyncResult interface</see></remarks>
+  /// Epuck class can log its commands. It has two interfaces
+  /// (basic interface  based on <see cref="Sercom">Sercom</see> 
+  /// and <see cref="T:IAsyncResult">IAsyncResult interface</see>
+  /// </remarks>
   partial class Epuck {
     static void received(object asyncNoResult) {
       AsyncResultNoResult ar = (AsyncResultNoResult)asyncNoResult; ar.SetAsCompleted(null, false); 
@@ -25,14 +27,14 @@ namespace Elib {
     static void failedBitmap(Bitmap pic,object asyncResult) {
       if (pic != null) {
         AsyncResult<Bitmap> ar = (AsyncResult<Bitmap>)asyncResult;        
-        ar.SetAsCompleted(pic, false, new TimeoutElibException(ar.Name + " commad has not been confirmed in timeout, but picture is still available in AsyncResult<Bitmap>"));
+        ar.SetAsCompleted(pic, false, new TimeoutElibException(ar.Name + " command has not been confirmed in timeout, but picture is still available in AsyncResult<Bitmap>"));
       } else
         failed(asyncResult);
     }
 
     /// <summary>
     /// It waits synchronously until the function, which created 
-    /// an instance of<see cref="AsyncResultNoResult">AsyncNoResult</see> <paramref name="ar"/>.
+    /// the instance of<see cref="AsyncResultNoResult">AsyncNoResult</see> <paramref name="ar"/> finished.
     /// </summary>
     /// <param name="ar">The ar.</param>
     public void EndFtion(IAsyncResult ar) {
@@ -46,28 +48,28 @@ namespace Elib {
     }
     /// <summary>
     /// It waits synchronously until a function, which asked for sensors with <see langword="int"/> values,
-    /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> ir order to get the <see langword="int"/> values.</summary>
+    /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> in order to get the <see langword="int"/> values.</summary>
     /// <param name="ar"> Instance of AsyncResult serves to connect the  BeginGet... function with <see cref="EndGetFtion(IAsyncResult)"/> method</param>
     /// <returns>Returns an array of <c>int</c>.</returns>
     public int[] EndGetFtion(IAsyncResult ar) { return EndSensors<int[]>(ar); }
     /// <summary>
     /// It waits synchronously until a function, which asked for sensors with <see langword="string"/> values,
-    /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> ir order to get the <see langword="string"/> values.</summary>
+    /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> in order to get the <see langword="string"/> values.</summary>
     /// <param name="ar"> Instance of AsyncResult serves to connect the  BeginGetInfo... function with <see cref="EndGetFtion(IAsyncResult)"/> method</param>
     /// <returns>Returns a <c>string</c>.</returns>
     public string EndInfoFtion(IAsyncResult ar) { return EndSensors<string>(ar); }
     /// <summary>
     /// It waits synchronously until a function, which asked for an image,
-    /// gets the <see cref="System.Drawing.Bitmap"/> or timeout elapses. It uses <paramref name="ar"/> ir order to get the <see cref="System.Drawing.Bitmap"/>.</summary>
+    /// gets the <see cref="System.Drawing.Bitmap"/> or timeout elapses. It uses <paramref name="ar"/> in order to get the <see cref="System.Drawing.Bitmap"/>.</summary>
     /// <param name="ar"> Instance of AsyncResult serves to connect the  BeginGet. function with <see cref="EndGetFtion(IAsyncResult)"/> method</param>
     /// <returns>Returns array of <c>int</c>.</returns>
     public Bitmap EndGetImage(IAsyncResult ar) { return EndSensors<Bitmap>(ar); }
     
     // ///////////////////////////////////// each single actuator and sensor function//////////////////////////////////////////////////////////////////////
     ///<summary>
-    /// It calibrates the IR sensors. Usufull for proximity measurement.
+    /// It calibrates the IR sensors. Useful for proximity measurement.
     /// </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -82,7 +84,7 @@ namespace Elib {
     /// </summary>
     /// <param name="leftMotor">Sets the left motor speed.</param>
     /// <param name="rightMotor">Sets the right motor speed.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -92,8 +94,8 @@ namespace Elib {
       Motors(leftMotor, rightMotor, received, failed, a, timeout);
       return a;
     }
-    /// <summary> It gets the current amplitude of sound.(Sound strenght}   </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <summary> It gets the current amplitude of sound.(Sound strength}   </summary>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -104,7 +106,7 @@ namespace Elib {
       return a;
     }
     /// <summary>It gets ambient light from IR sensors. The smaller values the greater light.</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -115,7 +117,7 @@ namespace Elib {
       return a;      
     }
     /// <summary> It stops e-Puck. </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -126,7 +128,7 @@ namespace Elib {
       return a;
     }
     /// <summary> It resets e-Puck. </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -138,7 +140,7 @@ namespace Elib {
     }
     /// <summary> It sets the front LED on or off. </summary>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -149,9 +151,9 @@ namespace Elib {
       return a;
     }
     /// <summary> It sets the state of LED on or off </summary>
-    /// <param name="num">Number of LED, which is changed.</param>
+    /// <param name="num">Number of the LED which is changed.</param>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -163,7 +165,7 @@ namespace Elib {
     }
     /// <summary>It changes state of the body light. </summary>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -174,10 +176,10 @@ namespace Elib {
       return a;
     }
     /// <summary>
-    /// It gets the IR data in in array of 6 ints with following meaning
+    /// It gets the IR data in in array of 6 integers with following meaning
     /// g IR check : 0x%x, address : 0x%x, data : 0x%x
     /// </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -188,7 +190,7 @@ namespace Elib {
       return a;
     }
     /// <summary> It shows Epuck's help. </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -199,11 +201,11 @@ namespace Elib {
       return a;
     }
     /// <summary>It sets the parameters of e-Puck's cam. Maximum size of a picture can be 3200 bytes and is computed width*height in black and white mode and width*height*2 in colourful mode. </summary>
-    /// <param name="width">The width of picture in pixels.</param>
-    /// <param name="height">The heightof picture in pixels</param>
-    /// <param name="zoom">The zoom of a cam. The lowest is the most usefull.</param>
+    /// <param name="width">The width of the picture in pixels.</param>
+    /// <param name="height">The height of the picture in pixels</param>
+    /// <param name="zoom">The zoom of a cam. The lowest is the most useful.</param>
     /// <param name="mode">The mode. Can be black and white or colourful.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -215,7 +217,7 @@ namespace Elib {
     }
     /// <summary> It begins to play sound. </summary>
     /// <param name="SoundNum">The sound num can be between 0 and 6. 6 turns speakers off other numbers plays a sound.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function called after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -226,7 +228,7 @@ namespace Elib {
       return a;
     }
     /// <summary> It gets the BTCom version. </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function called after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -237,7 +239,7 @@ namespace Elib {
       return a;
     }
     /// <summary>  It gets the proximity from IR sensors. Obstacle can be recongnized up to 4 cm.</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -248,7 +250,7 @@ namespace Elib {
       return a;
     }
     /// <summary>  It returns vector of values, which indicates the slant of e-Puck</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -259,7 +261,7 @@ namespace Elib {
       return a;
     }
     /// <summary>    It returns a selector position</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -270,7 +272,7 @@ namespace Elib {
       return a;
     }
     /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1 </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -281,7 +283,7 @@ namespace Elib {
       return a;
     }
     /// <summary> It gets current camera settings</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -292,7 +294,7 @@ namespace Elib {
       return a;
     }
     /// <summary>It gets a current state of encoders. It is measured in steps. It is nulled if the e-Puck resets.</summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -303,10 +305,10 @@ namespace Elib {
       return a;
     }
     /// <summary>   
-    /// It gets a picture. It can take a long time. E.g. piture 40*40 in colour takes more than 0.4 s under good light conditions
+    /// It gets a picture. It can take a long time. E.g. piture 40*40 in colour takes more than 0.4secunder good light conditions
     /// and with battery fully charged.
     /// </summary>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -316,6 +318,5 @@ namespace Elib {
       GetImage(receivedSensors<Bitmap>,failedBitmap,a,timeout);
       return a;
     }
-
   }
 }

@@ -101,7 +101,7 @@ namespace Elib {
       }
       public node Peek { get { return head; } }
       public long Count { get { return count; } private set { count = value; } }
-      public void Clear() {//todo efficiently  
+      public void Clear() {  
         head = end = null; 
         count = 0; 
       }
@@ -220,7 +220,6 @@ namespace Elib {
         head = null;
         end = null;
         count = 0;
-        //todo eficiently
       }
 
       #region IEnumarable

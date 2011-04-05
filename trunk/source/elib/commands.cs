@@ -53,9 +53,6 @@ namespace Elib {
   static class Commands {    
     public static readonly List<char> Commands_BigChars = new List<char> {'A','B','C','D','E','F','G','H','I','J','K','L','N',
       'O','P','Q','R','S','U','V','T'};    
-    /// <summary>
-    /// Private auxiliary function for light actuators.
-    /// </summary>
     static string Light(string Command, Turn how) {
       StringBuilder ans = new StringBuilder();
       ans.Append(Command); ans.Append(',');
@@ -69,8 +66,7 @@ namespace Elib {
     }
 
     /// <summary>
-    ///c_LedBody(how) returns command to set Body led on, off
-    /// or into an inverse state.
+    ///c_LedBody(how) returns command to set Body led on,off,inv.
     /// </summary>
     public static string c_LedBody(Turn how) {
       return Light("B", how); 
@@ -98,9 +94,8 @@ namespace Elib {
       return Light("L," + n, how);
     }
     
-    /// <summary>  Returns a command to get the speed 
-    /// of left and right motor in steps per second. 
-    /// One step is 0.1288 mm   
+    /// <summary>
+    /// Returns a command to get the speed of left and right motor.
     /// </summary>
     public static string c_GetSpeed() {
       return "E\r";
@@ -111,19 +106,76 @@ namespace Elib {
     public static string c_GetAccelerometr() {
       return "A\r";
     }
-
-    /// <summary>
-    /// Returns command to get array of setting for IR port.
-    /// </summary>
-    public static string c_IrData() {
-      return "G\r";
-    }
-
     /// <summary>
     /// Returns a command to get the selector position.
     /// </summary>
     public static string c_SelectorPos() {
       return "C\r";
+    }
+    /// <summary>
+    /// Returns a command to get the array of IR.
+    /// </summary>
+    public static string c_IrData() {
+      return "G\r";
+    }
+       
+    /// <summary>
+    /// Returns a command to set e-Puck's camera parameters.
+    /// </summary>
+    /// <param name="width">The width.</param>
+    /// <param name="height">The height.</param>
+    /// <param name="mode">The mode can be 0 or 1.</param>
+    /// <param name="zoom">The zoom can be 1,4,8.</param>
+    ///<remarks> Last parametr is immutable and has to be set 3200 viz http://www.dailyenigma.org/e-puck-cam.shtml.
+    ///</remarks>
+    public static string c_SetCamPar(int width, int height, CamMode mode, Zoom zoom) {
+      const int MAX_CAM_RESOLUTION = 3200;            
+      int size = (((int)mode)+1) * height * width;
+      
+      if (size > MAX_CAM_RESOLUTION)
+        throw new CommandArgsException("///c_SetCamPar returns command to set cam parameters. Width, height can be only positive and width*height*mode<" + MAX_CAM_RESOLUTION.ToString());      
+      return "J," + ((int)mode).ToString() + "," + width.ToString() + "," + height.ToString() + "," + ((int)zoom).ToString() + "\r";      
+    }
+    
+    /// <summary>
+    ///Returns a command to get camera parametrs.
+    /// </summary>
+    public static string c_GetCamPar() {
+      return "I\r";
+    }
+    /// <summary>
+    ///Returns a command to get camera parametrs.
+    /// </summary>
+    public static string c_GetImage() {
+      return "-I\r"; //works in unmanaged code with type signed char like in c++. In c# is char unicode character and there is no - operator
+    }
+    /// <summary>
+    ///Returns a command to get help.
+    /// </summary>
+    public static string c_Help() {      
+      return "H\r";
+    }
+    /// <summary>
+    ///Returns a command to stop e-Puck and turn off leds.
+    /// </summary>
+    public static string c_Stop() {      
+      return "S\r";
+    }
+    /// <summary>
+    /// Returns a command to set encoders values.
+    /// One revolution corresponds to 1000 steps.
+    /// </summary>
+    /// <param name="LM">The encoder of the left wheel.</param>
+    /// <param name="RM">The encoder fo the right wheel.</param>
+    public static string c_SetMotorPosition(int LM, int RM) {      
+      return "P," + LM.ToString() + "," + RM.ToString() + "\r";
+    }
+    /// <summary>
+    ///c_getMotorPosition() returns command to get left and right values
+    ///about how many times left and right wheel spinned*1000.
+    /// </summary>
+    public static string c_GetMotorPosition() {
+      return "Q\r";
     }
     /// <summary>
     /// Returns a command to get the array of light from IR sensors. 
