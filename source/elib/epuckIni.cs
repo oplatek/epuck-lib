@@ -18,7 +18,7 @@ namespace Elib {
     /// </summary>
     public const double Perch = 5.3;
     /// <summary>
-    /// 13cm/s is a maximum speed of e-Puck. In Elib 13cm/s corresponds to 1.00. From -1.00 to 1.00 is the speed linearly growing.
+    /// 13cm/s is a maximum speed of e-Puck. In Elib 13cm/sec corresponds to 1.00. From -1.00 to 1.00 is the speed linearly growing.
     /// </summary>
     public const double MaxSpeed = 13;
     /// <summary>
@@ -94,7 +94,7 @@ namespace Elib {
     /// Initializes a new instance of the <see cref="Epuck"/> class.
     /// </summary>
     /// <param name="Port">The port.</param>
-    /// <param name="Name">Choose a name for your robot! It is usefull for logging.</param>
+    /// <param name="Name">Choose a name for your robot! It is useful for logging.</param>
     public Epuck(string Port, string Name) {
       disposed = false;
       name = Name;
@@ -135,14 +135,6 @@ namespace Elib {
         disposed = true;
         ser.Dispose();
         ser=null;
-        /*if (wlog != null)
-          wlog.Close();
-        if(disp!=null)
-          disp.Close();
-         */ 
-        if (disposing) { //nth to dispose for subclasses
-          //todo do I miss to dispose some  managed objects
-        }
       }
     }
     /// <summary>

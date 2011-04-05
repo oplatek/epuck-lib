@@ -8,15 +8,15 @@ namespace Elib {
 
     #region IRSensors
     /// <summary>
-    /// A format of functions, which are  called when a command requireing an array of <c>int</c> is confirmed in timeout.
+    /// A format of functions, which are  called when a command requiring an array of <c>int</c> is confirmed in timeout.
     /// </summary>
     public delegate void OkfIntsSensors(int[] ans, object data);
     /// <summary>
-    /// A format of functions, which are  called when a command requireing a <c>string</c> is confirmed in timeout.
+    /// A format of functions, which are  called when a command requiring a <c>string</c> is confirmed in timeout.
     /// </summary>
     public delegate void OkfStringSensors(string ans, object data);
     /// <summary>
-    /// A format of functions, which are  called when a command requireing a <c>Bitmap</c> is confirmed in timeout.
+    /// A format of functions, which are  called when a command requiring a <c>Bitmap</c> is confirmed in timeout.
     /// </summary>
     public delegate void OkfKofCamSensor(Bitmap ans, object data);
     
@@ -41,7 +41,7 @@ namespace Elib {
           clr = System.Drawing.Color.FromArgb(px, px, px);
           res.SetPixel(line, col, clr);
         }
-      } else { //RGB565 imgae
+      } else { //RGB~565 image
         int redPix, greenPix, bluePix, index;
         byte pix1, pix2;
 
@@ -112,15 +112,15 @@ namespace Elib {
 
     /////////////////////////////////////single functions //////////////////////////
     /// <summary>   
-    /// It gets a picture. It can take a long time. E.g. piture 40*40 in colour takes more than 0.4 s under good light conditions
+    /// It gets a picture. It can take a long time. E.g. picture 40*40 in colour takes more than 0.4 sec under good light conditions
     /// and with battery fully charged.
     /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     ///<remarks>In contrary to other methods the <paramref name="kof"/> callback can be called later than <paramref name="timeout"/> elapses.
-    ///<paramref name="kof"/> is deleayed when data are still sending and the <paramref name="timeout"/> has already elapsed.</remarks>
+    ///<paramref name="kof"/> is delayed when data are still sending and the <paramref name="timeout"/> has already elapsed.</remarks>
     public void GetImage(OkfKofCamSensor okf, OkfKofCamSensor kof, object state, double timeout) {
       checkArgs(okf, kof, timeout);
       string fname="GetImage(..)";
@@ -132,20 +132,20 @@ namespace Elib {
           logf(Action.ok, fname);
         },
         (data) => {
-          if (ser.FullImgBytes)//kof is defined and a whole img was captured
+          if (ser.FullImgBytes)//kof is defined and a whole image was captured
             kof(parsingBitmap(ser.LastImgBytes, ser.WidthImg, ser.HeightImg, ser.ModeImg), data);
           else
-            kof(null, data);//img is demaged
+            kof(null, data);//image is damaged
           logf(Action.ko, fname);
         },
         state, timeout);
     }
 
-    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recongnized up to 4 cm.</summary>
+    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm.</summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetIR(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_Proximity(),8,okf,kof,state,timeout,"GetIR(..)");
     }
@@ -153,7 +153,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param> 
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param> 
     public void GetAccelerometer(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetAccelerometr(), 3, okf, kof, state, timeout, "GetAccelerometer(..)");
     }
@@ -161,7 +161,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetSelector(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_SelectorPos(), 1, okf, kof, state, timeout, "GetSelector(..)");
     }
@@ -169,7 +169,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[ sec ] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetSpeed(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetSpeed(), 2, okf, kof, state, timeout, "GetSpeed(..)");
     }
@@ -177,7 +177,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetCamParams(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetCamPar(), 5, okf, kof, state, timeout, "GetCamParams(..)");
     }
@@ -185,7 +185,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetLight(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_Light(), 8, okf, kof, state, timeout, "GetLight(..)");
     }
@@ -193,32 +193,32 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetEncoders(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetMotorPosition(), 2, okf, kof, state, timeout, "GetEncoders(..)");
     }
-    /// <summary> It gets the current amplitude of sound.(Sound strenght}   </summary>
+    /// <summary> It gets the current amplitude of sound.(Sound strength}   </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetMikes(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_Microphones(), 3, okf, kof, state, timeout, "GetMikes(..)");
     }
     
 
     //string answered sensors
-    //In fact it there are not actuators, althoug there are in a actuators region. 
+    //In fact it there are not actuators, although there are in a actuators region. 
     //Following functions look like sensor functions for an user. 
     //However they return text values, so they act like actuator function if you processing answers. 
     /// <summary>
-    /// It gets the IR data in in array of 3 ints converted from hex number with following meaning.
+    /// It gets the IR data in in array of 3 integers converted from hex number with following meaning.
     ///g IR check : 0x%x, address : 0x%x, data : 0x%x
     /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetIRData(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       string method="GetIRData(..)";
       checkArgs(okf, kof, timeout);
@@ -265,7 +265,7 @@ namespace Elib {
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
-    /// <param name="timeout">Timeout[ s ] set how long are you willing to wait for the command confirmation answer.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.</param>
     public void GetVersionInfo(OkfStringSensors okf, KofCallback kof, object state, double timeout) {
       stringSensors(Commands.c_Version(), okf, kof, state, timeout, "BTComVersion(..)");
     }

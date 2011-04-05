@@ -10,13 +10,13 @@ namespace Elib {
 
     #region Properties
     /// <summary>
-    /// Gets the number of unconfirmed commands called on Epuck instance. 
+    /// Gets the number of unconfirmed commands in the Epuck instance. 
     /// </summary>
     /// <value>The working.</value>
     public int Working { get { return ser.NotAnswered; } }
     
     /// <summary>
-    /// Gets the number of waiting commands in notSent queue = commands waiting to be sent via Serial Port(Bluetooth).
+    /// Gets the number of waiting commands in the notSent queue = commands waiting to be sent via Serial Port(Bluetooth).
     /// </summary>
     /// <value>The waiting commands.</value>
     public int NotSent { get { return ser.NotSent; } }

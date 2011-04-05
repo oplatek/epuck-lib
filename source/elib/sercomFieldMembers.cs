@@ -14,7 +14,7 @@ namespace Elib {
     Thread chS;
     
     myQueue notSent = new myQueue();
-    priorQueue notSentSTS=new priorQueue() ;//locks at not at notSendedLock
+    priorQueue notSentSTS=new priorQueue() ;//locks at not at notSentLock
     object notSentLock=new object();
 
     EventWaitHandle checkNSwh = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -43,7 +43,7 @@ namespace Elib {
 
     /// <summary>
     /// A receiving of image is treated differently.
-    /// The receiving of image continues if the timeout ellapses,
+    /// The receiving of image continues if the timeout elapses,
     /// but it is necessary to check whether new bytes are still receiving.
     /// Constant imgTo is specifies maximum gap in seconds between the time
     /// when last bytes are received and the new bytes are received.
@@ -52,7 +52,7 @@ namespace Elib {
     const double imgTo = 0.1;
 
     /// <summary>
-    /// Maximum of miliseconds, which are spent on unsuccessfull writing to serial port.
+    /// Maximum of miliseconds, which are spent on unsuccessful writing to serial port.
     /// Default value in ms, which is set to SerialPort. If serial port can not write for defWriteTimeout in ms, than Elib exception is raised.
     /// </summary>
     public const int defWriteTimeout = 2000;
@@ -63,10 +63,10 @@ namespace Elib {
     public const int defReadTimeout = SerialPort.InfiniteTimeout;    
     
 
-    /******* Sercom privateData structure    ******/
+    /******* Sercom private Data structure    ******/
     /// <summary>
     /// ansGuard stores OkfCallback, KofCallback design especially for commands
-    /// and uid for better identification and debugig
+    /// and uid for better identification and debugging
     /// </summary>
     sealed class ansGuard:IComparable<ansGuard> {
       public ansGuard(OkfCallbackDef okDf,KofCallbackDef koDf, string command_) {
@@ -149,7 +149,7 @@ namespace Elib {
     /// <summary>
     /// OkfCallback, KofCallback are delegates for methods, which should be
     /// passed together with commands to Sercom. These methods should implement
-    /// how to react if sended command was confirmed(OkfCallback) or the time 
+    /// how to react if sent command was confirmed(OkfCallback) or the time 
     /// for answer elapsed(KofCallback).
     /// </summary>
    
@@ -158,7 +158,7 @@ namespace Elib {
     /// <summary>
     /// OkfCallback, KofCallback are delegates for methods, which should be
     /// passed together with commands to Sercom. These methods should implement
-    /// how to react if sended command was confirmed(OkfCallback) or the time 
+    /// how to react if sent command was confirmed(OkfCallback) or the time 
     /// for answer elapsed(KofCallback).
     /// </summary>
     public delegate void KofCallback(object Data);
