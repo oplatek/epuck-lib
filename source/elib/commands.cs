@@ -66,7 +66,7 @@ namespace Elib {
     }
 
     /// <summary>
-    ///c_LedBody(how) returns command to set Body led on,off,inv.
+    ///c_LedBody(how) returns command to set Body led on, off, or into an inverse state.
     /// </summary>
     public static string c_LedBody(Turn how) {
       return Light("B", how); 
@@ -144,7 +144,7 @@ namespace Elib {
       return "I\r";
     }
     /// <summary>
-    ///Returns a command to get camera parametrs.
+    ///Returns a command to get picture from e-Puck's camera.
     /// </summary>
     public static string c_GetImage() {
       return "-I\r"; //works in unmanaged code with type signed char like in c++. In c# is char unicode character and there is no - operator

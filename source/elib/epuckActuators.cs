@@ -32,7 +32,8 @@ namespace Elib {
     }
     ////////////////////////////////////////single functions ///////////////////////////////////
     /// <summary>    
-    /// It sets the values of the encoder to its motors.
+    /// Sets encoders values.
+    /// One revolution corresponds to 1000 steps.
     /// </summary>
     /// <param name="leftMotor"></param>
     /// <param name="rightMotor"></param>
@@ -44,7 +45,10 @@ namespace Elib {
       actuators(Commands.c_SetMotorPosition(leftMotor,rightMotor), okf, kof, state, timeout, "SetEncoders(..)");
     }
     /// <summary>
-    /// It calibrates the IR sensors. Useful for proximity measurement.
+    /// Calibrates proximity IR sensors, which 
+    /// makes IR sensors more accurate for measuring proximity.
+    /// Calibration adapts sensor for different reflection of IR light 
+    /// in the current environment.
     /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
@@ -54,7 +58,7 @@ namespace Elib {
     public void CalibrateIRSensors(OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_CalibrateIR(), okf, kof, state, timeout, "CalibrateIRSensors(..)");
     }
-    /// <summary> It stops e-Puck. </summary>
+    /// <summary> It stops e-Puck and turn off leds. </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -62,7 +66,7 @@ namespace Elib {
     public void Stop(OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_Stop(),okf,kof, state, timeout, "Stop(..)");
     }
-    /// <summary> It resets e-Puck. </summary>
+    /// <summary> It restars e-Puck. </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -72,7 +76,9 @@ namespace Elib {
       actuators(Commands.c_Reset(), okf, kof, state, timeout, "Reset()");
     }
     /// <summary>
-    /// It sets the speed of e-Puck's motors.
+    /// Sets Left and Right Motor speed. Acceptable values are from -1 to 1. 
+    /// Value 1 corresponds to 1 revolution per second.
+    /// Wheels have perimeter of 12,88 mm.
     /// </summary>
     /// <param name="leftMotor">The left motor.</param>
     /// <param name="rightMotor">The right motor.</param>
@@ -86,10 +92,11 @@ namespace Elib {
       actuators(Commands.c_Move(LM, RM), okf,kof, state, timeout, "Motors(..)");
     }
     /// <summary>
-    /// It turns on or off one of 8 lights of e-Puck. 
+    /// Sets a LED with number n on,off or into inverse state. Acceptable values are 0..7(resp. 8).
+    /// Value 8 represents all diodes at once.
     /// </summary>
-    /// <param name="num">The num.</param>
-    /// <param name="how">The how.</param>
+    /// <param name="num">The nummber of the LED.</param>
+    /// <param name="how">Off/On/InverseState.</param>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -98,9 +105,9 @@ namespace Elib {
       actuators(Commands.c_LedX(num,how), okf, kof, state, timeout, "LightX(..)");      
     }
     /// <summary>
-    /// Turn off and on the body light.
+    /// Sets Body led on, off or into an inverse state.
     /// </summary>
-    /// <param name="how">The how.</param>
+    /// <param name="how">Off/On/InverseState.</param>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -109,9 +116,9 @@ namespace Elib {
         actuators(Commands.c_LedBody(how), okf, kof, state, timeout, "BodyLight(..)");      
     }
     /// <summary>
-    /// It turns the front LED front off and on. It can produce enough light capturing an picture.
+    /// Sets Front led on, off or into an inverse state. It can produce enough light for capturing close obstacles with e-Puck's camera.
     /// </summary>
-    /// <param name="how">The how.</param>
+    /// <param name="how">Off/On/InverseState.</param>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -120,7 +127,7 @@ namespace Elib {
         actuators(Commands.c_LedFront(how), okf, kof, state, timeout, "FrontLight(..)");      
     }
     /// <summary>
-    /// It sets the parameters of a cam. Maximum size of a picture can be 3200 bytes.
+    /// It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes.
     /// The picture size S = width*height  bytes; for black and white mode  
     /// S = width*height*2 bytes; for colourful mode.    
     /// </summary>
@@ -136,7 +143,7 @@ namespace Elib {
       actuators(Commands.c_SetCamPar(height, width, mode, zoom), okf, kof, state, timeout, "SetCam(..)");
     }
     /// <summary>
-    /// It begins to play sound.
+    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off"
     /// </summary>
     /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off. Other numbers play a sound.</param>
     /// <param name="okf">A function called after receiving the confirmation answer.</param>

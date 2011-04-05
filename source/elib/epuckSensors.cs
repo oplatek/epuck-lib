@@ -141,7 +141,10 @@ namespace Elib {
         state, timeout);
     }
 
-    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm.</summary>
+    /// <summary>
+    /// Returns a command to get 8 values from IR sensors. In this mode they measure proximity. 
+    /// Values range from 570 to 4000. Values start increasing from 16 cm to 3900 at 0.5 cm.
+    /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -165,7 +168,10 @@ namespace Elib {
     public void GetSelector(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_SelectorPos(), 1, okf, kof, state, timeout, "GetSelector(..)");
     }
-    /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1 </summary>
+    /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1. 
+    /// Value 1 corresponds to 1 revolution per second.
+    /// Wheels have perimeter of 12,88 mm.
+    /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -173,7 +179,9 @@ namespace Elib {
     public void GetSpeed(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetSpeed(), 2, okf, kof, state, timeout, "GetSpeed(..)");
     }
-    /// <summary> It gets current camera settings</summary>
+    /// <summary> It gets current camera settings.
+    /// The picture size S = width*height, black or white mode and zoom.
+    /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -181,7 +189,10 @@ namespace Elib {
     public void GetCamParams(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetCamPar(), 5, okf, kof, state, timeout, "GetCamParams(..)");
     }
-    /// <summary>It gets ambient light from IR sensors. The smaller values the greater light.</summary>
+    /// <summary>
+    /// Returns a command to get the array of light from IR sensors. 
+    /// The more light, the lower the values. Usual values above 3000 max 5000.
+    /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -197,7 +208,7 @@ namespace Elib {
     public void GetEncoders(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_GetMotorPosition(), 2, okf, kof, state, timeout, "GetEncoders(..)");
     }
-    /// <summary> It gets the current amplitude of sound.(Sound strength}   </summary>
+    /// <summary> It gets the current amplitude of sound from e-Puck's 3 speakers. </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
