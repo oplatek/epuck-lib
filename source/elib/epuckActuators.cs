@@ -143,7 +143,7 @@ namespace Elib {
       actuators(Commands.c_SetCamPar(height, width, mode, zoom), okf, kof, state, timeout, "SetCam(..)");
     }
     /// <summary>
-    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off"
+    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off
     /// </summary>
     /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off. Other numbers play a sound.</param>
     /// <param name="okf">A function called after receiving the confirmation answer.</param>
