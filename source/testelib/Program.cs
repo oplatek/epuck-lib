@@ -62,10 +62,8 @@ namespace TestElib {
 
       // //////////////////// Tips and tricks //////////////////////////
       // See Chapter 5 of bachelor thesis and the code for detail info.
-
-      // SimulatingKof_over_IAsResult(ada);
       
-      // Example of filtering red colour from image. Use e-Puck's box and try to capture e-Puck logo;-).
+      // Example of filtering red colour from image. Try it on e-Puck's box. Capture e-Puck logo;-).
        
       ShowProcessedImage(ada);
       
