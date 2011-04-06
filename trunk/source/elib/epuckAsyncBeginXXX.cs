@@ -67,6 +67,21 @@ namespace Elib {
     
     // ///////////////////////////////////// each single actuator and sensor function//////////////////////////////////////////////////////////////////////
     /// <summary>
+    /// Sets Left and Right Motor Encoder value.  
+    /// </summary>
+    /// <param name="leftMotor">Sets the left motor value.</param>
+    /// <param name="rightMotor">Sets the right motor value.</param>
+    /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
+    /// If the confirmation does not arrived until timeout exception is raised</param>
+    /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
+    /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
+    /// <returns></returns>
+    public IAsyncResult BeginSetEncoders(int leftTicks, int rightTicks, double timeout, AsyncCallback callback,Object state) {
+            AsyncResultNoResult a = new AsyncResultNoResult(callback, state,logFunctionNames["BeginSetEncoders(..)"]);
+      SetEncoders(leftTicks, rightTicks, received, failed, a, timeout);
+      return a;
+    }
+    /// <summary>
     /// Calibrates proximity IR sensors, which 
     /// makes IR sensors more accurate for measuring proximity.
     /// Calibration adapts sensor for different reflection of IR light 
@@ -236,7 +251,7 @@ namespace Elib {
       return a;
     }
     /// <summary>
-    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off"
+    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off.
     /// </summary>
     /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off other numbers plays a sound.</param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.

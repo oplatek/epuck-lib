@@ -12,7 +12,7 @@ to this thesis.
 \hyperlink{class_elib_1_1_epuck}{Epuck} class has two kind of methods.
 First kind is built on $IAsyncResult$ interface and is much more comfortable.
 It uses functions starting with "Begin" or function starting with "End" prefix.
-Usage of "Begin/End" functions is described in Section \ref{sec:iabehaviours}.
+Usage of "Begin/End" functions is described in Section \ref{sec:iabehaviors}.
 "Begin/End" functions are based on functions which uses $Okf$ and $Kof$ callbacks.
 See Section \ref{sec:touching} for explanation of how to use the functions with
 the basic $Okf/Kof$ interface.
@@ -56,10 +56,10 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em Functions, registered to this delegates, are called in both cases when a command requiring a {\ttfamily Bitmap} is confirmed in timeout or the timeout elapses. \item\end{DoxyCompactList}
   
   \item   delegate void \hyperlink{class_elib_1_1_epuck_a4bfdd999c7ba6f9e1282077b2cec1cc0}{OkfStringSensors} (string ans, object data)
-  \begin{DoxyCompactList}\small\item\em Functions, registered to this delegates, which are called when a command requiring a {\ttfamily string} is confirmed in timeout. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Functions, registered to this delegates, are called when a command requiring a {\ttfamily string} is confirmed in timeout. \item\end{DoxyCompactList}
   
   \item   delegate void \hyperlink{class_elib_1_1_epuck_a4bfdd999c7ba6f9e1282077b2cec1cc1}{KofCallback} (object data)
-  \begin{DoxyCompactList}\small\item\em Functions, registered to this delegates, which are called when a command of any kind \textbf{IS NOT confirmed} in timeout. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Functions, registered to this delegates,  are called when a command of any kind \textbf{IS NOT confirmed} in timeout. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Auxiliary methods od Basic $Epuck$ interface (end)
@@ -84,12 +84,15 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \item IAsyncResult \hyperlink{class_elib_1_1_epuck_aaa46f6da4226876036df7ba7cf2adca3}{BeginMotors} (double leftMotor, double rightMotor, double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em Sets Left and Right Motor speed. Acceptable values are from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
 
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a26cd19a983186a23aa49d99106bd33d1}{BeginGetSpeed} (double timeout, AsyncCallback callback, object state)
+  \begin{DoxyCompactList}\small\item\em It gets the current speed of both wheels. Speed on a wheel is from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
+
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_ad4cfe3776708816e78a7c53ddde315fb}{BeginGetEncoders} (double timeout, AsyncCallback callback, object state)
   \begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.
   It is nulled if the e-\/Puck resets. \item\end{DoxyCompactList}
 
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a26cd19a983186a23aa49d99106bd33d1}{BeginGetSpeed} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets the current speed of both wheels. Speed on a wheel is from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
+  \item void \hyperlink{class_elib_1_1_epuck_a8b0942a1bbf1b78115b0eedf77e535a0}{BeginSetEncoders} (int leftTicks, int rightTicks double timeout, AsyncCallback callback, object state)
+  \begin{DoxyCompactList}\small\item\em Sets encoders values. One revolution corresponds to 1000 steps. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Motors (end)
@@ -173,13 +176,13 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactItemize}
 
   \item void \hyperlink{class_elib_1_1_epuck_a74acd305895e4f07920c45f8b29a8157}{PlaySound} (int SoundNum, OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off". \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off. \item\end{DoxyCompactList}
 
   \item void \hyperlink{class_elib_1_1_epuck_a176a4a63393394a409220699635a9196}{GetMikes} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
   \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a2426a9ea921c131b8349204f477121f5}{BeginPlaySound} (int SoundNum, double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off". \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off. \item\end{DoxyCompactList}
 
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_af69a96d43cc6d5c47960061312d1937b}{BeginGetMikes} (double timeout, AsyncCallback callback, object state)
   \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
@@ -187,57 +190,6 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \end{DoxyCompactItemize}
 % subsubsection Sound (end)
 
-\subsubsection*{Stop and reset} % (fold)
-\label{ssub:Stop and reset}
-  \begin{DoxyCompactItemize}
-
-  \item void \hyperlink{class_elib_1_1_epuck_a6c5b0e61b183ae36e78251e51e32bdd3}{Stop} (OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
-
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a4b66f73064942aa5736dca815a427d01}{BeginStop} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
-
-  \item void \hyperlink{class_elib_1_1_epuck_a36714362701622796cf01480ea4f8d32}{Reset} (OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It restars e-\/Puck. \item\end{DoxyCompactList}
-
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a2b73b814db861ed276587db2fc124244}{BeginReset} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. \item\end{DoxyCompactList} 
-
-  \end{DoxyCompactItemize}
-% subsubsection Stop and reset (end)
-
-\subsubsection*{Extra} % (fold)
-\label{ssub:Extra}
-  \begin{DoxyCompactItemize}
-
-  \item  void \hyperlink{class_elib_1_1_epuck_a40c8bc92b67a20c3fdf891997eaf03c5}{GetSelector} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
-
-  \item   void \hyperlink{class_elib_1_1_epuck_ad74c7a6d5618da33d84aee5666d990c5}{GetIRData} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 3 integers converted from hex number with following meaning. IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
-
-  \item   void \hyperlink{class_elib_1_1_epuck_aa7ed3e58936ccd1d52596b318d5ddccc}{GetVersionInfo} (OkfStringSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It gets the BTCom version. \item\end{DoxyCompactList}
-
-  \item   void \hyperlink{class_elib_1_1_epuck_a1569f01c2a34bb335d2f7a12c94de891}{GetHelpInfo} (OkfStringSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
-
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a23a675feab78848b194cb49a01a30463}{BeginGetSelector} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
-
-  \item IAsyncResult \hyperlink{class_elib_1_1_epuck_a58eb06f216af8ff7a7203f0f91b010e7}{BeginGetIRData} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 6 integers with following meaning IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
-
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0146f79525c327c913b540186e354916}{BeginGetInfoVersion} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It gets the BTCom version from e-\/Puck. \item\end{DoxyCompactList}
-
-  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0e599fe0065ac2c3ae2ac96aede901c6}{BeginGetInfoHelp} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
-
-  \end{DoxyCompactItemize}
-% subsubsection Extra (end)
-
-  
  \subsubsection*{Accelerometer} % (fold)
  \label{ssub:Accelerometer}
   \begin{DoxyCompactItemize}
@@ -251,6 +203,64 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \end{DoxyCompactItemize}
  % subsubsection Accelerometer (end)
 
+\subsubsection*{Stop, reset} % (fold)
+\label{ssub:Stop and reset}
+  \begin{DoxyCompactItemize}
+
+  \item void \hyperlink{class_elib_1_1_epuck_a6c5b0e61b183ae36e78251e51e32bdd3}{Stop} (OkfActuators okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
+
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a4b66f73064942aa5736dca815a427d01}{BeginStop} (double timeout, AsyncCallback callback, Object state)
+  \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
+
+  \item void \hyperlink{class_elib_1_1_epuck_a36714362701622796cf01480ea4f8d32}{Reset} (OkfActuators okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped. \item\end{DoxyCompactList}
+
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a2b73b814db861ed276587db2fc124244}{BeginReset} (double timeout, AsyncCallback callback, Object state)
+  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped. \item\end{DoxyCompactList} 
+
+  \end{DoxyCompactItemize}
+% subsubsection Stop and reset (end)
+
+\subsubsection*{Textual info} % (fold)
+\label{ssub:Textual infon}
+  \begin{DoxyCompactItemize}
+  \item   void \hyperlink{class_elib_1_1_epuck_aa7ed3e58936ccd1d52596b318d5ddccc}{GetVersionInfo} (OkfStringSensors okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It gets the BTCom version. \item\end{DoxyCompactList}
+
+  \item   void \hyperlink{class_elib_1_1_epuck_a1569f01c2a34bb335d2f7a12c94de891}{GetHelpInfo} (OkfStringSensors okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
+
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0146f79525c327c913b540186e354916}{BeginGetInfoVersion} (double timeout, AsyncCallback callback, Object state)
+  \begin{DoxyCompactList}\small\item\em It gets the BTCom version from e-\/Puck. \item\end{DoxyCompactList}
+
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0e599fe0065ac2c3ae2ac96aede901c6}{BeginGetInfoHelp} (double timeout, AsyncCallback callback, Object state)
+  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
+
+  \end{DoxyCompactItemize}
+% subsubsection Textual info (end)
+
+\subsubsection*{Other commands} % (fold)
+\label{ssub:Extra}
+  \begin{DoxyCompactItemize}
+
+  \item  void \hyperlink{class_elib_1_1_epuck_a40c8bc92b67a20c3fdf891997eaf03c5}{GetSelector} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
+
+  \item   void \hyperlink{class_elib_1_1_epuck_ad74c7a6d5618da33d84aee5666d990c5}{GetIRData} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 3 integers converted from hex number with following meaning. IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
+
+  \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a23a675feab78848b194cb49a01a30463}{BeginGetSelector} (double timeout, AsyncCallback callback, object state)
+  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
+
+  \item IAsyncResult \hyperlink{class_elib_1_1_epuck_a58eb06f216af8ff7a7203f0f91b010e7}{BeginGetIRData} (double timeout, AsyncCallback callback, Object state)
+  \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 6 integers with following meaning IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
+
+  \end{DoxyCompactItemize}
+% subsubsection Extra (end)
+
+  
+
 
   
 
@@ -263,17 +273,10 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   const double \hyperlink{class_elib_1_1_epuck_a07d37f0deafd97a37fcea3c667ae3984}{Perch} = 5.3
   \begin{DoxyCompactList}\small\item\em Distance between wheels of an e-\/Puck in cm. \item\end{DoxyCompactList}\item 
   const double \hyperlink{class_elib_1_1_epuck_a1c5722494d807e6a5df5835c722d4d6e}{MaxSpeed} = 12.88
-  \begin{DoxyCompactList}\small\item\em 12.88 cm/s is a maximum speed of e-\/Puck. In \hyperlink{namespace_elib}{Elib} 13cm/sec corresponds to 1.00. From -\/1.00 to 1.00 is the speed linearly growing. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
-  \subsection*{Static Public Attributes}
-  \begin{DoxyCompactItemize}
-  \item 
-  static readonly int\mbox{[}$\,$\mbox{]} \hyperlink{class_elib_1_1_epuck_ab1705fc7b8cacf430c8060ee9c0b5d93}{IRSensorsDegrees} = new int\mbox{[}8\mbox{]} \{ 10, 30, 90, 170, 190, 270, 330, 350 \}
+  \begin{DoxyCompactList}\small\item\em 12.88 cm/s is a maximum speed of e-\/Puck. In \hyperlink{namespace_elib}{Elib} 13cm/sec corresponds to 1.00. From -\/1.00 to 1.00 is the speed linearly growing. \item\end{DoxyCompactList}
+  \item static readonly int\mbox{[}$\,$\mbox{]} \hyperlink{class_elib_1_1_epuck_ab1705fc7b8cacf430c8060ee9c0b5d93}{IRSensorsDegrees} = new int\mbox{[}8\mbox{]} \{ 10, 30, 90, 170, 190, 270, 330, 350 \}
   \begin{DoxyCompactList}\small\item\em Eight Infra Red sensors are placed on the perimeter of e-\/Puck, which can be obtained on the instance e of e-\/Puck by \hyperlink{}{e.BeginGetIRSensors(..)} method or by {\ttfamily e.GetIRSensors(..)} method. IrSensorsDegrees describes the degrees measured from front(There is a cam.) As you can see most of the sensors are on the front side of e-\/Puck. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
-  \subsection*{Protected Member Functions}
-  \begin{DoxyCompactItemize}
-  \item 
-  virtual void \hyperlink{class_elib_1_1_epuck_aa08e40a007e38ad47254d8f43f035798}{Dispose} (bool disposing)
-  \begin{DoxyCompactList}\small\item\em It releases unmanaged(Serial Port in \hyperlink{class_elib_1_1_sercom}{Sercom} and access to log file) and -\/ optionally -\/ managed resources. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
   \subsection*{Properties}
   \begin{DoxyCompactItemize}
   \item 
