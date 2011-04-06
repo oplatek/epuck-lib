@@ -141,10 +141,7 @@ namespace Elib {
         state, timeout);
     }
 
-    /// <summary>
-    /// Returns a command to get 8 values from IR sensors. In this mode they measure proximity. 
-    /// Values range from 570 to 4000. Values start increasing from 16 cm to 3900 at 0.5 cm.
-    /// </summary>
+    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm.</summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -190,8 +187,9 @@ namespace Elib {
       intArrSensors(Commands.c_GetCamPar(), 5, okf, kof, state, timeout, "GetCamParams(..)");
     }
     /// <summary>
-    /// Returns a command to get the array of light from IR sensors. 
-    /// The more light, the lower the values. Usual values above 3000 max 5000.
+    /// Returns a command to get the array of integers from IR sensors. 
+    /// The more ambient light, the lower the values. Usual values are above 3000.
+    /// Maximal value is 5000.
     /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
@@ -200,7 +198,7 @@ namespace Elib {
     public void GetLight(OkfIntsSensors okf, KofCallback kof, object state, double timeout) {
       intArrSensors(Commands.c_Light(), 8, okf, kof, state, timeout, "GetLight(..)");
     }
-    /// <summary>It gets a current state of encoders. It is measured in steps. It is nulled if the e-Puck resets.</summary>
+    /// <summary>It gets a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.It is nulled if the e-Puck resets.</summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -224,7 +222,7 @@ namespace Elib {
     //However they return text values, so they act like actuator function if you processing answers. 
     /// <summary>
     /// It gets the IR data in in array of 3 integers converted from hex number with following meaning.
-    ///g IR check : 0x%x, address : 0x%x, data : 0x%x
+    /// IR check : 0x%x, address : 0x%x, data : 0x%x
     /// </summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation of command has not been received.</param>
@@ -264,7 +262,7 @@ namespace Elib {
       return res;
     }
 
-    /// <summary> It shows Epuck's help. </summary>
+    /// <summary> It shows Epuck's help sent from e-Puck. </summary>
     /// <param name="okf">The okf.</param>
     /// <param name="kof">The kof.</param>
     /// <param name="state">The state.</param>

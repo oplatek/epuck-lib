@@ -66,8 +66,11 @@ namespace Elib {
     public Bitmap EndGetImage(IAsyncResult ar) { return EndSensors<Bitmap>(ar); }
     
     // ///////////////////////////////////// each single actuator and sensor function//////////////////////////////////////////////////////////////////////
-    ///<summary>
-    /// It calibrates the IR sensors. Useful for proximity measurement.
+    /// <summary>
+    /// Calibrates proximity IR sensors, which 
+    /// makes IR sensors more accurate for measuring proximity.
+    /// Calibration adapts sensor for different reflection of IR light 
+    /// in the current environment.
     /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -80,7 +83,9 @@ namespace Elib {
       return a;
     }
     /// <summary>
-    /// It sets the speed of e-Puck's motors.
+    /// Sets Left and Right Motor speed. Acceptable values are from -1 to 1. 
+    /// Value 1 corresponds to 1 revolution per second.
+    /// Wheels have perimeter of 12,88 mm.
     /// </summary>
     /// <param name="leftMotor">Sets the left motor speed.</param>
     /// <param name="rightMotor">Sets the right motor speed.</param>
@@ -94,7 +99,7 @@ namespace Elib {
       Motors(leftMotor, rightMotor, received, failed, a, timeout);
       return a;
     }
-    /// <summary> It gets the current amplitude of sound.(Sound strength}   </summary>
+    /// <summary> It gets the current amplitude of sound from e-Puck's 3 speakers. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -105,7 +110,11 @@ namespace Elib {
       GetMikes(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
-    /// <summary>It gets ambient light from IR sensors. The smaller values the greater light.</summary>
+    /// <summary>
+    /// Returns a command to get the array of integers from IR sensors. 
+    /// The more ambient light, the lower the values. Usual values are above 3000.
+    /// Maximal value is 5000.
+    /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -116,7 +125,7 @@ namespace Elib {
       GetLight(receivedSensors<int[]>, failed, a, timeout);
       return a;      
     }
-    /// <summary> It stops e-Puck. </summary>
+    /// <summary> It stops e-Puck and turn off leds. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -127,7 +136,7 @@ namespace Elib {
       Stop(received, failed, a, timeout);
       return a;
     }
-    /// <summary> It resets e-Puck. </summary>
+    /// <summary> It restarts e-Puck. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -138,7 +147,9 @@ namespace Elib {
       Reset(received, failed, a, timeout);
       return a;
     }
-    /// <summary> It sets the front LED on or off. </summary>
+    /// <summary>
+    /// Sets Front led on, off or into an inverse state. It can produce enough light for capturing close obstacles with e-Puck's camera.
+    /// </summary>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -150,7 +161,10 @@ namespace Elib {
       FrontLight(how, received, failed, a, timeout);
       return a;
     }
-    /// <summary> It sets the state of LED on or off </summary>
+    /// <summary>
+    /// Sets a LED with number n on,off or into inverse state. Acceptable values are 0..7(resp. 8).
+    /// Value 8 represents all diodes at once.
+    /// </summary>
     /// <param name="num">Number of the LED which is changed.</param>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
@@ -163,7 +177,9 @@ namespace Elib {
       LightX(num,how, received,failed,a,timeout);
       return a;
     }
-    /// <summary>It changes state of the body light. </summary>
+    /// <summary>
+    /// Sets Body led on, off or into an inverse state.
+    /// </summary>
     /// <param name="how"><see cref="Turn"/> change state of the LED? </param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -177,7 +193,7 @@ namespace Elib {
     }
     /// <summary>
     /// It gets the IR data in in array of 6 integers with following meaning
-    /// g IR check : 0x%x, address : 0x%x, data : 0x%x
+    ///  IR check : 0x%x, address : 0x%x, data : 0x%x
     /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -189,7 +205,7 @@ namespace Elib {
       GetIRData(receivedSensors<int[]> , failed, a, timeout);
       return a;
     }
-    /// <summary> It shows Epuck's help. </summary>
+    /// <summary> It shows Epuck's help sent from e-Puck. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -200,7 +216,11 @@ namespace Elib {
       GetHelpInfo(receivedSensors<string>, failed, a, timeout);
       return a;
     }
-    /// <summary>It sets the parameters of e-Puck's cam. Maximum size of a picture can be 3200 bytes and is computed width*height in black and white mode and width*height*2 in colourful mode. </summary>
+    /// <summary>
+    /// It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes.
+    /// The picture size S = width*height  bytes; for black and white mode  
+    /// S = width*height*2 bytes; for colourful mode.    
+    /// </summary>
     /// <param name="width">The width of the picture in pixels.</param>
     /// <param name="height">The height of the picture in pixels</param>
     /// <param name="zoom">The zoom of a cam. The lowest is the most useful.</param>
@@ -215,8 +235,10 @@ namespace Elib {
       SetCam(width,height,zoom,mode, received, failed, a, timeout);
       return a;
     }
-    /// <summary> It begins to play sound. </summary>
-    /// <param name="SoundNum">The sound num can be between 0 and 6. 6 turns speakers off other numbers plays a sound.</param>
+    /// <summary>
+    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off"
+    /// </summary>
+    /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off other numbers plays a sound.</param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function called after the confirmation answer is received.</param>
@@ -227,7 +249,7 @@ namespace Elib {
       PlaySound(SoundNum,received, failed, a, timeout);
       return a;
     }
-    /// <summary> It gets the BTCom version. </summary>
+    /// <summary> It gets the BTCom version from e-Puck.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function called after the confirmation answer is received.</param>
@@ -238,7 +260,7 @@ namespace Elib {
       GetVersionInfo(receivedSensors<string>, failed, a, timeout);
       return a;
     }
-    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recongnized up to 4 cm.</summary>
+    /// <summary>  It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -271,7 +293,10 @@ namespace Elib {
       GetSelector(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
-    /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1 </summary>
+    /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1. 
+    /// Value 1 corresponds to 1 revolution per second.
+    /// Wheels have perimeter of 12,88 mm.
+    /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -282,7 +307,9 @@ namespace Elib {
       GetSpeed(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
-    /// <summary> It gets current camera settings</summary>
+    /// <summary> It gets current camera settings.
+    /// The picture size S = width*height, black or white mode and zoom.
+    /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -293,7 +320,7 @@ namespace Elib {
       GetCamParams(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
-    /// <summary>It gets a current state of encoders. It is measured in steps. It is nulled if the e-Puck resets.</summary>
+    /// <summary>It gets a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.It is nulled if the e-Puck resets.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -305,8 +332,8 @@ namespace Elib {
       return a;
     }
     /// <summary>   
-    /// It gets a picture. It can take a long time. E.g. piture 40*40 in colour takes more than 0.4secunder good light conditions
-    /// and with battery fully charged.
+    /// It gets a picture. It can take a long time. E.g. picture 40*40 in colour takes more than 0.4 sec under 
+    /// good light conditions and with battery fully charged.
     /// </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>

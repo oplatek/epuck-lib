@@ -33,11 +33,6 @@ namespace TestElib {
       return b.ToString();
     }
 
-    public static void KofOkfWaiting() { 
-      //todo
-      throw new NotImplementedException();
-    }
-
     #region Example of Image Processing
 
     public static void ShowProcessedImage(Epuck ada) {

@@ -18,9 +18,9 @@ namespace Elib {
     /// </summary>
     public const double Perch = 5.3;
     /// <summary>
-    /// 13cm/s is a maximum speed of e-Puck. In Elib 13cm/sec corresponds to 1.00. From -1.00 to 1.00 is the speed linearly growing.
+    /// 12.88 cm/s is a maximum speed of e-Puck. In Elib 13cm/sec corresponds to 1.00. From -1.00 to 1.00 is the speed linearly growing.
     /// </summary>
-    public const double MaxSpeed = 13;
+    public const double MaxSpeed = 12.88;
     /// <summary>
     /// Eight Infra Red sensors are placed on the perimeter of e-Puck, which can be obtained on the 
     /// instance e of e-Puck by <see cref="Epuck.BeginGetIR(IAsyncResult)">e.BeginGetIRSensors(..)</see> method
@@ -29,9 +29,6 @@ namespace Elib {
     /// </summary>
     public static readonly int[] IRSensorsDegrees = new int[8] { 10, 30, 90, 170, 190, 270, 330, 350 };
     static Dictionary<string, string> logFunctionNames = new Dictionary<string, string>();
-    /// <summary>It gets the BTCom version, which is a static property. </summary>
-    /// <value>The BTCom version.</value>
-    public static string BTComVersion { get { return Sercom.Version; } }
     /// <summary> It gets the BTCom help. </summary>
     /// <value>The BTCom help from static property.</value>
     public static string BTComHelp { get { return Sercom.Help; } }
