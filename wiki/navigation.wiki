@@ -3,4 +3,4 @@
   * [howto_cz Jak instalovat e-Puck(cz)]
   * [Elib The Elib library]
   * [TestElib The TestElib application]
-  * [http://ktiml.mff.cuni.cz/~oplatek/epuck/index.html Reference documentation ]
+  * [http://ktiml.mff.cuni.cz/~oplatek/epuck/index.html NON Wiki Reference documentation ]
