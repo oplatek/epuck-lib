@@ -76,6 +76,7 @@
     == Reference ==
     * Tutoriál jak nahrát program do e-Pucka: http://www.e-puck.org/index.php?option=com_phocadownload&view=file&id=16:btboot-epuck-gettingstarted&Itemid=38
     * Tiny Boatloader pro nahrávání hex souborů do e-Pucku: http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm  
+    * Hex file s programem pro ovládání e-Pucka *BTcom verze 2.0* je ke stažení v sekci downloads http://code.google.com/p/epuck-lib/downloads/detail?name=BTcom.hex&can=2&q=. 
     * Hex soubor je zkompilovaný soubor s programem pro e-Pucka viz:
     http://en.wikipedia.org/wiki/Intel_HEX  a dále http://picprojects.org.uk/projects/mplab/mplabhowto.htm 
     * Jak nainstalovat Bluetooth na Ubuntu: http://www.iamatechie.com/set-up-bluetooth-in-ubuntu/
