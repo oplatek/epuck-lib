@@ -31,7 +31,7 @@
           <CheckBox Grid.Column="1" Grid.Row="0" Name="frontlight" 
                     IsChecked="{Binding Path=IsShining}"
                     HorizontalAlignment="Center" VerticalAlignment="Top" />
-          <CheckBox Margin="51.924,0,51.41,20" Name="ir7v" Grid.ColumnSpan="2">
+          <CheckBox Margin="51.924,0,51.41,20" Name="ir0v" Grid.ColumnSpan="2">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -55,7 +55,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox >
-        <CheckBox Grid.Column="1" Name="ir0v" Grid.ColumnSpan="2" Margin="35.166,-11,48.167,11">
+        <CheckBox Grid.Column="1" Name="ir7v" Grid.ColumnSpan="2" Margin="35.166,-11,48.167,11">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -79,7 +79,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox>
-        <CheckBox Grid.Column="1" Margin="71.21,19.277,12.123,63.724" Name="ir1v" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <CheckBox Grid.Column="1" Margin="71.21,19.277,12.123,63.724" Name="ir6v" Grid.RowSpan="2" Grid.ColumnSpan="2">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -103,7 +103,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox>
-        <CheckBox Margin="14,19.609,69,63.724" Name="ir6v" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <CheckBox Margin="14,19.609,69,63.724" Name="ir1v" Grid.RowSpan="2" Grid.ColumnSpan="2">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -130,7 +130,7 @@
         <CheckBox Grid.Column="1" Grid.Row="1" Name="bodylight" 
                    IsChecked="{Binding Path=IsShining}" VerticalAlignment="Top" Height="20" Margin="35.167,14,35.167,0" />
           <Ellipse Grid.Column="1" Grid.Row="1" Fill="Black"  Grid.RowSpan="2" Height="83.334" VerticalAlignment="Center"></Ellipse>
-            <CheckBox Grid.Column="2" Margin="9,83,-9,0" Name="ir2v" Grid.RowSpan="2">
+            <CheckBox Grid.Column="2" Margin="9,83,-9,0" Name="ir5v" Grid.RowSpan="2">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -154,7 +154,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox>
-        <CheckBox Margin="-9,0,9,0" Name="ir5v" Grid.Row="1">
+        <CheckBox Margin="-9,0,9,0" Name="ir2v" Grid.Row="1">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -178,7 +178,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox>
-        <CheckBox Grid.Row="2" Margin="48.917,13.446,34.416,-13.446" Name="ir4v" Grid.ColumnSpan="2">
+        <CheckBox Grid.Row="2" Margin="48.917,13.446,34.416,-13.446" Name="ir3v" Grid.ColumnSpan="2">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">
@@ -202,7 +202,7 @@
             </ControlTemplate>
           </CheckBox.Template>
         </CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="38.1,13.113,44.9,-13.446" Name="ir3v">
+        <CheckBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="38.1,13.113,44.9,-13.446" Name="ir4v">
           <CheckBox.Template>
             <ControlTemplate>
               <Grid Width="60" Height="20">

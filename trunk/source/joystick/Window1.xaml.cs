@@ -237,7 +237,33 @@ namespace WpfEpuckLayout {
         Ep = new Epuck(port, "Epuck Monitor");
         t = new Thread(updateAllSensors);
         t.Start();
+        SetDefaultValues();
       } catch (ElibException) {
+        notConfirmedCommand(this);
+      }
+    }
+    private void SetDefaultValues() {    
+      try {
+        IAsyncResult ar;
+        ar = Ep.BeginStop(to, null, null);
+        Ep.EndFtion(ar);
+        Zoom z = Zoom.Small;
+        CamMode m = CamMode.Color;
+        switch (mode.SelectedIndex) {
+          case 0: m = CamMode.BaW; break;
+          case 1: m = CamMode.Color; break;
+        }
+        switch (zoom.SelectedIndex) {
+          case 0: z = Zoom.Small; break;
+          case 1: z = Zoom.Medium; break;
+          case 2: z = Zoom.Big; break;
+        }
+        ar = Ep.BeginSetCam(int.Parse(width.Text), int.Parse(height.Text), z, m, to, null, null);
+        Ep.EndFtion(ar);
+        ar = Ep.BeginLightX(8, Turn.Off, to, null, null);
+        Ep.EndFtion(ar);
+      }
+      catch (ElibException) {
         notConfirmedCommand(this);
       }
     }
@@ -425,8 +451,9 @@ namespace WpfEpuckLayout {
     }
 
     private static BitmapSource Convert2BitmapSource(Bitmap bmp, bool color) {
-      if (!color) 
-       bmp.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+      if (!color) {
+        bmp.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+      }
       //this transformation flip the bitmap for black and white pictures
       return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
                 System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());                 
