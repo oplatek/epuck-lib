@@ -44,7 +44,7 @@
 \section{Advanced .Net techniques} \label{sec:net}
   {\it Elib} interface requires knowledge of $delegates$. Lambda functions and $EventWaitHandle$ class
   are used in {\it TestElib's} samples and asynchronous programming is much more comfortable with them.
-  If you are familiar with terms above, their usage in {\it Elib} will be described in~ Section~\ref{sec:iabehaviors}.
+  If you are familiar with terms above, their usage in {\it Elib} will be described in~ Section~\ref{sec:bull}.
   This section describes them in general.
 
   Delegates are .Net wrappers for functions. Every .Net language is strongly typed and even functions are typed in .Net.
@@ -183,7 +183,8 @@ static void Bthread() {
   %Maybe it is fine to mention a camera, but not this way:  Next functions create a window, where a captured picture by e-Puck's camera is drawn.
   
   Four methods, which invoke different behaviours using $IAsynResult$ 
-  interface follow in Section \ref{sec:iabehaviours}.
+  interface are described in Subsections
+  \ref{sec:bull}, \ref{ssec:billiard}, \ref{sec:go} and \ref{sec:go2light}.
   One behaviour implemented by $Epuck's$ basic interface is presented.
   After main section, which covers the behaviours, some "tips and tricks" are shown.
   There is a behaviour in {\it TestElib}, that emulates $Epuck's$ basic interface via $IAsyncResult$. 
@@ -395,7 +396,7 @@ static void SafeDispose(IAsyncResult ar{
 \caption{Safe disposal for single behaviour} \label{safedis}
 \end{figure}
 
-\subsection{$IAsyncResult$ Behaviours}\label{sec:iabehaviors}\label{sec:bull}
+\subsection{$IAsyncResult$ Behaviours}\label{sec:bull}
   Let us finally introduce the $Bull$ behaviour.
   Running this behaviour e-Puck behaves like a bull and bumps into red obstacles.
   $Bull$ behaviour switches between three states. In the first state it travels randomly. 
@@ -515,7 +516,7 @@ if (red > redl) {
 }
 \end{lstlisting}
   
-\subsection{Billiard ball behaviour}\label{billiard}
+\subsection{Billiard ball behaviour}\label{ssec:billiard}
   The behaviour is invoked by $Billiard$ function. The behaviour is rather simple.
   It goes to a wall and before the wall it stops. Then the robot tries to compute the
   orientation of the wall it turns around to go in a next direction and than it goes straight
@@ -965,7 +966,7 @@ class Average : Action {
   {\it Elib Joystick} uses Windows Presentation Foundation and
   uses a dispatcher to capturing image. The other operation, 
   which has timeout 0.1 s, accesses the controls synchronously using
-  either $EndFtion$ or $EndGetFtion$. See Section ~\ref{sec:bull} for information 
+  either $EndFtion$ or $EndGetFtion$. See Section ~\ref{sec:iasync} for information 
   about these functions. {\it Elib Joystick} is introduced in appendix ~\ref{app:joystick}.
 
   {\it Elib} can access all sensors of e-Puck. See the Chapter ~\ref{sec:epuck} 

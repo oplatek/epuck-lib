@@ -3,7 +3,7 @@
   The~{\it Elib} library is a $C\#$ asynchronous library for a remote control of e-Puck. 
   The~goal of the~library is to make developing programs for the~robot easier.
   This chapter presents several topics, which influenced the~design of {\it Elib}.
-  The~Examples on usage of $Epuck$ class and its interfaces are introduced is in the~~\ref{chap:usage} Chapter.
+  The~Examples on usage of $Epuck$ class and its interfaces are introduced is in Chapter ~\ref{chap:usage}.
 
   In the~first place the~possibilities of programming e-Puck are depicted.
   Next section covers the~advantages and the~drawbacks of asynchronous remote control programming of e-Puck.
@@ -15,7 +15,7 @@
   After that, the~logic of the~main classes $Sercom$ and $Epuck$ are introduced. Sections 
   \ref{sec:sercom} and \ref{sec:epuck} describe implementation of the~classes in detail. 
   In the~part devoted to $Sercom$ the~main stress is on the~design of Bluetooth communication processing.
-  The~implementation details of the~two $Epuck's$ interfaces are the~main topic of rest of this chapter. 
+  The~implementation details of the~two $Epuck's$ interfaces are the~main topic of the rest of this chapter. 
 
   The~last Section \ref{sec:suminterface} sums up qualities of interfaces 
   implemented by $Epuck$ and $Sercom$ class.
@@ -29,24 +29,24 @@
   E-Puck is distributed with several programs in its flash memory. 
   Most of the~programs implement a simple behaviour, which introduces e-Puck sensors and actuators.
   There is a behaviour, which made e-Puck go to the~source of light.
-  If another behaviour is running, e-Pucks
-  reacts to clapping and it turns around to source of a clap. For example one of the~behaviours makes
+  If another behaviour is running, e-Puck
+  reacts to clapping and it turns around to the source of a clap. For example one of the~behaviours makes
   e-Puck cry, if it is falling.
    
   The~{\it BTCom} program and e-Puck bootloader are also distributed on e-Puck, but belong to different classes of programs. 
   {\it BTCom} allows e-Puck to communicate with other devices via Bluetooth.
   
   It defines a BTCom protocol, which works in two modes. The~text mode accepts commands for
-  all sensors and actuators except for the~fact that it does not allows take a picture 
-  with an e-Pucks camera. 
-  In the~text mode the~accepted commands and the~sent answers of BTCom protocol are short text messages.
+  all sensors and actuators except for the~fact that it does not allow to take a picture 
+  with the e-Puck's camera. 
+  In the~text mode the~accepted commands and replies of BTCom protocol are short text messages.
   On the~other hand, {\it BTCom} in the~binary mode can send a picture from e-Puck.
   
-  If {\it BTCom} runs in the~binary mode, commands in single bytes are accepted instead of text messages.
+  If {\it BTCom} runs in the~binary mode, single byte commands are accepted instead of text messages.
   The~binary mode is more economical, 
   because the~commands are sent in single bytes and also the~integer values from sensors
   are not converted to a textual form.
-  The~binary mode of {\it BTCom} does not control all sensors and actuators, because it accepts fewer commands than the~text mode.
+  Unfortunately, the~binary mode of {\it BTCom} does not control all sensors and actuators, because it accepts fewer commands than in the~text mode.
   The~absence of commands for controlling some sensors and actuators is the~main reason 
   for sending all commands from {\it Elib} to {\it BTCom} in the~textual form. 
   The~single exception is sending an image back to {\it Elib} in the~binary mode.
@@ -54,7 +54,7 @@
   Bootloader, officially called Tiny Bootloader\cite{tiny},
   is the~only wired program on e-Puck. It downloads	other programs to e-Puck via Bluetooth. 
   Tiny Bootloader has its counterpart, a graphical PC application,
-  which allows users download hex files to e-Puck.
+  which allows users to download hex files to e-Puck.
   A hex file\footnote{\small{\url{http://en.wikipedia.org/wiki/Hex_file}}} 
   for e-Puck is compiled C program for e-Puck's dsPic microchip. 
    
@@ -63,7 +63,7 @@
   \url{http://www.e-puck.org}.
 
   \subsection*{How to run a program} % (fold)
-  If e-Puck is turned on, e-Puck starts running one of the~downloaded programs according a selector 
+  If e-Puck is turned on, e-Puck starts running one of the~downloaded programs according to its selector 
   position. E-Puck's selector switch is located on the~main board of e-Puck.
   If a programmer wants to run another program, he has to switch selector to another position
   and hold a second a reset button on e-Puck.	Selected program is loaded from flash memory
@@ -71,20 +71,20 @@
    
   Suppose there is correct C code for e-Puck's processor saved on PC. What has to be done to run the~program?
   Let us describe the~procedure.
-  Firstly it has to be compiled and linked. After that transformation to a hex file is necessary,
-  because e-Pucks's dsPic is 16 bit processor. In next step Bluetooth and e-Puck are turned on. 
+  Firstly it has to be compiled and linked. After that, a~transformation to a hex file is necessary,
+  because e-Puck's dsPic is 16 bit processor. In the~next step Bluetooth and e-Puck are turned on. 
   The~robot and your computer are paired together. The~user has to enter the~PIN, 
   which is needed to pair the~devices. 
-  PIN is a number, which is on e-Pucks body.
+  PIN is a number, which is on e-Puck's body.
   The~OS opens a serial port for Bluetooth communication.
   Graphical counter part of Tiny Bootloader is needed. It is used to select the~hex file and choose the~opened port. 
   Furthermore, the~Tiny Bootloader guides user through the~downloading of the~hex file.
   The~instructions tell the~user to press a reset button on e-Puck. It has to be pressed only for about a second.
-  Tiny Bootloader announces when the~download finishes. To run the~program it is necessary to to reset e-Puck.
+  Tiny Bootloader announces when the~download finishes. To run the~program it is necessary to reset the e-Puck.
    
-  The~program is written to e-Puck's flash memory according e-Puck's selector position.
+  The~program is written to e-Puck's flash memory according to e-Puck's selector position.
   If another program had been saved under the~same selector position, it is overwritten by the~new program.
-  Downloading of hex file to e-Puck last approximately 30 seconds and it is sometimes unsuccessful. 
+  Downloading  hex file to an e-Puck lasts approximately 30 seconds and it is sometimes unsuccessful. 
   Programming e-Puck via Tiny Boatloader is not very comfortable. 
   Luckily, there is an another way, which uses {\it BTCom} program downloaded on e-Puck. 
 
@@ -93,7 +93,7 @@
   to control e-Puck.
   {\it BTCom} starts running in text mode, so its possible to use a terminal to communicate with e-Puck.
   E.g Hyperterminal on Windows. On Linux write directly to the~serial port using a command line.
-  A program can control e-Puck via BTCom protocol too, but it must process the~commands ant their replies.
+  A program can control e-Puck via BTCom protocol too, but it must process the~commands and their replies.
    
 
   \begin{figure}[hbp]
@@ -115,16 +115,14 @@
   E-puck Monitor's serious drawback is its freezing. The~application does not respond, 
   because it waits synchronously to answers from {\it BTCom}.
   If a Bluetooth connection with e-Puck is broken or the~answer is lost, 
-  the~application stays unresponsive.
+  the~application remains unresponsive.
 
   \subsection*{Summary} % (fold)
   Downloading a hex file to e-Puck's microchip and remote control over BTCom protocol are two alternatives
   of controlling e-Puck.
-  Using {\it BTCom} user do not have to download any file to e-Puck's microchip.
-  It is great advantage, because the~length of developing cycle of program to e-Puck's processor is reduced.
+  Using {\it BTCom}, a user does not have to download any file to e-Puck's microchip.
+  It is great advantage, because the~length of developing cycle of program for e-Puck is reduced.
   The~developing cycle consist of:
-  \begin{figure}[hbp]
-  \centering
   \begin{itemize}
     \item writing a code,
     \item compiling it,
@@ -132,59 +130,58 @@
     \item debugging it,  
     \item and correcting it.
   \end{itemize}
-  \label{txt:life_cycle}
-  \end{figure}
   In following section the~advantages of remote control will be described in detail.
 
 \section{Advantages of remote control} \label{sec:remote}
-  The~applications, which use {\it BTCom} and its protocol, run a whole algorithm on PC and {\it BTCom} just 
-  execute the~commands and get the~values from sensors. Imagine you have a library, which process the~commands
+  Applications, which use {\it BTCom} and its protocol, run a whole algorithm on PC and {\it BTCom} just 
+  executes the~commands and gets the~values from sensors. Imagine you have a library, which process the~commands
   and their replies. A program for  controlling e-Puck uses the~library and just asks the~library for sensor values and
-  gives the~library commands what to do. Important is that downloading part is missing.
+  gives the~library commands what to do. Important is that download part is missing.
    
-  Omitting downloading the program to e-Puck from the life cycle in Figure \ref{txt:life_cycle} saves programmer 
+  Leaving out the item "downloading the program to e-Puck" from the life cycle in List above saves programmer 
   20 seconds or more, because the process of downloading a program to e-Puck is unreliable.
   Last but not least the quality of debugging is significantly improved by using a library for remote control.
 
   If a program is downloaded to e-Puck, there are only e-Puck's actuators for a feedback.
   The~actuators are a very poor debugging tool, because if something goes wrong, 
-  it is impossible to say if the~program stopped running,
+  it is impossible to say whether the~program stopped running,
   or e-Puck is waiting to sensors values, or battery is down. 
   Discovering the~problem, even if it is the~low battery, takes one or two loops of downloading and compiling the~program.
-  E-Puck still has the~indicator of battery, but it is not reliable.
+  E-Puck has an~indicator of low battery, but it is not reliable.
   Downloading a program takes a long time and successful download could last even a couple of minutes. 
   It drives a lot of people crazy.
    
-  A programmer, which controls robot remotely, can debug with tools of his programming environment and he still controls e-Puck.
-  All this can be utilised, because a computer has much more resources than e-Puck has.
-  Let us mentioned a~few  technique for debugging. Logging of robot actions is often underestimated,
+  A programmer, which controls a robot remotely, can debug with tools of his programming environment and he still controls e-Puck.
+  All this can be utilised, because a computer has much more resources than e-Puck.
+  Let us mentioned a~few  techniques for debugging. Logging of robot actions is often underestimated,
   but it is very useful for performance testing. Flow control by setting breakpoints is the great advantage
   of remote control. However, in applications, which call procedures asynchronously, the~ breakpoints should be set carefully.
-  Breakpoints does not stop the asynchronous operation and does stop the main thread.
+  Breakpoints do not stop the asynchronous operation and do stop the main thread.
   Therefore breakpoints should be set only in place, where no asynchronous methods have been invoked with timeout
-  or the methods have already finished.
+  or the methods have been already finished.
   
-  Another point of view is where is the computation performed.
+  Another point of view is where the computation is performed.
   If the~remote control is used, it can be said that the~intelligence 
   is located on a computer. However if you load a program to e-Puck via Tiny Bootloader the~whole algorithm
   runs on e-Puck.
   The~resources of PC are also useful for a computation of the~program and not only for
   its debugging. E-Puck for example takes pictures smaller than 3200 bytes and still complicated image processing 
   requires too much work for e-Puck's microchip. It is faster to process the~picture
-  on a computer. Let us note that also implementing a neural network or even genetic algorithm on 8 kB memory
+  on a computer. 
+  Let us note that also implementing a genetic algorithm in 8 kB memory
   is very difficult.
 
 \section{Design of the {\it BTCom} program. What does it mean for {\it Elib}?}
   \label{sec:btcomdesign}
   The~interfaces of {\it Elib} is designed for {\it BTCom} version 1.1.3, but {\it Elib} is also compatible with {\it BTCom} 2.0.
-  The~complete {\it BTCom} source code is located on enclosed CD in file "btcom.c".
+  The~complete {\it BTCom} source code version 2.0 is located on enclosed CD in file "btcom.c".
 
   {\it BTCom} is a mainly textual protocol, which is defined by {\it BTCom} program. The~answer of {\it BTCom} always begins 
   with the~first letter of the~relevant command.
-  If the~command requires some sensor values, the~value is attached to the~first letter and
-  sent. Otherwise the~first letter of command is sent back alone. Each answer ends by 
+  If the~command requires some sensor values, the~value is appended to the letter and
+  sent. Otherwise the~first letter of a command is sent back alone. Each answer ends by 
   $\backslash$r$\backslash$n escape sequence.
-  See below list of all text commands printed from {\it BTCom} below.
+  See below the~list of all text commands printed from {\it BTCom} below.
   \lstset{basicstyle=\small}
 \begin{lstlisting}
 "A"         Accelerometer
@@ -216,7 +213,7 @@
   The~answers of {\it BTCom} from $B$ allows $A$ to know that the~sent command was received and
   executed. 
    
-  Two main questions, which effect design of {\it Elib}, arise from the~{\it BTCom} structure.
+  Two main questions, which affect design of {\it Elib}, arise from the~{\it BTCom} structure.
   Should {\it Elib} limit the~waiting time for an answer from $B$?
   How fast should {\it Elib} allow $A$ sending the~commands to $B$?
   \begin{remark}
@@ -226,20 +223,20 @@
   \end{remark}
    
   It is necessary to understand, that not only executing a {\it BTCom} command, 
-  but also a transfer of a command and a transfer of reply take insignificant amount of time. 
+  but also a transfer of a command and a transfer of a reply take significant amount of time. 
   The~time is measured from a computer processor's point of view, because
-  it is the~processor, who is waiting to serial port, which is sending the~message.
+  it is the~processor, who is waiting for serial port, which is sending the~message.
    
   Back to the~question how should {\it Elib} limit sending of the~commands.
   As we have said, sending commands takes a while and therefore sending is performed asynchronously. 
   Due to asynchronous sending, users do not have to wait to the~end of sending previous command and
-  can send next before the~first command has finished.
+  can send next one before the~first command has finished.
   It leads to queueing the~commands in a serial port output buffer of PC. Unfortunately the~buffer is usually not 
   very large and can easily overflow. 
   This is the~reason for implementation {\it Elib's} buffer, a queue, which slows down the~sending and does not allow
   overwriting of sent commands by each other in the~output buffer. 
    
-  Is problem with sending solved? Not for e-Puck. If the~commands were sent too fast,
+  Is the problem with sending solved? Not for e-Puck. If the~commands were sent too fast,
   the~input buffer of e-Puck would have the~same problem, because e-Puck's processor does not keep up emptying e-Puck's
   input buffer. The~buffer would be flooded and the~commands would be overwritten. 
   {\it Elib} has to check, if the~Bluetooth is not able to send commands too fast for e-Puck
@@ -247,11 +244,10 @@
 
   %How fast can e-Puck receive commands? Experiments showed, that gaps between commands around 0.02 s are 
   %critical at best condition, because e-Puck processes each answer immediately as it picks it up from its input buffer.
-  \subsection*{How long {\it Elib} should wait to the answer of sent command?} 
-  Clearly we have to wait more than is the~minimum transfer time from a computer to e-Puck and also
-  the~transfer time of the~answer.
+  \subsection*{How long {\it Elib} should wait for the answer of a sent command?} 
+  Clearly we have to wait more than is the~minimum transfer time from a computer to e-Puck and back.
   The~transfer time depends on  amount of transfered data. 
-  Sensors messages carry more data on the~way back, therefore sending sensors answers take longer time.
+  Sensors messages carry more data on the~way back, therefore sending sensors answers takes longer time.
   An extreme is a command for taking a picture. Sending command to e-Puck last about 0.02 s, but
   the~answer needs more than 0.2 s for a transfer.
    
@@ -260,13 +256,13 @@
    
   Possible variability of waiting time force {\it Elib} to let the~user decide how long
    {\it Elib} should wait for an answer. The~{\it Elib} library does not limit the~minimum waiting time too,
-  because the~convenient values differs according a state of a battery on e-Puck, a strength of Bluetooth signal
+  because the~convenient values differ according to the state of a battery on e-Puck, a strength of Bluetooth signal
   and so on. 
   
   \begin{definition}[Timeout]
   The~waiting times for answers are in {\it Elib} called $timeouts$.
   In examples, which are introduced in Chapter ~\ref{chap:usage}, the~waiting times are set to the~bottom values,
-  which allow commands to be confirmed without no problems under good conditions.
+  which allow commands to be confirmed without problems under good conditions.
   \end{definition}
   
   \subsection*{summary} % (fold)
@@ -439,57 +435,57 @@ public class Epuck {
   as $handshaking$ methods except they allow to send and receive more commands
   at once.
 
-%  %\input{sercom_nohandshake.TpX}
-%  \begin{figure}[!hbp]
-%  \centering
-%  \ifpdf
-%    \setlength{\unitlength}{1bp}%
-%    \begin{picture}(319.36, 236.63)(0,0)
-%    \put(0,0){\includegraphics{sercom_nohandshake.pdf}}
-%    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-%    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-%    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
-%    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
-%    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
-%    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
-%    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-%    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
-%    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
-%    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
-%    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
-%    \end{picture}%
-%  \else
-%    \setlength{\unitlength}{1bp}%
-%    \begin{picture}(319.36, 236.63)(0,0)
-%    \put(0,0){\includegraphics{sercom_nohandshake}}
-%    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-%    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-%    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
-%    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
-%    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
-%    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
-%    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-%    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-%    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
-%    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
-%    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
-%    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
-%    \end{picture}%
-%  \fi
-%  \caption{\label{pic:sercom_nohandshake}%
-%   Old structure}
-%  \end{figure}
-%
-%
+  %\input{sercom_nohandshake.TpX}
+  \begin{figure}[!hbp]
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.36, 236.63)(0,0)
+    \put(0,0){\includegraphics{sercom_nohandshake.pdf}}
+    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.36, 236.63)(0,0)
+    \put(0,0){\includegraphics{sercom_nohandshake}}
+    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:sercom_nohandshake}%
+   Old structure}
+  \end{figure}
+
+
 %  Sending a command starts with calling public method $Write$. The~instance of $checker$ class is created in the~$Write$ method.
 %  $Checker$ stores the~command name, $Okf$, $Kof$, a reference to $state$ object and references to $notSent$ 
 %  and $Sent$ queues.
