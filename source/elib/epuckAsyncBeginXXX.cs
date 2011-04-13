@@ -151,7 +151,7 @@ namespace Elib {
       Stop(received, failed, a, timeout);
       return a;
     }
-    /// <summary> It restarts e-Puck. </summary>
+    /// <summary> It stops e-Puck, turn off LEDS, restars e-Puck and calibrate IR sensors.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -234,12 +234,12 @@ namespace Elib {
     /// <summary>
     /// It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes.
     /// The picture size S = width*height  bytes; for black and white mode  
-    /// S = width*height*2 bytes; for colourful mode.    
+    /// S = width*height*2 bytes; for colour mode.    
     /// </summary>
     /// <param name="width">The width of the picture in pixels.</param>
     /// <param name="height">The height of the picture in pixels</param>
     /// <param name="zoom">The zoom of a cam. The lowest is the most useful.</param>
-    /// <param name="mode">The mode. Can be black and white or colourful.</param>
+    /// <param name="mode">The mode. Can be black and white or colour.</param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
     /// <param name="callback">A function which is called, after the confirmation answer is received.</param>
@@ -251,7 +251,7 @@ namespace Elib {
       return a;
     }
     /// <summary>
-    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off.
+    /// It begins to play sound. Values 0-5 are for predefined sounds. 6 turns speaker off.
     /// </summary>
     /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off other numbers plays a sound.</param>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.

@@ -66,7 +66,7 @@ namespace Elib {
     public void Stop(OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_Stop(),okf,kof, state, timeout, "Stop(..)");
     }
-    /// <summary> It restars e-Puck. </summary>
+    /// <summary> It stops e-Puck, turn off LEDS, restars e-Puck and calibrate IR sensors.</summary>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -134,7 +134,7 @@ namespace Elib {
     /// <param name="width">The width of picture in pixels.</param>
     /// <param name="height">The height of picture in pixels</param>
     /// <param name="zoom">The zoom of a cam. The lowest is the most useful.</param>
-    /// <param name="mode">The mode. Can be black and white or colourful.</param>
+    /// <param name="mode">The mode. Can be black and white or colour.</param>
     /// <param name="okf">A function called after the confirmation answer is received.</param>
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
@@ -143,7 +143,7 @@ namespace Elib {
       actuators(Commands.c_SetCamPar(height, width, mode, zoom), okf, kof, state, timeout, "SetCam(..)");
     }
     /// <summary>
-    /// It begins to play sound. Values 0-5 are for different sounds. 6 turns speaker off
+    /// It begins to play sound. Values 0-5 are for predefined sounds. 6 turns speaker off
     /// </summary>
     /// <param name="SoundNum">The SoundNum can be between 0 and 6. 6 turns speakers off. Other numbers play a sound.</param>
     /// <param name="okf">A function called after receiving the confirmation answer.</param>

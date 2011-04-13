@@ -21,7 +21,7 @@ We recommend to use $IAsyncResult$ interface.
 \subsubsection*{Auxiliary methods of $IAsyncResult$ interface} % (fold)
 \label{ssub:Auxillary methods}
 "End" functions use {\itshape ar\/} instance to wait synchronously until the command of "Begin" function is confirmed
-or the timeout from "Begin" function elapses.
+or the timeout from "Begin" function elapses. If the timeout elapses, $TimeoutElibException$ is raised.
 In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $integers$, a $Bitmap$ or a $string$.
   \begin{DoxyCompactItemize}
 
@@ -32,10 +32,10 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em Returns an array of $integers$. \item\end{DoxyCompactList}
 
   \item Bitmap \hyperlink{class_elib_1_1_epuck_a8b2cf6f690beeab328e5a6c533cfa2b0}{EndGetImage} (IAsyncResult ar)
-  \begin{DoxyCompactList}\small\item\em Returns a $string$ . \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Returns a $System.Drawing.Bitmap$. \item\end{DoxyCompactList}
 
   \item string \hyperlink{class_elib_1_1_epuck_a74b28dea3f43cda9a42745236a2a0910}{EndInfoFtion} (IAsyncResult ar)
-  \begin{DoxyCompactList}\small\item\em Returns a $System.Drawing.Bitmap$. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Returns a $string$ . \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Auxiliary methods (end)
@@ -83,10 +83,10 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em Sets Left and Right Motor speed. Acceptable values are from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a26cd19a983186a23aa49d99106bd33d1}{BeginGetSpeed} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets the current speed of both wheels. Speed on a wheel is from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for the current speed of both wheels. Speed on a wheel is from -\/1 to 1. Value 1 corresponds to 1 revolution per second. Wheels have perimeter of 12,88 mm. \item\end{DoxyCompactList}
 
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_ad4cfe3776708816e78a7c53ddde315fb}{BeginGetEncoders} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.
+  \begin{DoxyCompactList}\small\item\em It ask for a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.
   It is nulled if the e-\/Puck resets. \item\end{DoxyCompactList}
 
   \item void \hyperlink{class_elib_1_1_epuck_a8b0942a1bbf1b78115b0eedf77e535a0}{BeginSetEncoders} (int leftTicks, int rightTicks double timeout, AsyncCallback callback, object state)
@@ -106,16 +106,16 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em Returns a command to get the array of integers from IR sensors. The more ambient light, the lower the values. Usual values are above 3000. Maximal value is 5000. \item\end{DoxyCompactList}
 
   \item void \hyperlink{class_elib_1_1_epuck_aa15c26b061ee31dfb343f546d89bd864}{CalibrateIRSensors} (OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em Calibrates proximity IR sensors, which makes IR sensors more accurate for measuring proximity. Calibration adapts sensor for different reflection of IR light in the current environment. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It starts calibration of the proximity IR sensors. It makes IR sensors more accurate for measuring proximity. The calibration adapts sensor for different reflection of IR light in the current environment. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a66741b5d59b9bb5a26596b050741dee8}{BeginGetIR} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for the proximity from IR sensors. Obstacle can be recognized up to 4 cm. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_afa1833fd4dfb949fec35efa8ec774cf9}{BeginGetLight} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em Returns a command to get the array of integers from IR sensors. The more ambient light, the lower the values. Usual values are above 3000. Maximal value is 5000. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Ask for the array of integers from IR sensors. The more ambient light, the lower the values. Usual values are above 3000. Maximal value is 5000. \item\end{DoxyCompactList}
 
   \item IAsyncResult \hyperlink{class_elib_1_1_epuck_a760541d00f318ee59be9fb1c83a0f8cd}{BeginCalibrateIRSensors} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em Calibrates proximity IR sensors, which makes IR sensors more accurate for measuring proximity. Calibration adapts sensor for different reflection of IR light in the current environment. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It starts calibration of the proximity IR sensors. It makes IR sensors more accurate for measuring proximity. The calibration adapts sensor for different reflection of IR light in the current environment. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection IRSensors (end)
@@ -134,7 +134,7 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em Sets Front led on, off or into an inverse state. It can produce enough light for capturing close obstacles with e-\/Puck's camera. \item\end{DoxyCompactList}
 
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_ac5cbe768e3e85fc8c627331e539221a1}{BeginLightX} (int num, \hyperlink{namespace_elib_a3bd21aa0f35c1f8d086ea6ac1e09a87c}{Turn} how, double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em Sets a LED with number n on,off or into inverse state. Acceptable values are 0..7(resp. 8). Value 8 represents all diodes at once. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em Sets a LED with number $num$ on,off or into inverse state. Acceptable values are 0..7(resp. 8). Value 8 represents all diodes at once. \item\end{DoxyCompactList}
   
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a42ebf85e7f8c6e507ef83d5bd0818650}{BeginBodyLight} (\hyperlink{namespace_elib_a3bd21aa0f35c1f8d086ea6ac1e09a87c}{Turn} how, double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em Sets Body led on, off or into an inverse state. \item\end{DoxyCompactList}
@@ -153,18 +153,18 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em It gets a picture. It can take a long time. E.g. picture 40$\ast$40 in colour takes more than 0.4 sec under good light conditions and with battery fully charged. \item\end{DoxyCompactList}
 
   \item void \hyperlink{class_elib_1_1_epuck_a03911f706081e305b8602f921ad6b34b}{SetCam} (int width, int height, \hyperlink{namespace_elib_af2af0734145f6e03503f2379f6249669}{Zoom} zoom, \hyperlink{namespace_elib_acc08cc9ecc6edea0df55bcb7a1529c17}{CamMode} mode, OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes. The picture size S = width$\ast$height bytes; for black and white mode S = width$\ast$height$\ast$2 bytes; for colourful mode. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes. The picture size S = width$\ast$height bytes; for black and white mode S = width$\ast$height$\ast$2 bytes; for colour mode. \item\end{DoxyCompactList}
 
   \item  void \hyperlink{class_elib_1_1_epuck_a77057f06395cb1887ca3d504f1c51d2f}{GetCamParams} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
   \begin{DoxyCompactList}\small\item\em It gets current camera settings. The picture size S = width$\ast$height, black or white mode and zoom. \item\end{DoxyCompactList}
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_afe274f8efd46c68587ec706f7dfc8a35}{BeginGetImage} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets a picture. It can take a long time. E.g. picture 40$\ast$40 in colour takes more than 0.4 sec under good light conditions and with battery fully charged. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for a picture. It can take a long time. E.g. picture 40$\ast$40 in colour takes more than 0.4 sec under good light conditions and with battery fully charged. \item\end{DoxyCompactList}
   
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a55e442eec492fc282ae978b3ec1e78c2}{BeginSetCam} (int width, int height, \hyperlink{namespace_elib_af2af0734145f6e03503f2379f6249669}{Zoom} zoom, \hyperlink{namespace_elib_acc08cc9ecc6edea0df55bcb7a1529c17}{CamMode} mode, double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes. The picture size S = width$\ast$height bytes; for black and white mode S = width$\ast$height$\ast$2 bytes; for colourful mode. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_aa9e87b03e5a8ec36db30b6340d0da861}{BeginGetCamParams} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets current camera settings. The picture size S = width$\ast$height, black or white mode and zoom. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for current camera settings. The picture size S = width$\ast$height, black or white mode and zoom. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Camera (end)
@@ -177,13 +177,13 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off. \item\end{DoxyCompactList}
 
   \item void \hyperlink{class_elib_1_1_epuck_a176a4a63393394a409220699635a9196}{GetMikes} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound in array 3 integers from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a2426a9ea921c131b8349204f477121f5}{BeginPlaySound} (int SoundNum, double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em It begins to play sound. Values 0-\/5 are for different sounds. 6 turns speaker off. \item\end{DoxyCompactList}
 
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_af69a96d43cc6d5c47960061312d1937b}{BeginGetMikes} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It gets the current amplitude of sound from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for an array of 3 integers. The integers represent the current amplitude of sound from e-\/Puck's 3 speakers. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Sound (end)
@@ -196,7 +196,7 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em It returns vector of values, which indicates the slant of e-\/Puck. \item\end{DoxyCompactList}
   
   \item  IAsyncResult \hyperlink{class_elib_1_1_epuck_a6d09043fbbed47c089ad6f7cffa05e8c}{BeginGetAccelerometer} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It returns vector of values, which indicates the slant of e-\/Puck. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for a vector of values, which indicates the slant of e-\/Puck. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
  % subsubsection Accelerometer (end)
@@ -208,14 +208,14 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \item void \hyperlink{class_elib_1_1_epuck_a6c5b0e61b183ae36e78251e51e32bdd3}{Stop} (OkfActuators okf, KofCallback kof, object state, double timeout)
   \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
 
+  \item void \hyperlink{class_elib_1_1_epuck_a36714362701622796cf01480ea4f8d32}{Reset} (OkfActuators okf, KofCallback kof, object state, double timeout)
+  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped. The IR sensors are calibrated. \item\end{DoxyCompactList}
+
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a4b66f73064942aa5736dca815a427d01}{BeginStop} (double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em It stops e-\/Puck and turn off leds. \item\end{DoxyCompactList}
 
-  \item void \hyperlink{class_elib_1_1_epuck_a36714362701622796cf01480ea4f8d32}{Reset} (OkfActuators okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped. \item\end{DoxyCompactList}
-
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a2b73b814db861ed276587db2fc124244}{BeginReset} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped. \item\end{DoxyCompactList} 
+  \begin{DoxyCompactList}\small\item\em It restarts e-\/Puck. It takes around 1.5 sec. LEDs are turned off and motors are stopped.  The IR sensors are calibrated.\item\end{DoxyCompactList} 
 
   \end{DoxyCompactItemize}
 % subsubsection Stop and reset (end)
@@ -227,13 +227,13 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactList}\small\item\em It gets the BTCom version. \item\end{DoxyCompactList}
 
   \item   void \hyperlink{class_elib_1_1_epuck_a1569f01c2a34bb335d2f7a12c94de891}{GetHelpInfo} (OkfStringSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It gets for Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0146f79525c327c913b540186e354916}{BeginGetInfoVersion} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It gets the BTCom version from e-\/Puck. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It asks for the BTCom version from e-\/Puck. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a0e599fe0065ac2c3ae2ac96aede901c6}{BeginGetInfoHelp} (double timeout, AsyncCallback callback, Object state)
-  \begin{DoxyCompactList}\small\item\em It shows Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It asks for Epuck's help sent from e-\/Puck. \item\end{DoxyCompactList}
 
   \end{DoxyCompactItemize}
 % subsubsection Textual info (end)
@@ -243,13 +243,13 @@ In addition the $EndGetFtion$, $EndGetImage$ or $EndInfoFtion$ return array of $
   \begin{DoxyCompactItemize}
 
   \item  void \hyperlink{class_elib_1_1_epuck_a40c8bc92b67a20c3fdf891997eaf03c5}{GetSelector} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
-  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It returns a selector position (array of integers of length 1). \item\end{DoxyCompactList}
 
   \item   void \hyperlink{class_elib_1_1_epuck_ad74c7a6d5618da33d84aee5666d990c5}{GetIRData} (OkfIntsSensors okf, KofCallback kof, object state, double timeout)
   \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 3 integers converted from hex number with following meaning. IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
 
   \item   IAsyncResult \hyperlink{class_elib_1_1_epuck_a23a675feab78848b194cb49a01a30463}{BeginGetSelector} (double timeout, AsyncCallback callback, object state)
-  \begin{DoxyCompactList}\small\item\em It returns a selector position. \item\end{DoxyCompactList}
+  \begin{DoxyCompactList}\small\item\em It ask for a selector position(array of integers of length 1). \item\end{DoxyCompactList}
 
   \item IAsyncResult \hyperlink{class_elib_1_1_epuck_a58eb06f216af8ff7a7203f0f91b010e7}{BeginGetIRData} (double timeout, AsyncCallback callback, Object state)
   \begin{DoxyCompactList}\small\item\em It gets the IR data in in array of 6 integers with following meaning IR check : 0xx, address : 0xx, data : 0xx. \item\end{DoxyCompactList}
