@@ -30,10 +30,10 @@ namespace TestElib {
     /// </summary>
     static void Main() {      
       //if your e-Puck moves everything is OK.
-      //TestPortTurnAround("COM18");
+      TestPortTurnAround("/dev/rfcomm0");
       
       //see startEpuck and how easy is to make connection
-      Epuck ada = startEpuck("COM18","Ada");
+      Epuck ada = startEpuck("/dev/rfcomm0","Ada");
       
       // Do you want to see, where the limit of timeout is? 
       // Set your timeout and runs this simple functions below!
@@ -83,7 +83,7 @@ namespace TestElib {
     /// <c>string port="/dev/rfcomm0";</c> is an example of port under Linux. Under windows looks serial port name like <c>string port = "COM4";</c>.
     /// </remarks>
     static Epuck startEpuck(string port,string name) {
-      // Typical port name under Windows is COM4
+      // Typical port name under Windows is COM4, Unix is /dev/rfcomm0
       // Instanciation of Epuck can take a while (under 500ms)
       //Name it. It is useful for logging and debugging while working with multiple robots
       return new Epuck(port,name);

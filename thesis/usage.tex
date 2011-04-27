@@ -3,8 +3,8 @@
   {\it Elib} offers a lot of tools, which make e-Puck programming easier. 
   The tools are useless without a proper use. This chapter introduces guidelines and numerous
   examples how to use {\it Elib} and avoid problems.
-  
-  On thirteen samples from {\it TestElib} project we present {\it Elib} and e-Puck's properties.
+
+  {\it Elib} and e-Puck's properties is presented on thirteen samples from {\it TestElib} project.
   The samples are written in $C\#$ and are densely commented.
   We suggest a programmer, who wants to program his e-Puck, to start with one of the examples
   from {\it TestElib} project and modify it according his needs.
@@ -17,13 +17,19 @@
   usage in {\it Elib}.
 
   {\it Elib} library requires .Net 2.0 on Windows and requires Mono 2.0 %todo verze mona?
-  and higher on Linux.
-  As an example of an application, which uses {\it Elib}, we present {\it Elib Joystick} at the end of this chapter.
+  and higher on Linux. It also requires {\it BTCom} 
+  \footnote{ {\it BTCom} is a simple program running on e-Puck. 
+  It receives commands from {\it Elib}, performs the relevant actions
+  and sends confirmation answer back. If we ask for a sensor value, the sensor value is returned
+  together with the confirmation message.
+  }
+  version 1.1.3 running on e-Puck.  
+  As an example of a graphical application, which uses {\it Elib}, 
+  we present {\it Elib Joystick} at the end of this chapter.
   {\it Elib Joystick} is a graphical application, which uses Windows Presentation Foundation. It requires .Net 3.5 or higher
   and is not portable to Linux.
-  {\it Elib} can control every actuator and get every sensor value with {\it BTCom}'s version 1.1.3 on e-Puck. 
-  {\it BTCom} is a simple program running on e-Puck. It receives commands from {\it Elib}, performs the relevant actions
-  and sends confirmation answer back. If we ask for a sensor value, the value is added to the confirmation message.
+  {\it Elib} can control every actuator and can get every sensor 
+  value with {\it BTCom}'s  on e-Puck. 
 
   The source codes are deployed using a solution of Microsoft Visual Studio 2008 (MSVS) for Windows 
   and MonoDevelop solution for Linux.
@@ -32,7 +38,7 @@
   The contents of this chapter is divided into 6 sections.
   The first section is devoted to advanced .Net techniques, which are used in {\it Elib}.
   The Section ~\ref{sec:interfaces} shortly introduces features of each {\it Elib's} interfaces and 
-  it presents e-Puck's sensors and actuators.
+   presents e-Puck's sensors and actuators.
   The next section goes through samples of implemented behaviours 
   from~{\it TestElib} project and explains the crucial part of the examples.
   The Section ~\ref{sec:et} presents the {\it Elib Tools} console application, 
@@ -42,21 +48,27 @@
   from {\it Elib} design and which applications bring problems.
   
 \section{Advanced .Net techniques} \label{sec:net}
-  {\it Elib} interface requires knowledge of $delegates$. Lambda functions and $EventWaitHandle$ class
-  are used in {\it TestElib's} samples and asynchronous programming is much more comfortable with them.
-  If you are familiar with terms above, their usage in {\it Elib} will be described in~ Section~\ref{sec:bull}.
+  {\it Elib} interface requires knowledge of $delegates$. 
+  Lambda functions and $EventWaitHandle$ class
+  are used in {\it TestElib's} samples. 
+  Asynchronous programming is much more comfortable with them.
+  If you are familiar with terms above, their usage in {\it Elib} will be described 
+  in~Section~\ref{sec:bull}.
   This section describes them in general.
 
   Delegates are .Net wrappers for functions. Every .Net language is strongly typed and even functions are typed in .Net.
   A delegate has two meanings in .Net. The first meaning is the placeholder type for functions of given type. 
-  See the $C\#$ implementation in~Figure~\ref{deleg}. The placeholder type has name $OkfActuators$.
+  See the $C\#$ implementation in~Figure~\ref{deleg}, where the placeholder type has name $OkfActuators$.
   The second meaning is the placeholder itself. In the sample code below the placeholder is called $a$.
 
-  Delegate variable can contain functions, which exactly match delegate definition. In the case of $OkfActuators$ 
+  Delegate variable can contain only functions, which exactly match delegate definition. In the case of $OkfActuators$ 
   delegate from~Figure~\ref{deleg} the function must return
-  $void$ and it must have one argument of type object. All classes in $C\#$ are inherited from $Object$ class, 
-  therefore every object can be passed to this delegate. 
-  Object class contains method $ToString()$ and therefore the number as well as the string are printed.  
+  $void$ and must have one argument of type object. All classes in $C\#$ 
+  are inherited from the class $Object$ and therefore every object can be passed to this delegate. 
+  The class $Object$ contains method $ToString()$, 
+  so every object has its own string representation.
+  
+  therefore the number as well as the string are printed.  
   Delegate function can contain more functions. On the other hand this feature is not used in {\it Elib}, 
   because it reduces readability of the code.
   
@@ -99,10 +111,12 @@ suitable Function -333
 suitable method -333
 \end{verbatim}
 \end{figure}
-  The console output of $Example()$ function shows, that the functions are called in the order, in
-  which the functions were added to the delegate variable. 
-  The functions have void returning value, because there is no chance how to access
-  the returning value from the first function. Delegates allow the last function to return its value, 
+  The console output of the $Example()$ function shows, 
+  that the functions are called in the order, 
+  in  which the functions were added to the delegate variable. 
+  The functions have implemented void returning value, 
+  because it is problematic to return a value from the first function. 
+  Delegates allow the last function to return its value, 
   but it is considered a bad manner, because
   another function added to delegate can overwrite the returning value of the delegate call.
 
@@ -120,21 +134,28 @@ suitable method -333
   %sekce 2.5.1
   The $EventWaitHandle$ class 
   \end{definition}
-  $EventWaitHandler$ class is not tricky itself, but sometimes it is used in multi thread programming, which is usually complicated.
-  An instance of the class is used to synchronise two threads. It is usually used to signal from one thread to another, 
-  that some work has been done. In {\it Elib} there are used two methods per~$EventWaitHandle$ instance.
-  Let us suppose we have a thread $A$ running. Let $B$ be the thread, which should perform a long task. 
+  $EventWaitHandler$ class is not tricky itself, 
+  but it is usually used in multi thread programming, which is usually complicated.
+  An instance of the class is used to synchronise two threads. 
+  It is usually used to signal from one thread to another, 
+  that some work has been done. In {\it Elib} there are used two 
+  methods per~$EventWaitHandle$ instance.
+  Let us suppose we have a thread $A$ running. Let $B$ be the thread, 
+  which should perform a long task. 
   The thread $A$ wants after a while to wait until the work of $B$ is finished.
-  Before the job $B$ finishes. $A$ creates $EventWaitHandle$ $e$ with parameters $false$ and $ManualReset$. 
-  $False$ parameter sets $e$ to a blocking state. In the blocking state all threads, which have called method $e.WaitOne$, 
-  are synchronously blocked in $WaitOne$ method. $ManualReset$ means that the state of $EventWaitHandle$ 
-  can be changed only by its methods and $EventWaitHandle$ does not perform any action itself.
+  Before the job $B$ finishes. $A$ creates $EventWaitHandle$ $e$ 
+  with parameters $false$ and $ManualReset$. 
+  $False$ parameter sets $e$ to a blocking state. In the blocking state all threads, 
+  which have called method $e.WaitOne$, 
+  are blocked in $WaitOne$ method. $ManualReset$ means that the state of $EventWaitHandle$ 
+  can be changed only by calling its methods and $EventWaitHandle$ 
+  does not perform any action itself.
   Let us return back to threads $A$ and $B$. $A$ creates an instance $e$ of $EventWaitHandle$ with mentioned parameters, 
   passes $e$ to the second thread. 
   Finally $A$ calls $WaitOne$ and blocks on this call.
   $B$ thread works and after the job is done, it just invokes $Set$ method on $e$. 
   $Set$ method releases all threads, which are blocked in $WaitOne$ method.
-  Run the code from the snippet ~\ref{ewh} to understand it.
+  Run the code from Figure ~\ref{ewh} to understand it.
 
           
 \begin{figure}[!hbp]
@@ -145,7 +166,7 @@ static void Athread() {
   e = new EventWaitHandle(false, EventResetMode.ManualReset);
   t.Start();
   e.WaitOne();
-  Console.WriteLine("Finally someone press the button!!!");
+  Console.WriteLine("Finally someone pressed the button!!!");
 }
 static void Bthread() {
   //simulate the work      
@@ -177,8 +198,8 @@ static void Bthread() {
 
 
   The examples are listed from the simplest to the more complex. 
-  First function, which tests the communication between e-Puck and your computer is described,
-  then Section \ref{sec:session} focuses on starting session using $Epuck$.
+  At first, function, which tests the communication between e-Puck and your computer is described.
+  Then Section \ref{sec:session} focuses on starting session using $Epuck$.
   Later in Section \ref{sec:touching} simple functions describe all e-Puck's sensors and actuators using simple $Epuck's$ interface.
   %Maybe it is fine to mention a camera, but not this way:  Next functions create a window, where a captured picture by e-Puck's camera is drawn.
   
@@ -186,7 +207,7 @@ static void Bthread() {
   interface are described in Subsections
   \ref{sec:bull}, \ref{ssec:billiard}, \ref{sec:go} and \ref{sec:go2light}.
   One behaviour implemented by $Epuck's$ basic interface is presented.
-  After main section, which covers the behaviours, some "tips and tricks" are shown.
+  After the main section, which covers the behaviours, some "tips and tricks" are shown.
   There is a behaviour in {\it TestElib}, that emulates $Epuck's$ basic interface via $IAsyncResult$. 
   It is depicted in the summary of Chapter ~\ref{chap:elib}.
   We will skip the behaviour, because it is implemented only for theoretical purposes.
@@ -196,7 +217,7 @@ static void Bthread() {
   In the following paragraphs an exception means a subclass of $ElibException$ if it is not said otherwise.
   \end{remark}
     
-\subsection{Set up and disposal of a session}\label{sec:session}
+\subsection{Setup and disposal of a session}\label{sec:session}
   Let us start with a function, which does not use {\it Elib}. $TestPortTurnAround$ opens a given serial port
   and sends some commands to move and stop, then it ends. It does not require any feedback and throws no exceptions.
   It is useful to run it, because a lot of errors are not hidden in the code, but in the hardware set up.
@@ -206,31 +227,30 @@ static void Bthread() {
 return new Epuck(port, "Ada"); //Name it. It is useful for logging and debugging.
 \end{lstlisting}
   The function throws exception only if other application blocks the port. 
-  Operating system remembers
-  the port, which is set up for the communication with e-Puck, therefore
-  no exception occurs if e-Puck is not even turned on and was used before.
-  In such a case $Kof$ callback from $Epuck's$ basic interface or an exception	
-  from $IAsyncResult$ are raised after sending a command to e-Puck.
-  Sending a command to e-Puck is done via calling one of $Epuck's$ functions.
   Both $Kof$ callback and exception let user know, that a command was not delivered in time.
+  $Kof$ callback from $Epuck's$ basic interface or an exception	
+  from $IAsyncResult$ are raised after sending a command to e-Puck, 
+  which is not confirmed in timeout.
+  Sending a command to e-Puck is done via calling one of $Epuck's$ functions.
   Let us mentioned the closing of session and then we introduce both interfaces.
-\begin{lstlisting}[language=cs]
-//dispose can take a while (under 500ms)
-ada.Dispose();
-TextWriter t= ada.LogStream;
-t.WriteLine("We are trying to reconnect");
-ada.BeginStop(0.1,null,null); //throw an exception
-ada=new Epuck(ada.Port,ada.Name);
-ada.LogStream=t;
-ada.StartLogging();
-ada.Stop();//does not throw an exception
-\end{lstlisting}
   The function $endEpuckSession$ sends a command to stop your robot, 
   but it primarily closes the session by calling $Dispose$ method.
   Dispose method releases serial port for another application. 
   After disposal $LogStream$, $Port$ and $Name$ are the 
   only properties of $Epuck$ instance, which can be accessed. 
-  They can be used to reconnection, see above.
+  They can be used to reconnection, see below.
+
+\begin{lstlisting}[language=cs]
+//dispose can take a while (under 500ms)
+ada.Dispose();
+TextWriter t= ada.LogStream;
+t.WriteLine("We are trying to reconnect");
+ada.BeginStop(0.1,null,null); //throws an exception
+ada=new Epuck(ada.Port,ada.Name);
+ada.LogStream=t;
+ada.StartLogging();
+ada.Stop();//does not throw an exception
+\end{lstlisting}
 
 \subsection{Touching e-Pucks's sensors and actuators}\label{sec:touching}
   $ConsoleTestActuatorsTimeout$ function presents all actuators. Let us choose to control the motors of e-Puck.
@@ -246,7 +266,7 @@ ada.PlaySound(3,
   
   $Motors$ method controls the speed of wheels. See code above. Maximum forward speed is +1, backward speed -1. 
   Both motors are controlled at once via first two parameters.
-  Next two parameters are functions, which match $Okfactuators$ delegaters,
+  Next two parameters are functions, which match $OkfActuators$ delegates,
   respectively $KofCallback$ delegates. 
   Both delegates have only one $object$ parameter. In this example $null$ value is passed
   to the lambda function through the fifth argument of $Motors$. The last parameter is the $timeout$, 
@@ -255,12 +275,12 @@ ada.PlaySound(3,
   before $timeout$ has elapsed. 
   $KofCallback$ is called otherwise.
   $ConsoleTestActuatorsTimeout$ function wants to present the reaction time of all commands, 
-  therefor it does not allow commands to be called asynchronously one after another.
-  Function $wait(0)$ forces the current thread to wait until answer is delivered
+  therefore it does not allow commands to be called asynchronously one after another.
+  Function $wait()$ forces the current thread to wait until answer is delivered
   or $timeout$ elapsed. Simple synchronization is done via $end$ flag.
 \begin{lstlisting}[language=cs]
 static void wait(int gap) {
-  ///<remarks> Simple but unefficient way of waiting. See KofOkfWaiting(..) in Behaviour for usage of EventWaitHandle.</remarks>
+  ///<remarks> Simple but inefficient way of waiting. See KofOkfWaiting(..) in Behaviour for usage of EventWaitHandle.</remarks>
   while (!end) { 
     Thread.Sleep(5); 
   } 
@@ -271,8 +291,8 @@ static void wait(int gap) {
 }
 \end{lstlisting}
 
-  $ConsoleAsynchronousSensors$ function asks for sensors too, but does use synchronous waiting only at the end. Run the example and note the huge gab
-  between the computer time after asynchronous calls and the computer time after synchronisation. 
+  $ConsoleAsynchronousSensors$ function asks for sensors too, but does use synchronous waiting only at the end. Run the example and note the huge gap
+  between the time after asynchronous calls and the time after synchronisation. 
   The time is measured in seconds!
   
   The last function in the introductory section is $GetImage$ function. 
@@ -543,7 +563,7 @@ static void go2wall(IAsyncResult ar) {
     else {
       //Does not use EndFtion, it saves the EventWaitHandle. We suppose, that it succeeds now or in next rounds.
       ada.BeginMotors(0.2, 0.2, to, null, null);
-      // The BeginGetIR command is enqueued in the same momment as BeginMotors, therefor double timeout is used.
+      // The BeginGetIR command is enqueued in the same momment as BeginMotors, therefore double timeout is used.
       ada.BeginGetIR(2 * to, go2wall, ada);
     }
   } catch (ElibException e) {
@@ -652,7 +672,7 @@ static void recGotoLight(IAsyncResult ar) {
   The function ends the session with real e-Puck and closes a serial port by calling $Dispose$ method.
   After the disposal, the commands can not be sent to e-Puck and we have to create a new connection. We use the same parameters.
   Optionally, here is the place to ask the user of behaviour to change a port name.
-  The same approacapproachh is used in $KofGoXcm$, which will be presented below.
+  The same approach is used in $KofGoXcm$, which will be presented below.
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void exceptionOccured_Restart(Epuck ada) {
