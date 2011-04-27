@@ -21,6 +21,7 @@ namespace TestElib {
     /// if your e-Puck moves, than everything is OK.</summary>      
     public static void TestPortTurnAround(string port) {
       SerialPort p = new SerialPort(port);//port e.g =="COM4"
+      Console.WriteLine(p.ToString());
       p.Open();
       for (int i = 0; i < 10; ++i) {
         p.Write("d,-100,100\r");//turn around
@@ -30,6 +31,7 @@ namespace TestElib {
         p.Write("d,0,0\r");//turn around
         Thread.Sleep(100);
       }
+      Console.WriteLine(p.ToString());
       p.Close();
     }
 
