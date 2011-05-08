@@ -28,8 +28,8 @@ namespace Elib {
   /// </para>
   /// </remarks>
   public partial class Sercom:IDisposable {
-    #region public functions:
 
+    #region public functions:
     /// <summary>
     /// Initializes a new instance of the <see cref="Sercom"/> class.
     /// </summary>
@@ -38,7 +38,8 @@ namespace Elib {
     /// <param name="serialPortReadTimeout">The serial port read time out.</param>
     public Sercom(string portName, int serialPortWriteTimeout, int serialPortReadTimeout) {
       try {
-        port = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
+        //port = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
+        port = new OP.WrapSerialPort(portName); /*If mono has already implemented DataReceived handler or you use .Net use the line above*/
         port.DiscardNull = false;
         port.ReceivedBytesThreshold = 1;
         port.DataReceived += new SerialDataReceivedEventHandler(Read);

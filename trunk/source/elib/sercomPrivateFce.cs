@@ -135,7 +135,7 @@ namespace Elib {
           textModeCall();
         else          
           binaryModeRead();                         
-      }else {
+      } else {
         port.ReadExisting();
 	  }
     }
@@ -228,6 +228,7 @@ namespace Elib {
         }
       }
     }
+
     void weHaveAnswer() {
       callOkf(hshake_sent, ans.ToString());
       hshake_sent = null;
