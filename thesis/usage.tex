@@ -349,48 +349,68 @@ Bitmap bm = e.EndGetImage(ar);
   States represent actions, which robots perform.
   
   We present behaviours invoked by functions $Bull$, $Billiard$, $GoAndTurn$, $Go2Light$ and $KofGoXcm$.
-  $Bull$ behaviour acts like a bull. If there is a red obstacle, robot attacks it. 
+  The robot running $Bull$ behaviour is supposed to act like a bull. 
+  If there is a red obstacle, robot attacks it. 
   In $Billiard$ behaviour e-Pucks goes from an obstacle to an obstacle
-  and if it is very near it turns around.
+  and when it is very near it turns around.
   $GoAndTurn$ let the robot drive along a square with 15 cm long sides. 
   There are other functions like $goXcm$ or $turnAround$ available.
   All mentioned behaviours are implemented using $IAsyncResult$. 
-  $KofGoXcm$ is the only one behaviour, which is implemented by using simple $Epuck's$ interface.
-  It allows robot go almost exactly a given amount of centimeters, even if the connection breaks during the ride.
+  $KofGoXcm$ is the only one behaviour, that is implemented by using simple $Epuck's$ interface.
+  It allows robot to go almost exactly a given amount of centimeters, even if the connection breaks during the ride.
   All behaviour used  callbacks, because it is a natural way how to switch between states of a behaviour.
 
-  Callbacks of "Begin" functions from $IAsyncResult$ return $void$ 
-  and take one $IAsyncResult$ instance as an argument.
+  Callbacks of "Begin" functions like $BeginStop$ take one $IAsyncResult$ instance as an argument and return $void$ value.
   The $state$ parameter, which is passed to "Begin" function can be found 
   in~$AsyncState$ property from $IAsyncResult$ argument.
-  In Figure ~\ref{safedis} $BeginStop$ function is invoked on line 
-  3 with $EasyDisposal(..)$ callback 
+  In Figure ~\ref{safedis} $BeginGetIR$ function is invoked on the third line 
+   with $EasyDisposal(..)$ callback 
   and $ada$ instance as parameter for callback.
-  On line 7 of Figure ~\ref{safedis} the $ada$ parameter is extracted from $IAsyncResult$ $ar$.
-  If we use "BeginGet" function to get a sensor values, 
+  On line 7 of Figure~\ref{safedis} the $ada$ parameter is extracted from $IAsyncResult$ $ar$.
+  If we use "BeginGet" functions to get a sensor values, 
   then the values are returned by "EndGetFtion" call on $ar$ as we can see on~the~line below.
 
-  Callbacks are called always after the operation finish, therefore the $EndFtion(..)$ on $IAsyncResult$ does not wait.
+  In {\it Elib} callbacks are called always after the operation invoked by a "Begin" function finishes, 
+  therefore the $EndFtion(..)$ called in callback function does not blocks the thread.
+  See again line 7 of Figure~\ref{safedis}.
   Furthermore no $EventWaitHandle$ is created, which results in a better performance if we use callback.
   For information how this feature is implemented see Section ~\ref{sec:iasync}.
 
-  Callbacks are invoked in separate threads, which bring complications, if we invoked more than one behaviour
-  from one function as we do in the $Main(..)$ function. 
+  Callbacks are invoked in separate threads. It complicates the code, if we invoked more than one behaviour
+  from one function as we do in the $Main(..)$ function of {\it TestElib}. 
   The problem is that $Epuck$ instance gets 
-  commands from completely different behaviours at the same time.
-  Fortunately, all behaviours in {\it TestElib} let the thread with $Main(..)$ function wait, until they are finished.
+  commands from different behaviours running in parallel at the same time.
+  The behaviours in {\it TestElib} let the thread with $Main(..)$ function wait, until they are finished.
   After end of one behaviour the next is invoked.
   
-  Next we introduce a guideline for~implementing the simple behaviour,
-  which introduces how to avoid problems with ending a behaviour.
-  It is very simple. Only one function has to be called  with callbacks in each method and 
-  ,furthermore, it has to be the last action. It allows you to use $Dispose(..)$ method 
-  without worrying about accessing instance of $Epuck$  from different threads.
-  See the code and mainly the comments in Figure ~\ref{safedis}. 
+  Next we introduce a guideline for~ending a behaviour, which uses $Epuck$ class.
+  $Epuck$ class use a serial port, which is an operating system resource. 
+  It is good practice to free the serial port as soon as our behaviour does not need it.
+  We free the serial port by calling $Dispose$ method or 
+  by letting the garbage collector collects our instance of $Epuck$ class.
+
+  On the other hand, do not call $Dispose$ method if callbacks in different threads are running.
+  Nor let the garbage collector to call $Dispose$ method if you other threads can access the $Epuck$ instance.
+  Such situation is introduced in $Example$ class bellow. The $Dispose$ method
+  can be called before $BeginMotors$ method from callback on line 10.
+\begin{lstlisting}[language=cs]
+class Example{
+  static void GoCallback(IAsyncResult ar) {
+    Epuck r = (Epuck)ar.AsyncState;
+    ar = r.BeginMotors(0.5,-0.5,1.0,null,null);
+    r.EndFtion(ar);
+  }
+  static int Main(string[] args){
+   Epuck r= new Epuck("COM1");
+   r.BeginStop(1.0,GoCallback,r);
+  }// Here can be called r.Dispose() before r.BeginMotors() from GoCallback()
+}
+\end{lstlisting}
+  
+  We advice to control e-Puck during the whole program from one thread at the moment.
+  In such situation it is easy to wait until the thread finishes communication with e-Puck
+  by calling the $Dispose$ method in last callback invocation. See Figure~\ref{safedis} and the last callback $SafeDispose$.
   We suggest to return to this example after exploring some of the behaviours.
-  All the behaviours use this attitude, but have to care of its ending, 
-  because they are invoked from the $Main(..)$. 
-  See the second comment in $Main$ function from Figure ~\ref{safedis}.
 
 \begin{figure}[!hbp]	
 \begin{lstlisting}[language=cs]
@@ -421,12 +441,12 @@ static void SafeDispose(IAsyncResult ar{
   Running this behaviour e-Puck behaves like a bull and bumps into red obstacles.
   $Bull$ behaviour switches between three states. In the first state it travels randomly. 
   After a random time it switches to observation state.
-  In observation state it shoots 4 images from four directions. If the images are red enough 
+  In the~observation state it takes 4 images from 4 directions. If the images are red enough 
   it switches to aggressive behaviour and goes to the red obstacle,
   otherwise it starts a random ride again.
 
-  The start function firstly sets e-Puck's camera to desired settings then it invokes the behaviour.
-  $CountDown$ is a struct, which wraps the e-Epuck and number of rotation.
+  In this snippet $CountDown$ is a struct, which wraps the $Epuck$ and the number of rotations.
+  The start function firstly sets e-Puck's camera to desired settings and secondly it invokes the behaviour.
 
 \begin{lstlisting}[language=cs]
 public static void Bull(Epuck ada) {
@@ -442,13 +462,14 @@ public static void Bull(Epuck ada) {
 }
 \end{lstlisting}
   
-  The behaviours run until the user presses a key. The waiting is performed in the main thread. 
+  All behaviours from {\it TestElib} run until the user presses a key or communication with e-Puck is broken. 
+  The waiting is performed in the main thread. 
   The $Bull$ behaviour as all other behaviours runs in worker threads.
-  If an exception, which signals undelivered command, is thrown, 
+  If an exception, that signals undelivered command, is thrown, 
   its message is written to a console and the behaviour ends. 
   Explore code in $exceptionOccured\_End$ function to see more.
 
-  See code below how the behaviour is ended in nice way. 
+  See code below how the behaviour is ended in aa  nice way. 
   It is a tricky part and is not necessary if only one behaviour is implemented. See Figure ~\ref{safedis}
   for safe ending of a single behaviour.
   Important is that $startBehaviour$ is called at the first line of $Bull$ method 
@@ -474,8 +495,8 @@ static void endBehaviour() {
 \end{lstlisting}
 
 \subsection{$Bull's$ internals} \label{bull}
-  The diagram ~\ref{pic:bull} shows the states of $Bull$.
-  Three states are named after the functions, which control the robot. State "GetStacked" 
+  The diagram ~\ref{pic:bull} shows the states of $Bull$ behaviour.
+  Three states are named after the functions, which control the robot. State $"GetStacked"$
   is the final state and it arises, if the e-Puck is surrounded with obstacles from the front and from behind.
   The $searchAround$ procedure calls itself 4 times if no red obstacle is in front of e-Puck.
   It uses the struct $CountDown$ to count the number of rotations.
@@ -512,8 +533,7 @@ static void endBehaviour() {
     \put(266.92,84.44){\fontsize{8.54}{10.24}\selectfont howRed(..)}
     \end{picture}%
   \fi
-  \caption{\label{pic:bull}%
-   Bull behaviour diagram}
+  \caption{\label{pic:bull} Bull behaviour diagram}
   \end{figure}
   
   Aggressive behaviour tries to bump into red obstacles. If it finds out an obstacle not red enough, it
