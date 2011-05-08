@@ -10,14 +10,17 @@ using System.Diagnostics;
 namespace Elib {
   public partial class Sercom {
     #region Protected and private fce
+
     delegate void SendAsync();
     void Send(object Sender, EventArgs ev) {
       SendAsync asyncCaller = new SendAsync(SendAsyncCall);
       asyncCaller.BeginInvoke(null, null);      
     }
+
     void SendAsyncCall() {
       ansGuard command = null;
       lock (notSentLock) {
+        // if( we have command to send && we are not waiting to confirmation answer of previous ) { ..
         if (notSent.Peek != null && Interlocked.Equals(hshake_sent, null)) {
           command = notSent.Peek.Elem;
           notSentSTS.Remove(notSent.Peek);
@@ -33,6 +36,7 @@ namespace Elib {
           hshake_sentUpdateWh.Reset();
           checkSDwh.Set();
           lock (hshake_sentLock) {              
+            // necessary for
             hshake_sent = command;
             ans.Remove(0, ans.Length);
             if (stableAnsCommands.ContainsKey(command.command[0]))
@@ -53,9 +57,9 @@ namespace Elib {
             Interlocked.Exchange<ansGuard>(ref hshake_sent, null);
             throw new SerialPortException("Serial port.write() is not responding in time for current timeout", e);
           }
-        }//end if commad is late                      
+        }//end if command is late                      
       }
-    }//end of hSend()     
+    }//end of SendAsyncCall()     
      
     void checkNSwhSet() {
       while (!sleeping) { Thread.Sleep(10); }
