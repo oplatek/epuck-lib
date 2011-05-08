@@ -15,6 +15,7 @@ namespace Elib {
       if (to < 0)
         throw new ArgsException("timeout has to be a positive number!");
     }
+
     #region actuators
 
     /// <summary>
@@ -30,6 +31,7 @@ namespace Elib {
         (data) => { kof(data); logf(Action.ko, method);}          
         , state, to );      
     }
+
     ////////////////////////////////////////single functions ///////////////////////////////////
     /// <summary>    
     /// Sets encoders values.
@@ -44,6 +46,7 @@ namespace Elib {
     public void SetEncoders(int leftMotor, int rightMotor, OkfActuators okf, KofCallback kof, object state, double timeout) {      
       actuators(Commands.c_SetMotorPosition(leftMotor,rightMotor), okf, kof, state, timeout, "SetEncoders(..)");
     }
+
     /// <summary>
     /// Calibrates proximity IR sensors, which 
     /// makes IR sensors more accurate for measuring proximity.
@@ -63,6 +66,7 @@ namespace Elib {
     /// <param name="kof">A function called after the timeout is elapsed if the confirmation answer has not been received.</param>
     /// <param name="state">An instance of any class, which is passed to the callback function as an argument.</param>
     /// <param name="timeout">Timeout[seconds] set how long are you willing to wait for the command confirmation answer.</param>
+
     public void Stop(OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_Stop(),okf,kof, state, timeout, "Stop(..)");
     }
@@ -75,6 +79,7 @@ namespace Elib {
     public void Reset(OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_Reset(), okf, kof, state, timeout, "Reset()");
     }
+
     /// <summary>
     /// Sets Left and Right Motor speed. Acceptable values are from -1 to 1. 
     /// Value 1 corresponds to 1 revolution per second.
@@ -91,6 +96,7 @@ namespace Elib {
       int RM = (int)(rightMotor * 1000);
       actuators(Commands.c_Move(LM, RM), okf,kof, state, timeout, "Motors(..)");
     }
+
     /// <summary>
     /// Sets a LED with number n on,off or into inverse state. Acceptable values are 0..7(resp. 8).
     /// Value 8 represents all diodes at once.
@@ -104,6 +110,7 @@ namespace Elib {
     public void LightX(int num, Turn how, OkfActuators okf, KofCallback kof, object state, double timeout) {      
       actuators(Commands.c_LedX(num,how), okf, kof, state, timeout, "LightX(..)");      
     }
+
     /// <summary>
     /// Sets Body led on, off or into an inverse state.
     /// </summary>
@@ -115,6 +122,7 @@ namespace Elib {
     public void BodyLight(Turn how, OkfActuators okf, KofCallback kof, object state, double timeout) {      
         actuators(Commands.c_LedBody(how), okf, kof, state, timeout, "BodyLight(..)");      
     }
+
     /// <summary>
     /// Sets Front led on, off or into an inverse state. It can produce enough light for capturing close obstacles with e-Puck's camera.
     /// </summary>
@@ -142,6 +150,7 @@ namespace Elib {
     public void SetCam(int width, int height, Zoom zoom, CamMode mode, OkfActuators okf, KofCallback kof, object state, double timeout) {
       actuators(Commands.c_SetCamPar(height, width, mode, zoom), okf, kof, state, timeout, "SetCam(..)");
     }
+
     /// <summary>
     /// It begins to play sound. Values 0-5 are for predefined sounds. 6 turns speaker off
     /// </summary>

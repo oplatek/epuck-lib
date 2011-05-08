@@ -9,18 +9,22 @@ using System.Threading;
 namespace Elib {
   //Epuck class should be subclassable
   public partial class Epuck:IDisposable{
+
     /// <summary>
     /// units: [cm]
     /// </summary>
     public const double WheelDiameter = 4.1;
+
     /// <summary>
     /// Distance between wheels of an e-Puck in cm.
     /// </summary>
     public const double Perch = 5.3;
+
     /// <summary>
     /// 12.88 cm/s is a maximum speed of e-Puck. In Elib 13cm/sec corresponds to 1.00. From -1.00 to 1.00 is the speed linearly growing.
     /// </summary>
     public const double MaxSpeed = 12.88;
+
     /// <summary>
     /// Eight Infra Red sensors are placed on the perimeter of e-Puck, which can be obtained on the 
     /// instance e of e-Puck by <see cref="Epuck.BeginGetIR(IAsyncResult)">e.BeginGetIRSensors(..)</see> method
@@ -28,10 +32,13 @@ namespace Elib {
     /// IrSensorsDegrees describes the degrees measured from front(There is a cam.) As you can see most of the sensors are on the front side of e-Puck.
     /// </summary>
     public static readonly int[] IRSensorsDegrees = new int[8] { 10, 30, 90, 170, 190, 270, 330, 350 };
+
     static Dictionary<string, string> logFunctionNames = new Dictionary<string, string>();
+
     /// <summary> It gets the BTCom help. </summary>
     /// <value>The BTCom help from static property.</value>
     public static string BTComHelp { get { return Sercom.Help; } }
+
     static Epuck() {
       logFunctionNames.Add("SetEncoders(..)", "SetEncoders(..)");
       logFunctionNames.Add("CalibrateIRSensors(..)","CalibrateIRSensors(..)");
@@ -101,6 +108,7 @@ namespace Elib {
     }
 
     enum Action { call, ok, ko };
+
     void logf(Action a, string method) {
       if (log)
         w.WriteLine("{0:F8} {1} {2} {3} {4} {5}", Stamp.Get(), name, a.ToString(), logFunctionNames[method], ser.NotSent, ser.NotAnswered);
@@ -134,6 +142,7 @@ namespace Elib {
         ser=null;
       }
     }
+
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
     /// It takes under 0.5 s.
@@ -150,8 +159,8 @@ namespace Elib {
     ~Epuck() {
       Dispose(false);
     }
+
     #endregion
    
   }
-  
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 namespace Elib {
+
   /// <summary>
   /// A virtual representation of e-Puck, which allows control the robot with its methods.
   /// </summary>
@@ -11,9 +12,11 @@ namespace Elib {
   /// and <see cref="T:IAsyncResult">IAsyncResult interface</see>
   /// </remarks>
   partial class Epuck {
+
     static void received(object asyncNoResult) {
       AsyncResultNoResult ar = (AsyncResultNoResult)asyncNoResult; ar.SetAsCompleted(null, false); 
     }
+
     static void receivedSensors<T>(T b, object asyncResIntArr) {
       AsyncResult<T> a = (AsyncResult<T>)asyncResIntArr;
       a.SetAsCompleted(b, false);
@@ -46,18 +49,21 @@ namespace Elib {
       AsyncResult<T> a = (AsyncResult<T>)ar;
       return a.EndInvoke();
     }
+
     /// <summary>
     /// It waits synchronously until a function, which asked for sensors with <see langword="int"/> values,
     /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> in order to get the <see langword="int"/> values.</summary>
     /// <param name="ar"> Instance of AsyncResult serves to connect the  BeginGet... function with <see cref="EndGetFtion(IAsyncResult)"/> method</param>
     /// <returns>Returns an array of <c>int</c>.</returns>
     public int[] EndGetFtion(IAsyncResult ar) { return EndSensors<int[]>(ar); }
+
     /// <summary>
     /// It waits synchronously until a function, which asked for sensors with <see langword="string"/> values,
     /// gets the desired answer or timeout elapses. It uses <paramref name="ar"/> in order to get the <see langword="string"/> values.</summary>
     /// <param name="ar"> Instance of AsyncResult serves to connect the  BeginGetInfo... function with <see cref="EndGetFtion(IAsyncResult)"/> method</param>
     /// <returns>Returns a <c>string</c>.</returns>
     public string EndInfoFtion(IAsyncResult ar) { return EndSensors<string>(ar); }
+
     /// <summary>
     /// It waits synchronously until a function, which asked for an image,
     /// gets the <see cref="System.Drawing.Bitmap"/> or timeout elapses. It uses <paramref name="ar"/> in order to get the <see cref="System.Drawing.Bitmap"/>.</summary>
@@ -81,6 +87,7 @@ namespace Elib {
       SetEncoders(leftTicks, rightTicks, received, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// Calibrates proximity IR sensors, which 
     /// makes IR sensors more accurate for measuring proximity.
@@ -97,6 +104,7 @@ namespace Elib {
       CalibrateIRSensors(received,failed,a,timeout);
       return a;
     }
+
     /// <summary>
     /// Sets Left and Right Motor speed. Acceptable values are from -1 to 1. 
     /// Value 1 corresponds to 1 revolution per second.
@@ -114,6 +122,7 @@ namespace Elib {
       Motors(leftMotor, rightMotor, received, failed, a, timeout);
       return a;
     }
+
     /// <summary> It gets the current amplitude of sound from e-Puck's 3 speakers. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -125,6 +134,7 @@ namespace Elib {
       GetMikes(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// Returns a command to get the array of integers from IR sensors. 
     /// The more ambient light, the lower the values. Usual values are above 3000.
@@ -140,6 +150,7 @@ namespace Elib {
       GetLight(receivedSensors<int[]>, failed, a, timeout);
       return a;      
     }
+
     /// <summary> It stops e-Puck and turn off leds. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -151,6 +162,7 @@ namespace Elib {
       Stop(received, failed, a, timeout);
       return a;
     }
+
     /// <summary> It stops e-Puck, turn off LEDS, restars e-Puck and calibrate IR sensors.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -162,6 +174,7 @@ namespace Elib {
       Reset(received, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// Sets Front led on, off or into an inverse state. It can produce enough light for capturing close obstacles with e-Puck's camera.
     /// </summary>
@@ -176,6 +189,7 @@ namespace Elib {
       FrontLight(how, received, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// Sets a LED with number n on,off or into inverse state. Acceptable values are 0..7(resp. 8).
     /// Value 8 represents all diodes at once.
@@ -192,6 +206,7 @@ namespace Elib {
       LightX(num,how, received,failed,a,timeout);
       return a;
     }
+
     /// <summary>
     /// Sets Body led on, off or into an inverse state.
     /// </summary>
@@ -206,6 +221,7 @@ namespace Elib {
       BodyLight(how, received,failed,a,timeout);
       return a;
     }
+
     /// <summary>
     /// It gets the IR data in in array of 6 integers with following meaning
     ///  IR check : 0x%x, address : 0x%x, data : 0x%x
@@ -220,6 +236,7 @@ namespace Elib {
       GetIRData(receivedSensors<int[]> , failed, a, timeout);
       return a;
     }
+
     /// <summary> It shows Epuck's help sent from e-Puck. </summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -231,6 +248,7 @@ namespace Elib {
       GetHelpInfo(receivedSensors<string>, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// It sets the parameters of a camera. Maximum size of a picture can be 3200 bytes.
     /// The picture size S = width*height  bytes; for black and white mode  
@@ -250,6 +268,7 @@ namespace Elib {
       SetCam(width,height,zoom,mode, received, failed, a, timeout);
       return a;
     }
+
     /// <summary>
     /// It begins to play sound. Values 0-5 are for predefined sounds. 6 turns speaker off.
     /// </summary>
@@ -264,6 +283,7 @@ namespace Elib {
       PlaySound(SoundNum,received, failed, a, timeout);
       return a;
     }
+
     /// <summary> It gets the BTCom version from e-Puck.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -275,6 +295,7 @@ namespace Elib {
       GetVersionInfo(receivedSensors<string>, failed, a, timeout);
       return a;
     }
+
     /// <summary>  It gets the proximity from IR sensors. Obstacle can be recognized up to 4 cm.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -286,6 +307,7 @@ namespace Elib {
       GetIR(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary>  It returns vector of values, which indicates the slant of e-Puck</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -297,6 +319,7 @@ namespace Elib {
       GetAccelerometer(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary>    It returns a selector position</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -308,6 +331,7 @@ namespace Elib {
       GetSelector(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary> It gets the current speed of both wheels. Speed on a wheel is from -1 to 1. 
     /// Value 1 corresponds to 1 revolution per second.
     /// Wheels have perimeter of 12,88 mm.
@@ -322,6 +346,7 @@ namespace Elib {
       GetSpeed(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary> It gets current camera settings.
     /// The picture size S = width*height, black or white mode and zoom.
     /// </summary>
@@ -335,6 +360,7 @@ namespace Elib {
       GetCamParams(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary>It gets a current state of encoders. It is measured in steps. One forward revolution corresponds to +1000 steps.It is nulled if the e-Puck resets.</summary>
     /// <param name="timeout">Timeout[sec] set how long are you willing to wait for the command confirmation answer.
     /// If the confirmation does not arrived until timeout exception is raised</param>
@@ -346,6 +372,7 @@ namespace Elib {
       GetEncoders(receivedSensors<int[]>, failed, a, timeout);
       return a;
     }
+
     /// <summary>   
     /// It gets a picture. It can take a long time. E.g. picture 40*40 in colour takes more than 0.4 sec under 
     /// good light conditions and with battery fully charged.
