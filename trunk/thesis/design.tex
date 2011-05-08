@@ -266,11 +266,11 @@
   \end{definition}
   
   \subsection*{summary} % (fold)
-  Let us sum up the~facts. Sending of commands takes insignificant amount of time.
-  Sending commands are queued, because otherwise they could be overwritten in the~buffers.
+  Let us sum up the~facts. Sending of commands takes significant amount of time.
+  Sent commands are queued, because otherwise they could be overwritten in the~buffers.
   Receiving an answer takes even more time than sending a command from computer.
   We concluded to implement sending commands and receiving answers asynchronously, because the~communication with e-Puck
-  can be pointlessly holding up a processor of PC.
+  can be pointlessly block the~processor of the~host PC.
 
 \section{Asynchronous programming model (APM)\\ for the~{\it Elib} library}
   \label{sec:apm}
@@ -286,8 +286,8 @@
   The~goal of {\it Elib} is to hide the~complications of APM and offer an interface
   which performs sending and receiving messages asynchronously and
   which allows a programmer to easily create applications for e-Puck. For example applications like Epuck Monitor.
-  What means asynchronous implementation in case of {\it Elib}? What is done if the~answer receives in time
-  and what if not? These questions are answered in next section called Asynchronous programming model for {\it Elib}.
+  What means asynchronous implementation in case of {\it Elib}? What is done if the~answer arrives in time
+  and what if not? These questions are answered in the~next section called Asynchronous programming model for {\it Elib}.
 
   \begin{remark}[Callbacks]
   Callbacks are functions, which are called after some procedure has finished.
@@ -296,21 +296,21 @@
   \begin{itemize}
     \item $Sercom$: public class, wraps serial communication.
     \begin{itemize}
-      \item $Sercom's basic interface$ - $Write(..)'s$ function arguments:
+      \item $Sercom's$ basic interface -- $Write(..)'s$ function arguments:
       \begin{itemize}
-        \item string command - specifies a type of sending command
-        \item an integer - the~$timeout$ for the command
-        \item $Okf$ callback - function called if the~answer is delivered in time.
-        \item $Kof$ callback - function called if the~$timeout$ has elapsed and the~answer has not arrive
-        \item class object - instance used to pass custom information to $Okf$ callback
+        \item string command -- specifies a type of sending command
+        \item an integer -- the~$timeout$ for the command
+        \item $Okf$ callback -- function called if the~answer is delivered in time.
+        \item $Kof$ callback -- function called if the~$timeout$ has elapsed and the~answer did not arrive
+        \item class object -- instance used to pass custom information to $Okf$ callback
       \end{itemize}
     \end{itemize}
     \item $Epuck$: presents an instance of a e-Puck robot, uses $Sercom$ internally.
     \begin{itemize}
       \item $Epuck's$ basic interface 
       \begin{itemize}
-        \item Based on $Sercom's$ $basic interface$
-        \item only difference to $Sercom's$ interface - implements string argument for command implicitly
+        \item Based on $Sercom's$ basic interface
+        \item the~only difference to $Sercom's$ interface -- it implements string argument for each command implicitly
       \end{itemize}
       \item $IAsyncResult$ interface
       \begin{itemize}
@@ -329,48 +329,48 @@
 \section{The~$Sercom$ class}\label{sec:sercom}
   An instance of $Sercom$ allows a computer to asynchronously communicate with other devices
   over serial communication. The~class accepts textual commands and parses textual answers.
-  The~commands and answers can be distinguished according its first letter.
+  The~commands and answers can be distinguished according to its first letter.
   Let us describe its structure.
  
   \begin{definition}
   $Sercom$ waits after each sent command until the~ answer arrives or its $timeout$ elapses.
-  Let us is called this behaviour of waiting a $handshaking$.
+  Let us called this behaviour of waiting a $handshaking$.
   \end{definition}
 
   $Handshaking$ guarantees that the~commands would not be sent too fast,
   because $Sercom$ waits on e-Puck's answer. E-Puck picks up the~command from its input buffer and then sends the~reply.
-  The~short answers under good conditions make do not slow down sending with $handshaking$, because
-  they arrives under 0.04 s. 
+  The~short answers under good conditions do not slow down sending with $handshaking$, because
+  they arrive under 0.04 s. 
 
 
-  At the~beginning of a {\it Elib's} development we thought about implementing both the~$handshaking$
+  At the~beginning of an {\it Elib's} development we thought about implementing both the~$handshaking$
   and the~$nonhandshaking$ sending.
-  The~$nonhandshaking$ sending does not wait to answer of the~previous command. It sends the~next command immediately. 
-  Motivation for $nonhandshaking$ is to save time which is spent on waiting to the~answers of the~sent commands.
-  Consequently $nonhandshaking$ has to ensure that the~input buffer does not overflow.
+  The~$nonhandshaking$ sending does not wait for answer of the~previous command. It sends the~next command immediately. 
+  Motivation for $nonhandshaking$ is to save time which is spent on waiting for the~answers of the~sent commands.
+  Consequently, $nonhandshaking$ has to ensure that the~input buffer does not overflow.
   We have experienced that it is a non-trivial task to set the~correct time gap after different types of commands. 
   The~final observation is that the~$nonhandshaking$ sending is even slower than the~$handshaking$ sending, 
   because the~gaps after sent commands have to be set at maximum in order to avoid a failure under all conditions. 
-  The~gaps in $nonhandshaking$ mode has too be exorbitant, 
-  because it must not to let the~input buffer of e-Puck overflow.
+  The~gaps in $nonhandshaking$ mode has too be unnecessarily large, 
+  because it must not let the~input buffer of e-Puck overflow.
 
   $Handshaking$ solves the~problem with synchronising sending and receiving the~commands and their answers. 
   It made us choose $handshaking$ as the~best implementation.
   E-Puck processes a received message in three steps. It picks the~command from input buffer.
-  It process the~command and then reply with an answer.
-  For commands with long sending or processing phase it means following consequence.
+  It processes the~command and then replies with an answer.
+  For commands with long sending or processing phase it means the following consequence.
   If such command is sent, next commands has to wait longer time, because there is a
   danger of e-Puck's input buffer overflow.
 
   Next advantage of $handshaking$ is its simple and elegant implementation. It also does not depend on {\it BTCom} implementation so much.
   If {\it BTCom} had improved the~times of processing the~answers,
-  in $nonhandshaking$ mode it would have resulted into a change of table, which stores minimal gaps after each command.
+  in $nonhandshaking$ mode it would have resulted into a change of a table, which stores minimal gaps after each command.
 
 \begin{figure}[!hbp]
 \begin{lstlisting}[language=cs]
 public class Sercom {
   public void Write(string command, RCallback okf, NRCallback kof,object state, double timeout) {
-          //... the~body of function
+          //... the body of function
   }
 }
 public class Epuck {
@@ -391,12 +391,12 @@ public class Epuck {
   
   Let us suppose, that {\it Elib} library has to send a lot of commands of one type.
   For example all the~commands can control the~front LED light.	
-  The~problem consist of unwanted postponing a call of the~$Kof$ callback. 
-  Let us imagine that the~answer to first command
+  The~problem consists of unwanted postponing a call of the~$Kof$ callback. 
+  Let us imagine that the~answer for the~first command
   is lost, but the~second answer manage to be processed under $timeout$ of the~first command.
   It means that $Okf$ callback is called and the~user assumes that everything is fine for the first command.
   Furthermore, the~problem can be postponed to the~last command of the~same type,
-  because the~reply to the~second command can be substitute for the~reply of the~third command
+  because the~reply to the~second command can replace the~reply of the~third command
   and so on.
 
   The~commands can be logically different, although they are of the~same type.
@@ -406,7 +406,7 @@ public class Epuck {
   their arguments.
 
   $Handshake$ mode does not suffer from calling the~wrong callback. 
-  On the other hand, that can not be solved by handshaking mode.
+
   \begin{example}
   Let us imagine a situation where a user of Elib receives a $Kof$ callback for "SetSpeed(0.5,0.5)" command.
   He decides to stop with the same command "SetSpeed(0,0)". He successfully receives the $Okf$ callback.
@@ -537,7 +537,7 @@ public class Epuck {
 \subsection*{The~current $Sercom$}\label{sec:current}
   The~current version abandoned the~implementation of the~$nonhandshaking$ mode, 
   because of the~problems with receiving answers described 
-  in section ~\ref{sec:approach}.
+  in Section ~\ref{sec:approach}.
   It also solves the~problem with	redundant threads. 
 
   \subsubsection*{Inner structure} % (fold)
@@ -567,7 +567,7 @@ public class Epuck {
   
 \begin{figure}[!hbp]
 \begin{lstlisting}[language=cs]
-// The~form of delegate declaration garantees, that only functions
+// The form of delegate declaration garantees, that only functions
 // with no arguments and with void returning value 
 // can be saved in SendAsync delegate.
 delegate void SendAsync();
@@ -578,7 +578,7 @@ void Send(object Sender, EventArgs ev) {
 }
 // This function match requirements of SendAsync delegate.
 void SendAsyncCall(){
-  //the~body
+  //the body
 }
 \end{lstlisting}
 \caption{Example of Asynchronous function invocation}\label{invocation}
@@ -591,19 +591,20 @@ void SendAsyncCall(){
 
   The~queue $notSent$ implements an event $NonEmpty$, which calls the~$Send$ method whenever something is written
   to $Sercom$ by the~$Write$ method. The~$Sent$ method is also called, if the~$hshake\_sent$ variable is set to $null$.
-  $Send$ just calls $SendAsyncCall$. See a snippet in ~\ref{invocation} .
+  $Send$ just calls $SendAsyncCall$. See a snippet in Figure ~\ref{invocation} .
 
   The~$Read$ method which is called asynchronously just calls $textModeCall$
   in the~text mode and $binaryModeRead$ in the~binary mode.
   The~only command, which is sent in the~binary mode in {\it Elib}, is the~command to get a picture.
   The~picture is the~only binary answer of {\it BTCom} too.
   A description of $binaryModeRead$ is postponed after  
-  a introduction $textModeCall$ method.
+  introducing $textModeCall$ method.
 
   Does $SendAsyncCall$ implement $handshaking$ mode?
-  $SendAsyncCall$ actually does not send anything. It checks whether the~command is received. 
-  If $hshake\_sent$ is set to $null$ and the~$notSent$ queue
-  contains some $ansGuard$, then $SendAsyncCall$ moves $ansGuard$ from $notSent$ to $hshake\_sent$
+  $SendAsyncCall$ checks whether the~previous command is received by
+  checking whether $hshake\_sent$ is set to $null$.
+  If the command is received and the~$notSent$ queue contains some $ansGuard$, 
+  then $SendAsyncCall$ moves $ansGuard$ from $notSent$ to $hshake\_sent$
   queue and sends the~command. 
 
   %\input{sercom_handshake.TpX}
@@ -619,7 +620,7 @@ void SendAsyncCall(){
     \put(225.68,59.49){\fontsize{8.83}{10.60}\selectfont hshake\symbol{95}sent}
     \put(108.63,115.68){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
     \put(26.79,59.35){\fontsize{8.83}{10.60}\selectfont Read(..)}
-    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont AsyncSend(..)}
+    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont SendAsync(..)}
     \put(26.79,164.96){\fontsize{8.83}{10.60}\selectfont Send(..)}
     \put(228.32,147.36){\fontsize{8.83}{10.60}\selectfont CallKof(..)}
     \put(228.32,129.76){\fontsize{8.83}{10.60}\selectfont CallOkf(..)}
@@ -652,7 +653,7 @@ void SendAsyncCall(){
 
   The~answers of $Sercom$ are processed in the~$Read$ function
   which is the~$DataReceived$ handler of .Net $SerialPort$. The~$DataReceived$ handler is called asynchronously
-  in .Net implementation of the~$SerialPort$ class if at least one new character is deliver to
+  in .Net implementation of the~$SerialPort$ class if at least one new character is delivered to
   serial port input buffer. 
 
   
@@ -689,7 +690,7 @@ void SendAsyncCall(){
 
   Sending and receiving commands answers works well 
   until an answer is lost. $Timeouts$ ensure that the~stacked instance of $ansGuard$ are cleared after its $timeout$  elapses.
-  The~instance of $ansGuard$ is stacked either in $notSent$ queue	or in $hshake\_sent$.
+  The~instance of $ansGuard$ is stacked either in $notSent$ queue or in $hshake\_sent$.
   Both methods, which implement the~removal of an $ansGuard$, run in worker threads and also implement
   sophisticated system of waking and putting their threads to sleep, which prevents the~threads from wasting
   the~CPU time during their waiting to the~$timeout$ expiration. 
@@ -741,22 +742,23 @@ public class Sercom:IDisposable{
   They are valid, if the~$FullImgBytes$ is set to true.
   Otherwise the~properties do not have to be from the~last image.
   If the~$Okf$ was called on the~last taken image then $FullImgBytes$ is set to $true$. The~property
-  comes in use if the~$Kof$ callback was called, because it can be called from $notSent$ queue 
-  or the~bytes of image got lost, or the~image is all right, but it was received too late. 
+  comes in use if the~$Kof$ callback was called, because it can be called from $notSent$ queue  when the~bytes of image got lost, or the~image is all right, but it was received too late. 
   Width, height, mode and bytes are used as parameters for bitmap, 
   which is created in the~$Epuck$ class.
 
 \section{The~$Epuck$ class} \label{sec:epuck}
   An instance of $Epuck$ offers a virtual representation of e-Puck,
-  which intermediates all sensors and actuators of e-Puck to user. 
+  which interfaces all sensors and actuators of e-Puck to user. 
   The~$Epuck$ class also hides Bluetooth communication from the~user.
 
   $Epuck$ uses $Sercom$ internally and makes controlling of robot much more comfortable.
-  $Sercom$ treats only the~command "GetImage" specially, because it is the~only one command in binary mode
-  and it has big time requirements. $Sercom$ does not differentiates between other commands.
-  $Epuck$ differentiate between commands a lot. It tights $Epuck$ with concrete implementation of {\it BTCom},
+  $Sercom$ treats only the~command "GetImage" specially, because it is the~only one command 
+  processed in binary mode
+  and it has big time requirements. $Sercom$ does not differentiate between other commands.
+  $Epuck$ differentiates between commands a lot. 
+  It tights $Epuck$ with concrete implementation of {\it BTCom},
   but it also allows to process the~answers and to offer a typing of the~returning values, which increases
-  applicability. Main goal of the~$Epuck$ class is to offer a good interface.
+  applicability. Main goal of $Epuck$ class is to offer a good interface.
 
   In this chapter the~usage of $Sercom$ in $Epuck's$ class is presented together with additional methods 
   for implementation of the~interfaces. The~reasons, which lead to implementing two independent interfaces for
@@ -766,7 +768,7 @@ public class Sercom:IDisposable{
   The~$Epuck$ class brings nothing more than interface and debugging tools. We describe the~interface
   on examples as much as possible. There are several introductory examples in these chapter,
   which explain the~properties of the~interface. Furthermore, 
-  Guide lines for the~$Epuck$ class and the~debugging
+  guide lines for the~$Epuck$ class and the~debugging
   tools can be found in Chapter ~\ref{chap:usage}.
   The~following sections present the~internals of $Epuck's$ methods.
   
@@ -812,20 +814,19 @@ public class Epuck{
 \end{figure}
 
   Although there are four kinds of commands, the~implementation differs only in processing the~answer.
-  The~processing functions $actuators(..)$, $intArrSensors(..)$, $stringSensors(..)$ all 
-  look like $GetImage(..)$ method.
+  The~processing functions $actuators(..)$, $intArrSensors(..)$, $stringSensors(..)$ are all similar to $GetImage(..)$ method.
   
   There are only two differences between $GetImage(..)$ and other functions.
   Other functions have to parse their~answers in $Okf(..)$ functions differently and they do not parse
   answer in $Kof(..)$ callback at all.
 
-  The~differences between $GetImage(..)$ and the~processing functions are expressed by use of different
-  delegates for $Okf(..)$ functions. All $Kof(..)$ functions fits to same delegate $KofCallback$. 
+  The~differences between $GetImage(..)$ and the~processing functions consist in using different
+  delegates for $Okf(..)$ functions. All $Kof(..)$ functions fit to the same delegate $KofCallback$. 
   Only the~$GetImage(..)$ function defines its own delegate $OkfKofCamsSensor$, 
   which $GetImage(..)$ also uses for the~$Okf(..)$ functions.
   
   \begin{remark}
-  As you can see in Figure ~\ref{publicep} on line 14-18 and 19-25,
+  As you can see in Figure ~\ref{publicep} on lines 14-18 and 19-25,
   the~callbacks are wrapped in lambda functions \cite{lambda}.
   Instead of passing $Okf(..)$ and $Kof(..)$ directly to $Sercom.Write(..)$ function,
   $Okf(..)$ and $Kof(..)$  are called within the~lambda functions.
@@ -886,7 +887,7 @@ int[] IRSensors = ada.EndGetFtion(ar); //if callback == null
 
   If the~$callback$ delegate is null, then we need the~$EndGetFtion(ar)$ function
   in order to be sure that the~real e-Puck has sent the~values of IR sensors. 
-  See the~Figure ~\ref{arexample}.
+  See Figure ~\ref{arexample}.
   The~call of $EndGetFtion(..)$ blocks the~current thread and waits synchronously until the~real
   e-Puck is stopped.
 
@@ -898,7 +899,7 @@ int[] IRSensors = ada.EndGetFtion(ar); //if callback == null
 
   The~$ar$ instance of the $IAsyncResult$ interface allows the~$EndGetFtion(..)$ to wait to the~end of $BeginGetIR(..)$ function.
   The~instance is also used for passing user defined data in $state$ object to the~callback function,
-  because $ar$ instance has a $ar.AsyncState$ reference to $state$ object.
+  because $ar$ instance has an $ar.AsyncState$ reference to $state$ object.
   Another important feature of $ar$ is, that it allows $EndGetFtion$ function to receive the~data
   from $ar$. For example an integer array of IR sensors' values can be extracted from $ar$, which illustrates Figure ~\ref{arexample}.
   
@@ -946,7 +947,7 @@ int[] IRSensors = ada.EndGetFtion(ar); //if callback == null
   which are used to implement "Begin" and "End" functions.
   $IAsyncResult's$ properties are not enough to implement $BeginGetIR$,
   $EndGetFtion$ or any other "Begin" and "End" functions.
-  $BeginGetIR$ method use a constructor of $AsyncNoResult$. 
+  $BeginGetIR$ method uses a constructor of $AsyncNoResult$. 
   It also uses the~$SetAsCompleted$ function 
   and the~$EndInvoke$ function both from $AsyncResult$ subclass.
   We will explain the~interesting and crucial part of both classes. 
@@ -957,11 +958,11 @@ int[] IRSensors = ada.EndGetFtion(ar); //if callback == null
   A constructor of $AsyncNoResult$ only sets the~field members, 
   which are not changing during $AsyncNoResult$ existence.
   The~implementation of $SetAsCompleted(..)$ method 
-  from $AsyncNoResult$ sets an exception to $AsyncNoResult$.
+  from $AsyncNoResult$ raises an exception to $AsyncNoResult$.
   The~function $SetAsCompleted(..)$ from $AsyncResult$ overloads $SetAsCompleted(..)$ method
   from its base class $AsyncNoResult$ and adds 
-  a~possibility to set the~results instead of the~exception.
-  Third overload is implemented in $AsyncResult$ in order to the~$GetPicture(..)$ 
+  a~possibility to set the~results instead of raising the~exception.
+  Third overload is implemented in $AsyncResult$ so that the~$GetPicture(..)$ 
   command can set both exception and the~result at one time.
   $EndInvoke(..)$ is called from "End" function and does all its logic. 
   It checks whether the~called operation has finished.
@@ -1000,14 +1001,14 @@ public class AsyncResultNoResult : IAsyncResult {
           this(asyncCallback, state, null) { }
   public void SetAsCompleted(Exception exception, Boolean completedSynchronously) {
           // Passing null for exception means no error occurred. 
-          // This is the~common case
+          // This is the common case
           m_exception = exception;
-          // The~m_CompletedState field MUST be set prior calling the~callback
+          // The~m_CompletedState field MUST be set prior calling the callback
           Int32 prevState = Interlocked.Exchange(ref m_CompletedState, 
                   completedSynchronously ? c_scs : c_sca);
           if (prevState != c_sp)
                   throw new InvalidOperationException("You can set a result only once");
-          // If the~event exists, set it
+          // If the event exists, set it
           if (m_AsyncWaitHandle != null) m_AsyncWaitHandle.Set();
           // If a callback method was set, call it
           if (m_AsyncCallback != null) m_AsyncCallback(this);
@@ -1016,7 +1017,7 @@ public class AsyncResultNoResult : IAsyncResult {
           // This method assumes that only 1 thread calls EndInvoke 
           // for this object
           if (!IsCompleted) {
-                  // If the~operation isn't done, wait for it
+                  // If the operation isn't done, wait for it
                   AsyncWaitHandle.WaitOne();
                   AsyncWaitHandle.Close();
                   m_AsyncWaitHandle = null;  // Allow early GC
@@ -1037,12 +1038,12 @@ public class AsyncResultNoResult : IAsyncResult {
             if (Interlocked.CompareExchange(ref m_AsyncWaitHandle,
                mre, null) != null) {
               // Another thread created this object's event; dispose 
-              // the~event we just created
+              // the event we just created
               mre.Close();
             } else {
               if (!done && IsCompleted) {
-                // If the~operation wasn't done when we created 
-                // the~event but now it is done, set the~event
+                // If the operation wasn't done when we created 
+                // the event but now it is done, set the event
                 m_AsyncWaitHandle.Set();
               }
             }
@@ -1060,8 +1061,8 @@ public class AsyncResultNoResult : IAsyncResult {
 \end{figure}
 
 
-  An important feature of $AsyncNoResult$, which is inherited by $AsyncResult$, is a creation of an $EventWaitHandle's$ instance.
-  It is not created in all cases and is created at most one in a $AsyncNoResult's$ life cycle.
+  An important feature of $AsyncNoResult$, which is inherited by $AsyncResult$, is the~creation of an $EventWaitHandle's$ instance.
+  It is not created in all cases and it is created at most once during an $AsyncNoResult's$ life cycle.
   An instance of $EventWaintHandle$ is created only if the~user explicitly called get method for $WaitHandle$ or
   if the~$EndInvoke$ method was called and the~operation is still pending.
   It means that if you use callback and do not call "End" function then no instance of $EventWaitHandle$ is created.
@@ -1075,7 +1076,7 @@ public class AsyncResultNoResult : IAsyncResult {
   Let us note that $AsyncResult$ adds no crucial logic except setting 
   a~result in $SetAsCompleted$ function and
   returning the~result in $EndInvoke$ function. 
-  $AsyncResult$ use its base class $AsyncNoResult$ to implement the~logic.
+  $AsyncResult$ uses its base class $AsyncNoResult$ to implement the~logic.
 \begin{figure}[!hbp]
 \begin{lstlisting}
 public class AsyncResult<TResult> : AsyncResultNoResult {
@@ -1087,33 +1088,33 @@ public class AsyncResult<TResult> : AsyncResultNoResult {
     this(asyncCallback, state, null) { }
   //enable to set Result. AsyncNoResult enables to set exception.
   public void SetAsCompleted(TResult result, Boolean completedSynchronously) {
-    // Save the~asynchronous operation's result
+    // Save the asynchronous operation's result
     m_result = result;
-    // Tell the~base class that the~operation completed 
+    // Tell the base class that the operation completed 
     // sucessfully (no exception)
     base.SetAsCompleted(null, completedSynchronously);
   }
-  // Allows to set both the~exception and the~result. Added for GetImage(..).
+  // Allows to set both the exception and the result. Added for GetImage(..).
   public void SetAsCompleted(TResult result, Boolean completedSynchronously, Exception exception) {
     m_result = result;
     base.SetAsCompleted(exception, completedSynchronously);
   }
   new public TResult EndInvoke() {
     base.EndInvoke();// Wait until operation has completed 
-    return m_result; // Return the~result (if above didn't throw)
+    return m_result; // Return the result (if above didn't throw)
   }
 }
 \end{lstlisting}
 \caption{$AsyncResult<T>$} \label{result}
 \end{figure}
-  \subsection*{Implementation of "Begin" and "End functions} 
+  \subsection*{Implementation of "Begin" and "End" functions} 
   The "Begin" and "End functions are the~key functions of the~$IAsyncResult$ implementation.
   All the~"Begin" and "End" functions' implementations are similar. 
   They are implemented similarly to functions $BeginGetIR's$
-  and $EndGetFtion's$ from ~\ref{arexample}.
+  and $EndGetFtion's$ from Section~\ref{arexample}.
   The~implementation of $BeginGetIR's$ and its "End" function is shown in Figure ~\ref{beginsens}.
   All "Begin" functions use $Epuck's$ interface with the~$Okf$ and $Kof$ callbacks introduced
-  in Subsection ~\ref{sec:approach}.	
+  in Section ~\ref{sec:approach}.	
 
 \begin{figure}[!hbp]
 \begin{lstlisting}
@@ -1135,11 +1136,11 @@ public int[] EndGetFtion(IAsyncResult ar) {
 \label{beginsens}
 \end{figure}
 
-  The~"Begin" function creates an instance $a$ of class $AsyncNoResult$ respectively an $AsyncResult$ instance. 
-  The~function pass the~supplied callback with its $state$ object to
+  The~"Begin" function creates an instance $a$ of the~class $AsyncNoResult$ respectively an $AsyncResult$ instance. 
+  The~function passes the~supplied callback with its $state$ object to
   $a$. Third argument of $a's$ constructor is a name of the~used function.
 
-  In Figure \ref{beginsens}  $BeginGetIR(..)$ instantiate $AsyncResult<int[]>$, because $BeginGetIR(..)$
+  In Figure \ref{beginsens}  $BeginGetIR(..)$ instantiates $AsyncResult<int[]>$, because $BeginGetIR(..)$
   expect array of $ints$ as its answer. 
   The~$Name$ field of $AsyncResult$ is filled with the~$string$ value from $logFunctionNames$ dictionary. 
   The~dictionary values are by default set to their key values, so
@@ -1150,14 +1151,14 @@ public int[] EndGetFtion(IAsyncResult ar) {
   because the~$GetIR$ values expect an array of $ints$ from sensor.
   Sensor's methods as well as actuator's methods use the~$failed(..)$ function as its $Kof(..)$ callback.
   An exception is the~$GetImg(..)$ function which uses the~$failedBitmap(..)$ callback instead.
-  The~last action of each "Begin" function is a return of the~instance $a$.
-  The~function, which control actuators, calls the~$received(..)$ function as the~$Okf(..)$ callback. 
+  The~last action of each "Begin" function is returning the~instance $a$.
+  Functions, which control actuators, call the~$received(..)$ function as the~$Okf(..)$ callback. 
   See an example in Figure ~\ref{beginact}.
 
   Let us shortly introduce the~"End" functions before we will focus on the~$Okf(..)$ and 
   $Kof(..)$ callbacks used in the~"Begin" functions.
-  There are two tasks of the~"End" functions.
-  The~first task  is to cast the~$IAsyncResult$ argument to the~correct type of $AsyncResult$ 
+  "End" functions have two tasks of the~"End" functions.
+  The~first one is to cast the~$IAsyncResult$ argument to the~correct type of $AsyncResult$ 
   or to the~$AsyncNoResult$ class. The~second task is to call the~$EndInvoke(..)$ method.
   If the~"End" function is called with an $IAsyncResult$ argument from a sensor command, 
   the~value of the~sensor is returned from $EndInvoke(..)$. See Figure ~\ref{beginsens}. 
@@ -1188,15 +1189,15 @@ a.EndInvoke();
   on the~$AsyncNoResult$ respectively $AsyncResult$ instance.
   If the~operation fails, the~$Kof$ callback $failed$ is called. 
   In the~$failed$ function the~$SetAsCompleted$ method is called 
-  and an exception is passed to first argument of $SetAsCompleted$ overridden function.
-  See the~function $failed$ in Figure ~\ref{Ikofs} on first line.
+  and an exception is passed to the~first argument of $SetAsCompleted$ overridden function.
+  See the~function $failed$ in Figure ~\ref{Ikofs} on the first line.
 
-  The~only $Epuck's method$ that can return both the~exception and the~result is the~$BeginGetPicture(..)$ function.
+  The~only $Epuck's$ method that can return both the~exception and the~result is the~$BeginGetPicture(..)$ function.
   The~function $receivedSensors<Bitmap>$ is used in the~$Okf$ delegate $BeginGetPicture(..)$, and 
   the~special function $failedBitmap(..)$ is called if an exception has been raised.
-  The~$Kof(..)$ callback raise a special exception, if the~image was captured and has been 
-  delivered after time out expiration.
-  Implementation is shown in Figure ~\ref{Ikofs}. 
+  The~$Kof(..)$ callback raises a special exception, if the~image was captured and has been 
+  delivered after timeout expiration.
+  Its implementation is shown in Figure ~\ref{Ikofs}. 
 
   
 \begin{figure}[!hbp]
@@ -1221,7 +1222,7 @@ static void failedBitmap(Bitmap pic,object asyncResult) {
   If the~answer is delivered in time, then the~$Okf$ callback is called.
   The~sensor's callback $receivedSensors<T>$ passes the~answer of the~type $T$ to its first argument.
   The~actuators callback $received$ just passes $null$ to its first argument, which indicates
-  raising of no exception.
+  no exception was raised.
   See the~code below in Figure ~\ref{Iokfs}.
 
 
@@ -1238,9 +1239,9 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
 \caption{$Okf$ callbacks for $IAsyncResult$} \label{Iokfs}
 \end{figure}
 
-\section{Summary of Elib interfaces}
+\section{A summary of Elib interfaces}
 \label{sec:suminterface}
-  In previous three subsections the~implementations of the~two interfaces of $Epuck$ 
+  In the previous three subsections the~implementations of the~two interfaces of $Epuck$ 
   and one $Sercom's$ interface have been described.
 
   $IAsyncResult$ is built on the~basic $Epuck's$ interface with the~typed $Okf(..)$ and $Kof(..)$ callbacks. 
@@ -1266,7 +1267,7 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
   If a user wants to implement an $Okf$ logic using the~$IAsyncResult$ interface, he uses callback from $IAsyncResult$
   interface, which is passed to the~"Begin" function.
   The~callback is called after the~$received$ respectively $receivedSensor<T>(..)$ function  call 
-  the~$SetAsCompleted(..)$ method on an $a$ instance of $IAsyncResult$. 
+  the~$SetAsCompleted(..)$ method on an instance $a$ of $IAsyncResult$. 
   Remind the~implementation in Figure ~\ref{Iokfs}.
   The~$received(..)$ and $receivedSensor<T>(..)$ functions are called as the~$Okf$ callbacks
   from the~$Epuck's$ basic interface.
@@ -1276,7 +1277,7 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 static void SimulatingKof_over_IAsResult(Epuck ada) {
-  //the~timeout is too small!
+  //the timeout is too small!
   ada.BeginGetImage(0.001, okf, ada);
 }
 \end{lstlisting}
@@ -1292,20 +1293,20 @@ static void SimulatingKof_over_IAsResult(Epuck ada) {
   which implements the~$Kof$ logic in spite of the~functions use $IAsyncResult$ interface.
 
   The~$Kof$ logic should be implemented if an exception is raised. 
-  The~exception is raised in callback passed to $IAsyncResult$ if the~answer is not delivered in time out. 
+  The~exception is raised in callback passed to $IAsyncResult$ if the~answer is not delivered in timeout. 
   The~nearest place, where it can be caught is in the~call of the~$EndInvoke$ method.
   The~called $EndInvoke$ method is associated with the~$IAsyncResult$ instance. 
   The~common way for a user to invoke the~$EndInvoke$ method is to call the~"End" method 
   on the~instance of $Epuck$ with the~$IAsyncResult$ object as its parameter. 
   This technique is used in Figure ~\ref{c:okfsim}.
-  The~call of $ada.EngGetImage(ar\_)$ gets the~image and the~callback function continues
+  The~call of $ada.EndGetImage(ar\_)$ gets the~image and the~callback function continues
   or the~$EndGetImage(..)$ function throws an exception which is caught by $try-catch$ block.
   In $catch$ block the~user defined $kof$ function is invoked.
   
 \begin{figure}[!hbp]
 \begin{lstlisting}
 //It can be only a callback of BeginGetImage,
-//because the~ar paramater has to contain a Bitmap
+//because the ar paramater has to contain a Bitmap
 //See 8. row!
 static void okf(IAsyncResult ar_) {
   if (!endf) {
@@ -1316,7 +1317,7 @@ static void okf(IAsyncResult ar_) {
       //simulate image processig
       Thread.Sleep(20);
       ada.EndFtion(ar);
-      //the~timeout is too small!
+      //the timeout is too small!
       ada.BeginGetImage(0.01, okf, ada);
     } catch (ElibException) {
       //has to be fixed in kof
@@ -1339,21 +1340,19 @@ static void okf(IAsyncResult ar_) {
   commands in the~body. In this example the~same $kof(..)$ is called for $EndGetImage(..)$ and 
   for $EndActuators(..)$, which is the~pair function of the~$BeginMotors(..)$ 
   command from the~body of the~$okf(..)$ function.
-  The~exception's origin can be found out from the~$message$ property of exception, 
+  The~exception's origin can be found out from the~$message$ property of the~exception, 
   where the~$Name$ property of the~$AsyncNoResult$ instance is used.
 
   \subsubsection*{Summary} % (fold)
-  The~unknown source of exception as well as the~extra invocation command are minor problems, because
-  there is usually only one $Kof(..)$ callback that consists of more than one command. 
+  The~unknown source of an~exception as well as the~extra invocation command are minor problems, because
+  there is usually single $Kof(..)$ callback that consists of more than one command. 
   Therefore, $IAsyncResult$ interface of $Epuck$ class can be considered as powerful as $Epuck's$ basic interface.
 
-  \begin{remark}
-  The~lost answer usually completely breaks the~logic of $Okf$ implementation.
-  The~appropriate solution is to put e-Puck
-  at the~starting position of the~behaviour. Usually, commands to stop e-Puck are sent 
-  and a message is sent to the~user or to the~logging file.
-  See Figure ~\ref{iasynckof}.
-  \end{remark}
+  \begin{remark} The~lost answer usually completely breaks the~logic of $Okf$
+  implementation. If it happens, the~appropriate solution is to put e-Puck into
+  the~starting position of the~behaviour. Usually, commands to stop e-Puck are
+  sent and a message is sent to the~user or to the~log file. See Figure
+  ~\ref{iasynckof}. \end{remark}
 
 \begin{figure}[!hbp]
 \begin{lstlisting}
@@ -1366,7 +1365,7 @@ static void kof(IAsyncResult ar_) {
     Epuck ada = (Epuck)ar_.AsyncState;
     ada.EndFtion(ar_);
     try {
-      IAsyncResult ar = ada.BeginStop(to, null, null);//do the~repair actions
+      IAsyncResult ar = ada.BeginStop(to, null, null);//do the repair actions
       ada.EndFtion(ar);
       Console.WriteLine("The~problem is fixed. Lets call okf!");
       ada.BeginGetImage(0.1, okf, ada);
@@ -1398,7 +1397,7 @@ static void kof(IAsyncResult ar_) {
   is an extremely frequent calling of $Kof$ callbacks.
   $IAsyncResult$ throw an exception for every $Kof$ callback invocation, 
   whereas $Sercom's$ interface just needs to invoke a callback.
-  $IAsyncResult$ also needs to call other functions, but it is quite fast. 
+  $IAsyncResult$ also needs to call other functions, but this is quite fast. 
   The~raising and catching an exception is significantly slower.
   On the~other hand, such behaviour that extensively uses $Kof$ callbacks 
   has very special purpose or is a bad programming style.
@@ -1412,44 +1411,48 @@ static void kof(IAsyncResult ar_) {
 
   Let us note that $Sercom's$ and the~simple $Epuck's$ interface 
   are almost identical and therefore they have almost identical performance.
-  The~$Epuck$ class adds answers processing and allows logging. The~user would do the~processing of the~answers anyway.
-  If the~logging is off, the~one additional "if statements" in method adds no overhead. 
-  Choosing one interface before another in {\it Elib} does not significantly influence the~performance of application.
+  The~$Epuck$ class adds answers processing and allows logging. 
+  The~user would do the~processing of the~answers anyway.
+  If the~logging is off, the~one additional "if statement" in method adds no overhead. 
+  Preferring one interface over another in {\it Elib} does not significantly influence the~performance of application.
 
   \begin{remark}
    Let us remind, that we use $Threadpool$ for callbacks, so each callback
    does not start new thread.
    The $Threadpool$ distributes the free threads to functions.
   \end{remark}
-  We have put {\it Elib} to tests. Let us introduce 
+  We have tested the performance of {\it Elib}. Let us introduce 
   the~results and parameters of $Elib$ library.
-  The~size of compiled {\it Elib} library is less 50 KB.
+  The~size of the~compiled {\it Elib} library is less 50 KB.
   Using $IAsyncResult$ in "Bull" behaviour  {\it TestElib} consumes 8512 KB of memory.
   Compare it with a simple console application, which needs 4580 KB of memory, or with Google Chrome, 
   %todo compare with webots todo FEro
   which consumes more than 30000 KB of memory.
   %todo reference
-  During three performance tests on $SimulatingKof\_over\_IAsResult(..)$
-  numbers of threads of the~{\it TestElib} application do not exceed 10. 
+  During three performance tests of $SimulatingKof\_over\_IAsResult(..)$,
+  the~number of threads of the~{\it TestElib} application did not exceed 10. 
   See Section ~\ref{iasynckof}. Moreover, the~threads were usually unused
   in $ThreadPool$ system class which has used only one or two. 
   The~two worker threads were running of course all the~time.
    %csReadLineEmpty.exe 4580KB csReadLineEmpty.vshost.exe 15184KB
    %{\it TestElib }.vshost.exe consumed 14108KB
 
-  The~Table ~\ref{times1}  was measured using the~$ConsoleTestSensorsTimeout$ and
+  The~Table ~\ref{times1}  was obtained from measuring using the~$ConsoleTestSensorsTimeout$ and
   $ConsoleTestActuatorsTimeout$ functions with $timeout$ 10 seconds.
-  It shows that most of commands are delivered under 0.1 seconds. 
-  On contrary, the~commands to take a picture or to set camera parameters 
-   last almost half a second. 
-  The~reason is that a camera is very demanding device and it produces a lot of data.
+  It shows that most of commands were delivered under 0.1 seconds. 
+  On the contrary, the~commands to take a picture or to set camera parameters 
+   lasted almost half a second. 
+  The~reason is that the~camera is very demanding device and it produces a lot of data.
   The~special commands for calibrating IR sensors and for resetting e-Puck lasted even longer.
   The~"reset" command has even exceeded the~$timeout$,
   which means that part of its answer was lost.
 
-  The~values in table were measured from 10 independent measurement. 
+  The~values in the~table were measured from 10 independent measurements split into two tests. 
+  The first test consists of the first six measurements which used intentionally e-Puck with
+  a~not fully charged battery. The second test comprises another 4 measurements performed
+  on~e-Puck with a~recharged battery.
   The~first six measurements used e-Puck with a not fully charged battery.
-  The~second test was performed on e-Puck with a recharged battery.
+  The last four tests were performed on e-Puck with a recharged battery.
 
 %1-3 neprazdna baterie debug
 %4-6 not empty baterry, release 
