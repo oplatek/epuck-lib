@@ -427,6 +427,51 @@ public class Epuck {
   It leads to instability of a program, if the Bluetooth communication breaks up.
   
 \subsection*{Previous version}\label{previous}
+  %\input{sercom_nohandshake.TpX}
+  \begin{figure}[!hbp]
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.36, 236.63)(0,0)
+    \put(0,0){\includegraphics{sercom_nohandshake.pdf}}
+    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work}
+    \put(41.75,95.11){\fontsize{5.30}{6.36}\selectfont with Serial Port.}
+    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+    \put(237.00,207.20){\fontsize{7.80}{7.60}\selectfont public Write(..)}
+    \put(227.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+    \put(227.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.36, 236.63)(0,0)
+    \put(0,0){\includegraphics{sercom_nohandshake}}
+    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work}
+    \put(41.75,95.11){\fontsize{5.30}{6.36}\selectfont with Serial Port.}
+    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
+    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
+    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
+    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
+    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
+    \put(237.00,207.20){\fontsize{7.80}{7.60}\selectfont public Write(..)}
+    \put(227.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
+    \put(227.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
+    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
+    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:sercom_nohandshake}%
+   Old structure}
+  \end{figure}
   In  Figure ~\ref{pic:sercom_nohandshake} the~schema of the~inner implementation 
   from the~previous versions of {\it Elib} is illustrated.
   It shows functions and objects, which are used for sending and receiving the~messages.
@@ -435,55 +480,6 @@ public class Epuck {
   as $handshaking$ methods except they allow to send and receive more commands
   at once.
 
-  %\input{sercom_nohandshake.TpX}
-  \begin{figure}[!hbp]
-  \centering
-  \ifpdf
-    \setlength{\unitlength}{1bp}%
-    \begin{picture}(319.36, 236.63)(0,0)
-    \put(0,0){\includegraphics{sercom_nohandshake.pdf}}
-    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
-    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
-    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
-    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
-    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
-    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
-    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
-    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
-    \end{picture}%
-  \else
-    \setlength{\unitlength}{1bp}%
-    \begin{picture}(319.36, 236.63)(0,0)
-    \put(0,0){\includegraphics{sercom_nohandshake}}
-    \put(41.75,105.11){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \put(153.42,153.66){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(60.73,61.89){\fontsize{8.83}{10.60}\selectfont  ~Receive(..)}
-    \put(60.73,38.33){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hReceive(..)}}
-    \put(66.10,154.40){\fontsize{8.83}{10.60}\selectfont  ~Send(..)}
-    \put(66.10,133.67){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSend(..)}}
-    \put(238.00,207.20){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \put(153.42,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(63.66,207.34){\fontsize{8.83}{10.60}\selectfont notSended}
-    \put(229.20,89.27){\fontsize{8.83}{10.60}\selectfont Checker.Okf(..)}
-    \put(229.20,110.39){\fontsize{8.83}{10.60}\selectfont Checker.Kof(..)}
-    \put(155.29,100.33){\fontsize{8.83}{10.60}\selectfont  ~Sent [c]}
-    \put(161.97,74.11){\fontsize{8.83}{10.60}\selectfont \textcolor[rgb]{1, 0, 0}{hSent}}
-    \end{picture}%
-  \fi
-  \caption{\label{pic:sercom_nohandshake}%
-   Old structure}
-  \end{figure}
 
 
 %  Sending a command starts with calling public method $Write$. The~instance of $checker$ class is created in the~$Write$ method.
@@ -541,6 +537,54 @@ public class Epuck {
   It also solves the~problem with	redundant threads. 
 
   \subsubsection*{Inner structure} % (fold)
+  %\input{sercom_handshake.TpX}
+  \begin{figure}[!hbp]
+  \centering
+  \ifpdf
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.35, 257.75)(0,0)
+    \put(0,0){\includegraphics{sercom_handshake.pdf}}
+    \put(117.44,49.67){\fontsize{7.07}{8.48}\selectfont binaryModeRead(..)}
+    \put(117.44,76.07){\fontsize{7.07}{8.48}\selectfont textModeRead(..)}
+    \put(127.02,220.54){\fontsize{8.83}{10.60}\selectfont notSent}
+    \put(225.68,59.49){\fontsize{8.83}{10.60}\selectfont hshake\symbol{95}sent}
+%    \put(108.63,115.68){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+    \put(108.63,135.68){\fontsize{5.30}{6.36}\selectfont These methods work}
+    \put(108.63,125.68){\fontsize{5.30}{6.36}\selectfont with Serial Port.}
+    \put(26.79,59.35){\fontsize{8.83}{10.60}\selectfont Read(..)}
+    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont AsyncSend(..)}
+    \put(26.79,164.96){\fontsize{8.83}{10.60}\selectfont Send(..)}
+    \put(228.32,147.36){\fontsize{8.83}{10.60}\selectfont callKof(..)}
+    \put(228.32,129.76){\fontsize{8.83}{10.60}\selectfont callOkf(..)}
+    \put(228.14,86.63){\fontsize{8.83}{10.60}\selectfont checkSD(..)}
+    \put(228.32,220.40){\fontsize{8.83}{10.60}\selectfont CheckNS(..)}
+    \put(24.79,220.40){\fontsize{8.80}{9.60}\selectfont public Write(..)}
+    \end{picture}%
+  \else
+    \setlength{\unitlength}{1bp}%
+    \begin{picture}(319.35, 257.75)(0,0)
+    \put(0,0){\includegraphics{sercom_handshake}}
+    \put(117.44,49.67){\fontsize{7.07}{8.48}\selectfont binaryModeRead(..)}
+    \put(117.44,76.07){\fontsize{7.07}{8.48}\selectfont textModeRead(..)}
+    \put(127.02,220.54){\fontsize{8.83}{10.60}\selectfont notSent}
+    \put(225.68,59.49){\fontsize{8.83}{10.60}\selectfont hshake\symbol{95}sent}
+%    \put(108.63,115.68){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
+    \put(108.63,135.68){\fontsize{5.30}{6.36}\selectfont These methods work}
+    \put(108.63,125.68){\fontsize{5.30}{6.36}\selectfont with Serial Port.}
+    \put(26.79,59.35){\fontsize{8.83}{10.60}\selectfont Read(..)}
+    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont AsyncSend(..)}
+    \put(26.79,164.96){\fontsize{8.83}{10.60}\selectfont Send(..)}
+    \put(228.32,147.36){\fontsize{8.83}{10.60}\selectfont callKof(..)}
+    \put(228.32,129.76){\fontsize{8.83}{10.60}\selectfont callOkf(..)}
+    \put(228.14,86.63){\fontsize{8.83}{10.60}\selectfont checkSD(..)}
+    \put(228.32,220.40){\fontsize{8.83}{10.60}\selectfont CheckNS(..)}
+    \put(24.79,220.40){\fontsize{8.80}{9.60}\selectfont public Write(..)}
+    \end{picture}%
+  \fi
+  \caption{\label{pic:sercom_handshake}
+   Methods for changing state of $ansGuard$ instance}
+  \end{figure}
+
   {\it Elib} currently uses two working threads and implements only the~$handshake$ mode.
   One thread running in the~$checkNS$ function checks whether the~$timeout$ of sent commands
   has not elapsed during waiting in $notSent$ queue. The~second thread checks whether the~sent command
@@ -606,50 +650,6 @@ void SendAsyncCall(){
   If the command is received and the~$notSent$ queue contains some $ansGuard$, 
   then $SendAsyncCall$ moves $ansGuard$ from $notSent$ to $hshake\_sent$
   queue and sends the~command. 
-
-  %\input{sercom_handshake.TpX}
-  \begin{figure}[!hbp]
-  \centering
-  \ifpdf
-    \setlength{\unitlength}{1bp}%
-    \begin{picture}(319.35, 257.75)(0,0)
-    \put(0,0){\includegraphics{sercom_handshake.pdf}}
-    \put(117.44,49.67){\fontsize{7.07}{8.48}\selectfont BinaryModeRead(..)}
-    \put(117.44,76.07){\fontsize{7.07}{8.48}\selectfont TextModeRead(..)}
-    \put(127.02,220.54){\fontsize{8.83}{10.60}\selectfont notSent}
-    \put(225.68,59.49){\fontsize{8.83}{10.60}\selectfont hshake\symbol{95}sent}
-    \put(108.63,115.68){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-    \put(26.79,59.35){\fontsize{8.83}{10.60}\selectfont Read(..)}
-    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont SendAsync(..)}
-    \put(26.79,164.96){\fontsize{8.83}{10.60}\selectfont Send(..)}
-    \put(228.32,147.36){\fontsize{8.83}{10.60}\selectfont CallKof(..)}
-    \put(228.32,129.76){\fontsize{8.83}{10.60}\selectfont CallOkf(..)}
-    \put(228.14,86.63){\fontsize{8.83}{10.60}\selectfont CheckSD(..)}
-    \put(228.32,220.40){\fontsize{8.83}{10.60}\selectfont CheckNS(..)}
-    \put(26.79,220.40){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \end{picture}%
-  \else
-    \setlength{\unitlength}{1bp}%
-    \begin{picture}(319.35, 257.75)(0,0)
-    \put(0,0){\includegraphics{sercom_handshake}}
-    \put(117.44,49.67){\fontsize{7.07}{8.48}\selectfont BinaryModeRead(..)}
-    \put(117.44,76.07){\fontsize{7.07}{8.48}\selectfont TextModeRead(..)}
-    \put(127.02,220.54){\fontsize{8.83}{10.60}\selectfont notSent}
-    \put(225.68,59.49){\fontsize{8.83}{10.60}\selectfont hshake\symbol{95}sent}
-    \put(108.63,115.68){\fontsize{5.30}{6.36}\selectfont These methods work with Serial Port.}
-    \put(26.79,59.35){\fontsize{8.83}{10.60}\selectfont Read(..)}
-    \put(117.44,164.96){\fontsize{8.83}{10.60}\selectfont AsyncSend(..)}
-    \put(26.79,164.96){\fontsize{8.83}{10.60}\selectfont Send(..)}
-    \put(228.32,147.36){\fontsize{8.83}{10.60}\selectfont CallKof(..)}
-    \put(228.32,129.76){\fontsize{8.83}{10.60}\selectfont CallOkf(..)}
-    \put(228.14,86.63){\fontsize{8.83}{10.60}\selectfont CheckSD(..)}
-    \put(228.32,220.40){\fontsize{8.83}{10.60}\selectfont CheckNS(..)}
-    \put(26.79,220.40){\fontsize{8.83}{10.60}\selectfont public Write(..)}
-    \end{picture}%
-  \fi
-  \caption{\label{pic:sercom_handshake}
-   Methods for changing state of $ansGuard$ instance}
-  \end{figure}
 
   The~answers of $Sercom$ are processed in the~$Read$ function
   which is the~$DataReceived$ handler of .Net $SerialPort$. The~$DataReceived$ handler is called asynchronously
@@ -989,74 +989,83 @@ public class AsyncResultNoResult : IAsyncResult {
   // Name makes debugging easier in Elib. It shows, which command was used.
   string name;
   public string Name { 
-          get { return (name != null) ? name : ""; } 
-          set { name = value; 		} 
+    get { return (name != null) ? name : ""; } 
+    set { name = value; 		} 
   }
   public AsyncResultNoResult(AsyncCallback asyncCallback, Object state, string name_) {
-          m_AsyncCallback = asyncCallback;
-          m_AsyncState = state;
-          name = name_;
+    m_AsyncCallback = asyncCallback;
+    m_AsyncState = state;
+    name = name_;
   }
   public AsyncResultNoResult(AsyncCallback asyncCallback, Object state) : 
-          this(asyncCallback, state, null) { }
+    this(asyncCallback, state, null) { }
   public void SetAsCompleted(Exception exception, Boolean completedSynchronously) {
-          // Passing null for exception means no error occurred. 
-          // This is the common case
-          m_exception = exception;
-          // The~m_CompletedState field MUST be set prior calling the callback
-          Int32 prevState = Interlocked.Exchange(ref m_CompletedState, 
-                  completedSynchronously ? c_scs : c_sca);
-          if (prevState != c_sp)
-                  throw new InvalidOperationException("You can set a result only once");
-          // If the event exists, set it
-          if (m_AsyncWaitHandle != null) m_AsyncWaitHandle.Set();
-          // If a callback method was set, call it
-          if (m_AsyncCallback != null) m_AsyncCallback(this);
+    // Passing null for exception means no error occurred. 
+    // This is the~common case
+    m_exception = exception;
+    // The~m_CompletedState field MUST be set prior calling the~callback
+    Int32 prevState = Interlocked.Exchange(ref m_CompletedState, 
+      completedSynchronously ? c_scs : c_sca);
+    if (prevState != c_sp)
+      throw new InvalidOperationException("You can set a result only once");
+    // If the~event exists, set it
+    if (m_AsyncWaitHandle != null) m_AsyncWaitHandle.Set();
+    // If a callback method was set, call it
+    if (m_AsyncCallback != null) m_AsyncCallback(this);
   }
+\end{lstlisting}
+\caption{$AsyncNoResult's$ members and constructors} 
+\label{noresult}
+\end{figure}
+
+
+
+\begin{figure}[!hbp]	
+\begin{lstlisting}[language=cs]
   public void EndInvoke() {
-          // This method assumes that only 1 thread calls EndInvoke 
-          // for this object
-          if (!IsCompleted) {
-                  // If the operation isn't done, wait for it
-                  AsyncWaitHandle.WaitOne();
-                  AsyncWaitHandle.Close();
-                  m_AsyncWaitHandle = null;  // Allow early GC
-          }      
-          // Operation is done: if an exception occured, throw it
-          if (m_exception != null) throw m_exception;
+    // This method assumes that only 1 thread calls EndInvoke 
+    // for this object
+    if (!IsCompleted) {
+      // If the~operation isn't done, wait for it
+      AsyncWaitHandle.WaitOne();
+      AsyncWaitHandle.Close();
+      m_AsyncWaitHandle = null;  // Allow early GC
+    }      
+    // Operation is done: if an exception occured, throw it
+    if (m_exception != null) throw m_exception;
   }
 
   //region Implementation of IAsyncResult
   public Object AsyncState { get { return m_AsyncState; } }
   public Boolean CompletedSynchronously{get { 
-          return Thread.VolatileRead(ref m_CompletedState) ==  ic_scs; }}
+    return Thread.VolatileRead(ref m_CompletedState) ==  ic_scs; }}
   public WaitHandle AsyncWaitHandle {
-      get {
-          if (m_AsyncWaitHandle == null) {
-            Boolean done = IsCompleted;
-            ManualResetEvent mre = new ManualResetEvent(done);
-            if (Interlocked.CompareExchange(ref m_AsyncWaitHandle,
-               mre, null) != null) {
-              // Another thread created this object's event; dispose 
-              // the event we just created
-              mre.Close();
-            } else {
-              if (!done && IsCompleted) {
-                // If the operation wasn't done when we created 
-                // the event but now it is done, set the event
-                m_AsyncWaitHandle.Set();
-              }
-            }
+    get {
+      if (m_AsyncWaitHandle == null) {
+        Boolean done = IsCompleted;
+        ManualResetEvent mre = new ManualResetEvent(done);
+        if (Interlocked.CompareExchange(ref m_AsyncWaitHandle,
+           mre, null) != null) {
+          // Another thread created this object's event; dispose 
+          // the~event we just created
+          mre.Close();
+        } else {
+          if (!done && IsCompleted) {
+            // If the~operation wasn't done when we created 
+            // the~event but now it is done, set the~event
+            m_AsyncWaitHandle.Set();
           }
-          return m_AsyncWaitHandle;
+        }
       }
+      return m_AsyncWaitHandle;
+    }
   }
   public Boolean IsCompleted {
-          get {return Thread.VolatileRead(ref m_CompletedState) != c_sp; }}
+    get {return Thread.VolatileRead(ref m_CompletedState) != c_sp; }}
   //endregion Implementation of IAsyncResult
 }
 \end{lstlisting}
-\caption{$AsyncNoResult$} 
+\caption{$AsyncNoResult$ internals} 
 \label{noresult}
 \end{figure}
 
@@ -1168,15 +1177,15 @@ public int[] EndGetFtion(IAsyncResult ar) {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 public IAsyncResult BeginMotors(double leftMotor, double rightMotor, 
-double timeout, AsyncCallback callback,Object state) {
-AsyncResultNoResult a = 
-new AsyncResultNoResult(callback, state,logFunctionNames["BeginMotors(..)"]);
-Motors(leftMotor, rightMotor, received, failed, a, timeout);
-return a;
+              double timeout, AsyncCallback callback,Object state) {
+ AsyncResultNoResult a = 
+   new AsyncResultNoResult(callback, state,logFunctionNames["BeginMotors(..)"]);
+ Motors(leftMotor, rightMotor, received, failed, a, timeout);
+ return a;
 }
 public void EndActuators(IAsyncResult ar) {
-AsyncResultNoResult a = (AsyncResultNoResult)ar;
-a.EndInvoke();
+ AsyncResultNoResult a = (AsyncResultNoResult)ar;
+ a.EndInvoke();
 }
 \end{lstlisting}	
 \caption{An example of "Begin" and "End" function for actuators.} \label{beginact}
