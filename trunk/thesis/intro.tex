@@ -31,44 +31,45 @@
   The robot is able to emit light from light emitting diodes (LEDs) or to play a~sound.
   Two differential stepper motors facilitate a~precise movement. 
   
-  Eight of e-Puck LEDs are located on~its perimeter. There are red. 
+  Eight of e-Puck LEDs are located on~its perimeter. 
   Four of green LEDs are placed in~its translucent body and
   one stronger front LED is located next to the~camera. 
-  The front LED illuminates the~terrain~in~front of the~robot to
-  take better pictures. The rest of LEDs together with the~speaker are usually used to
+  The front LED illuminates the~terrain~in~front of the~robot in~order to
+  provide camera with~additional light. 
+  The~LEDs together with the~speaker are usually used to
   generate feedback. 
   
-  E-puck's sensors and actuators allows to solve a~large scale of problems from the~field of mobile robotics. 
+  E-puck's sensors and actuators allow to solve a~large scale of problems from the~field of mobile robotics. 
   On the~other hand, the~processing power of e-Puck does not allow to 
   process all outputs from its sensors. For example, resolution~from e-Puck's camera~is 640 * 480 pixels,
   but the~pictures taken from the~camera~are trimmed under 50 * 50 pixels, because there is a~lack of space in~
    e-Puck's microchip memory.
    
    E-puck robot and its sensors and actuators can be controlled only by a~low level C code,
-    which needs to be downloaded to e-Puck's memory, and has to be run by the~robot's microchip.
-   On contrary, a~program downloaded to e-Puck can communicate with
+   which needs to be downloaded to e-Puck's memory, and has to be run by the~robot's microchip.
+   However, a~program downloaded to e-Puck can communicate with
    a~PC and it can let the~PC to control the~e-Puck robot. 
-   The program has to define a~protocol, in~which it communicates between e-Puck and PC over Bluetooth.
-  On e-Puck such a~program exists and is called {\it BTCom}. 
-  {\it BTCom} is distributed under an open source licence with e-Puck.
+   Such a~program has to define a~protocol, 
+   in~which it communicates between e-Puck and PC over Bluetooth.
+  On e-Puck the~program exists and is called {\it BTCom}. 
 
   Programming e-Puck's microchip requires knowledge of sensors and actuators interfaces.
-  Furthermore debugging is limited to blinking with diodes or playing sounds.
-  The mentioned reasons and insufficient processing power hinder rapid development of even a~simple program, 
+  Furthermore, debugging is limited to blinking with diodes or playing sounds.
+  The mentioned reasons and insufficient processing power hinder rapid development 
+  of even a~simple program, 
   which makes e-Puck programming inconvenient for students.
   
-  At the~time of writing this thesis there was only one well developed software for e-Puck called Webots,
-  which makes programming e-Puck easier.
-  Webots is an useful develop and simulation~environment, but it is an expensive commercial software.
+  At the~time of writing this thesis there was only one well developed software for e-Puck, which makes programming e-Puck easier.  It is commercial software called Webots which
+   is an useful develop and simulation~environment.
   Other simulators, which can be free alternatives for Webots, are introduced in~Chapter ~\ref{chap:software}.
   
-  The drawbacks of low level programming are removed by the~{\it Elib} library, which is the~main~
-  contribution~of this work.
-  {\it Elib} library uses {\it BTCom} program on~e-Puck.
+  The drawbacks of low level programming are removed by the~{\it Elib} library, 
+  which is the~main contribution~of this work.
   {\it Elib} library runs on~PC and communicates with the~robot via~Bluetooth. 
+  {\it Elib} library uses {\it BTCom} program on~e-Puck.
   A program, which uses {\it Elib} library,	makes an e-Puck a~carrier of sensors and actuators. 
-  Such program sends commands for changing states of its actuators to e-Puck,
-  whereas the~whole algorithmic code runs on~PC.
+  Such program sends commands to e-Puck,
+  whereas the~whole algorithmic code runs comfortably on~PC.
   
   On the~other hand, the~implementation~of {\it Elib} brings new problems.
   This thesis introduces the~{\it Elib's} problems and discusses 
