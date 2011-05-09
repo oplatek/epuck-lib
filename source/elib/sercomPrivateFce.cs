@@ -12,6 +12,7 @@ namespace Elib {
     #region Protected and private fce
 
     delegate void SendAsync();
+
     void Send(object Sender, EventArgs ev) {
       SendAsync asyncCaller = new SendAsync(SendAsyncCall);
       asyncCaller.BeginInvoke(null, null);      
@@ -66,6 +67,7 @@ namespace Elib {
       Thread.Sleep(10);
       checkNSwh.Set();       
     }
+
     void CheckNS() {      
       double now;    
       myQueue kofs = new myQueue();
@@ -141,8 +143,9 @@ namespace Elib {
           binaryModeRead();                         
       } else {
         port.ReadExisting();
-	  }
+      }
     }
+
     void binaryModeRead() {
       ansGuard a=null;      
       Interlocked.Exchange<ansGuard>(ref a, hshake_sent);
@@ -193,6 +196,7 @@ namespace Elib {
       }
       endBinaryMode();         
     }
+
     void endBinaryMode() {
       //very important, if omitting it blocks this thread 
       text_mode = true;
@@ -202,6 +206,7 @@ namespace Elib {
       }
       Received(null, null);
     }
+
     void textModeCall() {      
       string r = port.ReadExisting();
       lock (hshake_sentLock) {
@@ -245,6 +250,7 @@ namespace Elib {
         a.kof.f.BeginInvoke(a.kof.data, null, null);
       }
     }//end of callKof
+
     void callOkf(ansGuard a, string ans) {
       NotAnswered--;
       if (a.okf.f != null) {
@@ -262,11 +268,11 @@ namespace Elib {
     }
 
 
-
     /// <summary>
     /// Releases unmanaged (close serial port) and - optionally - managed resources (stop threads in nice way).
     /// </summary>
-    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; 
+    /// <c>false</c> to release only unmanaged resources.</param>
     protected virtual void Dispose(bool disposing) {
       if (!disposed) {
         disposed = true;
@@ -306,12 +312,14 @@ namespace Elib {
 
     #endregion
   }
+
   /// <summary>
   /// A wrapper, which converts a system clock ticks to seconds. 
   /// </summary>
   public static class Stamp {
     /// <summary>
-    /// Gets the number of seconds from turning on the computer. 
+    /// Gets the number of seconds from turning on the computer. Do not handle overflow of the variable with tick count, 
+    /// so it is restarted to 0 after long processor run .
     /// </summary>
     /// <returns></returns>
     public static double Get() {

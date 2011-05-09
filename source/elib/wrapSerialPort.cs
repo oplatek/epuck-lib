@@ -24,13 +24,13 @@ namespace OP {
           set { dataReceived = value; }
       }
 
-      public WrapSerialPort(string portName):base(portName, 115200, Parity.None, 8, StopBits.One){
+      public WrapSerialPort(string portName):base(portName,115200){
           mylock = new object();
           buffer = new List<byte>();
           t = new Thread(readout);
           t.IsBackground = true;
           t.Priority = ThreadPriority.Highest;
-                  }
+      }
 
       private void myDispose(bool disposing) {
           end = true;

@@ -34,7 +34,6 @@ namespace TestElib {
       
       //see startEpuck and how easy is to make connection
       Epuck ada = startEpuck("/dev/rfcomm0","Ada");
-      
       // Do you want to see, where the limit of timeout is? 
       // Set your timeout and runs this simple functions below!
       ConsoleTestActuatorsTimeout(ada, to);//wait to answer before, in order to measure time (logging can measure time in much more convenient way.)

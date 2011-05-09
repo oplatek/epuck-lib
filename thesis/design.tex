@@ -773,7 +773,15 @@ public class Sercom:IDisposable{
   The~following sections present the~internals of $Epuck's$ methods.
   
 \subsection{$Basic$ interface: $Okf$ and $Kof$ callbacks} \label{sec:okfkofi}
-  $Epuck's$ basic interface just wraps the~$Sercom$ class. It differentiates between
+  $Epuck's$ basic interface just wraps the~$Sercom$ class. Methods of $Epuck's$ basic interface
+  differ in callback parameters. Types of callbacks differ according commands, which
+  were sent by functions of $Epuck's$ basic interface. 
+  We divide callbacks and $Epuck's$ methods in following categories.
+  \begin{itemize}
+    \item Functions for actuators and sensors with string return values
+    \item Functions for sensors returning array of integers
+    \item Function for sensors returning an image 
+  \end{itemize}
   commands for actuators, sensors with string return value and sensors, which return an array of integers.
   $Epuck$ treats pictures differently too, because it passes to callback a $Bitmap$ instance.
 
@@ -1177,7 +1185,7 @@ public int[] EndGetFtion(IAsyncResult ar) {
 \begin{figure}[!hbp]
 \begin{lstlisting}
 public IAsyncResult BeginMotors(double leftMotor, double rightMotor, 
-              double timeout, AsyncCallback callback,Object state) {
+       double timeout, AsyncCallback callback,Object state) {
  AsyncResultNoResult a = 
    new AsyncResultNoResult(callback, state,logFunctionNames["BeginMotors(..)"]);
  Motors(leftMotor, rightMotor, received, failed, a, timeout);
