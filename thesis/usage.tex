@@ -37,11 +37,11 @@
 
   The contents of this chapter is divided into 6 sections.
   The first section is devoted to advanced .Net techniques, which are used in {\it Elib}.
-  The Section ~\ref{sec:interfaces} shortly introduces features of each {\it Elib's} interfaces and 
+  The Section~\ref{sec:interfaces} shortly introduces features of each {\it Elib's} interfaces and 
    presents e-Puck's sensors and actuators.
   The next section goes through samples of implemented behaviours 
   from~{\it TestElib} project and explains the crucial part of the examples.
-  The Section ~\ref{sec:et} presents the {\it Elib Tools} console application, 
+  The Section~\ref{sec:et} presents the {\it Elib Tools} console application, 
   which is useful during developing a program for e-Puck.
   Finally the last section sums up the most important guidelines for {\it Elib} library.
   It also shortly points out, which algorithms and applications can profit most
@@ -155,7 +155,7 @@ suitable method -333
   Finally $A$ calls $WaitOne$ and blocks on this call.
   $B$ thread works and after the job is done, it just invokes $Set$ method on $e$. 
   $Set$ method releases all threads, which are blocked in $WaitOne$ method.
-  Run the code from Figure ~\ref{ewh} to understand it.
+  Run the code from Figure~\ref{ewh} to understand it.
 
           
 \begin{figure}[!hbp]
@@ -177,7 +177,7 @@ static void Bthread() {
 \caption{Definition of a delegate} \label{ewh}
 \end{figure}
 
-   $EventWaitHandle$ is used in the function $endBehaviour$ described in Section ~\ref{sec:iabehaviors} 
+   $EventWaitHandle$ is used in the function $endBehaviour$ described in Section~\ref{sec:iabehaviors} 
    used in behaviour implementation.
    Lambda functions can be seen for example in $ConsoleTestSensorsTimeout$ function, which presents all sensors from e-Puck.
    Delegates are used in every command invocation to specify types of callback functions.
@@ -189,7 +189,7 @@ static void Bthread() {
   $Epuck$ class uses $Sercom$ internally.
   Let us focus only on $Epuck's$ class, because $Epuck$'s basic interface is a specialisation of~$Sercom$'s
   interface for version 1.1.3 of {\it BTCom}.
-  For more information about interfaces and implementation of $Sercom$ and $Epuck$ see Section ~\ref{chap:elib}.
+  For more information about interfaces and implementation of $Sercom$ and $Epuck$ see Section~\ref{chap:elib}.
 
   $Epuck$ class itself has two interfaces. Let us name them the basic interface and $IAsyncResult$ interface.
   $IAsyncResult$ interface is used widely through .Net. We will introduce it in the examples from {\it TestElib} project.
@@ -209,7 +209,7 @@ static void Bthread() {
   One behaviour implemented by $Epuck's$ basic interface is presented.
   After the main section, which covers the behaviours, some "tips and tricks" are shown.
   There is a behaviour in {\it TestElib}, that emulates $Epuck's$ basic interface via $IAsyncResult$. 
-  It is depicted in the summary of Chapter ~\ref{chap:elib}.
+  It is depicted in the summary of Chapter~\ref{chap:elib}.
   We will skip the behaviour, because it is implemented only for theoretical purposes.
   Apart from minor functions there is an example of image processing in "Tips and Tricks" part and a logging example.
   Logging $Epuck's$ actions is the last example.
@@ -363,7 +363,7 @@ Bitmap bm = e.EndGetImage(ar);
   Callbacks of "Begin" functions like $BeginStop$ take one $IAsyncResult$ instance as an argument and return $void$ value.
   The $state$ parameter, which is passed to "Begin" function can be found 
   in~$AsyncState$ property from $IAsyncResult$ argument.
-  In Figure ~\ref{safedis} $BeginGetIR$ function is invoked on the third line 
+  In Figure~\ref{safedis} $BeginGetIR$ function is invoked on the third line 
    with $EasyDisposal(..)$ callback 
   and $ada$ instance as parameter for callback.
   On line 7 of Figure~\ref{safedis} the $ada$ parameter is extracted from $IAsyncResult$ $ar$.
@@ -374,7 +374,7 @@ Bitmap bm = e.EndGetImage(ar);
   therefore the $EndFtion(..)$ called in callback function does not blocks the thread.
   See again line 7 of Figure~\ref{safedis}.
   Furthermore no $EventWaitHandle$ is created, which results in a better performance if we use callback.
-  For information how this feature is implemented see Section ~\ref{sec:iasync}.
+  For information how this feature is implemented see Section~\ref{sec:iasync}.
 
   Callbacks are invoked in separate threads. It complicates the code, if we invoked more than one behaviour
   from one function as we do in the $Main(..)$ function of {\it TestElib}. 
@@ -470,7 +470,7 @@ public static void Bull(Epuck ada) {
   Explore code in $exceptionOccured\_End$ function to see more.
 
   See code below how the behaviour is ended in aa  nice way. 
-  It is a tricky part and is not necessary if only one behaviour is implemented. See Figure ~\ref{safedis}
+  It is a tricky part and is not necessary if only one behaviour is implemented. See Figure~\ref{safedis}
   for safe ending of a single behaviour.
   Important is that $startBehaviour$ is called at the first line of $Bull$ method 
   and $endBehaviour$ is called on the last one.
@@ -495,7 +495,7 @@ static void endBehaviour() {
 \end{lstlisting}
 
 \subsection{$Bull's$ internals} \label{bull}
-  The diagram ~\ref{pic:bull} shows the states of $Bull$ behaviour.
+  The diagram~\ref{pic:bull} shows the states of $Bull$ behaviour.
   Three states are named after the functions, which control the robot. State $"GetStacked"$
   is the final state and it arises, if the e-Puck is surrounded with obstacles from the front and from behind.
   The $searchAround$ procedure calls itself 4 times if no red obstacle is in front of e-Puck.
@@ -565,7 +565,7 @@ if (red > redl) {
 
   The $rebound$ function tries to compute the angle of rebound, but as well the simple $go2wall$ function
   implements a restart of the behaviour.
-  Let us focus on this part. We will show it on $go2wall$ function in Figure ~\ref{fig:restart}
+  Let us focus on this part. We will show it on $go2wall$ function in Figure~\ref{fig:restart}
 
 \begin{figure}[!hbp]
 \begin{lstlisting}[language=cs]
@@ -649,7 +649,7 @@ static void goXmiliseconds(Epuck e, double L, double R, int milisec, double addt
 
   More interesting feature presented here is extracting 
   an $AsyncNoResult$ class from $IAsyncResult$ interface. 
-  For more information see Section ~\ref{sec:iasync}.
+  For more information see Section~\ref{sec:iasync}.
   From user's point of view it is good to know, that $Name$ property can be changed. 
   $Name$ property is used in logging. 
   Its default value is the name of "Begin" function,
@@ -721,11 +721,11 @@ static void exceptionOccured_Restart(Epuck ada) {
   where it should have ended before the connection failure.
 
   The behaviour  uses $Epuck's$ basic interface,	
-  which has been introduced in Section ~\ref{sec:touching}.
+  which has been introduced in Section~\ref{sec:touching}.
   It has some design consequences. The example has two implementations, in fact two behaviours. 
   The behaviour, which has a good connection at disposal,
   and the behaviour, which has to deal with a broken connection.
-  We also keep the guideline from Section ~\ref{safedis}. 
+  We also keep the guideline from Section~\ref{safedis}. 
   It says, that the asynchronous call should be made only once at the end of a function.
   It is necessary to avoid parallelism and problems with ending of the behaviour.
 
@@ -736,7 +736,7 @@ static void exceptionOccured_Restart(Epuck ada) {
   We will focus on a function, which is called to stop the e-Puck after it travelled the required distance.
 
   Let us remind of the $Epuck$ basic interface.
-  In Figure ~\ref{stopKof} class $RobotAndTime$ is used. 
+  In Figure~\ref{stopKof} class $RobotAndTime$ is used. 
   As you can see, the structure of the code does not differ from $IAsyncResul$. 
   First the necessary cast is performed in order to 
   extract $RobotAndTime$ class, then the logic is implemented and in the end 
@@ -834,7 +834,7 @@ class RobotAndTime {
   the e-Puck's box with the e-Puck logo in front of the camera. 
 
   The function $LoggingExample$ uses the function $ConsoleTestSensorsTimeout$, 
-  which has been presented at the beginning of this section in ~\ref{sec:touching}.
+  which has been presented at the beginning of this section in~\ref{sec:touching}.
   It runs the function twice, each time with different timeout. 
   The logging to file specified in $name$ property is turned on.
   Try to run the function. 
@@ -980,7 +980,7 @@ class Average : Action {
   Moreover {\it Elib} provides a user with numerous examples. The examples are commented
   and can be easily modified.
   On the other hand, a program, which use {\it Elib}, gives up of direct control over robot,
-  which can be observed the best on $GoAndTurn$ behaviour in Section ~\ref{sec:go}.
+  which can be observed the best on $GoAndTurn$ behaviour in Section~\ref{sec:go}.
 
   We have presented a few of simple behaviours, which control e-Puck, 
   but much more can be done with {\it Elib}.
@@ -1006,10 +1006,10 @@ class Average : Action {
   {\it Elib Joystick} uses Windows Presentation Foundation and
   uses a dispatcher to capturing image. The other operation, 
   which has timeout 0.1 s, accesses the controls synchronously using
-  either $EndFtion$ or $EndGetFtion$. See Section ~\ref{sec:iasync} for information 
-  about these functions. {\it Elib Joystick} is introduced in appendix ~\ref{app:joystick}.
+  either $EndFtion$ or $EndGetFtion$. See Section~\ref{sec:iasync} for information 
+  about these functions. {\it Elib Joystick} is introduced in appendix~\ref{app:joystick}.
 
-  {\it Elib} can access all sensors of e-Puck. See the Chapter ~\ref{sec:epuck} 
+  {\it Elib} can access all sensors of e-Puck. See the Chapter~\ref{sec:epuck} 
   for more information about e-Puck's sensors and actuators.
   However, the camera is not used in the full resolution,
   because the e-Puck processor has no place to store the captured image.
