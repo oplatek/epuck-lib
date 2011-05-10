@@ -1,17 +1,17 @@
 \chapter{E-Puck}
 \label{chap:epuck}
-  An object of interest of a this thesis is a programming of the e-Puck robot and e-Puck itself.
-  In this chapter e-Puck robot and its design is introduced. 
-  Then in Section \ref{sec:sensors} the chapter continues 
-  with~description e-Puck's mechanical design and stepper motors in Section
-  \ref{sec:mechanical}. 
+  An object of interest of a this thesis is a programming of the e-Puck robot.
+  In this chapter the~robot and its design is introduced. 
+  Then in Section \ref{sec:mechanical} the chapter continues 
+  with~description e-Puck's mechanical design. Section \ref{sec:sensors} is devoted to e-Puck's sensors and actuators. 
+
   We focus on a programmer's point of view of e-Puck qualities.
   For each sensor its functions, acceptable values and typical use is shortly presented. 
   The chapter finishes with a description of a e-Puck's camera and outlining other e-Puck abilities.
 \section{Origin of e-Puck}
 \label{sec:mechanical}
   Motivation for a new robot arose from an absence of a very small educational robot,
-  which is sufficiently efficient, and can be used for education in many research areas.
+  which is can be used for education in many research areas.
   E-Puck was developed in summer of 2004 at the École Polytechnique Fédérale de Lausanne (EPFL) 
   as an open tool. E-Puck designers used open software and hardware development model. 
   E-Puck can be applied in automatic control, signal processing or 
@@ -20,8 +20,8 @@
   Designers of e-Puck tried to use manufacturing components as much as possible 
   in order to keep the price low.		 
   
-  Since 2006 the first generation of e-Pucks was replaced by the second stable generation.
-  So far, more than 2000 robots have been manufactured.
+  Since 2006 the first generation of e-Pucks was replaced by the second generation.
+  So far, more than 2000 e-Pucks in version 2 have been manufactured.
   There are several distributors for Switzerland and America, one is in Japan
   \footnote{\url{http://www.roadnarrows.com/robotics/}, \url{http://www.aai.jp/}, \url{http://www.k-team.com/},
   \url{http://www.cyberbotics.com/products/robots/e-puck.html}, \url{http://www.gctronic.com/},
@@ -50,9 +50,9 @@
    Epuck structure \cite{robotica2009}}
   \end{figure}
 
-  The mechanical design of e-Puck is shown in Figure ~\ref{pic:epuck_str}.
-  It consists of a rounded transparent body, a battery, two stepper motors with
-  wheels on their axis, a printed circuit board, plastic ring of LEDs, 
+  The mechanical design of e-Puck is shown in Figure~\ref{pic:epuck_str}.
+  It consists of a rounded transparent body, a battery, two stepper motors, 
+  wheels , a printed circuit board, plastic ring of LEDs, 
   a camera and a default extension board.
   There are extensions like floor sensors, a rotating scanner or a turret with linear cameras,
   which can scale up e-Puck's sensors. If we are talking about e-Puck in this thesis,
@@ -71,7 +71,7 @@
   Sensors and actuators determine the possible robot usage.
   Luckily, e-Puck has a lot of sensors of different kinds and is equipped with typical actuators.
   The following paragraphs shortly describe e-Puck's sensors and actuators and mention a few problems 
-  with transmitting data between the robot and PC using {\it BTCom}. {\it BTCom} protocol is used by {\it Elib},
+  with transmitting data between the robot and PC using {\it BTCom}. {\it BTCom} protocol is used by {\it Elib} library,
   so {\it Elib} is to some extent dependent on {\it BTCom}.
   The actuators consist of motors, 8 red LEDs on perimeter, 4 green body LEDs,
    which are turned on/off together, a front LED and a speaker.
@@ -119,9 +119,11 @@
   Maximal acquisition speed is 33 kHz. 
   For more information see \cite{sound}.
   
+  \begin{remark}
   A program which uses {\it BTCom} can capture values of amplitude only in irregular intervals, so 
   it is not possible to compute frequency of sound by running FFT on Personal Computer. 
-  However to locate the source of sound is still possible.
+%  However to locate the source of sound is still possible.
+  \end{remark}
   
   %\input{epuck.TpX}
   \begin{figure}[!hbp]
@@ -142,8 +144,7 @@
   \end{figure}
 
   E-Puck's camera is a colour CMOS camera with 640 * 480 resolution. 
-  Because only 8 kB of RAM memory is available,
-  the picture size has to be reduced in order to save the image in the memory.
+  Only 8 kB of RAM memory is available, so the~size of an image has to be reduced in order to save the picture in the memory.
   The image processing is really demanding on the processing power so it is not 
   convenient to be run on the slow e-Puck's processor.
   
@@ -151,8 +152,10 @@
   by sending picture to Personal Computer (PC). PC has enough resources to process the image fast,
    but the transport of an image takes a long time too. 
    For example capturing and sending a colour image of size 40 * 40 pixels 
-  takes more than 0.2 seconds, if it is sent over Bluetooth.
-  {\it BTCom} can set height, width, colour mode and zoom. A colour picture is twice as big as the same picture taken
+  takes around 0.3 seconds, if it is sent over Bluetooth.
+
+  {\it BTCom} can set height, width, colour mode and zoom of camera. 
+  A colour picture is twice as big as the same picture taken
   in grey scale mode.
   In the gray scale mode, each pixel is represented by 1 byte value of
   intensity. Each pixel of color picture is represented as 3 values of $RGB$
@@ -164,8 +167,8 @@
   
   Processor, dsPIC 30F6014, is the heart of e-Puck and runs at 60 MHz, which correspond to 15 MIPS.
   It has C oriented instructions and supports compiling from GNU compilers.
-  Apart from standard 16 bits core unit Digital Signal Processor brings very high performance for computation,
-  for example FFT or other signal processing.
+  Apart from standard 16 bits core unit, Digital Signal Processor brings very high performance for computation
+  FFT or other signal processing.
   Programs can be downloaded to flash memory with 144 kB and
    are loaded to RAM memory according to the selector position.
   E-Puck's RAM memory has only 8 kB. A currently running program and all its data are placed in RAM memory.

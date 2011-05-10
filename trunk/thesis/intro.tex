@@ -5,13 +5,13 @@
   It is a~fascinating process, which
   involves a~lot of engineering disciplines.
   
-  A lot of cheap and sufficient components result in~a~boom of simple robots used in~daily life. 
+  A lot of affordable components result in~a~boom of simple robots used in~daily life. 
   Lawnmowers and vacuum cleaners are typical examples of mobile robots invasion~into our households in~these days.
   We also get used to robot prototypes, which are highly specialised in~the~space exploration~or in~army services.
 
   Despite the~rapid hardware development and robots increasing popularity,
   the~research in~the~field of mobile robots is at its beginning.
-  The robots dominates in industry and they are already useful in our daily
+  Robots dominates in industry and they are already useful in our daily
   life, but the true real life problems are still difficult for them.
   Many complex problems like driving a car in full traffic or to move in human
   like environment are still a real challenge for a robot.
@@ -21,7 +21,7 @@
   Luckily, several educational robots were made to help the novices.
   Educational robots help students focus on the other aspects of mobile robotics than the hardware one.
  
-  This work describes and implements a~library for one of the~educational robots.
+  This thesis describes and implements a~library for one of the~educational robots.
   Its name is e-Puck and it is a~typical example of an educational robot for students at the~university level. 
   E-Puck has a~clean, simple and robust mechanical design, which is easy to understand.
   Bluetooth wireless communication~enables sending data~between e-Puck and PC.
@@ -31,13 +31,13 @@
   The robot is able to emit light from light emitting diodes (LEDs) or to play a~sound.
   Two differential stepper motors facilitate a~precise movement. 
   
-  Eight of e-Puck LEDs are located on~its perimeter. 
-  Four of green LEDs are placed in~its translucent body and
-  one stronger front LED is located next to the~camera. 
-  The front LED illuminates the~terrain~in~front of the~robot in~order to
-  provide camera with~additional light. 
-  The~LEDs together with the~speaker are usually used to
-  generate feedback. 
+%  Eight of e-Puck LEDs are located on~its perimeter. 
+%  Four of green LEDs are placed in~its translucent body and
+%  one stronger front LED is located next to the~camera. 
+%  The front LED illuminates the~terrain~in~front of the~robot in~order to
+%  provide camera with~additional light. 
+%  The~LEDs together with the~speaker are usually used to
+%  generate feedback. 
   
   E-puck's sensors and actuators allow to solve a~large scale of problems from the~field of mobile robotics. 
   On the~other hand, the~processing power of e-Puck does not allow to 
@@ -60,14 +60,15 @@
   which makes e-Puck programming inconvenient for students.
   
   At the~time of writing this thesis there was only one well developed software for e-Puck, which makes programming e-Puck easier.  It is commercial software called Webots which
-   is an useful develop and simulation~environment.
-  Other simulators, which can be free alternatives for Webots, are introduced in~Chapter ~\ref{chap:software}.
+   is an useful development and simulation~environment.
+  Other simulators, which can be free alternatives for Webots, are introduced in~Chapter~\ref{chap:software}.
   
-  The drawbacks of low level programming are removed by the~{\it Elib} library, 
+  The~{\it Elib} library removes the drawbacks of low level programming, 
   which is the~main contribution~of this work.
   {\it Elib} library runs on~PC and communicates with the~robot via~Bluetooth. 
-  {\it Elib} library uses {\it BTCom} program on~e-Puck.
-  A program, which uses {\it Elib} library,	makes an e-Puck a~carrier of sensors and actuators. 
+  It uses {\it BTCom} program on~e-Puck.
+  A program, which uses {\it Elib} library, 
+  turns an e-Puck into a~carrier of sensors and actuators. 
   Such program sends commands to e-Puck,
   whereas the~whole algorithmic code runs comfortably on~PC.
   
@@ -75,13 +76,13 @@
   This thesis introduces the~{\it Elib's} problems and discusses 
   under which conditions is the~approach of {\it Elib} suitable.	
   \subsection*{Thesis structure}
-  We introduce mobile robotics in~Chapter ~\ref{chap:robotics}.
+  We introduce mobile robotics in~Chapter~\ref{chap:robotics}.
 
-  Chapter ~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and advantages.
-  Chapter ~\ref{chap:software} lists software which help programmers to develop applications for robots.
+  Chapter~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and advantages.
+  Chapter~\ref{chap:software} lists software which help programmers to develop applications for robots.
   In this chapter we discuss the~usage of a~software for e-Puck. 
   
-  Chapters ~\ref{chap:elib} and ~\ref{chap:usage} presents the~design and usage of {\it Elib} library in~detail.
+  Chapters~\ref{chap:elib} and~\ref{chap:usage} presents the~design and usage of {\it Elib} library in~detail.
   Conclusion~sums up the~properties of {\it Elib}.
   A~simple installation~guide of {\it Elib}, a list of {\it Elib's} functions and a list of {\it Elib's} exceptions  are located in Appendixes \ref{app:installelib} and\ref{app:epuckref}.
   An installation and a~user guide for {\it Elib Joystick} application~is included in Appendix \ref{app:joystick}. 
