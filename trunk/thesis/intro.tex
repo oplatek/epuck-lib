@@ -1,12 +1,12 @@
 \chapter{Introduction}
 \label{chap:intro}
   Mobile robotics is nowadays a~prestigious research area. Building a~highly functional 
-  mobile robot is considered to be difficult. 
+  mobile robot is considered to be a~difficult task. 
   It is a~fascinating process, which
   involves a~lot of engineering disciplines.
   
   A lot of affordable components result in~a~boom of simple robots used in~daily life. 
-  Lawnmowers and vacuum cleaners are typical examples of mobile robots invasion~into our households in~these days.
+  Autonomous lawnmowers and vacuum cleaners are typical examples of mobile robots invasion~into our households in~these days.
   We also get used to robot prototypes, which are highly specialised in~the~space exploration~or in~army services.
 
   Despite the~rapid hardware development and robots increasing popularity,
@@ -21,15 +21,15 @@
   Luckily, several educational robots were made to help the novices.
   Educational robots help students focus on the other aspects of mobile robotics than the hardware one.
  
-  This thesis describes and implements a~library for one of the~educational robots.
-  Its name is e-Puck and it is a~typical example of an educational robot for students at the~university level. 
-  E-Puck has a~clean, simple and robust mechanical design, which is easy to understand.
+  This thesis describes and implements {\it Elib} library for e-Puck robot.
+  E-Puck is a~typical example of an educational robot for students at the~university level. 
+  It has a~clean, simple and robust mechanical design.
   Bluetooth wireless communication~enables sending data~between e-Puck and PC.
   A camera, eight infra~red (IR) sensors,	an accelerometer, encoders and three microphones 
   are enough for a~robot to feel the~real world.
   E-puck robot can reply to any type of perception~by performing several actions. 
   The robot is able to emit light from light emitting diodes (LEDs) or to play a~sound.
-  Two differential stepper motors facilitate a~precise movement. 
+  Two stepper motors facilitate a~precise movement. 
   
 %  Eight of e-Puck LEDs are located on~its perimeter. 
 %  Four of green LEDs are placed in~its translucent body and
@@ -45,22 +45,21 @@
   but the~pictures taken from the~camera~are trimmed under 50 * 50 pixels, because there is a~lack of space in~
    e-Puck's microchip memory.
    
-   E-puck robot and its sensors and actuators can be controlled only by a~low level C code,
-   which needs to be downloaded to e-Puck's memory, and has to be run by the~robot's microchip.
-   However, a~program downloaded to e-Puck can communicate with
-   a~PC and it can let the~PC to control the~e-Puck robot. 
-   Such a~program has to define a~protocol, 
-   in~which it communicates between e-Puck and PC over Bluetooth.
-  On e-Puck the~program exists and is called {\it BTCom}. 
-
+  E-puck robot and its sensors and actuators can be controlled only by a~low level C program,
+  which needs to be downloaded to e-Puck's memory. The program runs on~the~robot's microchip.
   Programming e-Puck's microchip requires knowledge of sensors and actuators interfaces.
   Furthermore, debugging is limited to blinking with diodes or playing sounds.
   The mentioned reasons and insufficient processing power hinder rapid development 
   of even a~simple program, 
   which makes e-Puck programming inconvenient for students.
+
+  One of the solution how to improve comfort for programmers is to control e-Puck from PC. 
+  We have decided to implement this model and use {\it BTCom} program, which is delivered with e-Puck.
+  {\it Elib} library uses {\it BTCom} program, which runs on e-Puck microchip, to control e-Puck.
   
-  At the~time of writing this thesis there was only one well developed software for e-Puck, which makes programming e-Puck easier.  It is commercial software called Webots which
-   is an useful development and simulation~environment.
+  At the~time of writing this thesis there was only one well developed software called Webots for e-Puck, 
+  which makes programming e-Puck easier.  
+  Webots is a~commercial development and simulation~environment.
   Other simulators, which can be free alternatives for Webots, are introduced in~Chapter~\ref{chap:software}.
   
   The~{\it Elib} library removes the drawbacks of low level programming, 
@@ -75,16 +74,19 @@
   On the~other hand, the~implementation~of {\it Elib} brings new problems.
   This thesis introduces the~{\it Elib's} problems and discusses 
   under which conditions is the~approach of {\it Elib} suitable.	
-  \subsection*{Thesis structure}
+  \subsubsection*{Thesis structure}
   We introduce mobile robotics in~Chapter~\ref{chap:robotics}.
 
   Chapter~\ref{chap:epuck} describes e-Puck design and presents its drawbacks and advantages.
-  Chapter~\ref{chap:software} lists software which help programmers to develop applications for robots.
-  In this chapter we discuss the~usage of a~software for e-Puck. 
+  Chapter~\ref{chap:software} lists software that help programmers to develop applications for robots.
+  In this chapter we discuss the~usage of software for e-Puck. 
   
   Chapters~\ref{chap:elib} and~\ref{chap:usage} presents the~design and usage of {\it Elib} library in~detail.
   Conclusion~sums up the~properties of {\it Elib}.
-  A~simple installation~guide of {\it Elib}, a list of {\it Elib's} functions and a list of {\it Elib's} exceptions  are located in Appendixes \ref{app:installelib} and\ref{app:epuckref}.
-  An installation and a~user guide for {\it Elib Joystick} application~is included in Appendix \ref{app:joystick}. 
+
+  Appendix contains installation guides and a reference documentation. 
+  A installation~guides of {\it Elib} and enclosed tools are located in Appendix~\ref{app:installelib}. 
+  An installation and a~user guide for {\it Elib Joystick} application~is included in Appendix~\ref{app:joystick}. 
+  {\it Elib's} reference documentation is included in Appendix~\ref{app:epuckref}.
 
 
