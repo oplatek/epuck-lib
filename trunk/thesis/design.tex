@@ -2,12 +2,12 @@
 \chapter{Elib design} \label{chap:elib}
   The~{\it Elib} library is a $C\#$ asynchronous library for a remote control of e-Puck. 
   The~goal of the~library is to make developing programs for the~robot easier.
-  This chapter presents several topics, which influenced the~design of {\it Elib}.
+  This chapter presents several topics that influenced the~design of {\it Elib}.
   The~Examples on usage of $Epuck$ class and its interfaces are introduced is in Chapter~\ref{chap:usage}.
 
-  In the~first place the~possibilities of programming e-Puck are depicted.
-  Next section covers the~advantages and the~drawbacks of asynchronous remote control programming of e-Puck.
-  Furthermore, key features of {\it Elib} are presented together with crucial decisions, which
+  In the~first place the~possibilities of programming e-Puck robot are depicted.
+  Next section covers the~advantages and the~drawbacks of asynchronous remote control.
+  Furthermore, key features of {\it Elib} are presented together with crucial decisions that
   lead to properties of {\it Elib}. 
   {\it Elib's} features are confronted with the~alternatives. The~differences are discussed
   and the~main reasons for choosing the~current implementations are mentioned.
@@ -21,52 +21,56 @@
   implemented by $Epuck$ and $Sercom$ class.
   Section \ref{sec:suminterface} also describes {\it Elib's} performance results.
 
-  This chapter assumes that a reader understands the~use of callbacks and $EventWaitHandle$ class in .Net.
+  This chapter assumes that a reader understands the~use of callbacks 
+  and $EventWaitHandle$ class in .Net.
   However, the~callbacks and $EventWaitHandle$ class together with other advanced .Net features 
   are introduced in section~\ref{sec:net}.
 
 \section{Approaches to e-Puck programming} \label{sec:approach}
   E-Puck is distributed with several programs in its flash memory. 
-  Most of the~programs implement a simple behaviour, which introduces e-Puck sensors and actuators.
-  There is a behaviour, which made e-Puck go to the~source of light.
+  Most of the~programs implement a simple behaviour which introduces e-Puck sensors and actuators.
+  There is a behaviour that makes e-Puck go to the~source of light.
   If another behaviour is running, e-Puck
-  reacts to clapping and it turns around to the source of a clap. For example one of the~behaviours makes
-  e-Puck cry, if it is falling.
+  reacts to clapping and it turns around to the source of a clap. 
+%  For example one of the~behaviours makes e-Puck cry, if it is falling.
    
   The~{\it BTCom} program and e-Puck bootloader are also distributed on e-Puck, but belong to different classes of programs. 
-  {\it BTCom} allows e-Puck to communicate with other devices via Bluetooth.
+  The~bootloader allows users to change programs stored on e-Puck and
+  {\it BTCom} allows e-Puck to communicate with other devices via Bluetooth
   
-  It defines a BTCom protocol, which works in two modes. The~text mode accepts commands for
-  all sensors and actuators except for the~fact that it does not allow to take a picture 
-  with the e-Puck's camera. 
-  In the~text mode the~accepted commands and replies of BTCom protocol are short text messages.
-  On the~other hand, {\it BTCom} in the~binary mode can send a picture from e-Puck.
-  
-  If {\it BTCom} runs in the~binary mode, single byte commands are accepted instead of text messages.
+  The BTCom protocol works in two modes. The~text mode accepts commands for
+  all sensors and actuators except for a command that requests a~picture 
+  from e-Puck's camera. 
+  In the~text mode the~accepted commands and replies of BTCom protocol are short text messages,
+  but the picture can not be transferred from e-Puck.
+  If {\it BTCom} runs in the~binary mode, 
+  single byte commands are accepted instead of text messages.
+
   The~binary mode is more economical, 
   because the~commands are sent in single bytes and also the~integer values from sensors
   are not converted to a textual form.
-  Unfortunately, the~binary mode of {\it BTCom} does not control all sensors and actuators, because it accepts fewer commands than in the~text mode.
+  Unfortunately, the~binary mode of {\it BTCom} does not control all sensors and actuators, 
+  because it accepts fewer commands than in the~text mode.
   The~absence of commands for controlling some sensors and actuators is the~main reason 
   for sending all commands from {\it Elib} to {\it BTCom} in the~textual form. 
   The~single exception is sending an image back to {\it Elib} in the~binary mode.
    
   Bootloader, officially called Tiny Bootloader\cite{tiny},
-  is the~only wired program on e-Puck. It downloads	other programs to e-Puck via Bluetooth. 
+  is the~only wired program on e-Puck. It downloads other programs to e-Puck via Bluetooth. 
   Tiny Bootloader has its counterpart, a graphical PC application,
   which allows users to download hex files to e-Puck.
   A hex file\footnote{\small{\url{http://en.wikipedia.org/wiki/Hex_file}}} 
   for e-Puck is compiled C program for e-Puck's dsPic microchip. 
    
-  All mentioned programs including Tiny Bootloader use a C library, which interface the~devices on e-Puck. 
+  All mentioned programs including Tiny Bootloader use a C library that interfaces the~devices on e-Puck. 
   The~library and the~programs are published under open source licence at
   \url{http://www.e-puck.org}.
 
   \subsection*{How to run a program} % (fold)
-  If e-Puck is turned on, e-Puck starts running one of the~downloaded programs according to its selector 
-  position. E-Puck's selector switch is located on the~main board of e-Puck.
+  If e-Puck is turned on, e-Puck starts running one of the~downloaded programs 
+  according to its selector position\footnote{ E-Puck's selector switch is located on the~main board of e-Puck.}. 
   If a programmer wants to run another program, he has to switch selector to another position
-  and hold a second a reset button on e-Puck.	Selected program is loaded from flash memory
+  and hold a  reset button fo a second on e-Puck. Selected program is loaded from flash memory
   to RAM memory and immediately executed.	
    
   Suppose there is correct C code for e-Puck's processor saved on PC. What has to be done to run the~program?
@@ -88,7 +92,7 @@
   Programming e-Puck via Tiny Boatloader is not very comfortable. 
   Luckily, there is an another way, which uses {\it BTCom} program downloaded on e-Puck. 
 
-  In order to use {\it BTCom} turn e-Puck's selector to position, under which it is downloaded, and press reset button.
+  In order to use {\it BTCom} turn e-Puck's selector to position, under which it is stored, and press reset button.
   Now {\it BTCom} is running.  Pair your PC with e-Puck as described above and use the~open port
   to control e-Puck.
   {\it BTCom} starts running in text mode, so its possible to use a terminal to communicate with e-Puck.
@@ -118,8 +122,8 @@
   the~application remains unresponsive.
 
   \subsection*{Summary} % (fold)
-  Downloading a hex file to e-Puck's microchip and remote control over BTCom protocol are two alternatives
-  of controlling e-Puck.
+  Downloading a hex file to e-Puck's microchip and remote control over BTCom protocol 
+  are two alternatives of controlling e-Puck.
   Using {\it BTCom}, a user does not have to download any file to e-Puck's microchip.
   It is great advantage, because the~length of developing cycle of program for e-Puck is reduced.
   The~developing cycle consist of:
@@ -134,9 +138,10 @@
 
 \section{Advantages of remote control} \label{sec:remote}
   Applications, which use {\it BTCom} and its protocol, run a whole algorithm on PC and {\it BTCom} just 
-  executes the~commands and gets the~values from sensors. Imagine you have a library, which process the~commands
-  and their replies. A program for  controlling e-Puck uses the~library and just asks the~library for sensor values and
-  gives the~library commands what to do. Important is that download part is missing.
+  executes the~commands and gets the~values from sensors. {\it Elib} library processes the~commands
+  and their replies. A program for controlling e-Puck can use {\it Elib} and just ask
+  the~library for sensor values or give a command to e-Puck. 
+  Important is that download part is missing.
    
   Leaving out the item "downloading the program to e-Puck" from the life cycle in List above saves programmer 
   20 seconds or more, because the process of downloading a program to e-Puck is unreliable.
@@ -151,13 +156,18 @@
   Downloading a program takes a long time and successful download could last even a couple of minutes. 
   It drives a lot of people crazy.
    
-  A programmer, which controls a robot remotely, can debug with tools of his programming environment and he still controls e-Puck.
+  A programmer that controls a robot remotely can debug with tools of his programming environment and he still controls e-Puck.
   All this can be utilised, because a computer has much more resources than e-Puck.
-  Let us mentioned a~few  techniques for debugging. Logging of robot actions is often underestimated,
-  but it is very useful for performance testing. Flow control by setting breakpoints is the great advantage
-  of remote control. However, in applications, which call procedures asynchronously, the~ breakpoints should be set carefully.
+
+  Let us mentioned a~few  techniques for debugging. 
+  Logging of robot actions is often underestimated,
+  but it is very useful for performance testing. 
+  Flow control by setting breakpoints is the great advantage
+  of remote control. However, in applications, which call procedures asynchronously, 
+  the~ breakpoints should be set carefully.
   Breakpoints do not stop the asynchronous operation and do stop the main thread.
-  Therefore breakpoints should be set only in place, where no asynchronous methods have been invoked with timeout
+  Therefore breakpoints should be set only in place, 
+  where no asynchronous methods have been invoked with timeout
   or the methods have been already finished.
   
   Another point of view is where the computation is performed.
@@ -213,7 +223,7 @@
   The~answers of {\it BTCom} from $B$ allows $A$ to know that the~sent command was received and
   executed. 
    
-  Two main questions, which affect design of {\it Elib}, arise from the~{\it BTCom} structure.
+  Two main questions which affect design of {\it Elib} arise from the~{\it BTCom} structure.
   Should {\it Elib} limit the~waiting time for an answer from $B$?
   How fast should {\it Elib} allow $A$ sending the~commands to $B$?
   \begin{remark}
@@ -225,7 +235,7 @@
   It is necessary to understand, that not only executing a {\it BTCom} command, 
   but also a transfer of a command and a transfer of a reply take significant amount of time. 
   The~time is measured from a computer processor's point of view, because
-  it is the~processor, who is waiting for serial port, which is sending the~message.
+  it is the~processor that is waiting for serial port until the~message is sent.
    
   Back to the~question how should {\it Elib} limit sending of the~commands.
   As we have said, sending commands takes a while and therefore sending is performed asynchronously. 
@@ -261,8 +271,8 @@
   
   \begin{definition}[Timeout]
   The~waiting times for answers are in {\it Elib} called $timeouts$.
-  In examples, which are introduced in Chapter~\ref{chap:usage}, the~waiting times are set to the~bottom values,
-  which allow commands to be confirmed without problems under good conditions.
+  In examples, which are introduced in Chapter~\ref{chap:usage}, the~waiting times are set to values
+  that allow commands to be confirmed without problems under good conditions.
   \end{definition}
   
   \subsection*{summary} % (fold)
@@ -270,7 +280,7 @@
   Sent commands are queued, because otherwise they could be overwritten in the~buffers.
   Receiving an answer takes even more time than sending a command from computer.
   We concluded to implement sending commands and receiving answers asynchronously, because the~communication with e-Puck
-  can be pointlessly block the~processor of the~host PC.
+  can pointlessly block the~processor of the~host PC.
 
 \section{Asynchronous programming model (APM)\\ for the~{\it Elib} library}
   \label{sec:apm}
@@ -285,18 +295,19 @@
   On the~other hand, asynchronous programming is much more complicated than synchronous programming.
   The~goal of {\it Elib} is to hide the~complications of APM and offer an interface
   which performs sending and receiving messages asynchronously and
-  which allows a programmer to easily create applications for e-Puck. For example applications like Epuck Monitor.
+  which allows a programmer to easily create applications for e-Puck. 
+%  For example applications like Epuck Monitor.
   What means asynchronous implementation in case of {\it Elib}? What is done if the~answer arrives in time
   and what if not? These questions are answered in the~next section called Asynchronous programming model for {\it Elib}.
 
   \begin{remark}[Callbacks]
   Callbacks are functions, which are called after some procedure has finished.
   \end{remark}
-  {\it Elib} contains two main classes and it implements two interfaces.
+  {\it Elib} contains two main classes and it implements two interfaces through them.
   \begin{itemize}
     \item $Sercom$: public class, wraps serial communication.
     \begin{itemize}
-      \item $Sercom's$ basic interface -- $Write(..)'s$ function arguments:
+      \item Implements -- $Write(..)$ function with arguments:
       \begin{itemize}
         \item string command -- specifies a type of sending command
         \item an integer -- the~$timeout$ for the command
@@ -304,26 +315,27 @@
         \item $Kof$ callback -- function called if the~$timeout$ has elapsed and the~answer did not arrive
         \item class object -- instance used to pass custom information to $Okf$ callback
       \end{itemize}
+      \item Usage of $Write(..)$ function = "$Sercom's$ basic interface"
     \end{itemize}
     \item $Epuck$: presents an instance of a e-Puck robot, uses $Sercom$ internally.
     \begin{itemize}
       \item $Epuck's$ basic interface 
       \begin{itemize}
-        \item Based on $Sercom's$ basic interface
-        \item the~only difference to $Sercom's$ interface -- it implements string argument for each command implicitly
+        \item Based on $Sercom's$ $Write(..)$ function 
+        \item It  pass string argument for each command implicitly to $Write(..)$ function
       \end{itemize}
-      \item $IAsyncResult$ interface
+      \item Implements $IAsyncResult$ interface
       \begin{itemize}
         \item .Net interface
-        \item based on $Epuck's$ basic interface
+        \item It uses $Epuck's$ basic interface
       \end{itemize}
     \end{itemize}
   \end{itemize}
 
-  $IAsyncResult$ interface also accepts $timeout$, an instance of $object$ class and one callback, but it returns 
-  an implementation of $IAsyncResult$ interface which will be introduced later.
-  Simpler interface logic and the~fact that $IAsyncResult$ is broadly used interface
-  are reasons for its implementation.
+%  $IAsyncResult$ interface also accepts $timeout$, an instance of $object$ class and one callback, but it returns 
+%  an implementation of $IAsyncResult$ interface which will be introduced later.
+%  Simpler interface logic and the~fact that $IAsyncResult$ is broadly used interface
+%  are reasons for its implementation.
   %The~interface is used across different .Net libraries.
 
 \section{The~$Sercom$ class}\label{sec:sercom}
@@ -341,7 +353,7 @@
   because $Sercom$ waits on e-Puck's answer. E-Puck picks up the~command from its input buffer and then sends the~reply.
   The~short answers under good conditions do not slow down sending with $handshaking$, because
   they arrive under 0.04 s. 
-
+ 
 
   At the~beginning of an {\it Elib's} development we thought about implementing both the~$handshaking$
   and the~$nonhandshaking$ sending.
@@ -354,17 +366,19 @@
   The~gaps in $nonhandshaking$ mode has too be unnecessarily large, 
   because it must not let the~input buffer of e-Puck overflow.
 
-  $Handshaking$ solves the~problem with synchronising sending and receiving the~commands and their answers. 
+  $Handshaking$ solves the~problem with synchronising sending 
+    and receiving the~commands and their answers. 
   It made us choose $handshaking$ as the~best implementation.
+
   E-Puck processes a received message in three steps. It picks the~command from input buffer.
-  It processes the~command and then replies with an answer.
-  For commands with long sending or processing phase it means the following consequence.
+  It executes the~command and then replies with an answer.
+  For commands with long sending or executing phase it means the following consequence.
   If such command is sent, next commands has to wait longer time, because there is a
   danger of e-Puck's input buffer overflow.
 
   Next advantage of $handshaking$ is its simple and elegant implementation. It also does not depend on {\it BTCom} implementation so much.
-  If {\it BTCom} had improved the~times of processing the~answers,
-  in $nonhandshaking$ mode it would have resulted into a change of a table, which stores minimal gaps after each command.
+  If {\it BTCom} had improved the~times of executing the commands
+  in $nonhandshaking$ mode it would have resulted into a change of a table that stores minimal gaps after each command.
 
 \begin{figure}[!hbp]
 \begin{lstlisting}[language=cs]
@@ -422,9 +436,9 @@ public class Epuck {
   The~previous versions of {\it Elib} in addition have implemented public 
   method for changing from $nonhandshake$ mode to 
   $handshake$ mode and vice versa.
-  The~implementation of~$nonhandshaking$ mode uses one 
+  The~implementation of~$nonhandshaking$ mode used one 
   thread for each unconfirmed command in handshaking mode.
-  It leads to instability of a program, if the Bluetooth communication breaks up.
+  It lead to instability of a program, if the Bluetooth communication breaked up.
   
 \subsection*{Previous version}\label{previous}
   %\input{sercom_nohandshake.TpX}
@@ -474,7 +488,7 @@ public class Epuck {
   \end{figure}
   In  Figure~\ref{pic:sercom_nohandshake} the~schema of the~inner implementation 
   from the~previous versions of {\it Elib} is illustrated.
-  It shows functions and objects, which are used for sending and receiving the~messages.
+  It shows functions and objects, which were used for sending and receiving the~messages.
   Some methods have $nonhandshaking$ and $handshaking$ versions.
   $Nonhadshaking$ methods, which are drawn in red	in Figure~\ref{pic:sercom_nohandshake}, implement the~same logic 
   as $handshaking$ methods except they allow to send and receive more commands
@@ -1074,7 +1088,7 @@ public class AsyncResultNoResult : IAsyncResult {
 }
 \end{lstlisting}
 \caption{$AsyncNoResult$ internals} 
-\label{noresult}
+\label{noresulti}
 \end{figure}
 
 
@@ -1263,7 +1277,7 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
 
   $IAsyncResult$ is built on the~basic $Epuck's$ interface with the~typed $Okf(..)$ and $Kof(..)$ callbacks. 
   The~basic $Epuck$ interface is itself built on $Sercom's$ $Okf$ / $Kof$ interface.
-  The~purpose of the~interfaces is to make programming e-Puck over Bluetooth easier.
+%  The~purpose of the~interfaces is to make programming e-Puck over Bluetooth easier.
   The~$IAsyncResult$ is the~most comfortable of the~three interfaces. 
   The~use of $Sercom's$ interface needs good knowledge of BTCom protocol and 
   it forces user to process every answer of {\it BTCom}.
@@ -1274,7 +1288,7 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
   
   Every program written using $Epuck's$ basic interface can be written
   in $Sercom$ by implementing $Epuck's$ interface as it is in {\it Elib}.
-  On the~other hand, every program, which uses $Sercom$ interface and communicates with {\it BTCom}
+  On the~other hand, every program that uses $Sercom$ interface and communicates with {\it BTCom}
   version 1.1.3 on e-Puck, can be written using $Epuck's$ basic interface. 
   $Epuck's$ basic interface is a specialization of $Sercom$ for concrete version of {\it BTCom}
   protocol.
@@ -1282,7 +1296,7 @@ static void receivedSensors<T>(T b, object asyncResIntArr) {
 %%%%todo vyjasnit a vysvetlit, ze jde simulovat kof pomoci IAsyncResult
   $IAsyncResult$ limits the~role of the~$Kof$ callback, but does not limit the~role of the~$Okf(..)$ callback.
   If a user wants to implement an $Okf$ logic using the~$IAsyncResult$ interface, he uses callback from $IAsyncResult$
-  interface, which is passed to the~"Begin" function.
+  interface that is passed to the~"Begin" function.
   The~callback is called after the~$received$ respectively $receivedSensor<T>(..)$ function  call 
   the~$SetAsCompleted(..)$ method on an instance $a$ of $IAsyncResult$. 
   Remind the~implementation in Figure~\ref{Iokfs}.
