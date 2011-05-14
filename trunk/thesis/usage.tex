@@ -1,22 +1,25 @@
 \chapter{Usage of {\it Elib}} \label{chap:usage}
   This chapter is aimed at a programmer who wants to start working with an e-Puck using {\it Elib}. 
-  {\it Elib} offers a lot of tools, which make e-Puck programming easier. 
-  The tools are useless without a proper use. This chapter introduces guidelines and numerous
-  examples how to use {\it Elib} and avoid problems.
+  {\it Elib} offers tools that make e-Puck programming easier. 
+  However, the tools are useless without a proper use. 
+  This chapter introduces guidelines and numerous
+  examples how to use {\it Elib}.
 
-  {\it Elib} and e-Puck's properties is presented on thirteen samples from {\it TestElib} project.
-  The samples are written in $C\#$ and are densely commented.
-  We suggest a programmer, who wants to program his e-Puck, to start with one of the examples
+  {\it Elib} and e-Puck's properties is presented on thirteen functions from {\it TestElib} project.
+  The functions wrap standalone samples and are densely commented.
+  We suggest a programmer that wants to program his e-Puck to start with one of the examples
   from {\it TestElib} project and modify it according his needs.
-  {\it Elib} is built robustly and improper use does not destabilise the operating system.
+%  {\it Elib} is built robustly and improper use does not destabilise the operating system.
 
   Let us note that this chapter describes the use of {\it Elib} and its tools,
-  but does not explain basic .Net or $C\#$ features. The basic knowledge of .Net and $C\#$ language is required
-  for understanding {\it Elib} examples. On the other hand .Net $delegates$, an $EventWaitHandle$ class and usage of lambda functions in $C\#$
-  are shortly introduced. A great part of this chapter is devoted to $IAsyncResult$ interface and its
-  usage in {\it Elib}.
+  but does not explain basic .Net or $C\#$ features. 
+  The basic knowledge of .Net and $C\#$ language is required
+  for understanding {\it Elib} examples. On the other hand .Net $delegates$, 
+  an $EventWaitHandle$ class and usage of lambda functions in $C\#$
+  are shortly introduced. A great part of this chapter is devoted to $IAsyncResult$ interface 
+  and its usage in {\it Elib}.
 
-  {\it Elib} library requires .Net 2.0 on Windows and requires Mono 2.0 %todo verze mona?
+  {\it Elib} library requires .Net 2.0 on Windows and were tested on Mono 2.6.7 
   and higher on Linux. It also requires {\it BTCom} 
   \footnote{ {\it BTCom} is a simple program running on e-Puck. 
   It receives commands from {\it Elib}, performs the relevant actions
@@ -24,10 +27,10 @@
   together with the confirmation message.
   }
   version 1.1.3 running on e-Puck.  
-  As an example of a graphical application, which uses {\it Elib}, 
+  As an example of a graphical application that uses {\it Elib} 
   we present {\it Elib Joystick} at the end of this chapter.
-  {\it Elib Joystick} is a graphical application, which uses Windows Presentation Foundation. It requires .Net 3.5 or higher
-  and is not portable to Linux.
+  {\it Elib Joystick} is a graphical application that uses Windows Presentation Foundation. 
+  It requires .Net 3.5 or higher and is not portable to Linux.
   {\it Elib} can control every actuator and can get every sensor 
   value with {\it BTCom}'s  on e-Puck. 
 
@@ -36,7 +39,7 @@
   If you use higher version of MSVS or MonoDevelop, then the solution can be easily upgraded.	
 
   The contents of this chapter is divided into 6 sections.
-  The first section is devoted to advanced .Net techniques, which are used in {\it Elib}.
+  The first section is devoted to advanced .Net techniques which are used in {\it Elib}.
   The Section~\ref{sec:interfaces} shortly introduces features of each {\it Elib's} interfaces and 
    presents e-Puck's sensors and actuators.
   The next section goes through samples of implemented behaviours 
@@ -45,7 +48,7 @@
   which is useful during developing a program for e-Puck.
   Finally the last section sums up the most important guidelines for {\it Elib} library.
   It also shortly points out, which algorithms and applications can profit most
-  from {\it Elib} design and which applications bring problems.
+  from {\it Elib} design and which applications are hard to program with {\it Elib}.
   
 \section{Advanced .Net techniques} \label{sec:net}
   {\it Elib} interface requires knowledge of $delegates$. 
@@ -65,11 +68,10 @@
   delegate from~Figure~\ref{deleg} the function must return
   $void$ and must have one argument of type object. All classes in $C\#$ 
   are inherited from the class $Object$ and therefore every object can be passed to this delegate. 
-  The class $Object$ contains method $ToString()$, 
-  so every object has its own string representation.
-  
-  therefore the number as well as the string are printed.  
-  Delegate function can contain more functions. On the other hand this feature is not used in {\it Elib}, 
+%  The class $Object$ contains method $ToString()$, 
+%  so every object has its own string representation.
+%  therefore the number as well as the string are printed.  
+  Delegate function can contain more functions. However, this feature is not used in {\it Elib}, 
   because it reduces readability of the code.
   
 
@@ -120,26 +122,26 @@ suitable method -333
   but it is considered a bad manner, because
   another function added to delegate can overwrite the returning value of the delegate call.
 
-  Let us focus on the function, which is used in the $OkfActuators$ declaration. The function 
-  was defined and declared in place. Functions defined in place are called lambda functions 
+  Let us focus on the function that is used in the $OkfActuators$ declaration. The function 
+  was defined and declared in place of its call. 
+  Functions defined in place are called lambda functions 
   and have several advantages. 
   They can omit types of arguments, because they are inferred from delegate definitions. Lambda functions
   can also directly use variables from the scope of its declaration. 
   The lambda function printed $8$ in the enclosed output above,
   although we have not passed it as an argument to the delegate.
 
-  %todo I have to PASTE TEXT DESCRIBING EventWaitHandle
   \begin{definition}[$EventWaitHandle$]
   %citace od Preklad „Threading in C#“ od Josepha Albahari
   %sekce 2.5.1
-  The $EventWaitHandle$ class 
-  \end{definition}
   $EventWaitHandler$ class is not tricky itself, 
   but it is usually used in multi thread programming, which is usually complicated.
   An instance of the class is used to synchronise two threads. 
   It is usually used to signal from one thread to another, 
   that some work has been done. In {\it Elib} there are used two 
   methods per~$EventWaitHandle$ instance.
+  \end{definition}
+
   Let us suppose we have a thread $A$ running. Let $B$ be the thread, 
   which should perform a long task. 
   The thread $A$ wants after a while to wait until the work of $B$ is finished.
@@ -177,23 +179,29 @@ static void Bthread() {
 \caption{Definition of a delegate} \label{ewh}
 \end{figure}
 
-   $EventWaitHandle$ is used in the function $endBehaviour$ described in Section~\ref{sec:bull} 
-   used in behaviour implementation.
-   Lambda functions can be seen for example in $ConsoleTestSensorsTimeout$ function, which presents all sensors from e-Puck.
+   $EventWaitHandle$ is used in the function $endBehaviour$ described in Section~\ref{sec:bull}.
+   Lambda functions can be seen for example in $ConsoleTestSensorsTimeout$ function, 
+   which presents all sensors from e-Puck.
    Delegates are used in every command invocation to specify types of callback functions.
-   Callback functions are functions, which are called after finishing an operation. 
+   Callback functions are functions that are called after finishing an operation. 
   
 \section{Explore {\it Elib} through examples} \label{sec:interfaces}
   There are three public classes in {\it Elib}. $Sercom$, $Epuck$ and $Stamp$.
-  $Stamp$ is for time measurement. $Sercom$ and $Epuck$ are classes, where all the algorithms are located.
+  $Stamp$ is for time measurement. $Sercom$ and $Epuck$ are classes, 
+  where all functionality is located.
   $Epuck$ class uses $Sercom$ internally.
-  Let us focus only on $Epuck's$ class, because $Epuck$'s basic interface is a specialisation of~$Sercom$'s
-  interface for version 1.1.3 of {\it BTCom}.
-  For more information about interfaces and implementation of $Sercom$ and $Epuck$ see Section~\ref{chap:elib}.
+  Let us focus only on $Epuck's$ class, 
+  because $Epuck$'s basic interface is a specialisation of~$Sercom$'s
+  interface. 
+%  for version 1.1.3 of {\it BTCom}.
+  More information about interfaces and implementation of $Sercom$ and 
+  $Epuck$ can be found in Section~\ref{chap:elib}.
 
-  $Epuck$ class itself has two interfaces. Let us name them the basic interface and $IAsyncResult$ interface.
-  $IAsyncResult$ interface is used widely through .Net. We will introduce it in the examples from {\it TestElib} project.
-  All examples from this section come from {\it TestElib} project. We suggest reading this chapter with {\it TestElib} project opened
+  $Epuck$ class itself has two interfaces. Let us name them the basic interface and 
+  $IAsyncResult$ interface. $IAsyncResult$ interface is used widely through .Net. 
+  We will introduce it in the examples from {\it TestElib} project.
+  All examples from this section come from {\it TestElib} project. 
+  We suggest reading this chapter with {\it TestElib} project opened
   and explore the samples from {\it TestElib} in detail.
 
 
@@ -218,20 +226,25 @@ static void Bthread() {
   \end{remark}
     
 \subsection{Setup and disposal of a session}\label{sec:session}
-  Let us start with a function, which does not use {\it Elib}. $TestPortTurnAround$ opens a given serial port
-  and sends some commands to move and stop, then it ends. It does not require any feedback and throws no exceptions.
-  It is useful to run it, because a lot of errors are not hidden in the code, but in the hardware set up.
+  Let us start with the first function from {\it TestElib} program
+  The $TestPortTurnAround$ function does not use {\it Elib}.  It only opens a given serial port
+  and sends some commands to move and stop, then it ends. 
+  It does not require any feedback and throws no exceptions.
+  It is useful to run it to test if communication between PC and e-Puck is correctly set up.
 
-  Function $startEpuck$ returns an instance of $Epuck$, which allows you later to control an e-Puck.
+  Second function, $startEpuck$, returns an instance of $Epuck$ 
+  that allows a programmer to control an e-Puck.
 \begin{lstlisting}[language=cs]
 return new Epuck(port, "Ada"); //Name it. It is useful for logging and debugging.
 \end{lstlisting}
   The function throws exception only if other application blocks the port. 
+
+  Sending a command to e-Puck is done via calling one of $Epuck's$ functions.
   Both $Kof$ callback and exception let user know, that a command was not delivered in time.
   $Kof$ callback from $Epuck's$ basic interface or an exception	
   from $IAsyncResult$ are raised after sending a command to e-Puck, 
   which is not confirmed in timeout.
-  Sending a command to e-Puck is done via calling one of $Epuck's$ functions.
+
   Let us mentioned the closing of session and then we introduce both interfaces.
   The function $endEpuckSession$ sends a command to stop your robot, 
   but it primarily closes the session by calling $Dispose$ method.
@@ -1030,5 +1043,5 @@ class Average : Action {
   or $Iron Python$, which is a .Net implementation of Python. On Mono runtime, 
   which runs both on Linux and Windows, the $C\#$ language can be used.
   The {\it Elib} is compatible with .Net 2.0 \cite{net} and higher 
-  and with Mono \cite{mono} 2.0 and higher.
+  and was tested on Mono \cite{mono} 2.6.7.
 
