@@ -380,26 +380,7 @@
   If {\it BTCom} had improved the~times of executing the commands
   in $nonhandshaking$ mode it would have resulted into a change of a table that stores minimal gaps after each command.
 
-\begin{figure}[!hbp]
-\begin{lstlisting}[language=cs]
-public class Sercom {
-  public void Write(string command, RCallback okf, NRCallback kof,object state, double timeout) {
-          //... the body of function
-  }
-}
-public class Epuck {
-  public void Stop(OkfActuators okf, NRCallback kof, object state, double timeout) {
-          //example of interface directly based on BTCom's interface
-  }
-  public IAsyncResult BeginStop(double timeout, AsyncCallback callback, Object state) {
-          //example of IAsyncResult interface implementation
-  }
-}
-\end{lstlisting}
-\caption{Public methods of $Sercom$ and $Epuck$} \label{serep}
-\end{figure}
-
- \subsection{The~logical problems with a confirmation of commands}\label{sec:logical}
+ \subsection{The~logical problems with a confirmation}\label{sec:logical}
   In $nonhandshaking$ mode a lot of commands can be sent before the~$timeout$ of the~first elapses.
   Let us introduce a common situation, which causes a serious problem. 
   
@@ -427,6 +408,25 @@ public class Epuck {
   Unfortunately, the user does not know if the callback confirms "SetSpeed(0.5,0.5)" or "SetSpeed(0,0)".
   \end{example}
   The~ simple solution is to paste a command of a different type which prevents interchanging of the~answers.
+
+\begin{figure}[!hbp]
+\begin{lstlisting}[language=cs]
+public class Sercom {
+  public void Write(string command, RCallback okf, NRCallback kof,object state, double timeout) {
+          //... the body of function
+  }
+}
+public class Epuck {
+  public void Stop(OkfActuators okf, NRCallback kof, object state, double timeout) {
+          //example of interface directly based on BTCom's interface
+  }
+  public IAsyncResult BeginStop(double timeout, AsyncCallback callback, Object state) {
+          //example of IAsyncResult interface implementation
+  }
+}
+\end{lstlisting}
+\caption{Public methods of $Sercom$ and $Epuck$} \label{serep}
+\end{figure}
 
 \subsection{$Sercom's$ inner implementation}\label{sec:versions}
   The~current $Sercom's$ implementation has only four public functions.
