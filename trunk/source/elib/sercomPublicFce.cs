@@ -82,10 +82,18 @@ namespace Elib {
     /// Opens the Bluetooth connection and turn the BTCom protocol on.
     /// </summary>
     public void Start() {
-      port.Open();  
+        try {
+            port.Open();
+        } catch (IOException e) {
+            throw new SerialPortException("Opening port problem: " + e.Message,e);
+        }
       while (!port.IsOpen)
-        Thread.Sleep(10);            
-      port.Write(Commands.c_Stop());
+        Thread.Sleep(10);
+      try {
+          port.Write(Commands.c_Stop());
+      } catch (Exception e) {       
+          throw new SerialPortException("Serial port.write() is not responding in time for current timeout", e);
+      }
       Thread.Sleep(100);
       chS.Start();
       chN.Start();

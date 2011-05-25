@@ -153,46 +153,51 @@ namespace Elib {
       if (Stamp.Get() >= a.timeout)
         callKof(a);
       else {
-        //It is not convenient call kof during sending a picture
-        int readBytes = 0;
-        int newBytes;
-        int size = 3;
-        byte[] pom = new byte[size];
-        while ((readBytes += newBytes = port.Read(pom, readBytes, size - readBytes)) < size) {
-          if (newBytes > 0)
-            to = Stamp.Get();
-          else if (Stamp.Get() - to > imgTo) { 
-            //we have not received any new byte in 0.1s
+          try {
+              //It is not convenient call kof during sending a picture
+              int readBytes = 0;
+              int newBytes;
+              int size = 3;
+              byte[] pom = new byte[size];
+              while ((readBytes += newBytes = port.Read(pom, readBytes, size - readBytes)) < size) {
+                  if (newBytes > 0)
+                      to = Stamp.Get();
+                  else if (Stamp.Get() - to > imgTo) {
+                      //we have not received any new byte in 0.1s
+                      callKof(a);
+                      endBinaryMode();
+                      return;
+                  }
+              }
+              //mode is 1,2  -> RGB565 image ->*2 else mode is 0 ->grey scale picture-> *1
+              mode = pom[0];
+              width = pom[1];
+              height = pom[2];
+              size = height * width;
+              if (pom[0] >= 1)
+                  size *= 2;
+              pom = new byte[size];
+              readBytes = 0;
+              while ((readBytes += newBytes = port.Read(pom, readBytes, size - readBytes)) < size) {
+                  if (newBytes > 0)
+                      to = Stamp.Get();
+                  else if (Stamp.Get() - to > imgTo) {
+                      //we have not received any new byte in 0.1s
+                      callKof(a);
+                      endBinaryMode();
+                      return;
+                  }
+              }
+              Interlocked.Exchange<byte[]>(ref pics, pom);
+              fullimage = (size == readBytes);
+              if (Stamp.Get() >= a.timeout)
+                  callKof(a);
+              else
+                  callOkf(a, "-I ok\r\n");
+          } catch (IOException e) { 
             callKof(a);
-            endBinaryMode();
-            return;
-          }
-        }
-        //mode is 1,2  -> RGB565 image ->*2 else mode is 0 ->grey scale picture-> *1
-        mode = pom[0];
-        width = pom[1];
-        height = pom[2];
-        size = height * width;
-        if (pom[0] >= 1)
-          size *= 2;
-        pom = new byte[size];
-        readBytes = 0;
-        while ((readBytes += newBytes = port.Read(pom, readBytes, size - readBytes)) < size) {
-          if (newBytes > 0)
-            to = Stamp.Get();
-          else if (Stamp.Get() - to > imgTo) { 
-            //we have not received any new byte in 0.1s
-            callKof(a);
-            endBinaryMode();
-            return;
-          }
-        }
-        Interlocked.Exchange<byte[]>(ref pics, pom);
-        fullimage = (size == readBytes);
-        if (Stamp.Get() >= a.timeout) 
-          callKof(a);
-        else
-          callOkf(a, "-I ok\r\n");
+            throw new SerialPortException("Serial port.Read() is not responding in time for current Readtimeout", e);
+          }          
       }
       endBinaryMode();         
     }
@@ -207,35 +212,39 @@ namespace Elib {
       Received(null, null);
     }
 
-    void textModeCall() {      
-      string r = port.ReadExisting();
-      lock (hshake_sentLock) {
-        //we want answer only if someone is receiving
-        if (hshake_sent != null) {
-          for (int i = 0; i < r.Length; ++i) {
-            if (stableAns) {
-              ans.Append(r[i]);
-              foreach (String s in stableAnsCommands.Values) {
-                if (ans.Length == s.Length && ans.ToString() == s) {
-                  weHaveAnswer();
-                  break;//answer are different 
+    void textModeCall() {
+        try {
+            string r = port.ReadExisting();
+            lock (hshake_sentLock) {
+                //we want answer only if someone is receiving
+                if (hshake_sent != null) {
+                    for (int i = 0; i < r.Length; ++i) {
+                        if (stableAns) {
+                            ans.Append(r[i]);
+                            foreach (String s in stableAnsCommands.Values) {
+                                if (ans.Length == s.Length && ans.ToString() == s) {
+                                    weHaveAnswer();
+                                    break;//answer are different 
+                                }
+                            }
+                        } else {
+                            //we throw away \r if we are not in longtext mode
+                            if (r[i] != '\r') {
+                                if (r[i] != '\n') {
+                                    ans.Append(r[i]);
+                                } else {
+                                    //we have answer(\n ends an answer), we have thrown away \r\n
+                                    if (ans.Length > 0 && hshake_sent.command[0] == Char.ToUpper(ans[0]) && (Stamp.Get() < hshake_sent.timeout))
+                                        weHaveAnswer();
+                                }//end if (we have answer)
+                            }
+                        }
+                    }//end for loop
                 }
-              }              
-            } else {
-              //we throw away \r if we are not in longtext mode
-              if (r[i] != '\r') {
-                if (r[i] != '\n') {
-                  ans.Append(r[i]);
-                } else {
-                  //we have answer(\n ends an answer), we have thrown away \r\n
-                  if (ans.Length>0 && hshake_sent.command[0] == Char.ToUpper(ans[0]) && (Stamp.Get() < hshake_sent.timeout)) 
-                    weHaveAnswer();
-                }//end if (we have answer)
-              }
             }
-          }//end for loop
+        } catch (IOException e) {            
+            throw new SerialPortException("Serial port.Read() is not responding in time for current Readtimeout", e);          
         }
-      }
     }
 
     void weHaveAnswer() {
@@ -264,7 +273,11 @@ namespace Elib {
       //in Read(..) (different thread)after reading image in binary mode the text_mode is set to true.
       text_mode = false; 
       //183 == -'I' in c++ and BTCom interpret -'Char' commands in binary mode 
-      port.Write(new byte[]{183,0},0,2);      
+      try {
+          port.Write(new byte[] { 183, 0 }, 0, 2);
+      } catch (IOException e) {           
+        throw new SerialPortException("Serial port.Write() is not responding in time for current Write timeout", e);          
+      }
     }
 
 
