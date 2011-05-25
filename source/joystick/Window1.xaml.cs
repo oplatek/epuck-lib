@@ -25,6 +25,7 @@ namespace WpfEpuckLayout {
     const double to = 0.2;
     const double imgto = 0.6;
     volatile bool colorful = false;
+    volatile bool closed = false;
     /// <summary>
     /// Represents a logic of IR sennsors and lights,
     /// which are located on e-Puck's perimeter almost on identical places. 
@@ -124,22 +125,29 @@ namespace WpfEpuckLayout {
     }
     string filename;
     Thread t = null;
-    EventWaitHandle canRefresh = new EventWaitHandle(false, EventResetMode.ManualReset);
-    volatile int runningCall = 0;
+    EventWaitHandle canRefresh = null;
+    //volatile int runningCall = 0;
 
     /// <summary>
     /// Avoid closing application if another thread is communication wit e-Puck. Initial state true does not have to block= nothing is sending
     /// </summary>
-    EventWaitHandle running = new EventWaitHandle(true, EventResetMode.ManualReset);
+    /*
+    EventWaitHandle running = null;
+    object runningLock = new object();
     int RunningCall { 
-      set { 
-        runningCall = value;
-        if (running != null) {
-            if (runningCall == 0) running.Set(); else running.Reset();
-        }
+      set {
+          lock (runningLock)
+          {
+              runningCall = value;
+              if (running != null)
+              {
+                  if (runningCall == 0) running.Set(); else running.Reset();
+              }
+          }
       }
-      get { return runningCall; }
+        get { lock (runningLock) { return runningCall; } }
     }
+     */
     Dispatcher guid = Dispatcher.CurrentDispatcher;
 
     /************************************* end of field members **************************/
@@ -184,11 +192,17 @@ namespace WpfEpuckLayout {
     /// shut down the session with e-puck.
     /// </summary>
     /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
-    protected override void OnClosed(EventArgs e) {      
-      EpClose_Click(null, null);
-      canRefresh.Close();
-      running.Close();
-      base.OnClosed(e);
+    protected override void OnClosed(EventArgs e) {
+        if (!closed)
+        {
+            closed = true;
+            EpClose_Click(null, null);
+            canRefresh.Set();
+            Thread.Sleep(50);
+            canRefresh = null;
+            //lock (runningLock) { running = null; }
+            //base.OnClosed(e);
+        }
     }
     private void setAktivState(bool ak) {
       //nevim jakou vlastnost mam deaktivovat aby prvky nebyl "aktivni"
@@ -201,11 +215,6 @@ namespace WpfEpuckLayout {
       BClose.IsEnabled = ak;
       LogBool.IsEnabled = ak;
       LogBool.IsChecked = false;
-      if (ak) {
-          
-      } else { 
-
-      }
     }
 
     private void MenuItem_Click(object sender, RoutedEventArgs e) {
@@ -244,8 +253,12 @@ namespace WpfEpuckLayout {
 
     private void Connect_Click(object sender, RoutedEventArgs e) {
         try {
+            //running = new EventWaitHandle(true, EventResetMode.ManualReset);
+            canRefresh = new EventWaitHandle(false, EventResetMode.ManualReset);
             string port = PortName.Text;
             Ep = new Epuck(port, "Epuck Monitor");
+
+            closed = false;
             t = new Thread(updateAllSensors);
             t.Start();
             SetDefaultValues();
@@ -253,36 +266,46 @@ namespace WpfEpuckLayout {
             notConfirmedCommand(this);
         }
     }
-    private void SetDefaultValues() {    
-      try {
-        IAsyncResult ar;
-        ar = Ep.BeginStop(to, null, null);
-        Ep.EndFtion(ar);
-        Zoom z = Zoom.Small;
-        CamMode m = CamMode.Color;
-        switch (mode.SelectedIndex) {
-          case 0: m = CamMode.BaW; break;
-          case 1: m = CamMode.Color; break;
+    private void SetDefaultValues() {
+        try
+        {
+            IAsyncResult ar;
+            ar = Ep.BeginStop(to, null, null);
+            Ep.EndFtion(ar);
+            Zoom z = Zoom.Small;
+            CamMode m = CamMode.Color;
+            switch (mode.SelectedIndex)
+            {
+                case 0: m = CamMode.BaW; break;
+                case 1: m = CamMode.Color; break;
+            }
+            switch (zoom.SelectedIndex)
+            {
+                case 0: z = Zoom.Small; break;
+                case 1: z = Zoom.Medium; break;
+                case 2: z = Zoom.Big; break;
+            }
+            ar = Ep.BeginSetCam(int.Parse(width.Text), int.Parse(height.Text), z, m, to, null, null);
+            Ep.EndFtion(ar);
+            ar = Ep.BeginLightX(8, Turn.Off, to, null, null);
+            Ep.EndFtion(ar);
         }
-        switch (zoom.SelectedIndex) {
-          case 0: z = Zoom.Small; break;
-          case 1: z = Zoom.Medium; break;
-          case 2: z = Zoom.Big; break;
+        catch (NullReferenceException) {
+            notConfirmedCommand(this);
         }
-        ar = Ep.BeginSetCam(int.Parse(width.Text), int.Parse(height.Text), z, m, to, null, null);
-        Ep.EndFtion(ar);
-        ar = Ep.BeginLightX(8, Turn.Off, to, null, null);
-        Ep.EndFtion(ar);
-      }
-      catch (ElibException) {
-        notConfirmedCommand(this);
-      }
+        catch (ElibException)
+        {
+            notConfirmedCommand(this);
+        }
     }
     private void EpClose_Click(object sender, RoutedEventArgs e) {
+      updateUIDelegate d = delegate { refresh.IsChecked = false; LogBool.IsChecked = false; };
+      guid.Invoke(DispatcherPriority.Send, d);
+      if(Ep!=null)
+        Ep.StopLogging();
+
       if(t!=null)
-        t.Abort();
-      running.WaitOne();
-      refresh.IsChecked = false;
+        t.Abort();            
       if (Ep != null)
         Ep.Dispose();
       Ep = null;
@@ -302,8 +325,7 @@ namespace WpfEpuckLayout {
     private void getIR_Click(object sender, RoutedEventArgs e) {
       updateIR();
     }
-    private static void setLedLight(Window1 win,string name, Turn how) {
-      if (win.Ep != null) {
+    private static void setLedLight(Window1 win,string name, Turn how) {      
         try {
           IAsyncResult ar;
           switch (name) { 
@@ -317,44 +339,60 @@ namespace WpfEpuckLayout {
             break;
           }                 
           win.Ep.EndFtion(ar);
-        } catch (ElibException) {
+        }
+        catch (NullReferenceException) {
+          //epuck is already null because of previous error or is uninitialized
           notConfirmedCommand(win);
         }
-      }
+        catch (ElibException) {
+          notConfirmedCommand(win);
+        }      
     }
  
     private void refresh_Checked(object sender, RoutedEventArgs e) {
-      if (true==refresh.IsChecked) {
-        canRefresh.Set();
-      } else
-        canRefresh.Reset();      
+        if (canRefresh != null)
+        {
+            if (true == refresh.IsChecked)         
+                canRefresh.Set();        
+            else
+                canRefresh.Reset();
+        }
     }
     private void updateAllSensors() {      
       while(true){
         updateUIDelegate d1 = new updateUIDelegate(updateSen);
         updateUIDelegate d2 = new updateUIDelegate(updateImg);
-        canRefresh.WaitOne();
-        Thread.Sleep(100);        
-        guid.Invoke(DispatcherPriority.Normal,d1 );            
-        Thread.Sleep(100);        
-        guid.Invoke(DispatcherPriority.Normal, d2);
+        if (canRefresh != null)
+        {
+            canRefresh.WaitOne();
+            Thread.Sleep(100);
+            guid.Invoke(DispatcherPriority.Normal, d1);
+            Thread.Sleep(100);
+            guid.Invoke(DispatcherPriority.Normal, d2);
+        }     
       }
     }
     private void updateSen(){
-      RunningCall++;
+      //RunningCall++;
       GetAccelerometer_Click(null,null);
       getIR_Click(null,null);
       getir_Click(null,null);
       getmotors_Click(null,null);
       getmikes_Click(null,null);
-      RunningCall--;
+      //RunningCall--;
     }
     private void updateImg() {
-      RunningCall++;
-      IAsyncResult ar = Ep.BeginGetImage(imgto, null, null);
-      Bitmap bmp = Ep.EndGetImage(ar);
-      pic.Source = Convert2BitmapSource(bmp,colorful);
-      RunningCall--;
+      //RunningCall++;
+        try
+        {
+            IAsyncResult ar = Ep.BeginGetImage(imgto, null, null);
+            Bitmap bmp = Ep.EndGetImage(ar);
+            pic.Source = Convert2BitmapSource(bmp, colorful);
+        }
+        catch (ElibException) {
+            notConfirmedCommand(this);
+        }
+      //RunningCall--;
     }
 
     static void notConfirmedCommand(Window1 win) {
@@ -469,24 +507,11 @@ namespace WpfEpuckLayout {
       return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bmp.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
                 System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());                 
     }
+
     private void getpic_Click(object sender, RoutedEventArgs e) {
-      if(Ep!=null)
-        Ep.BeginGetImage(imgto,
-          (ar) => {
-            try {
-              RunningCall++;
-              Bitmap bmp = Ep.EndGetImage(ar);
-              updateUIDelegate d = delegate {
-                pic.Source = Convert2BitmapSource(bmp,colorful);
-              };
-              RunningCall--;
-              guid.Invoke(DispatcherPriority.Normal,d);             
-            } catch (ElibException) {
-              notConfirmedCommand(this);
-            }
-          }, 
-          null);              
+        updateImg();
     }
+      
 
     private void epuckIniActions() {
       try {
