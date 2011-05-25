@@ -40,15 +40,15 @@ namespace Elib {
       try { 
 		/*If mono has already implemented DataReceived handler & DiscardNull & ReceivedBytesThreshold properties use the else branch for .Net runtime too. */
         Type t = Type.GetType ("Mono.Runtime");
-        if (t != null){
+        if (t != null) {
           // You are running with the Mono VM
           port = new OP.WrapSerialPort(portName);
-		} else {
+	} else {
           // You are running some other runtime - .Net runtime
           port = new SerialPort(portName, 115200, Parity.None, 8, StopBits.One);
           port.DiscardNull = false;
           port.ReceivedBytesThreshold = 1;
-		}
+	}
         port.DataReceived += new SerialDataReceivedEventHandler(Read);
         if (serialPortWriteTimeout < 0)
           port.WriteTimeout = SerialPort.InfiniteTimeout;
@@ -59,6 +59,10 @@ namespace Elib {
         else
           port.ReadTimeout = serialPortReadTimeout;
       } catch (Exception e) {
+        // class has not been initialised so do not dispose it!
+        disposed = true;
+        stoppedSend = true;
+        stoppedConfirm = true;
         throw new SerialPortException("Opening port problem: " + portName, e);
       }
       

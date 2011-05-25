@@ -22,96 +22,40 @@ namespace WpfEpuckLayout {
   /// Interaction logic for Window1.xaml
   /// </summary>
   public partial class Window1 : Window {
-    const double to = 0.2;
-    const double imgto = 0.6;
-    volatile bool colorful = false;
-    volatile bool closed = false;
-    /// <summary>
-    /// Represents a logic of IR sennsors and lights,
-    /// which are located on e-Puck's perimeter almost on identical places. 
-    /// </summary>
-    public class IRLight : INotifyPropertyChanged {
-      int senProximity;
-      string senName;
-      bool isShining;
-      Window1 win;
-      /// <summary>
-      /// Initializes a new instance of the <see cref="IRLight"/> class.
-      /// </summary>
-      /// <param name="name">The name.</param>
-      /// <param name="val">The val.</param>
-      /// <param name="isShining_">if set to <c>true</c> [is shining_].</param>
-      /// <param name="win_">The win_.</param>
-      public IRLight(string name, int val, bool isShining_,Window1 win_) {
-        senName = name;
-        senProximity = val;
-        isShining = isShining_;
-        win = win_;
-      }
-      /// <summary>
-      /// Occurs when a property value changes.
-      /// </summary>
-      public event PropertyChangedEventHandler PropertyChanged;
-      /// <summary>
-      /// Notifies the specified prop name.
-      /// </summary>
-      /// <param name="PropName">Name of the prop.</param>
-      protected void Notify(string PropName) {
-        if (PropertyChanged != null)
-          PropertyChanged(this, new PropertyChangedEventArgs(PropName));
-      }
-      /// <summary>
-      /// Gets or sets the sensors light.
-      /// </summary>
-      /// <value>The sen light.</value>
-      public int SenProximity {
-        get { return senProximity; }
-        set { senProximity = value; Notify("SenLight"); Notify("SenGraph"); }
-      }
-      /// <summary>
-      /// Gets the sen graph.
-      /// </summary>
-      /// <value>The sen graph.</value>
-      public int SenGraph {
-        get { return (senProximity * 3) / 5; }
-      }
-      /// <summary>
-      /// Gets or sets the name of the sen.
-      /// </summary>
-      /// <value>The name of the sen.</value>
-      public string SenName {
-        get { return senName; }
-        set { senName = value; Notify("SenName"); }
-      }
-      /// <summary>
-      /// Gets or sets a value indicating whether this instance is shining.
-      /// </summary>
-      /// <value>
-      /// 	<c>true</c> if this instance is shining; otherwise, <c>false</c>.
-      /// </value>
-      public bool IsShining {
-        get { return isShining; }
-        set { isShining = value; setLedLight(win,senName,value?Turn.On:Turn.Off); Notify("IsShining"); }
-      }
-    }
+    // delegate == typed variable for functions
     delegate void updateUIDelegate();
+    // Dispatcher updates gui controls via functions pased as updateUIDelegate variables
+    Dispatcher guid = Dispatcher.CurrentDispatcher;
 
-    /// <summary>
-    /// array representing ir sensors and lights
-    /// </summary>
+    // Thread for continuous updating of sensors
+    Thread t = null;
+    // Synchronisation for "endless" loop that performes continuous update of sensors
+    EventWaitHandle canRefresh = null;
+    // signals whether connection was interrupted
+    volatile bool closed = false;
+
+    // filename for logging commands and answers
+    string filename;
+
+    // to - timeout - maximum time for waiting to an answer
+    const double to = 0.4;
+    const double imgto = 1.0;
+
+    // Type of image requested from e-Puck
+    volatile bool colorful = false;
+    
+    // IRLight class connects gui representation and values find out from e-Puck
     IRLight[] array;
-    const int arrayLenght=8;
-    /// <summary>
-    /// representing center ir sensor and light
-    /// </summary>
+    const int arrayLenght = 8;
     IRLight bodylight_;
     IRLight frontlight_;
+
+    // Epuck class from Elib.dll wraps communication with e-Puck
     Epuck ep;
-    //sercom_prop
-    /// <summary>
-    /// Gets or sets the epuck instance.
-    /// </summary>
-    /// <value>The ep.</value>
+
+    #region Constructor and startup stuff
+
+    // Wraper of ep
     public Epuck Ep {
       set {
         ep = value;
@@ -122,47 +66,16 @@ namespace WpfEpuckLayout {
           setAktivState(false);
       }
       get { return ep; }
-    }
-    string filename;
-    Thread t = null;
-    EventWaitHandle canRefresh = null;
-    //volatile int runningCall = 0;
-
-    /// <summary>
-    /// Avoid closing application if another thread is communication wit e-Puck. Initial state true does not have to block= nothing is sending
-    /// </summary>
-    /*
-    EventWaitHandle running = null;
-    object runningLock = new object();
-    int RunningCall { 
-      set {
-          lock (runningLock)
-          {
-              runningCall = value;
-              if (running != null)
-              {
-                  if (runningCall == 0) running.Set(); else running.Reset();
-              }
-          }
-      }
-        get { lock (runningLock) { return runningCall; } }
-    }
-     */
-    Dispatcher guid = Dispatcher.CurrentDispatcher;
-
-    /************************************* end of field members **************************/
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Window1"/> class.
-    /// </summary>
+    }        
+    
+    // constructor    
     public Window1() {      
       InitializeComponent();
       myInitializeEpuckLights();
       setAktivState(false);
     }
-
-    /// <summary>
-    /// conects visualisation and data of epuck lights and irs
-    /// </summary>
+    
+    // conects visualisation and data of epuck lights and irs    
     private void myInitializeEpuckLights() {
       string name = "ir";
       array = new IRLight[arrayLenght];
@@ -185,27 +98,100 @@ namespace WpfEpuckLayout {
       frontlight_ = new IRLight("frontlight", 0, false, this);
       frontlight.DataContext = frontlight_;
       LogBool.IsEnabled = false;
-    }    
-    /// <summary>
-    /// Raises the <see cref="E:System.Windows.Window.Closed"/> event
-    /// stop refreshing if refreshing sensor values is enabled and calls EpClose_Click(null, null), which 
-    /// shut down the session with e-puck.
-    /// </summary>
-    /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+    }
+
+    #endregion Constructor and start up staff
+
+    #region Turning on and off session with e-Puck
+
+    private void Connect_Click(object sender, RoutedEventArgs e) {
+        try {
+            //running = new EventWaitHandle(true, EventResetMode.ManualReset);
+            canRefresh = new EventWaitHandle(false, EventResetMode.ManualReset);
+            string port = PortName.Text;
+            Ep = new Epuck(port, "Epuck Monitor");
+
+            closed = false;
+            t = new Thread(updateAllSensors);
+            t.Start();
+            SetDefaultValues();
+        } catch (ElibException) {
+            notConfirmedCommand(this);
+        }
+    }
+
+    private void SetDefaultValues() {
+        try {
+            IAsyncResult ar;
+            ar = Ep.BeginStop(to, null, null);
+            Ep.EndFtion(ar);
+            Zoom z = Zoom.Small;
+            CamMode m = CamMode.Color;
+            switch (mode.SelectedIndex) {
+                case 0: m = CamMode.BaW; break;
+                case 1: m = CamMode.Color; break;
+            }
+            switch (zoom.SelectedIndex) {
+                case 0: z = Zoom.Small; break;
+                case 1: z = Zoom.Medium; break;
+                case 2: z = Zoom.Big; break;
+            }
+            ar = Ep.BeginSetCam(int.Parse(width.Text), int.Parse(height.Text), z, m, to, null, null);
+            Ep.EndFtion(ar);
+            ar = Ep.BeginLightX(8, Turn.Off, to, null, null);
+            Ep.EndFtion(ar);
+        } catch (NullReferenceException) {
+            notConfirmedCommand(this);
+        } catch (ElibException) {
+            notConfirmedCommand(this);
+        }
+    }
+
+    private void EpClose_Click(object sender, RoutedEventArgs e) {
+        updateUIDelegate d = delegate { refresh.IsChecked = false; LogBool.IsChecked = false; };
+        guid.Invoke(DispatcherPriority.Send, d);
+        if (Ep != null)
+            Ep.StopLogging();
+
+        if (t != null)
+            t.Abort();
+        if (Ep != null)
+            Ep.Dispose();
+        Ep = null;
+    }
+
+    static void notConfirmedCommand(Window1 win) {
+        MessageBox.Show("Command has not been confirmed in timeout! Probably you are connected to another device or e-Puck has low batery");
+        win.AbortSession();
+    }
+    
+    /*
+    // Raises the System.Windows.Window.Closed event
+    // stop refreshing if refreshing sensor values is enabled and calls EpClose_Click(null, null)
+    // that shut down the session with e-puck.    
     protected override void OnClosed(EventArgs e) {
-        if (!closed)
-        {
+        if (!closed) {
+            closed = true;
+            EpClose_Click(null, null);
+            canRefresh.Set();
+            Thread.Sleep(50);
+            canRefresh = null;            
+        }
+    }
+    */
+
+    // Calls EpClose_Click(null, null) and stop refreshing    
+    public void AbortSession() {
+        if (!closed) {
             closed = true;
             EpClose_Click(null, null);
             canRefresh.Set();
             Thread.Sleep(50);
             canRefresh = null;
-            //lock (runningLock) { running = null; }
-            //base.OnClosed(e);
         }
     }
-    private void setAktivState(bool ak) {
-      //nevim jakou vlastnost mam deaktivovat aby prvky nebyl "aktivni"
+
+    private void setAktivState(bool ak) {      
       BConnect.IsEnabled = !ak;
       rightPanel.IsEnabled = ak;
       JoystickPanel.IsEnabled = ak;
@@ -216,6 +202,10 @@ namespace WpfEpuckLayout {
       LogBool.IsEnabled = ak;
       LogBool.IsChecked = false;
     }
+
+    #endregion Turning on and off session with e-Puck
+
+    #region Sending commands
 
     private void MenuItem_Click(object sender, RoutedEventArgs e) {
       Microsoft.Win32.OpenFileDialog opf = new Microsoft.Win32.OpenFileDialog();
@@ -244,72 +234,8 @@ namespace WpfEpuckLayout {
         LogBool.IsChecked = false;
       }        
       
-    }
-    /// <summary>
-    /// Handler for joystick panel, which gets the speed for wheels from joystick
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    }    
 
-    private void Connect_Click(object sender, RoutedEventArgs e) {
-        try {
-            //running = new EventWaitHandle(true, EventResetMode.ManualReset);
-            canRefresh = new EventWaitHandle(false, EventResetMode.ManualReset);
-            string port = PortName.Text;
-            Ep = new Epuck(port, "Epuck Monitor");
-
-            closed = false;
-            t = new Thread(updateAllSensors);
-            t.Start();
-            SetDefaultValues();
-        } catch (ElibException) {
-            notConfirmedCommand(this);
-        }
-    }
-    private void SetDefaultValues() {
-        try
-        {
-            IAsyncResult ar;
-            ar = Ep.BeginStop(to, null, null);
-            Ep.EndFtion(ar);
-            Zoom z = Zoom.Small;
-            CamMode m = CamMode.Color;
-            switch (mode.SelectedIndex)
-            {
-                case 0: m = CamMode.BaW; break;
-                case 1: m = CamMode.Color; break;
-            }
-            switch (zoom.SelectedIndex)
-            {
-                case 0: z = Zoom.Small; break;
-                case 1: z = Zoom.Medium; break;
-                case 2: z = Zoom.Big; break;
-            }
-            ar = Ep.BeginSetCam(int.Parse(width.Text), int.Parse(height.Text), z, m, to, null, null);
-            Ep.EndFtion(ar);
-            ar = Ep.BeginLightX(8, Turn.Off, to, null, null);
-            Ep.EndFtion(ar);
-        }
-        catch (NullReferenceException) {
-            notConfirmedCommand(this);
-        }
-        catch (ElibException)
-        {
-            notConfirmedCommand(this);
-        }
-    }
-    private void EpClose_Click(object sender, RoutedEventArgs e) {
-      updateUIDelegate d = delegate { refresh.IsChecked = false; LogBool.IsChecked = false; };
-      guid.Invoke(DispatcherPriority.Send, d);
-      if(Ep!=null)
-        Ep.StopLogging();
-
-      if(t!=null)
-        t.Abort();            
-      if (Ep != null)
-        Ep.Dispose();
-      Ep = null;
-    }
     private void updateIR() {
       if (Ep != null) {
         try {
@@ -358,6 +284,7 @@ namespace WpfEpuckLayout {
                 canRefresh.Reset();
         }
     }
+
     private void updateAllSensors() {      
       while(true){
         updateUIDelegate d1 = new updateUIDelegate(updateSen);
@@ -380,26 +307,19 @@ namespace WpfEpuckLayout {
       getmotors_Click(null,null);
       getmikes_Click(null,null);
       //RunningCall--;
-    }
+    }  
+
     private void updateImg() {
-      //RunningCall++;
-        try
-        {
+        //RunningCall++;
+        try {
             IAsyncResult ar = Ep.BeginGetImage(imgto, null, null);
             Bitmap bmp = Ep.EndGetImage(ar);
             pic.Source = Convert2BitmapSource(bmp, colorful);
-        }
-        catch (ElibException) {
+        } catch (ElibException) {
             notConfirmedCommand(this);
         }
-      //RunningCall--;
+        //RunningCall--;
     }
-
-    static void notConfirmedCommand(Window1 win) {
-      MessageBox.Show("Command has not been confirmed in timeout! Probably you are connected to another device or e-Puck has low batery");
-      win.OnClosed(null);
-    }
-
 
     private void getir_Click(object sender, RoutedEventArgs e) {
       if(Ep!=null)
@@ -450,6 +370,7 @@ namespace WpfEpuckLayout {
         }
       }
     }
+
     private void getmikes_Click(object sender, RoutedEventArgs e) {
       if(Ep!=null)
       try {
@@ -460,13 +381,8 @@ namespace WpfEpuckLayout {
       } catch (ElibException) {
         notConfirmedCommand(this);
       }
-    }
-    static string ArrToString(int[] arr) {
-      string r="";
-      for (int i = 0; i < arr.Length; ++i)
-        r += arr[i].ToString() + " ";
-      return r;
-    }
+    }    
+
     private void setcam_Click(object sender, RoutedEventArgs e) {
       if(Ep!=null)
       try {
@@ -533,5 +449,59 @@ namespace WpfEpuckLayout {
         }
       }
     }
-  }//end of Window
-}
+
+    static string ArrToString(int[] arr) {
+        string r = "";
+        for (int i = 0; i < arr.Length; ++i)
+            r += arr[i].ToString() + " ";
+        return r;
+    }
+
+#endregion Sending commands
+
+    /// <summary>
+    /// Connects gui and inner representation of IR sennsors and lights,
+    /// which are located on e-Puck's perimeter almost on identical places. 
+    /// </summary>
+    public class IRLight : INotifyPropertyChanged {
+        int senProximity;
+        string senName;
+        bool isShining;
+        Window1 win;
+    
+        public IRLight(string name, int val, bool isShining_, Window1 win_) {
+            senName = name;
+            senProximity = val;
+            isShining = isShining_;
+            win = win_;
+        }
+        // Occurs when a property value changes.      
+        public event PropertyChangedEventHandler PropertyChanged;
+        // Notifies the specified property name.      
+        protected void Notify(string PropName) {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropName));
+        }
+        public int SenProximity {
+            get { return senProximity; }
+            set { senProximity = value; Notify("SenLight"); Notify("SenGraph"); }
+        }
+        // binds the senProximity and its gui representation
+        public int SenGraph {
+            get { return (senProximity * 3) / 5; }
+        }
+        // sensor name
+        public string SenName {
+            get { return senName; }
+            set { senName = value; Notify("SenName"); }
+        }
+        // we put together in one control IR sensors and LEDs, because they are placed on similar places on e-Puck
+        public bool IsShining {
+            get { return isShining; }
+            set { isShining = value; setLedLight(win, senName, value ? Turn.On : Turn.Off); Notify("IsShining"); }
+        }
+    } //end of IRLight class    
+
+  }//end of Window class
+
+}//end of namespace
