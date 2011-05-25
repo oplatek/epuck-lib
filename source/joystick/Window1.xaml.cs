@@ -126,11 +126,17 @@ namespace WpfEpuckLayout {
     Thread t = null;
     EventWaitHandle canRefresh = new EventWaitHandle(false, EventResetMode.ManualReset);
     volatile int runningCall = 0;
-    EventWaitHandle running = new EventWaitHandle(false, EventResetMode.ManualReset);
+
+    /// <summary>
+    /// Avoid closing application if another thread is communication wit e-Puck. Initial state true does not have to block= nothing is sending
+    /// </summary>
+    EventWaitHandle running = new EventWaitHandle(true, EventResetMode.ManualReset);
     int RunningCall { 
       set { 
         runningCall = value;
-        if (runningCall == 0) running.Set(); else running.Reset();
+        if (running != null) {
+            if (runningCall == 0) running.Set(); else running.Reset();
+        }
       }
       get { return runningCall; }
     }
@@ -178,11 +184,11 @@ namespace WpfEpuckLayout {
     /// shut down the session with e-puck.
     /// </summary>
     /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
-    protected override void OnClosed(EventArgs e) {
-      base.OnClosed(e);
+    protected override void OnClosed(EventArgs e) {      
       EpClose_Click(null, null);
       canRefresh.Close();
       running.Close();
+      base.OnClosed(e);
     }
     private void setAktivState(bool ak) {
       //nevim jakou vlastnost mam deaktivovat aby prvky nebyl "aktivni"
@@ -195,6 +201,11 @@ namespace WpfEpuckLayout {
       BClose.IsEnabled = ak;
       LogBool.IsEnabled = ak;
       LogBool.IsChecked = false;
+      if (ak) {
+          
+      } else { 
+
+      }
     }
 
     private void MenuItem_Click(object sender, RoutedEventArgs e) {
@@ -232,15 +243,15 @@ namespace WpfEpuckLayout {
     /// <param name="e"></param>
 
     private void Connect_Click(object sender, RoutedEventArgs e) {
-      try {
-        string port = PortName.Text;
-        Ep = new Epuck(port, "Epuck Monitor");
-        t = new Thread(updateAllSensors);
-        t.Start();
-        SetDefaultValues();
-      } catch (ElibException) {
-        notConfirmedCommand(this);
-      }
+        try {
+            string port = PortName.Text;
+            Ep = new Epuck(port, "Epuck Monitor");
+            t = new Thread(updateAllSensors);
+            t.Start();
+            SetDefaultValues();
+        } catch (ElibException) {
+            notConfirmedCommand(this);
+        }
     }
     private void SetDefaultValues() {    
       try {
@@ -281,7 +292,7 @@ namespace WpfEpuckLayout {
         try {
           IAsyncResult ar = Ep.BeginGetIR(to, null, null);
           int[] proxies = Ep.EndGetFtion(ar);
-          for (int i = 0; i < 8; ++i) //range of SenLight 0-100
+          for (int i = 0; i < 8; ++i) //range of SenProximity 0-100
             array[i].SenProximity = (proxies[i]) / 35;
         } catch (ElibException) {
           notConfirmedCommand(this);

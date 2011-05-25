@@ -47,7 +47,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -71,7 +71,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -95,7 +95,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -119,7 +119,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -146,7 +146,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -170,7 +170,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -194,7 +194,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -218,7 +218,7 @@
                     <Label VerticalAlignment="Center" FontWeight="Bold" FontSize="11" 
 				                	        Content="{Binding Path=SenName}"/>
                     <CheckBox VerticalAlignment="Center"  
-				                				         Content="{Binding Path=SenLight}" 
+				                				         Content="{Binding Path=SenProximity}" 
 				                				         IsChecked="{Binding Path=IsShining}"/>
                   </StackPanel>
                 </Grid>
@@ -325,7 +325,7 @@
         <CheckBox Margin="5" Name="refresh"  Checked="refresh_Checked" Unchecked="refresh_Checked">SensorRefresh</CheckBox>
           <Menu Height="22" Width="50" HorizontalAlignment="Left">
             <MenuItem Header="_File">
-              <MenuItem Click="MenuItem_Click" Header="_Log to File..." IsEnabled="{Binding ElementName=UseLog, Path=IsCheckable}"/>
+              <MenuItem Click="MenuItem_Click" Header="_Log to File..." IsEnabled="{Binding ElementName=LogBool, Path=IsEnabled}"/>
               <CheckBox Name="LogBool" IsChecked="False" Checked="LogBool_Change" Unchecked="LogBool_Change">Enable Loging</CheckBox>
             </MenuItem>
           </Menu>
